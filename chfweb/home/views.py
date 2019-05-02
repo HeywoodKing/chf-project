@@ -14,9 +14,36 @@ def global_setting(req):
 
     return locals()
 
+# 首页
 def index(req):
     return render(req, 'index.html')
 
 
+# 关于我们 联系我们
 def about(req):
     return render(req, 'about.html')
+
+
+# 品牌产品
+def product_list(req):
+    return render(req, 'product_list.html')
+
+# 品牌产品详情
+def product_detail(req, id):
+    return render(req, 'product_detail.html')
+
+# 品牌合作
+def partner(req):
+    return render(req, 'partner.html')
+
+# 新闻资讯 社会责任
+def news_list(req):
+    return render(req, 'news_list.html')
+
+def news_detail(req, id):
+    return render(req, 'news_detail.html')
+
+# 工作机会
+def job_list(req):
+    return render(req, 'job_list.html')
+

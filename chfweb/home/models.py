@@ -5,33 +5,34 @@ from django.utils.timezone import timezone
 # Create your models here.
 class BaseModel(models.Model):
     create_time = models.DateTimeField('创建时间', auto_now_add=True)
-    create_uid= models.IntegerField('创建人ID', default=123456789)
-    create_username = models.CharField('创建人名称', max_length=30, default='admin')
+    create_uid= models.IntegerField('创建人ID', default=123456789, auto_created=True)
+    create_username = models.CharField('创建人名称', max_length=30, default='admin', auto_created=True)
     operate_time = models.DateTimeField('操作时间', auto_now_add=True)
-    operate_uid = models.IntegerField('操作人ID', default=123456789)
-    operate_username = models.CharField('操作人名称', max_length=30, default='admin')
+    operate_uid = models.IntegerField('操作人ID', default=123456789, auto_created=True)
+    operate_username = models.CharField('操作人名称', max_length=30, default='admin', auto_created=True)
 
     class Meta:
         abstract = True
 
 # 系统|站点配置
-# class SysConfig(BaseModel):
-#     site_name = models.CharField('站点名称', max_length=50)
-#     site_desc = models.CharField('站点描述', max_length=150)
-#     site_author = models.CharField('作者', max_length=100)
-#     site_company = models.CharField('站点所属公司', max_length=100)
-#     footer_address = models.CharField('底部显示地址', max_length=150)
-#     footer_tel = models.CharField('底部显示电话', max_length=11)
-#     icp = models.CharField('备案号', max_length=15)
-#     remark = models.CharField('备注', max_length=200)
-#
-#     def __str__(self):
-#         db_table = "sys_config"
-#         verbose_name = '站点配置'
-#         verbose_name_plural = 'SysConfig'
-#
-#     def __str__(self):
-#         return self.site_name
+class SysConfig(BaseModel):
+    site_name = models.CharField('站点名称', max_length=50)
+    site_desc = models.CharField('站点描述', max_length=150)
+    site_author = models.CharField('作者', max_length=100)
+    site_company = models.CharField('公司', max_length=100)
+    address = models.CharField('底部显示地址', max_length=150)
+    telephone = models.CharField('底部显示电话', max_length=11)
+    email = models.EmailField('邮箱', max_length=50)
+    icp = models.CharField('备案号', max_length=15)
+    remark = models.CharField('备注', max_length=200)
+
+    def __str__(self):
+        db_table = "sys_config"
+        verbose_name = '站点配置'
+        verbose_name_plural = 'SysConfig'
+
+    def __str__(self):
+        return self.site_name
 
 # # 广告位
 # class SysAdPosition(BaseModel):
@@ -74,45 +75,59 @@ class BaseModel(models.Model):
 
 # 关于我们
 # 联系我们
-class ChfAbout(BaseModel):
-    comp_name = models.CharField('公司名称', max_length=100)
-    slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
-                            help_text='根据name生成的，用于生成页面URL，必须唯一')
-    descr = models.TextField('公司简介', default=None, null=True, blank=True)
-    comp_culture = models.TextField('公司文化', default=None, null=True, blank=True)
-    org_structure = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='company/%Y/%m')
-    comp_honor = models.TextField('证书荣誉', default=None, null=True, blank=True)
+# class ChfAbout(BaseModel):
+#     comp_name = models.CharField('公司名称', max_length=100)
+#     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
+#                             help_text='根据name生成的，用于生成页面URL，必须唯一')
+#     descr = models.TextField('公司简介', default=None, null=True, blank=True)
+#     comp_culture = models.TextField('公司文化', default=None, null=True, blank=True)
+#     org_structure = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='company/%Y/%m')
+#     comp_honor = models.TextField('证书荣誉', default=None, null=True, blank=True)
+#     is_enable = models.BooleanField('是否启用', default=True)
+#
+#     class Meta:
+#         db_table = 'chf_about'
+#         verbose_name = '关于我们'
+#         verbose_name_plural = 'ChfAbouts'
+#
+#     def __str__(self):
+#         return self.comp_name
+#
+#     def get_absolute_url(self):
+#         return reverse('about', args=(self.slug, ))
+
+# 公司发展历程
+class ChfCompanyHistory(BaseModel):
+    timeline_title = models.CharField('时间标题', max_length=20, default=None, unique=True, null=True, blank=True)
+    title = models.CharField('标题', max_length=100)
+    breif = models.CharField('摘要', max_length=50, default=None, null=True, blank=True)
+    content = models.TextField('描述', default=None, null=True, blank=True)
+    cover_image_url = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='company/%Y/%m')
+    sort = models.IntegerField('排序', default=0)
     is_enable = models.BooleanField('是否启用', default=True)
 
     class Meta:
-        db_table = 'chf_about'
-        verbose_name = '关于我们'
-        verbose_name_plural = 'ChfAbouts'
-
-    def __str__(self):
-        return self.comp_name
-
-    def get_absolute_url(self):
-        return reverse('about', args=(self.slug, ))
-
-# 公司发展历程
-class ChfCompHistory(BaseModel):
-    timeline_title = models.CharField('时间标题', max_length=20, default=None, unique=True, null=True, blank=True)
-    title = models.CharField('标题', max_length=100)
-    breif = models.CharField('摘要', max_length=100, default=None, null=True, blank=True)
-    content = models.TextField('描述', default=None, null=True, blank=True)
-    image = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='company/%Y/%m')
-    sort = models.IntegerField('排序', default=0)
-
-    class Meta:
-        db_table = 'chf_comphistory'
+        db_table = 'chf_companyhistory'
         ordering = ['sort', '-create_time']
         verbose_name = '发展历程'
-        verbose_name_plural = 'ChfCompHistories'
+        verbose_name_plural = 'ChfCompanyHistories'
 
     def __str__(self):
         return self.title
 
+# 产品类型
+class ChfProductType(BaseModel):
+    name = models.CharField('类型名称', max_length=30)
+    is_enable = models.BooleanField('是否启用', default=True)
+
+    class Meta:
+        db_table = 'chf_producttype'
+        ordering = ['-create_time']
+        verbose_name = '产品类型'
+        verbose_name_plural = 'ChfProductTypes'
+
+    def __str__(self):
+        return self.name
 
 # 品牌产品
 class ChfProduct(BaseModel):
@@ -121,19 +136,16 @@ class ChfProduct(BaseModel):
                             help_text='根据name生成的，用于生成页面URL，必须唯一')
     brief = models.CharField('新闻摘要', max_length=50)
     descr = models.TextField('产品描述', default=None, null=True, blank=True)
-    image = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='product/%Y/%m')
+    cover_image_url = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='product/%Y/%m')
     read_count = models.IntegerField('浏览量', default=0)
-    type_code = models.SmallIntegerField('产品类型', default=0)
-    type_name = models.CharField('产品类型名称', max_length=30)
+    product_type = models.ForeignKey('ChfProductType', null=True, blank=True, on_delete=models.CASCADE)
     sort = models.IntegerField('排序', default=0)
-
 
     class Meta:
         db_table = 'chf_product'
         ordering = ['sort', '-create_time']
         verbose_name = '品牌产品'
         verbose_name_plural = 'ChfProducts'
-
 
     def __str__(self):
         return self.name
@@ -143,10 +155,28 @@ class ChfProduct(BaseModel):
         return reverse('product', args=(self.slug, ))
 
 
+
 # 品牌合作
+class ChfPartner(BaseModel):
+    name = models.CharField('名称', max_length=100)
+    logo = models.ImageField('Logo', max_length=255, null=True, blank=True, upload_to='partner/%Y/%m')
+    brief = models.CharField('简介', max_length=150)
+    url = models.URLField('链接', max_length=255, null=True, blank=True)
+    address = models.CharField('地址', max_length=100)
+    sort = models.IntegerField('排序', default=0)
+    is_enable = models.BooleanField('是否启用', default=True)
+
+    class Meta:
+        db_table = 'chf_partner'
+        ordering = ['sort', '-create_time']
+        verbose_name = '品牌合作'
+        verbose_name_plural = 'ChfPartners'
+
+    def __str__(self):
+        return self.name
+
 
 # 社会责任
-
 # 新闻资讯
 class ChfNews(BaseModel):
     title = models.CharField('新闻标题', max_length=255)
@@ -155,13 +185,14 @@ class ChfNews(BaseModel):
     brief = models.CharField('新闻摘要', max_length=50)
     content = models.TextField('新闻内容', default=None, null=True, blank=True)
     read_count = models.IntegerField('浏览量', default=0)
-    image = models.ImageField('新闻图片', max_length=255, null=True, blank=True, upload_to='news/%Y/%m')
+    cover_image_url = models.ImageField('新闻图片', max_length=255, null=True, blank=True, upload_to='news/%Y/%m')
     sort = models.IntegerField('排序', default=0)
+    type = models.CharField('类型', max_length=10, choices=(('0', '新闻资讯'), ('1', '社会责任')), default=0)
 
     class Meta:
         db_table = 'chf_news'
         ordering = ['sort', '-create_time']
-        verbose_name = '新闻资讯'
+        verbose_name = '新闻资讯，社会责任'
         verbose_name_plural = 'ChfProducts'
 
     def __str__(self):
@@ -177,7 +208,7 @@ class ChfJobRecruit(BaseModel):
                             help_text='根据job_name生成的，用于生成页面URL，必须唯一')
     work_year = models.CharField('工作经验', max_length=20, default=None, null=True, blank=True)
     education = models.CharField('学历', max_length=10, choices=(
-                                                ('0', '未知'),
+                                                ('0', '请选择'),
                                                 ('1', '博士导师'),
                                                 ('2', '博士后'),
                                                 ('3', '博士'),
@@ -203,6 +234,7 @@ class ChfJobRecruit(BaseModel):
     job_require = models.TextField('岗位要求', default=None, null=True, blank=True)
     skill_require = models.TextField('技能要求', default=None, null=True, blank=True)
     sort = models.IntegerField('排序', default=0)
+    is_enable = models.BooleanField('是否启用', default=True)
 
     class Meta:
         db_table = 'chf_jobrecruit'
