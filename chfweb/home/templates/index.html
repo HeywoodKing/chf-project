@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+
+{% block header %}
+    {% include "header.html" with title="首页" %}
+    {% block style_tag %}
+    <style>
+    body{
+        color: red;
+    }
+    </style>
+    {% endblock %}
+{% endblock %}
+
+
+{% block content %}
+<div>
+    首页内容部分
+</div>
+{% endblock %}
+
+
+{% block footer %}
+    {% include "footer.html" with footer="footer" %}
+    {% block script_tag %}
+    <script>
+        $(function(){
+            <!--alert("我是index.html的js");-->
+        });
+    </script>
+    {% endblock %}
+{% endblock %}
