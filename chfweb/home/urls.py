@@ -16,8 +16,8 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('product_list/', views.product_list, name='product_list'),
     url(r'^product_detail/(?P<id>)\d+/$', views.product_detail, name='product_detail'),
-    path('news_list/', views.news_list, name='news_list'),
-    url(r'^news_detail/(?P<id>)\d+/$', views.news_detail, name='news_detail'),
+    url(r'^news_list/(?P<mtype>\S+)/$', views.news_list, name='news_list'),
+    url(r'^news_detail/(?P<mtype>\S+)/(?P<id>\d+)/$', views.news_detail, name='news_detail'),
     path('partner/', views.partner, name='partner'),
     path('job_list/', views.job_list, name='job_list'),
 ]

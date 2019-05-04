@@ -37,10 +37,18 @@ def partner(req):
     return render(req, 'partner.html')
 
 # 新闻资讯 社会责任
-def news_list(req):
-    return render(req, 'news_list.html')
+def news_list(req, mtype):
+    if mtype == "news":
+        print(mtype)
+        chf_title = "新闻资讯"
+    else:
+        print(mtype)
+        chf_title = "社会责任"
 
-def news_detail(req, id):
+    return render(req, 'news_list.html', locals())
+
+# 新闻资讯 社会责任详情
+def news_detail(req, mtype, id):
     return render(req, 'news_detail.html')
 
 # 工作机会
