@@ -2,7 +2,7 @@ from django.contrib import admin
 from home import models
 
 # Register your models here.
-admin.site.site_header = '春和方后台管理系统'
+admin.site.site_header = '春和方 | 秦食皇 后台管理系统'
 admin.site.site_title = '后台管理系统'
 
 @admin.register(models.User)
@@ -20,7 +20,7 @@ class UserAdmin(admin.ModelAdmin):
 class ChfProductAdmin(admin.ModelAdmin):
     # fields = ()
     # inlines = ()
-    list_display = ('name', 'slug', 'brief', 'descr', 'cover_image_url', 'read_count', 'product_type', 'sort')
+    list_display = ('name', 'slug', 'brief', 'content', 'cover_image_url', 'read_count', 'product_type', 'sort')
     list_display_links = ('name', 'product_type', )
     list_editable = ('sort', )
     list_filter = ('product_type', )
@@ -31,7 +31,7 @@ class ChfProductAdmin(admin.ModelAdmin):
         }),
         ('高级设置', {
             'classes': ('collapse', ),
-            'fields': ('read_count', 'descr', 'cover_image_url', 'sort', )
+            'fields': ('read_count', 'content', 'cover_image_url', 'sort', )
         }),
     )
     # list_max_show_all =
@@ -41,18 +41,26 @@ class ChfProductAdmin(admin.ModelAdmin):
     # sortable_by =
     search_fields = ('name', 'product_type', )
 
-    # class Media:
-    #     js = (
-    #         '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-    #         '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-    #         '/static/plugins/kindeditor-4.1.10/config.js',
-    #     )
+    class Media:
+        js = (
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
+        )
 
 @admin.register(models.ChfProductType)
 class ChfProductTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'is_enable', )
     list_display_links = ('name', )
     list_editable = ('is_enable', )
+    exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username',)
+    search_fields = ('name', )
+
+@admin.register(models.ChfPartner)
+class ChfPartnerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'logo', 'brief', 'url', 'address', 'sort', 'is_enable', )
+    list_display_links = ('name', )
+    list_editable = ('sort', 'is_enable', 'url', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username',)
     search_fields = ('name', )
 

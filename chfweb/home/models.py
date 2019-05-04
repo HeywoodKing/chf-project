@@ -219,11 +219,11 @@ class ChfProduct(BaseModel):
     name = models.CharField('产品名称', max_length=100)
     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
                             help_text='根据name生成的，用于生成页面URL，必须唯一')
-    brief = models.CharField('新闻摘要', max_length=50)
-    descr = models.TextField('产品描述', default=None, null=True, blank=True)
+    brief = models.CharField('产品摘要', max_length=50)
+    content = models.TextField('产品描述', default=None, null=True, blank=True)
     cover_image_url = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='product/%Y/%m')
     read_count = models.IntegerField('浏览量', default=0)
-    product_type = models.ForeignKey('ChfProductType', null=True, blank=True, on_delete=models.CASCADE)
+    product_type = models.ForeignKey(to='ChfProductType', null=True, blank=True, on_delete=models.CASCADE, verbose_name='产品类型')
     sort = models.IntegerField('排序', default=0)
 
     class Meta:
@@ -246,7 +246,7 @@ class ChfProduct(BaseModel):
 class ChfPartner(BaseModel):
     name = models.CharField('名称', max_length=100)
     logo = models.ImageField('Logo', max_length=255, null=True, blank=True, upload_to='partner/%Y/%m')
-    brief = models.CharField('简介', max_length=150)
+    brief = models.CharField('简介', max_length=100)
     url = models.URLField('链接', max_length=255, null=True, blank=True)
     address = models.CharField('地址', max_length=100)
     sort = models.IntegerField('排序', default=0)

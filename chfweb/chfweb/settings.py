@@ -94,6 +94,13 @@ DATABASES = {
     }
 }
 
+# DATABASES_APPS_MAPPING = {
+#     # 'app':'default',
+#     'home':'mysqldb',
+# }
+
+# DATABASE_ROUTERS = ['blog.database_app.router.DatabaseAppsRouter']
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -149,3 +156,75 @@ SITE_AUTHOR = 'flack'
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'fotmat': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'  #日志格式
+        },
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {asctime} {message}',
+            'style': '{',
+        },
+    },
+    'filters': {
+        # 'special': {
+        #     '()': 'home.logging.SpecialFilter',
+        #     'foo': 'bar',
+        # },
+        # 'require_debug_true': {
+        #     '()': 'django.utils.log.RequireDebugTrue'
+        # }
+    },
+    'handlers': {
+        # 'default': {
+        #     'level':'DEBUG',
+        #     'class':'logging.handlers.RotatingFileHandler',
+        #     'filename': 'log/all.log',                #日志输出文件
+        #     'maxBytes': 1024*1024*5,                  #文件大小
+        #     'backupCount': 2,                         #备份份数
+        #     'formatter':'standard',                   #使用哪种formatters日志格式
+        # },
+        # 'error': {
+        #     'level':'ERROR',
+        #     'class':'logging.handlers.RotatingFileHandler',
+        #     'filename': 'log/error.log',
+        #     'maxBytes':1024*1024*5,
+        #     'backupCount': 2,
+        #     'formatter':'standard',
+        # },
+        # 'file': {
+        #     'level': 'ERROR',
+        #     'class': 'logging.FileHandler',
+        #     'filename': 'log/error.log',
+        #     'formatter': 'verbose',
+        #     # 'filters': ['require_debug_true'],
+        # },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+            # 'filters': ['require_debug_true'],
+        },
+        'null': {
+            'class': 'logging.NullHandler',
+        }
+    },
+    'loggers': {
+        # 'django': {
+        #     'handlers': ['console'],
+        #     'level': 'info',
+        #     'propagate': True,
+        # },
+        # 'django.request': {
+        #     'handlers': ['file'],
+        #     'level': 'ERROR',
+        #     'propagate': False
+        # },
+    },
+}
