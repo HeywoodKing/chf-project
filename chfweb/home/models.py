@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.timezone import timezone
+from django.contrib.auth.models import AbstractUser, PermissionsMixin,BaseUserManager,AbstractBaseUser
+from django.core.validators import RegexValidator
 
 # Create your models here.
 class BaseModel(models.Model):
@@ -96,6 +98,87 @@ class SysConfig(BaseModel):
 #     def get_absolute_url(self):
 #         return reverse('about', args=(self.slug, ))
 
+# 用户,继承方式扩展
+
+# class UserManager(BaseUserManager):
+#     def create_user(self, username, email, password=None):
+#         if not email:
+#             raise ValueError('Users must have an email address')
+#
+#         if not username:
+#             raise ValueError('Users must hanve a username')
+#
+#         user = self.model(
+#             username = username,
+#             email = self.normalize_email(email)
+#         )
+#         user.is_active = True
+#         user.set_password(password)
+#         user.save(using=self._db)
+#         return user
+#
+#     def create_superuser(self, username, email, password=None):
+#         user = self.create_user(username=username, email=email, password=password)
+#
+#         user.is_staff = True
+#         user.is_superuser = True
+#         user.save(using=self._db)
+#         return user
+#
+# class UserProfile(AbstractBaseUser, PermissionsMixin):
+#     alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', message='Only alphanumeric characters are allowed.')
+#     username = models.CharField('用户名', unique=True, max_length=30, validators=[alphanumeric])
+#     email = models.EmailField('邮箱', unique=True, max_length=200)
+#     first_name = models.CharField(max_length=30, null=True, blank=True)
+#     last_name = models.CharField(max_length=50, null=True, blank=True)
+#     is_active = models.BooleanField(default=True, null=False)
+#     is_staff = models.BooleanField(default=False, null=False)
+#
+#     avatar = models.ImageField(upload_to='avatar/%Y.%m', default='avatar/default.png', max_length=200, blank=False,
+#                                null=False)
+#     objects = UserManager()
+#     USERNAME_FIELD = 'email'
+#     REQUIRED_FIELDS = ['username']
+#
+#     class Meta:
+#         verbose_name = '用户信息'
+#         verbose_name_plural = verbose_name
+#         ordering = ['-id']
+#
+#     def get_full_name(self):
+#         self.fullname = self.first_name + " " + self.last_name
+#         return self.fullname
+#
+#     def get_short_name(self):
+#         return self.username
+#
+#     def __str__(self):
+#         return self.email
+
+
+class User(AbstractUser):
+    avatar = models.ImageField(upload_to='avatar/%Y/%m', default='avatar/default.png', max_length=200,
+                               verbose_name='用户头像')
+    qq = models.CharField(max_length=20, blank=True, null=True, verbose_name='QQ')
+    phone = models.CharField(max_length=11, blank=True, null=True, unique=True, verbose_name='手机号')
+    nick_name = models.CharField(max_length=30, verbose_name='昵称')
+    is_lock = models.BooleanField(default=False, verbose_name='是否锁定')
+    is_enable = models.BooleanField(default=True, verbose_name='是否启用')
+
+    # class Meta(AbstractUser.Meta):
+    #     swappable = 'AUTH_USER_MODEL'
+    #     verbose_name = '用户'
+    #     verbose_name_plural = verbose_name
+    #     ordering = ['-id']
+
+    class Meta:
+        verbose_name = '用户'
+        verbose_name_plural = verbose_name
+        ordering = ['-id']
+
+    def __str__(self):
+        return self.username
+
 # 公司发展历程
 class ChfCompanyHistory(BaseModel):
     timeline_title = models.CharField('时间标题', max_length=20, default=None, unique=True, null=True, blank=True)
@@ -110,7 +193,8 @@ class ChfCompanyHistory(BaseModel):
         db_table = 'chf_companyhistory'
         ordering = ['sort', '-create_time']
         verbose_name = '发展历程'
-        verbose_name_plural = 'ChfCompanyHistories'
+        verbose_name_plural = verbose_name  # 后台管理站点显示的Model名称
+        # verbose_name_plural = 'ChfCompanyHistories'
 
     def __str__(self):
         return self.title
@@ -124,7 +208,8 @@ class ChfProductType(BaseModel):
         db_table = 'chf_producttype'
         ordering = ['-create_time']
         verbose_name = '产品类型'
-        verbose_name_plural = 'ChfProductTypes'
+        # verbose_name_plural = 'ChfProductTypes'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.name
@@ -145,7 +230,8 @@ class ChfProduct(BaseModel):
         db_table = 'chf_product'
         ordering = ['sort', '-create_time']
         verbose_name = '品牌产品'
-        verbose_name_plural = 'ChfProducts'
+        # verbose_name_plural = 'ChfProducts'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.name
@@ -170,7 +256,8 @@ class ChfPartner(BaseModel):
         db_table = 'chf_partner'
         ordering = ['sort', '-create_time']
         verbose_name = '品牌合作'
-        verbose_name_plural = 'ChfPartners'
+        # verbose_name_plural = 'ChfPartners'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.name
@@ -179,21 +266,22 @@ class ChfPartner(BaseModel):
 # 社会责任
 # 新闻资讯
 class ChfNews(BaseModel):
-    title = models.CharField('新闻标题', max_length=255)
+    title = models.CharField('标题', max_length=255)
     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
                             help_text='根据title生成的，用于生成页面URL，必须唯一')
-    brief = models.CharField('新闻摘要', max_length=50)
-    content = models.TextField('新闻内容', default=None, null=True, blank=True)
+    brief = models.CharField('摘要', max_length=50)
+    content = models.TextField('内容', default=None, null=True, blank=True)
     read_count = models.IntegerField('浏览量', default=0)
-    cover_image_url = models.ImageField('新闻图片', max_length=255, null=True, blank=True, upload_to='news/%Y/%m')
+    cover_image_url = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='news/%Y/%m')
     sort = models.IntegerField('排序', default=0)
     type = models.CharField('类型', max_length=10, choices=(('0', '新闻资讯'), ('1', '社会责任')), default=0)
 
     class Meta:
         db_table = 'chf_news'
         ordering = ['sort', '-create_time']
-        verbose_name = '新闻资讯，社会责任'
-        verbose_name_plural = 'ChfProducts'
+        verbose_name = '新闻资讯|社会责任'
+        # verbose_name_plural = 'ChfProducts'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.title
@@ -240,7 +328,8 @@ class ChfJobRecruit(BaseModel):
         db_table = 'chf_jobrecruit'
         ordering = ['sort', '-create_time']
         verbose_name = '工作机会'
-        verbose_name_plural = 'ChfJobRecruits'
+        # verbose_name_plural = 'ChfJobRecruits'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.title

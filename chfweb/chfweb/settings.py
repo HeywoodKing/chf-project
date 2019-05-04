@@ -120,7 +120,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'zh-Hans'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -138,8 +139,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'home/static'),
 )
 
-# 自定义用户model
-# AUTH_USER_MODEL = 'home.User'
+# 自定义用户model 否则会报：HINT: Add or change a related_name argument to the definition for ‘User.user_permissions’ or ‘User.user_permissions’.
+AUTH_USER_MODEL = 'home.User'
 
 SITE_NAME = '春和方'
 SITE_DESC = 'CHF官网'

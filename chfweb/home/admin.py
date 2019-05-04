@@ -2,6 +2,20 @@ from django.contrib import admin
 from home import models
 
 # Register your models here.
+admin.site.site_header = '春和方后台管理系统'
+admin.site.site_title = '后台管理系统'
+
+@admin.register(models.User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'password', 'email', 'nick_name', 'qq', 'phone', 'is_lock', 'is_enable')
+    list_display_links = ('username', )
+    # class Media:
+    #     js = (
+    #         '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+    #         '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+    #         '/static/plugins/kindeditor-4.1.10/config.js',
+    #     )
+
 @admin.register(models.ChfProduct)
 class ChfProductAdmin(admin.ModelAdmin):
     # fields = ()

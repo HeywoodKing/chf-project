@@ -38,7 +38,7 @@ def partner(req):
 
 # 新闻资讯 社会责任
 def news_list(req, mtype):
-    if mtype == "news":
+    if mtype == '0':
         print(mtype)
         chf_title = "新闻资讯"
     else:
