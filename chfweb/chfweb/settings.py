@@ -154,7 +154,7 @@ SITE_DESC = 'CHF官网'
 SITE_AUTHOR = 'flack'
 
 MEDIA_URL = '/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
 
 LOGGING = {
     'version': 1,

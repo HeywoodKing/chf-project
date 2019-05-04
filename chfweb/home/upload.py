@@ -31,6 +31,7 @@ def upload_image(req, dir_name):
 def upload_generation_dir(dir_name):
     today = dt.datetime.today()
     dir_name = dir_name + '/%d/%d/' %(today.year,today.month)
+    print(dir_name)
     if not os.path.exists(settings.MEDIA_ROOT + dir_name):
         os.makedirs(settings.MEDIA_ROOT + dir_name)
     return dir_name
@@ -50,5 +51,6 @@ def do_upload_image(files, dir_name):
     file_name=str(uuid.uuid1())+"."+file_suffix
     path_file=os.path.join(path, file_name)
     file_url = settings.MEDIA_URL + relative_path_file + file_name
+    print(file_url)
     open(path_file, 'wb').write(files.file.read()) # 保存图片
     return {"error": 0, "url": file_url}
