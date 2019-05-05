@@ -225,6 +225,7 @@ class ChfProduct(BaseModel):
     read_count = models.IntegerField('浏览量', default=0)
     product_type = models.ForeignKey(to='ChfProductType', null=True, blank=True, on_delete=models.CASCADE, verbose_name='产品类型')
     sort = models.IntegerField('排序', default=0)
+    is_recommand =  models.BooleanField('是否推荐', default=True)
 
     class Meta:
         db_table = 'chf_product'

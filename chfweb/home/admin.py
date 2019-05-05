@@ -20,20 +20,20 @@ class UserAdmin(admin.ModelAdmin):
 class ChfProductAdmin(admin.ModelAdmin):
     # fields = ()
     # inlines = ()
-    list_display = ('name', 'slug', 'brief', 'content', 'cover_image_url', 'read_count', 'product_type', 'sort')
+    list_display = ('name', 'slug', 'brief', 'content', 'cover_image_url', 'read_count', 'product_type', 'sort', 'is_recommand')
     list_display_links = ('name', 'product_type', )
-    list_editable = ('sort', )
+    list_editable = ('sort', 'is_recommand',)
     list_filter = ('product_type', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
-    fieldsets = (
-        (None, {
-            'fields': ('name', 'brief', 'product_type', )
-        }),
-        ('高级设置', {
-            'classes': ('collapse', ),
-            'fields': ('read_count', 'content', 'cover_image_url', 'sort', )
-        }),
-    )
+    # fieldsets = (
+    #     (None, {
+    #         'fields': ('name', 'brief', 'product_type', )
+    #     }),
+    #     ('高级设置', {
+    #         'classes': ('collapse', ),
+    #         'fields': ('read_count', 'content', 'cover_image_url', 'sort', 'is_recommand')
+    #     }),
+    # )
     # list_max_show_all =
     # list_per_page =
     # list_select_related =

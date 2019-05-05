@@ -120,6 +120,22 @@
     $(function(){
         //公共初始化
         <!--alert('I am footer.html页面的js');-->
+        //$('#menu').on('click', 'ul li', function(){
+            //移除所有li上的class=current-menu-item的样式
+            //$('#menu').find('ul').find('li').each(function(){
+            //    $(this).removeClass('current-menu-item');
+            //});
+
+            //$(this).addClass('current-menu-item');
+        //});
+
+        //移除所有li上的class=current-menu-item的样式
+        //$('#menu').find('ul').find('li').each(function(){
+        //    $(this).removeClass('current-menu-item');
+        //    console.log(123);
+        //});
+
+        $('#menu').find('ul').find('li:eq({{index}})').addClass('current-menu-item');
     });
 </script>
 

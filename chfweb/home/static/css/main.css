@@ -383,7 +383,7 @@ form.search-form button {
  *   02. hero-area
  ***************************** */
 .hero-slider .single-slide {
-  height: 715px;
+  /*height: 715px;*/
   background-size: cover;
   background-position: center center;
   display: -webkit-box;
