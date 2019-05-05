@@ -797,8 +797,10 @@ form.search-form button {
  *   08. footer-top
  ***************************** */
 footer {
-  background-color: #272938;
-  color: #7286a0;
+  /*background-color: #272938;
+  color: #7286a0;*/
+  background-color: #fff;
+  color: #000;
   line-height: 24px; }
 
 .footer-top {
@@ -875,7 +877,8 @@ footer {
     border-radius: 0 3px 3px 0; }
 
 .footer-bottom {
-  background-color: #1f2131;
+  /*background-color: #1f2131;*/
+  background-color: #ebebeb;
   padding: 25px 0; }
   .footer-bottom a {
     color: #7286a0;
@@ -1267,3 +1270,7 @@ footer {
     margin: 0 0 20px; }
 
 /*# sourceMappingURL=main.css.map */
+.footer_widget{
+    border-left: solid 2px #fff;
+    padding-right: 10px;
+}
