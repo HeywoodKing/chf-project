@@ -251,7 +251,8 @@ iframe {
  *   01. header
  ***************************** */
 header {
-  background-color: #222538;
+  /*background-color: #222538;*/
+  background-color: #fff;
   padding: 18px 0; }
 
 .logo-column a.logo {
@@ -337,7 +338,9 @@ form.search-form button {
       #menu ul > li > a:hover {
         color: #b5c3d4; }
     #menu ul > li.current-menu-item > a {
-      color: #b5c3d4; }
+      /*color: #b5c3d4;*/
+       color: #bad017;
+    }
 
 #menu ul ul {
   position: absolute;
