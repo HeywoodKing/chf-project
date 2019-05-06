@@ -1,0 +1,33 @@
+{% extends "home/layout.html" %}
+{% load staticfiles %}
+
+{% block header %}
+    {% include "home/header.html" with title="品牌合作" %}
+    {% block style_tag %}
+    <style>
+    </style>
+    {% endblock %}
+{% endblock %}
+
+{% block banner %}
+<div>
+    品牌合作banner
+</div>
+{% endblock %}
+
+{% block content %}
+<div>
+    品牌合作
+</div>
+{% endblock %}
+
+
+{% block footer %}
+    {% include "home/footer.html" with footer="footer" %}
+    {% block script_tag %}
+    <script>
+        $(function(){
+        });
+    </script>
+    {% endblock %}
+{% endblock %}

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'chinslicking',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'home/templates'),
+            os.path.join(BASE_DIR, 'chinslicking', 'templates'),
+            os.path.join(BASE_DIR, 'home', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -67,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'home.views.global_setting',
+                'chinslicking.views.global_setting',
             ],
         },
     },
@@ -143,7 +146,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     # os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'home/static'),
+    os.path.join(BASE_DIR, 'home', 'static'),
+    os.path.join(BASE_DIR, 'chinslicking', 'static'),
 )
 
 # 自定义用户model 否则会报：HINT: Add or change a related_name argument to the definition for ‘User.user_permissions’ or ‘User.user_permissions’.
@@ -152,6 +156,11 @@ AUTH_USER_MODEL = 'home.User'
 SITE_NAME = '春和方'
 SITE_DESC = 'CHF官网'
 SITE_AUTHOR = 'flack'
+
+SITE_NAME2 = '秦食皇'
+SITE_DESC2 = '秦食皇官网'
+SITE_AUTHOR2 = 'flack'
+
 
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')

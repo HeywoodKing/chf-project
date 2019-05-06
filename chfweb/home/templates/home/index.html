@@ -1,0 +1,156 @@
+{% extends "home/layout-index.html" %}
+{% load staticfiles %}
+
+{% block header %}
+    {% include "home/header-index.html" with title="首页" %}
+    {% block style_tag %}
+    <style>
+    body{
+        color: red;
+    }
+    </style>
+    {% endblock %}
+{% endblock %}
+
+
+{% block content %}
+<div class="portfolio-area sp">
+    <div class="container">
+        <div class="section-title">
+            <h2>美食展示</h2>
+            <p>享美食更享艺术，美食即艺术。</p>
+        </div>
+        <div class="row">
+            <div class="single-portfolio col-md-3">
+                <div class="inner">
+                    <div class="portfolio-img">
+                        <img src="{% static 'images/portfolio1.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="#" class="button">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>蓝莓山药</h3></a>
+                        <span>Ceramics, Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="single-portfolio col-md-3">
+                <div class="inner">
+                    <div class="portfolio-img">
+                        <img src="{% static 'images/portfolio2.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="#" class="button">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>斑马炒花灯</h3></a>
+                        <span>Ceramics, Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="single-portfolio col-md-3">
+                <div class="inner">
+                    <div class="portfolio-img">
+                        <img src="{% static 'images/portfolio3.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="#" class="button">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>佛系茶树菇</h3></a>
+                        <span>Ceramics, Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="single-portfolio col-md-3">
+                <div class="inner">
+                    <div class="portfolio-img">
+                        <img src="{% static 'images/portfolio3.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="#" class="button">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>佛系焯绿清</h3></a>
+                        <span>Ceramics, Design</span>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="single-portfolio col-md-4">
+                <div class="inner">
+                    <div class="portfolio-img">
+                        <img src="{% static 'images/portfolio4.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="#" class="button">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>The Back Chiropractor</h3></a>
+                        <span>Ceramics, Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="single-portfolio col-md-4">
+                <div class="inner">
+                    <div class="portfolio-img">
+                        <img src="{% static 'images/portfolio5.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="#" class="button">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>The Back Chiropractor</h3></a>
+                        <span>Ceramics, Design</span>
+                    </div>
+                </div>
+            </div>
+            <div class="single-portfolio col-md-4">
+                <div class="inner">
+                    <div class="portfolio-img">
+                        <img src="{% static 'images/portfolio6.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="#" class="button">View Case Study</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>The Back Chiropractor</h3></a>
+                        <span>Ceramics, Design</span>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <!--<div class="row">
+            <div class="col-12 text-center" data-margin="40px 0 0">
+                <a href="#" class="button">More Works</a>
+            </div>
+        </div>-->
+    </div>
+</div>
+{% endblock %}
+
+
+{% block footer %}
+    {% include "home/footer.html" with footer="footer" %}
+    {% block script_tag %}
+    <script>
+        $(function(){
+            <!--alert("我是index.html的js");-->
+        });
+    </script>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "chinslicking/layout.html" %}
+{% load staticfiles %}
+
+{% block header %}
+    {% include "chinslicking/header.html" with title="品牌合作" %}
+    {% block style_tag %}
+    <style>
+    </style>
+    {% endblock %}
+{% endblock %}
+
+{% block banner %}
+<div class="hero-slider">
+    <div class="single-slide" style="background-image: url({% static 'images/slide1.jpg' %})">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="slide-content">
+                            <h2>做美食，品美食，享美食我们更专业</h2>
+                            <p>Do food, taste food, enjoy food we more professional.</p>
+                            <!--<div class="slide-btn">
+                                <a href="#" class="button">Learn More</a>
+                                <a href="#" class="button-2">Live Preview</a>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div>
+    品牌合作
+</div>
+{% endblock %}
+
+
+{% block footer %}
+    {% include "chinslicking/footer.html" with footer="footer" %}
+    {% block script_tag %}
+    <script>
+        $(function(){
+        });
+    </script>
+    {% endblock %}
+{% endblock %}

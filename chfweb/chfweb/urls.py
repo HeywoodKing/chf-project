@@ -22,7 +22,8 @@ from home import upload
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
+    path('chf/', include('home.urls')),
+    path('king/', include('chinslicking.urls')),
     url(r'^uploads/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),
     url(r'^admin/upload/(?P<dir_name>[^/]+)$', upload.upload_image, name='upload_image'),
 ]

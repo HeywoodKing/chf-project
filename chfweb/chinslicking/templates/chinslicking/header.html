@@ -1,0 +1,187 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ SITE_NAME2 }} - {{ title }}</title>
+    <meta name="keywords" content="{{ SITE_DESC2 }}">
+    <meta name="author" content="{{ SITE_AUTHOR2 }}">
+    <meta name="descriptions" content="{{ SITE_DESC2 }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/barfiller.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'plugins/layui/css/layui.css' %}">-->
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block style_tag %}
+    {% endblock %}
+</head>
+<body>
+<!--<div class="preloader">
+    <span class="preloader-spin"></span>
+</div>-->
+<div class="site">
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-2 logo-column">
+                    <a href="/king/index" class="logo">
+                        <img src="{% static 'images/logo_top.jpg' %}" alt="logo">
+                    </a>
+                </div>
+                <div class="col-6 col-sm-10 nav-column clearfix">
+                    <!--<div class="right-nav">
+                        <span class="search-icon fa fa-search"></span>
+                        <form action="#" class="search-form">
+                            <input type="search" placeholder="search now">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                        <div class="header-social">
+                            <a href="#" class="fa fa-facebook"></a>
+                            <a href="#" class="fa fa-twitter"></a>
+                            <a href="#" class="fa fa-github"></a>
+                        </div>
+                    </div>-->
+                    <nav id="menu" class="d-none d-lg-block">
+                        <ul>
+                            <li>
+                                <a href="/king/index">首页</a>
+                            </li>
+                            <li><a href="/king/about">关于我们</a></li>
+                            <li><a href="/king/product_list">品牌产品</a></li>
+                            <li><a href="/king/partner">品牌合作</a></li>
+                            <li><a href="/king/resp_list">社会责任</a></li>
+                            <li><a href="/king/news_list">新闻资讯</a></li>
+                            <li><a href="/king/job_list">工作机会</a></li>
+                            <li><a href="/king/contact">联系我们</a></li>
+                            <!--<li class="has-child">
+                                <a href="#">Pages</a>
+                                <ul class="sub-menu">
+                                    <li><a href="404.html">404</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="career.html">Career</a></li>
+                                    <li><a href="coming-soon.html">Coming Soon</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="faq.html">Faq</a></li>
+                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="pricing.html">Pricing</a></li>
+                                    <li><a href="service.html">Service</a></li>
+                                    <li><a href="team.html">Team</a></li>
+                                    <li><a href="testimonial.html">Testimonial</a></li>
+                                </ul>
+                            </li>-->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!--<div class="hero-slider">
+        <div class="single-slide" style="background-image: url({% static 'images/slide1.jpg' %})">
+            <div class="inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="slide-content">
+                                <h2>做美食，品美食，享美食我们更专业</h2>
+                                <p>Do food, taste food, enjoy food we more professional.</p>
+                                <div class="slide-btn">
+                                    <a href="#" class="button">Learn More</a>
+                                    <a href="#" class="button-2">Live Preview</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slide" style="background-image: url({% static 'images/slide2.jpg' %})">
+            <div class="inner">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 text-center">
+                            <div class="slide-content">
+                                <h2>We Are Digital Product Design Agency.</h2>
+                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                                <div class="slide-btn">
+                                    <a href="#" class="button">Learn More</a>
+                                    <a href="#" class="button-2">Live Preview</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slide" style="background-image: url({% static 'images/slide3.jpg' %})">
+            <div class="inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="slide-content">
+                                <h2>We Are Digital Product Design Agency.</h2>
+                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                                <div class="slide-btn">
+                                    <a href="#" class="button">Learn More</a>
+                                    <a href="#" class="button-2">Live Preview</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 text-center">
+                            <div class="inner embed-responsive embed-responsive-16by9" data-margin="25px 0 0">
+                                <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <!--<div class="brand-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 single-brand">
+                    <div class="inner">
+                        <a href="#">
+                            <img src="{% static 'images/brand1.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 single-brand">
+                    <div class="inner">
+                        <a href="#">
+                            <img src="{% static 'images/brand2.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 single-brand">
+                    <div class="inner">
+                        <a href="#">
+                            <img src="{% static 'images/brand3.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 single-brand">
+                    <div class="inner">
+                        <a href="#">
+                            <img src="{% static 'images/brand4.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+
