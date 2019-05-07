@@ -44,24 +44,6 @@ def partner(req):
     index = 3
     return render(req, 'chinslicking/partner.html', locals())
 
-# 新闻资讯
-def news_list(req):
-    # if mtype == '0':
-    #     print(mtype)
-    #     chf_title = "新闻资讯"
-    #     index = 5
-    # else:
-    #     print(mtype)
-    #     chf_title = "社会责任"
-    #     index = 4
-    index = 5
-
-    return render(req, 'chinslicking/news_list.html', locals())
-
-# 新闻资讯
-def news_detail(req, id):
-    return render(req, 'chinslicking/news_detail.html', locals())
-
 
 # 社会责任
 def resp_list(req):
@@ -80,6 +62,25 @@ def resp_list(req):
 # 社会责任详情
 def resp_detail(req, id):
     return render(req, 'chinslicking/duty_detail.html', locals())
+
+
+# 新闻资讯
+def news_list(req):
+    # if mtype == '0':
+    #     print(mtype)
+    #     chf_title = "新闻资讯"
+    #     index = 5
+    # else:
+    #     print(mtype)
+    #     chf_title = "社会责任"
+    #     index = 4
+    index = 5
+
+    return render(req, 'chinslicking/news_list.html', locals())
+
+# 新闻资讯
+def news_detail(req, id):
+    return render(req, 'chinslicking/news_detail.html', locals())
 
 
 # 工作机会
