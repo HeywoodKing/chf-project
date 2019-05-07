@@ -20,8 +20,8 @@
                             <h2>做美食，品美食，享美食我们更专业</h2>
                             <p>Do food, taste food, enjoy food we more professional.</p>
                             <!--<div class="slide-btn">
-                                <a href="#" class="button">Learn More</a>
-                                <a href="#" class="button-2">Live Preview</a>
+                                <a href="#" class="button">更多产品</a>
+                                <a href="#" class="button-2">学习</a>
                             </div>-->
                         </div>
                     </div>
@@ -33,101 +33,121 @@
 {% endblock %}
 
 {% block content %}
-<div class="service-area bg2 sp">
+<div class="portfolio-area sp bg2">
     <div class="container">
         <div class="section-title">
-            <h2>Our Service</h2>
-            <p>Malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
+            <h2>秦食皇系列</h2>
+            <p>&mdash;&mdash;&mdash;&mdash; 一口国土味，入胃解乡愁 &mdash;&mdash;&mdash;&mdash;</p>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 single-service">
+            <ul class="isotope-menu">
+                <li data-filter="*" class="active">全部</li>
+                <li data-filter=".ceramics">青春芽酱</li>
+                <li data-filter=".branding">怀旧零嘴</li>
+                <li data-filter=".design">养生素食</li>
+                <li data-filter=".photography">礼盒包装</li>
+            </ul>
+        </div>
+        <div class="row portfolio-isotope">
+            <div class="single-portfolio col-md-4 branding photography design">
                 <div class="inner">
-                    <div class="title">
-                        <div class="icon">
-                            <i class="fa fa-film"></i>
+                    <div class="portfolio-img">
+                        <img src="{% static 'chinslicking/images/portfolio1.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="/king/product_detail/1" class="button">查看详情</a>
+                            </div>
                         </div>
-                        <h4>Video Making</h4>
                     </div>
-                    <div class="content">
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</p>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>The Back Chiropractor</h3></a>
+                        <span>Ceramics, Design</span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 single-service">
+            <div class="single-portfolio col-md-4 ceramics design photography">
                 <div class="inner">
-                    <div class="title">
-                        <div class="icon">
-                            <i class="fa fa-camera"></i>
+                    <div class="portfolio-img">
+                        <img src="{% static 'chinslicking/images/portfolio2.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="/king/product_detail/2" class="button">查看详情</a>
+                            </div>
                         </div>
-                        <h4>Photography</h4>
                     </div>
-                    <div class="content">
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</p>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>The Back Chiropractor</h3></a>
+                        <span>Ceramics, Design</span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 single-service">
+            <div class="single-portfolio col-md-4 ceramics branding ceramics">
                 <div class="inner">
-                    <div class="title">
-                        <div class="icon">
-                            <i class="fa fa-music"></i>
+                    <div class="portfolio-img">
+                        <img src="{% static 'chinslicking/images/portfolio3.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="/king/product_detail/3" class="button">查看详情</a>
+                            </div>
                         </div>
-                        <h4>Music Composing</h4>
                     </div>
-                    <div class="content">
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</p>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>The Back Chiropractor</h3></a>
+                        <span>Ceramics, Design</span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 single-service">
+            <div class="single-portfolio col-md-4 design photography">
                 <div class="inner">
-                    <div class="title">
-                        <div class="icon">
-                            <i class="fa fa-bullhorn"></i>
+                    <div class="portfolio-img">
+                        <img src="{% static 'chinslicking/images/portfolio4.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="/king/product_detail/4" class="button">查看详情</a>
+                            </div>
                         </div>
-                        <h4>Product Marketing</h4>
                     </div>
-                    <div class="content">
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</p>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>The Back Chiropractor</h3></a>
+                        <span>Ceramics, Design</span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 single-service">
+            <div class="single-portfolio col-md-4 ceramics photography branding">
                 <div class="inner">
-                    <div class="title">
-                        <div class="icon">
-                            <i class="fa fa-magic"></i>
+                    <div class="portfolio-img">
+                        <img src="{% static 'chinslicking/images/portfolio5.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="/king/product_detail/5" class="button">查看详情</a>
+                            </div>
                         </div>
-                        <h4>Video Editing</h4>
                     </div>
-                    <div class="content">
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</p>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>The Back Chiropractor</h3></a>
+                        <span>Ceramics, Design</span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 single-service">
+            <div class="single-portfolio col-md-4 branding design">
                 <div class="inner">
-                    <div class="title">
-                        <div class="icon">
-                            <i class="fa fa-bar-chart"></i>
+                    <div class="portfolio-img">
+                        <img src="{% static 'chinslicking/images/portfolio6.jpg' %}" alt="portfolio-image">
+                        <div class="hover-content">
+                            <div>
+                                <a href="/king/product_detail/6" class="button">查看详情</a>
+                            </div>
                         </div>
-                        <h4>Presentation</h4>
                     </div>
-                    <div class="content">
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames.</p>
+                    <div class="portfolio-content">
+                        <a href="#"><h3>The Back Chiropractor</h3></a>
+                        <span>Ceramics, Design</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="portfolio-area sp">
-    <div class="container">
-        <div class="section-title">
-            <h2>Latest Work</h2>
-            <p>Malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-        </div>
-        <div class="row">
+
+        <!--<div class="row">
             <div class="single-portfolio col-md-4">
                 <div class="inner">
                     <div class="portfolio-img">
@@ -224,123 +244,16 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="row">
             <div class="col-12 text-center" data-margin="40px 0 0">
-                <a href="#" class="button">More Works</a>
+                <!--<a href="#" class="button">More Works</a>-->
+                <div>分页</div>
             </div>
         </div>
     </div>
 </div>
-<div class="testimonial-area sp bg1">
-    <div class="container">
-        <div class="section-title white">
-            <h2>Clients Review</h2>
-            <p>Malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-        </div>
-        <div class="testimonial-slider">
-            <div class="single-slide">
-                <div class="inner">
-                    <p>When I was just starting 6th grade I got my first job. Paperboy! Boy, was I excited. At that time I had spent a lot of time actually playing the video official.</p>
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="{% static 'images/client.jpg' %}" alt="client">
-                        </div>
-                        <div class="client-data">
-                            <h4>Jhon Doe</h4>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slide">
-                <div class="inner">
-                    <p>When I was just starting 6th grade I got my first job. Paperboy! Boy, was I excited. At that time I had spent a lot of time actually playing the video official.</p>
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="{% static 'images/client.jpg' %}" alt="client">
-                        </div>
-                        <div class="client-data">
-                            <h4>Jhon Doe</h4>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slide">
-                <div class="inner">
-                    <p>When I was just starting 6th grade I got my first job. Paperboy! Boy, was I excited. At that time I had spent a lot of time actually playing the video official.</p>
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="{% static 'images/client.jpg' %}" alt="client">
-                        </div>
-                        <div class="client-data">
-                            <h4>Jhon Doe</h4>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slide">
-                <div class="inner">
-                    <p>When I was just starting 6th grade I got my first job. Paperboy! Boy, was I excited. At that time I had spent a lot of time actually playing the video official.</p>
-                    <div class="client-info">
-                        <div class="client-img">
-                            <img src="{% static 'images/client.jpg' %}" alt="client">
-                        </div>
-                        <div class="client-data">
-                            <h4>Jhon Doe</h4>
-                            <span>Designer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="faq-area sp bg2">
-    <div class="container">
-        <div class="section-title">
-            <h2>Frequently Asked Questions</h2>
-            <p>Malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="faq">
-                    <div class="single-item">
-                        <h4>Low Cost Advertising Available or Not?</h4>
-                        <div class="content">
-                            Pellentesque habitant morbi tristique senectus et netus et malesu ada fames and reply to all.
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>What Is The Big R For Marketing Your Business?</h4>
-                        <div class="content">
-                            Pellentesque habitant morbi tristique senectus et netus et malesu ada fames and reply to all.
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>Does Using Banner Stands Increase Trade Show Traffic?</h4>
-                        <div class="content">
-                            Pellentesque habitant morbi tristique senectus et netus et malesu ada fames and reply to all.
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>How To Write Better Advertising Copy?</h4>
-                        <div class="content">
-                            Pellentesque habitant morbi tristique senectus et netus et malesu ada fames and reply to all.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="faq-img text-center">
-                    <img src="{% static 'images/fag-img.png' %}" alt="faq">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 {% endblock %}
 
 
