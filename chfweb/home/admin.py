@@ -20,10 +20,10 @@ class UserAdmin(admin.ModelAdmin):
 class ChfProductAdmin(admin.ModelAdmin):
     # fields = ()
     # inlines = ()
-    list_display = ('name', 'slug', 'brief', 'content', 'cover_image_url', 'read_count', 'product_type', 'sort', 'is_recommand')
+    list_display = ('name', 'slug', 'brief', 'cover_image_url', 'read_count', 'product_type', 'sort', 'is_recommand', 'is_enable')
     list_display_links = ('name', 'product_type', )
-    list_editable = ('sort', 'is_recommand',)
-    list_filter = ('product_type', )
+    list_editable = ('sort', 'is_recommand', 'is_enable')
+    list_filter = ('product_type', 'is_recommand', 'is_enable')
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
     # fieldsets = (
     #     (None, {
@@ -50,11 +50,12 @@ class ChfProductAdmin(admin.ModelAdmin):
 
 @admin.register(models.ChfProductType)
 class ChfProductTypeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'is_enable', )
+    list_display = ('id', 'name', 'sort', 'is_enable', 'data_filter_name')
     list_display_links = ('name', )
-    list_editable = ('is_enable', )
+    list_editable = ('is_enable', 'sort', 'data_filter_name', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username',)
     search_fields = ('name', )
+
 
 @admin.register(models.ChfPartner)
 class ChfPartnerAdmin(admin.ModelAdmin):

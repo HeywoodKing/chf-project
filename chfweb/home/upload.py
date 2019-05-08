@@ -30,10 +30,10 @@ def upload_image(req, dir_name):
 #目录创建
 def upload_generation_dir(dir_name):
     today = dt.datetime.today()
-    dir_name = dir_name + '/%d/%d/' %(today.year,today.strftime('%m'))
+    dir_name = dir_name + '/%s/%s/' % (str(today.year), today.strftime('%m'))
 
-    if not os.path.exists(settings.MEDIA_ROOT + dir_name):
-        os.makedirs(settings.MEDIA_ROOT + dir_name)
+    if not os.path.exists(settings.MEDIA_ROOT + '/' + dir_name):
+        os.makedirs(settings.MEDIA_ROOT  + '/' + dir_name)
     return dir_name
 
 

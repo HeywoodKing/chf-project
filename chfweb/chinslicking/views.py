@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, HttpResponse
 from django.conf import settings
 import logging
+from home import models
 
 
 # Create your views here.
@@ -30,9 +31,15 @@ def contact(req):
     return render(req, 'chinslicking/contact.html', locals())
 
 
+
 # 品牌产品
 def product_list(req):
     index = 2
+    # 获取产品类型
+    product_type_list = models.ChfProductType.objects.filter(is_enable=True)
+    product_list = models.ChfProduct.objects.filter(is_enable=True)
+
+    # 获取产品
     return render(req, 'chinslicking/product_list.html', locals())
 
 # 品牌产品详情

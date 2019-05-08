@@ -68,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 添加这一行，可以理解为中间件的意思
+                # 'django.template.context_processors.uploads',
                 'home.views.global_setting',
                 'chinslicking.views.global_setting',
             ],
@@ -163,7 +165,7 @@ SITE_AUTHOR2 = 'flack'
 
 
 MEDIA_URL = '/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  #设置静态文件路径为主目录下的uploads文件夹
 
 LOGGING = {
     'version': 1,

@@ -24,6 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('chf/', include('home.urls')),
     path('king/', include('chinslicking.urls')),
-    url(r'^uploads/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),
-    url(r'^admin/upload/(?P<dir_name>[^/]+)$', upload.upload_image, name='upload_image'),
+    url(r'^uploads/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),  # 单独上传图片后显示图片的url地址路径
+    url(r'^admin/upload/(?P<dir_name>[^/]+)$', upload.upload_image, name='upload_image'), # 富文本编辑器上传图片路径
 ]

@@ -41,31 +41,43 @@
         </div>
         <div class="row">
             <ul class="isotope-menu">
-                <li data-filter="*" class="active">全部</li>
+                {% for item in product_type_list %}
+                    {% if forloop.counter0 == 0 %}
+                    <li data-filter="{{item.data_filter_name}}" class="active">{{ item.name }}</li>
+                    {% else %}
+                    <li data-filter=".{{item.data_filter_name}}">{{ item.name }}</li>
+                    {% endif %}
+                {% endfor %}
+
+                <!--<li data-filter="*" class="active">全部</li>
                 <li data-filter=".ceramics">青春芽酱</li>
                 <li data-filter=".branding">怀旧零嘴</li>
                 <li data-filter=".design">养生素食</li>
-                <li data-filter=".photography">礼盒包装</li>
+                <li data-filter=".photography">礼盒包装</li>-->
             </ul>
         </div>
         <div class="row portfolio-isotope">
-            <div class="single-portfolio col-md-4 branding photography design">
+            {% for item in product_list %}
+            <div class="single-portfolio col-md-4 {{item.product_type.data_filter_name}}">
                 <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'chinslicking/images/portfolio1.jpg' %}" alt="portfolio-image">
+                    <div class="portfolio-img-pro">
+                        <!--<img src="{% static 'chinslicking/images/portfolio1.jpg' %}" alt="portfolio-image">-->
+                        <img src="/uploads/{{item.cover_image_url}}" alt="{{item.name}}">
                         <div class="hover-content">
                             <div>
-                                <a href="/king/product_detail/1" class="button">查看详情</a>
+                                <a href="/king/product_detail/{{item.id}}" class="button">查看详情</a>
                             </div>
                         </div>
                     </div>
                     <div class="portfolio-content">
-                        <a href="#"><h3>花椒芽酱</h3></a>
-                        <span>花椒芽酱简介</span>
+                        <a href="/king/product_detail/{{item.id}}"><h3>{{item.name}}</h3></a>
+                        <span>{{item.brief}}</span>
                     </div>
                 </div>
             </div>
-            <div class="single-portfolio col-md-4 ceramics design photography">
+            {% endfor %}
+
+            <!--<div class="single-portfolio col-md-4 ceramics design photography">
                 <div class="inner">
                     <div class="portfolio-img">
                         <img src="{% static 'chinslicking/images/portfolio2.jpg' %}" alt="portfolio-image">
@@ -192,7 +204,7 @@
                         <span>荞麦面简介</span>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
 
         <!--<div class="row">

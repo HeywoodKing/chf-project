@@ -8,6 +8,8 @@
 from django.urls import path
 from django.conf.urls import url
 from chinslicking import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # path('', views.index, name='index'),
@@ -24,4 +26,5 @@ urlpatterns = [
     url(r'^news_detail/(?P<id>\d+)/$', views.news_detail, name='news_detail'),
     url(r'^resp_list/$', views.resp_list, name='resp_list'),
     url(r'^resp_detail/(?P<id>\d+)/$', views.resp_detail, name='resp_detail'),
-]
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

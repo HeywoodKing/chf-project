@@ -202,11 +202,14 @@ class ChfCompanyHistory(BaseModel):
 # 产品类型
 class ChfProductType(BaseModel):
     name = models.CharField('类型名称', max_length=30)
+    sort = models.IntegerField('排序', default=0)
     is_enable = models.BooleanField('是否启用', default=True)
+    data_filter_name = models.CharField('数据类型标识', max_length=20, default='*')
+
 
     class Meta:
         db_table = 'chf_producttype'
-        ordering = ['-create_time']
+        ordering = ['sort', '-create_time']
         verbose_name = '产品类型'
         # verbose_name_plural = 'ChfProductTypes'
         verbose_name_plural = verbose_name
@@ -226,6 +229,7 @@ class ChfProduct(BaseModel):
     product_type = models.ForeignKey(to='ChfProductType', null=True, blank=True, on_delete=models.CASCADE, verbose_name='产品类型')
     sort = models.IntegerField('排序', default=0)
     is_recommand =  models.BooleanField('是否推荐', default=True)
+    is_enable = models.BooleanField('是否启用', default=True)
 
     class Meta:
         db_table = 'chf_product'

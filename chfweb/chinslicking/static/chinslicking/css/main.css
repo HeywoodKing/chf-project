@@ -57,8 +57,10 @@
 .c3, #menu ul ul li a:hover, .single-service.bordered .inner:hover .icon, .bordered.single-service-2 .inner:hover .icon, .bordered.single-service-3 .inner:hover .icon,
 .single-service.bordered .inner:hover h4,
 .bordered.single-service-2 .inner:hover h4,
-.bordered.single-service-3 .inner:hover h4, .single-service-3 .inner:hover .title .icon, .isotope-menu li.active, .isotope-menu li:hover, .single-portfolio .inner .portfolio-img .hover-content .button, .single-portfolio .inner .portfolio-content h3:hover, .faq-sidebar li a, .single-pricing .inner a.button:hover, .single-pricing-2 .inner a.button:hover, .single-pricing-2.active .inner a.button {
-  color: #4698ff; }
+.bordered.single-service-3 .inner:hover h4, .single-service-3 .inner:hover .title .icon, .isotope-menu li.active, .isotope-menu li:hover, .single-portfolio .inner .portfolio-img .hover-content .button, .single-portfolio .inner .portfolio-img-pro .hover-content .button, .single-portfolio .inner .portfolio-content h3:hover, .faq-sidebar li a, .single-pricing .inner a.button:hover, .single-pricing-2 .inner a.button:hover, .single-pricing-2.active .inner a.button {
+  /*color: #4698ff;*/
+   color: #9ddc5f;
+}
 
 .c3-bg, .bg1, .button, .hero-slider .owl-dots .owl-dot.active, .single-service-2:hover .inner, .single-faq h2 span, .footer_widget .nw_form button, .tabs-area .tabs-nav li a.active, .single-team .inner .team-img::after, .single-pricing.active .inner, .active.single-pricing-2 .inner, .single-pricing-2.active .inner .title .price {
   /*background-color: #4698ff;*/
@@ -73,11 +75,19 @@ color: #fff;
 color: #fff;
 }
 
+.single-portfolio .inner .portfolio-img-pro .hover-content{
+background-color: rgba(0,0,0,0.7);
+color: #fff;
+}
+.single-portfolio .inner .portfolio-img-pro .hover-content a{
+color: #fff;
+}
+
 .c3-bo, .button, .single-service.bordered .inner:hover, .bordered.single-service-2 .inner:hover, .bordered.single-service-3 .inner:hover, .testimonial-slider .single-slide, .tabs-area .tabs-nav li a::after, .tabs-area .tabs-nav li a.active, .contact-form input:not([type="submit"]):focus,
 .contact-form textarea:focus {
   border-color: #4698ff !important; }
 
-.trns, .button, .button-2, .nav-column a, .nav-column span, .nav-column .right-nav span, form.search-form, #menu ul > li > a, #menu ul ul, #menu ul ul::after, #menu ul ul li a, .hero-slider .owl-dots .owl-dot, .single-service .inner, .single-service-2 .inner, .single-service-3 .inner, .single-service .inner .title .icon, .single-service-2 .inner .title .icon, .single-service-3 .inner .title .icon, .single-service .inner .title h4, .single-service-2 .inner .title h4, .single-service-3 .inner .title h4, .single-service .inner .content, .single-service-2 .inner .content, .single-service-3 .inner .content, .isotope-menu li, .single-portfolio .inner .portfolio-img .hover-content, .single-portfolio .inner .portfolio-content h3, .faq-sidebar li a, .single-team .inner .team-img::after, .contact-form input:not([type="submit"]),
+.trns, .button, .button-2, .nav-column a, .nav-column span, .nav-column .right-nav span, form.search-form, #menu ul > li > a, #menu ul ul, #menu ul ul::after, #menu ul ul li a, .hero-slider .owl-dots .owl-dot, .single-service .inner, .single-service-2 .inner, .single-service-3 .inner, .single-service .inner .title .icon, .single-service-2 .inner .title .icon, .single-service-3 .inner .title .icon, .single-service .inner .title h4, .single-service-2 .inner .title h4, .single-service-3 .inner .title h4, .single-service .inner .content, .single-service-2 .inner .content, .single-service-3 .inner .content, .isotope-menu li, .single-portfolio .inner .portfolio-img .hover-content, .single-portfolio .inner .portfolio-img-pro .hover-content, .single-portfolio .inner .portfolio-content h3, .faq-sidebar li a, .single-team .inner .team-img::after, .contact-form input:not([type="submit"]),
 .contact-form textarea {
   -webkit-transition: all 0.3s cubic-bezier(0.84, 0.35, 0.39, 0.74) 0s;
   transition: all 0.3s cubic-bezier(0.84, 0.35, 0.39, 0.74) 0s; }
@@ -137,8 +147,9 @@ span {
   padding-bottom: 90px; }
 
 .pdlr-2{
-   padding: 0 2px;
-}
+     padding: 0 2px;
+  }
+
 
 
 /* preloader css */
@@ -621,6 +632,7 @@ form.search-form button {
 .single-portfolio .inner .portfolio-img {
     position: relative;
 }
+
 .single-portfolio .inner .portfolio-img img {
     width: 100%;
     height: 100%;
@@ -629,7 +641,8 @@ form.search-form button {
 .single-portfolio .inner .portfolio-img-height img {
     min-height: 520px;
 }
-    .single-portfolio .inner .portfolio-img .hover-content {
+
+.single-portfolio .inner .portfolio-img .hover-content {
       position: absolute;
       height: 100%;
       width: 100%;
@@ -672,10 +685,68 @@ form.search-form button {
       margin: 0;
       font-size: 24px; }
 
+
+.single-portfolio .inner .portfolio-img-pro {
+    position: relative;
+}
+
+.single-portfolio .inner .portfolio-img-pro img {
+    min-width: 360px;
+    min-height: 323px;
+}
+.single-portfolio .inner .portfolio-img-pro .hover-content {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      text-align: center;
+      opacity: 0;
+      visibility: hidden; }
+      .single-portfolio .inner .portfolio-img-pro .hover-content .button {
+        background-color: #fff;
+        border-color: #fff !important; }
+        .single-portfolio .inner .portfolio-img-pro .hover-content .button:hover {
+          background-color: #222;
+          color: #fff;
+          border-color: #222 !important; }
+    .single-portfolio .inner .portfolio-img-pro:hover .hover-content {
+      opacity: 1;
+      visibility: visible;
+      }
+
+
+
  .hover-bg2{
     background-color: #000;
     opacity: 0.2;
  }
+
+
+@media only screen and (min-width: 991px) {
+    .pdlr-150{
+        padding:0 150px;
+    }
+}
+
+/*@media only screen and (max-width: 991px) {
+    header{
+        display: block;
+    }
+}*/
 
 /*****************************
  *   06. testimonial-area
@@ -730,7 +801,8 @@ form.search-form button {
     right: -55px; }
     @media only screen and (max-width: 991px) {
       .testimonial-slider .owl-nav > div.owl-next {
-        right: -12.5px; } }
+        right: -12.5px; }
+    }
 
 /*****************************
  *   07. faq-area
