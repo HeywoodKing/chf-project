@@ -61,7 +61,9 @@
   color: #4698ff; }
 
 .c3-bg, .bg1, .button, .hero-slider .owl-dots .owl-dot.active, .single-service-2:hover .inner, .single-faq h2 span, .footer_widget .nw_form button, .tabs-area .tabs-nav li a.active, .single-team .inner .team-img::after, .single-pricing.active .inner, .active.single-pricing-2 .inner, .single-pricing-2.active .inner .title .price {
-  background-color: #4698ff; }
+  /*background-color: #4698ff;*/
+  background-color: #fbdf51;
+}
 
 .single-portfolio .inner .portfolio-img .hover-content{
 background-color: rgba(0,0,0,0.7);
@@ -285,7 +287,7 @@ header {
     max-height: 100%; }
 
 .nav-column {
-  padding: 5px 0;
+  padding: 20px 0;
   font-size: 16px; }
   .nav-column a, .nav-column span {
     color: #7286a0;
@@ -410,7 +412,8 @@ form.search-form button {
  *   02. hero-area
  ***************************** */
 .hero-slider .single-slide {
-  height: 715px;
+  /*height: 715px;*/
+  height: 1080px;
   background-size: cover;
   /*background-position: center center;*/
   background-position: 100% 100%;
