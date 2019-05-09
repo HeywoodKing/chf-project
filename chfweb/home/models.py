@@ -280,6 +280,7 @@ class ChfNews(BaseModel):
     cover_image_url = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='news/%Y/%m')
     sort = models.IntegerField('排序', default=0)
     type = models.CharField('类型', max_length=10, choices=(('0', '新闻资讯'), ('1', '社会责任')), default=0)
+    is_enable = models.BooleanField('是否启用', default=True)
 
     class Meta:
         db_table = 'chf_news'
@@ -337,7 +338,7 @@ class ChfJobRecruit(BaseModel):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.title
+        return self.job_name
 
     def get_absolute_url(self):
         return reverse('jobrecruit', args=(self.slug, ))

@@ -3,6 +3,7 @@ from django.conf import settings
 import logging
 from home import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import random
 
 
 # Create your views here.
@@ -33,6 +34,7 @@ def contact(req):
 
 
 
+
 # 品牌产品
 def product_list(req):
     index = 2
@@ -54,7 +56,21 @@ def product_list(req):
 
 # 品牌产品详情
 def product_detail(req, id):
-    return render(req, 'chinslicking/product_detail.html')
+    try:
+        if id:
+            # product = models.ChfProduct.objects.filter(id=id).update(read_count=read_count+1)
+            product = models.ChfProduct.objects.get(id=id)
+
+            # 更新浏览量到数据库
+            product.read_count += 1
+            product.save()
+
+    except Exception as e:
+        logger.error(e)
+
+    product_command_list = random.sample(list(models.ChfProduct.objects.filter(is_recommand=True)), 3)
+
+    return render(req, 'chinslicking/product_detail.html', locals())
 
 # 品牌合作
 def partner(req):
@@ -64,44 +80,77 @@ def partner(req):
 
 # 社会责任
 def resp_list(req):
-    # if mtype == '0':
-    #     print(mtype)
-    #     chf_title = "新闻资讯"
-    #     index = 5
-    # else:
-    #     print(mtype)
-    #     chf_title = "社会责任"
-    #     index = 4
     index = 4
+
+    resp_lists = models.ChfNews.objects.filter(type=1,is_enable=True)
+    paginator = Paginator(resp_lists, 10, 2)
+    page = req.GET.get('page')
+    try:
+        resp_list = paginator.page(page)
+    except PageNotAnInteger:
+        resp_list = paginator.page(1)
+    except EmptyPage:
+        resp_list = paginator.page(paginator.num_pages)
+
+    resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
 
     return render(req, 'chinslicking/duty_list.html', locals())
 
 # 社会责任详情
 def resp_detail(req, id):
+    try:
+        if id:
+            resp = models.ChfNews.objects.get(id=id)
+
+            resp.read_count += 1
+            resp.save()
+    except Exception as e:
+        logger.error(e)
+
+    resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
+
     return render(req, 'chinslicking/duty_detail.html', locals())
 
 
 # 新闻资讯
 def news_list(req):
-    # if mtype == '0':
-    #     print(mtype)
-    #     chf_title = "新闻资讯"
-    #     index = 5
-    # else:
-    #     print(mtype)
-    #     chf_title = "社会责任"
-    #     index = 4
     index = 5
+
+    news_lists = models.ChfNews.objects.filter(type=0,is_enable=True)
+    paginator = Paginator(news_lists, 10, 2)
+    page = req.GET.get('page')
+    try:
+        news_list = paginator.page(page)
+    except PageNotAnInteger:
+        news_list = paginator.page(1)
+    except EmptyPage:
+        news_list = paginator.page(paginator.num_pages)
+
+    news_lasted = models.ChfNews.objects.filter(type=0)[:10]
 
     return render(req, 'chinslicking/news_list.html', locals())
 
 # 新闻资讯
 def news_detail(req, id):
+    try:
+        if id:
+            news = models.ChfNews.objects.get(id=id)
+
+            news.read_count += 1
+            news.save()
+    except Exception as e:
+        logger.error(e)
+
+    news_lasted = models.ChfNews.objects.filter(type=0)[:10]
+
     return render(req, 'chinslicking/news_detail.html', locals())
 
 
 # 工作机会
 def job_list(req):
     index = 6
+
+    job_list = models.ChfJobRecruit.objects.filter(is_enable=True)
+
     return render(req, 'chinslicking/job_list.html', locals())
 

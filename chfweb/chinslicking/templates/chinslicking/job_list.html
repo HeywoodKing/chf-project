@@ -1,5 +1,6 @@
 {% extends "chinslicking/layout.html" %}
 {% load staticfiles %}
+{% load my_filter_tag %}
 
 {% block header %}
     {% include "chinslicking/header.html" with title="工作机会" %}
@@ -42,104 +43,28 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="faq">
+                    {% for item in job_list %}
                     <div class="single-item">
                         <h4>
-                            <div><b>在线客服</b>&nbsp;&nbsp;&nbsp;&nbsp;<span>经验1-3年/本科/全职</span></div>
+                            <div><b>{{item.job_name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;<span>经验{{item.work_year}}/{{item|displayName:'education'}}/{{item|displayName:'work_prop'}}</span></div>
                         </h4>
                         <div class="content">
                             <h4>岗位职责</h4>
                             <div>
-                                1、负责字节跳动沟通系统研发，包括但不限于即时通讯(IM)工具；<br>
-                                2、负责效率工具的后台开发工作，具体包括需求分析、文档撰写、设计编码、测试运维、效果追踪等工作；<br>
-                                3、负责高质量的设计和编码；承担重点、难点的技术攻坚；<br>
-                                4、参与产品讨论和开发实现。<br>
-                                5、主要语言为Python/Golang。<br>
+                                {{item.job_require|safe}}
                             </div>
                         </div>
                         <div class="content">
                             <h4>任职要求</h4>
                             <div>
-                                1、良好的设计和编码品味，热爱写代码；<br>
-                                2、较好的产品意识，愿意将产品效果做为工作最重要的驱动因素；<br>
-                                3、掌握WEB后端开发技术: 协议、架构、存储、缓存、安全等；<br>
-                                4、积极乐观，认真负责，乐于协作。<br>
+                                {{item.skill_require|safe}}
                             </div>
                         </div>
                     </div>
-                    <div class="single-item">
-                        <h4>
-                            <div><b>在线客服</b>&nbsp;&nbsp;&nbsp;&nbsp;<span>经验1-3年/本科/全职</span></div>
-                        </h4>
-                        <div class="content">
-                            <h4>岗位职责</h4>
-                            <div>
-                                1、负责字节跳动沟通系统研发，包括但不限于即时通讯(IM)工具；<br>
-                                2、负责效率工具的后台开发工作，具体包括需求分析、文档撰写、设计编码、测试运维、效果追踪等工作；<br>
-                                3、负责高质量的设计和编码；承担重点、难点的技术攻坚；<br>
-                                4、参与产品讨论和开发实现。<br>
-                                5、主要语言为Python/Golang。<br>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4>任职要求</h4>
-                            <div>
-                                1、良好的设计和编码品味，热爱写代码；<br>
-                                2、较好的产品意识，愿意将产品效果做为工作最重要的驱动因素；<br>
-                                3、掌握WEB后端开发技术: 协议、架构、存储、缓存、安全等；<br>
-                                4、积极乐观，认真负责，乐于协作。<br>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>
-                            <div><b>在线客服</b>&nbsp;&nbsp;&nbsp;&nbsp;<span>经验1-3年/本科/全职</span></div>
-                        </h4>
-                        <div class="content">
-                            <h4>岗位职责</h4>
-                            <div>
-                                1、负责字节跳动沟通系统研发，包括但不限于即时通讯(IM)工具；<br>
-                                2、负责效率工具的后台开发工作，具体包括需求分析、文档撰写、设计编码、测试运维、效果追踪等工作；<br>
-                                3、负责高质量的设计和编码；承担重点、难点的技术攻坚；<br>
-                                4、参与产品讨论和开发实现。<br>
-                                5、主要语言为Python/Golang。<br>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4>任职要求</h4>
-                            <div>
-                                1、良好的设计和编码品味，热爱写代码；<br>
-                                2、较好的产品意识，愿意将产品效果做为工作最重要的驱动因素；<br>
-                                3、掌握WEB后端开发技术: 协议、架构、存储、缓存、安全等；<br>
-                                4、积极乐观，认真负责，乐于协作。<br>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>
-                            <div><b>在线客服</b>&nbsp;&nbsp;&nbsp;&nbsp;<span>经验1-3年/本科/全职</span></div>
-                        </h4>
-                        <div class="content">
-                            <h4>岗位职责</h4>
-                            <div>
-                                1、负责字节跳动沟通系统研发，包括但不限于即时通讯(IM)工具；<br>
-                                2、负责效率工具的后台开发工作，具体包括需求分析、文档撰写、设计编码、测试运维、效果追踪等工作；<br>
-                                3、负责高质量的设计和编码；承担重点、难点的技术攻坚；<br>
-                                4、参与产品讨论和开发实现。<br>
-                                5、主要语言为Python/Golang。<br>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <h4>任职要求</h4>
-                            <div>
-                                1、良好的设计和编码品味，热爱写代码；<br>
-                                2、较好的产品意识，愿意将产品效果做为工作最重要的驱动因素；<br>
-                                3、掌握WEB后端开发技术: 协议、架构、存储、缓存、安全等；<br>
-                                4、积极乐观，认真负责，乐于协作。<br>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
+
             <!--<div class="col-md-6">
                 <div class="faq-img text-center">
                     <img src="{% static 'images/fag-img.png' %}" alt="faq">

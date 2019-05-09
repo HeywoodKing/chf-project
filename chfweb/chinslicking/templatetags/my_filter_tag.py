@@ -31,3 +31,7 @@ def circle_page(curr_page, loop_page):
 
     else:
         return ''
+
+@register.filter(name='displayName')
+def displayName(value, arg):
+    return eval('value.get_' + arg + '_display()')

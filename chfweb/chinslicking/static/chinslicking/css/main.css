@@ -533,7 +533,7 @@ form.search-form button {
 }*/
 
   .single-service .inner, .single-service-2 .inner, .single-service-3 .inner {
-    background-color: #9ddc5f;
+    background-color: #fff;
     border-radius: 7px;
     padding: 30px; }
     .single-service .inner:hover, .single-service-2 .inner:hover, .single-service-3 .inner:hover {
@@ -950,8 +950,17 @@ footer {
   color: #7286a0; }
 
 .footer_widget {
-    padding: 0 35px;
+    /*padding: 0 35px;*/
+    padding: 0 60px;
+    border-right: 1px solid #ccc;
 }
+
+.footer_widget_noborder {
+    /*padding: 0 35px;*/
+    padding: 0 60px;
+    border-right: none;
+}
+
 
 @media only screen and (max-width: 991px) {
   .footer_widget {

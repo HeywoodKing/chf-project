@@ -101,10 +101,11 @@ class ChfJobRecruitAdmin(admin.ModelAdmin):
     list_editable = ('education', 'work_prop', 'sort', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
 
+
 @admin.register(models.ChfNews)
 class ChfNewsAdmin(admin.ModelAdmin):
     # exclude = ('content', )
-    list_display = ('title', 'brief', 'read_count', 'cover_image_url', 'sort', )
+    list_display = ('title', 'brief', 'read_count', 'cover_image_url', 'sort', 'is_enable', )
     list_display_links = ('title', )
-    list_editable = ('sort', 'read_count', )
+    list_editable = ('sort', 'read_count', 'is_enable', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
