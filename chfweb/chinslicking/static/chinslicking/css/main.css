@@ -126,7 +126,8 @@ span {
   position: relative; }
 
 .bg2 {
-  background-color: #f3f6fa; }
+  background-color: #fbfbfb;  /*#f3f6fa*/
+}
 
 .bg3 {
   background-color: #4cd48d;

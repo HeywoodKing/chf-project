@@ -1,5 +1,6 @@
 {% extends "chinslicking/layout.html" %}
 {% load staticfiles %}
+{% load my_filter_tag %}
 
 {% block header %}
     {% include "chinslicking/header.html" with title="品牌产品" %}
@@ -308,7 +309,51 @@
         <div class="row">
             <div class="col-12 text-center" data-margin="40px 0 0">
                 <!--<a href="#" class="button">More Works</a>-->
-                <div>分页</div>
+                <nav aria-label="Page navigation">
+                    <!--<span>
+                        当前第 {{ product_list.number }} 页&nbsp;&nbsp;&nbsp;&nbsp;共{{ product_list.paginator.num_pages }}页
+                    </span>-->
+                    <ul class="pagination">
+
+                        {% if product_list.has_previous %}
+                            <li>
+                                <a href="?page={{ product_list.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="disabled">
+                                <a href="javascript:void(0);" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for pg in product_list.paginator.page_range %}
+                            <!--{% if product_list.number == pg %}
+                                <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+                            {% else %}
+                                <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+                            {% endif %}-->
+
+                            {% circle_page product_list.number pg %}
+                        {% endfor %}
+
+                        {% if product_list.has_next %}
+                            <li>
+                                <a href="?page={{ product_list.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="disabled">
+                                <a href="javascript:void(0);" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

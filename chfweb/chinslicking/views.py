@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect, HttpResponse
 from django.conf import settings
 import logging
 from home import models
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 # Create your views here.
@@ -37,7 +38,16 @@ def product_list(req):
     index = 2
     # 获取产品类型
     product_type_list = models.ChfProductType.objects.filter(is_enable=True)
-    product_list = models.ChfProduct.objects.filter(is_enable=True)
+    product_lists = models.ChfProduct.objects.filter(is_enable=True)
+
+    paginator = Paginator(product_lists, 9, 2)  # 每页显示9条，少于2条则合并到上一页
+    page = req.GET.get('page')
+    try:
+        product_list = paginator.page(page)
+    except PageNotAnInteger:
+        product_list = paginator.page(1)
+    except EmptyPage:
+        product_list = paginator.page(paginator.num_pages)
 
     # 获取产品
     return render(req, 'chinslicking/product_list.html', locals())
