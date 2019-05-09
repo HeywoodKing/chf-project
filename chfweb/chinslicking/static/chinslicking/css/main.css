@@ -527,12 +527,17 @@ form.search-form button {
  ***************************** */
 .single-service, .single-service-2, .single-service-3 {
   margin: 15px 0; }
+
+/*.single-service .inner, .single-service-2 .inner, .single-service-3 .inner .content h3{
+    color: #fff;
+}*/
+
   .single-service .inner, .single-service-2 .inner, .single-service-3 .inner {
-    background-color: #fff;
+    background-color: #9ddc5f;
     border-radius: 7px;
     padding: 30px; }
     .single-service .inner:hover, .single-service-2 .inner:hover, .single-service-3 .inner:hover {
-      box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.15); }
+      box-shadow: 2px 2px 25px rgba(157, 220, 95, 0.7); }
     .single-service .inner .title, .single-service-2 .inner .title, .single-service-3 .inner .title {
       overflow: hidden;
       margin-bottom: 15px; }
@@ -548,6 +553,11 @@ form.search-form button {
       font-size: 14px;
       color: #2d3666;
       line-height: 26px; }
+
+      .single-service .inner .content h3 {
+      color: #fff;
+      }
+
       .single-service .inner .content p:last-child, .single-service-2 .inner .content p:last-child, .single-service-3 .inner .content p:last-child {
         margin-bottom: 0; }
   .single-service.bordered .inner, .bordered.single-service-2 .inner, .bordered.single-service-3 .inner {
@@ -557,7 +567,7 @@ form.search-form button {
 .single-service-2 {
   text-align: center; }
   .single-service-2 .inner {
-    border: 1px solid #cad4de;
+    border: 1px solid #9ddc5f;
     border-radius: 5px;
     padding: 85px 40px; }
     .single-service-2 .inner .content {
@@ -721,7 +731,7 @@ form.search-form button {
         background-color: #fff;
         border-color: #fff !important; }
         .single-portfolio .inner .portfolio-img-pro .hover-content .button:hover {
-          background-color: #222;
+          background-color: #fbdf51;
           color: #fff;
           border-color: #222 !important; }
     .single-portfolio .inner .portfolio-img-pro:hover .hover-content {
@@ -830,7 +840,7 @@ form.search-form button {
       width: 25px;
       height: 25px;
       border-radius: 50%;
-      background-color: #222;
+      background-color: #9ddc5f;
       color: #fff;
       position: absolute;
       left: 15px;
@@ -844,7 +854,7 @@ form.search-form button {
       color: #222; }
     .faq .single-item.active {
       color: #000;
-      background-color: #ffedf1;
+      background-color: #fbdf51;
     }
       .faq .single-item.active h4 {
         color: #000;
