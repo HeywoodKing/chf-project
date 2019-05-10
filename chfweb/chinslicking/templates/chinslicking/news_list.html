@@ -37,18 +37,25 @@
 <div class="faq-area-2 sp bg2">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <!--<div class="col-md-12">-->
                 {% for item in news_list %}
                 <div class="row single-faq" style="padding: 25px 10px;">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="about-img">
                             <a href="/king/news_detail/{{item.id}}"><img src="/uploads/{{item.cover_image_url}}" alt="{{item.title}}"></a>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <div class="about-content" style="margin-top:0;">
                             <h3 style="margin: 5px 0;"><a href="/king/news_detail/{{item.id}}">{{item.title}}</a></h3>
                             <div>{{item.brief}}...</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="about-content" style="margin-top:0;">
+                            <h2 style="margin: 5px 0; font-size:35px; color: #fbdf51;">{{item.read_count}}</h2>
+                            <div>{{item.create_time|date:'Y年m月d日 f'}}</div>
+                            <!--<div>{{item.create_time|date:'Y年m月d日 H:i:s'}}</div>-->
                         </div>
                     </div>
                 </div>
@@ -116,7 +123,7 @@
                 </div>
                 {% endif %}
             </div>
-            <div class="col-md-3">
+            <!--<div class="col-md-3">
                 <div class="faq-sidebar-wrap">
                     <h3>最新资讯</h3>
                     <ul class="faq-sidebar">
@@ -125,8 +132,8 @@
                         {% endfor %}
                     </ul>
                 </div>
-            </div>
-        </div>
+            </div>-->
+        <!--</div>-->
     </div>
 </div>
 {% endblock %}
