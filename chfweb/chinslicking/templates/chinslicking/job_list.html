@@ -31,6 +31,19 @@
         </div>
     </div>
 </div>-->
+
+<div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_7.jpg' %});height: 300px;">
+    <div class="container text-center">
+        <h3 class="banner-h3">
+            JOIN US
+        </h3>
+        <h4 class="banner-h4">
+            <hr class="hr-1">
+            <span>工作机会</span>
+            <hr class="hr-1">
+        </h4>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}
@@ -38,7 +51,11 @@
     <div class="container">
         <div class="section-title">
             <h2>招贤纳士</h2>
-            <p>&mdash;&mdash;&mdash;&mdash; 我们期待您的加入 &mdash;&mdash;&mdash;&mdash;</p>
+            <div class="sub-title">
+                <hr class="hr-2">
+                <span style="color:#fbdf51;">我们期待您的加入</span>
+                <hr class="hr-2">
+            </div>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -48,7 +65,7 @@
                         <h4>
                             <div><b>{{item.job_name}}</b>&nbsp;&nbsp;&nbsp;&nbsp;<span>经验{{item.work_year}}/{{item|displayName:'education'}}/{{item|displayName:'work_prop'}}</span></div>
                         </h4>
-                        <div class="content">
+                        <!--<div class="content">
                             <h4>岗位职责</h4>
                             <div>
                                 {{item.job_require|safe}}
@@ -59,6 +76,9 @@
                             <div>
                                 {{item.skill_require|safe}}
                             </div>
+                        </div>-->
+                        <div class="content">
+                            {{item.content|safe}}
                         </div>
                     </div>
                     {% endfor %}

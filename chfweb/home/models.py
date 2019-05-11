@@ -325,8 +325,9 @@ class ChfJobRecruit(BaseModel):
                                      ('3', '其他'),
                                  ),default=0
                                  )
-    job_require = models.TextField('岗位要求', default=None, null=True, blank=True)
-    skill_require = models.TextField('技能要求', default=None, null=True, blank=True)
+    # job_require = models.TextField('岗位要求', default=None, null=True, blank=True)
+    # skill_require = models.TextField('技能要求', default=None, null=True, blank=True)
+    content = models.TextField('招聘要求', default=None, null=True, blank=True)
     sort = models.IntegerField('排序', default=0)
     is_enable = models.BooleanField('是否启用', default=True)
 

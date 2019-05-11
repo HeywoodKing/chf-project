@@ -31,6 +31,18 @@
         </div>
     </div>
 </div>-->
+
+
+<div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_4.jpg' %});height: 300px;">
+    <div class="container text-center">
+        <h3 class="banner-h3">
+            纯粹&nbsp;&nbsp;&sdot;&nbsp;&nbsp;纯粮&nbsp;&nbsp;&sdot;&nbsp;&nbsp;纯手工&nbsp;&nbsp;&sdot;&nbsp;&nbsp;纯天然
+        </h3>
+        <h3 class="banner-h3">
+            秦韵&nbsp;&nbsp;&sdot;&nbsp;&nbsp;秦风&nbsp;&nbsp;&sdot;&nbsp;&nbsp;秦文化&nbsp;&nbsp;&sdot;&nbsp;&nbsp;秦饮食
+        </h3>
+    </div>
+</div>
 {% endblock %}
 
 {% block content %}
@@ -38,7 +50,11 @@
     <div class="container">
         <div class="section-title">
             <h2>秦食皇系列</h2>
-            <p>&mdash;&mdash;&mdash;&mdash; 一口国土味，入胃解乡愁 &mdash;&mdash;&mdash;&mdash;</p>
+            <div class="sub-title">
+                <hr class="hr-2">
+                <span style="color:#fbdf51;">一口国土味，入胃解乡愁</span>
+                <hr class="hr-2">
+            </div>
         </div>
         <div class="row">
             <ul class="isotope-menu">
@@ -314,18 +330,18 @@
                     <!--<span>
                         当前第 {{ product_list.number }} 页&nbsp;&nbsp;&nbsp;&nbsp;共{{ product_list.paginator.num_pages }}页
                     </span>-->
-                    <ul class="pagination">
+                    <ul class="pager">
 
                         {% if product_list.has_previous %}
                             <li>
                                 <a href="?page={{ product_list.previous_page_number }}" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
+                                    <span aria-hidden="true">&lsaquo;</span>
                                 </a>
                             </li>
                         {% else %}
                             <li class="disabled">
                                 <a href="javascript:void(0);" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
+                                    <span aria-hidden="true">&lsaquo;</span>
                                 </a>
                             </li>
                         {% endif %}
@@ -339,17 +355,38 @@
 
                             {% circle_page product_list.number pg %}
                         {% endfor %}
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li>
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">5</a>
+                        </li>
+                        <li>
+                            <a href="#">...</a>
+                        </li>
+                        <li>
+                            <a href="#">8</a>
+                        </li>
+                        <li>
+                            <a href="#">9</a>
+                        </li>
 
                         {% if product_list.has_next %}
                             <li>
                                 <a href="?page={{ product_list.next_page_number }}" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
+                                    <span aria-hidden="true">>&rsaquo;</span>
                                 </a>
                             </li>
                         {% else %}
                             <li class="disabled">
                                 <a href="javascript:void(0);" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
+                                    <span aria-hidden="true">&rsaquo;</span>
                                 </a>
                             </li>
                         {% endif %}

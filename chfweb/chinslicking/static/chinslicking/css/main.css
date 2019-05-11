@@ -282,7 +282,94 @@ iframe {
   border-bottom: 1px solid #585757; }
   @media only screen and (min-width: 991px) {
     .slicknav_menu {
-      display: none; } }
+      display: none; }
+  }
+
+
+
+/*****************************
+ *  start my customer css
+ ***************************** */
+.hr-1{
+    width: 5%;
+    height: 1px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    display:inline-block;
+}
+
+.hr-2{
+    width: 5%;
+    height: 1px;
+    border: none;
+    border-top: 1px solid #ccc;
+    display:inline-block;
+}
+
+
+
+.banner-h1{
+    color: #fff;
+    font-size: 50px;
+}
+
+.banner-h3{
+    color: #fff;
+}
+
+.banner-h4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    letter-spacing: 3px;
+}
+
+.banner-h4 span{
+    margin:0 15px;
+}
+
+.sub-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sub-title span{
+    margin:0 15px;
+}
+
+.justify-align-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.isotope-menu li.active, .isotope-menu li:hover{
+    padding: 5px 15px;
+    color:#fff;
+    background-color: #fbdf51;
+}
+
+.pager li>a, .pager li>span{
+    border: none;
+    background-color: #fff;
+    /*padding: 5px 15px;*/
+}
+
+.pager li>a:hover, .pager li>span{
+    border-radius: 20px;
+    background-color: #fbdf51;
+}
+
+/*.pager .disabled>a, .pager .disabled>a:focus, .pager .disabled>a:hover, .pager .disabled>span{
+    background-color: transparent;
+}*/
+/*****************************
+ *  end my customer css
+ ***************************** */
+
+
+
 
 /*****************************
  *   01. header
@@ -526,7 +613,14 @@ form.search-form button {
  *   04. service-area
  ***************************** */
 .single-service, .single-service-2, .single-service-3 {
-  margin: 15px 0; }
+  margin: 30px 0;
+}
+
+.single-service-row{
+    background-color: #fff;
+    box-shadow: 2px 2px 25px rgba(157, 220, 95, 0.7);
+    margin-bottom: 50px;
+}
 
 /*.single-service .inner, .single-service-2 .inner, .single-service-3 .inner .content h3{
     color: #fff;
@@ -854,7 +948,7 @@ form.search-form button {
       color: #222; }
     .faq .single-item.active {
       color: #000;
-      background-color: #fbdf51;
+      background-color: #fce884;
     }
       .faq .single-item.active h4 {
         color: #000;
