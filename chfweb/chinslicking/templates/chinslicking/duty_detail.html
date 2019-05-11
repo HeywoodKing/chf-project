@@ -70,11 +70,20 @@
             <div class="col-md-4">
                 <div class="faq-sidebar-wrap">
                     <h3>最新动态</h3>
-                    <ul class="faq-sidebar">
+                    <!--<ul class="faq-sidebar">
                         {% for item in resp_lasted %}
                         <li><a href="/king/resp_detail/{{item.id}}"><span>{{ forloop.counter }}.</span>&nbsp;{{item.title}}</a></li>
                         {% endfor %}
-                    </ul>
+                    </ul>-->
+
+                    {% for item in resp_lasted %}
+                    <div class="product-commend">
+                        <a href="/king/resp_detail/{{item.id}}">
+                            <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
+                        </a>
+                        <div class="product-commend-title">{{item.title}}</div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

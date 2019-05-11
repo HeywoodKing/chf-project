@@ -49,7 +49,7 @@
 <div class="faq-area-2 sp bg2">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="single-faq">
                     <h2><span>1</span>{{ news.title }}</h2>
                     <div>
@@ -67,14 +67,23 @@
                     <div>{{ news.content|safe }}</div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="faq-sidebar-wrap">
                     <h3>最新资讯</h3>
-                    <ul class="faq-sidebar">
+                    <!--<ul class="faq-sidebar">
                         {% for item in news_lasted %}
                         <li><a href="/king/news_detail/{{item.id}}"><span>{{ forloop.counter }}.</span>&nbsp;{{item.title}}</a></li>
                         {% endfor %}
-                    </ul>
+                    </ul>-->
+
+                    {% for item in news_lasted %}
+                    <div class="product-commend">
+                        <a href="/king/news_detail/{{item.id}}">
+                            <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
+                        </a>
+                        <div class="product-commend-title">{{item.title}}</div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

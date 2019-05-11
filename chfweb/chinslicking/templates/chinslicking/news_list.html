@@ -70,6 +70,9 @@
                             <div>{{item.create_time|date:'Y年m月d日 f'}}</div>
                             <!--<div>{{item.create_time|date:'Y年m月d日 H:i:s'}}</div>-->
                         </div>
+                        <div class="about-content" style="margin-top: 130px;">
+                            <a class="btn btn-default pull-right" href="/king/news_detail/{{item.id}}">更多>></a>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
@@ -83,7 +86,7 @@
 质量服务：为保证食材安全，“秦食皇”做好了前端把控，精选秦岭大山中生长的有机植物为原料，将千年古方与现代工艺完美结合，确保产品安全、无添加。按照“高起点、高标准、国际化”的要求，品质加工。已通过美国FDA注册认证以及国家食品质量监督检验中心的富硒食品检测等权威认证。现正在申请HALAL国际清真和AENOR认证。目前推出青春芽酱、怀旧零嘴、养生速食三个系列产品，这些都是流传千年的中国美食。</p>
                 </div>-->
 
-                {% if news_list %}
+                {% if news_list.paginator.num_pages > 1 %}
                 <div class="row">
                     <div class="col-12 text-center" data-margin="0 0 0 0">
                         <!--<a href="#" class="button">More Works</a>-->

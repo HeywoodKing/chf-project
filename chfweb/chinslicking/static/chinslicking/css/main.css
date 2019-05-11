@@ -335,6 +335,7 @@ iframe {
     align-items: center;
 }
 .sub-title span{
+    color: #fde981;
     margin:0 15px;
 }
 
@@ -364,6 +365,94 @@ iframe {
 /*.pager .disabled>a, .pager .disabled>a:focus, .pager .disabled>a:hover, .pager .disabled>span{
     background-color: transparent;
 }*/
+
+.product-commend{
+    margin-bottom:20px;
+    border: 1px solid #fde981;
+}
+
+.product-commend img{
+    /*min-height: 250px;*/
+}
+.product-commend-title{
+    position:relative;
+    bottom:50px;
+    float: left;
+    width:100%;
+    background-color: rgba(0,0,0,0.3);
+    color: #fde981;
+    text-align:center;
+    line-height:50px;
+    height:50px;
+}
+
+/*翻牌效果 start*/
+.outer{
+    margin: 0 auto;
+    width: 100%;
+    height: 520px;
+}
+.outer .front, .outer .back{
+    position: absolute;
+    transform-style: preserve-3d;
+    backface-visibility:hidden;
+    transition:all 1.0s;
+}
+.front{
+    transform:rotateY(0);
+}
+.front .front-content{
+    position:absolute;
+    top:40%;
+    left:143px;
+    text-align:center;
+    color: #fff;
+}
+.front .front-content hr{
+    width: 100px;
+    height: 3px;
+    margin: 40px auto;
+    background-color: #fff;
+}
+.front .front-content h2{
+    color: #fff;
+    margin: 30px auto;
+}
+
+.back{
+    transform:rotateY(-180deg);
+    background-color: rgba(0,0,0,0.8);
+    height: 100%;
+}
+.back .back-content{
+    position:absolute;
+    top:80px;
+    left:10px;
+    margin: 100px 40px 30px 30px;
+    text-align:center;
+    color: #fff;
+}
+.back .back-content hr{
+    width: 100px;
+    height: 3px;
+    margin: 25px auto;
+    background-color: #fff;
+}
+.back .back-content h2{
+    color:#fff;
+    margin: 30px auto;
+}
+
+.outer:hover .front{
+    transform:rotateY(-180deg);
+}
+.outer:hover .back{
+    transform:rotateY(0deg);
+}
+
+
+/*翻牌效果 end*/
+
 /*****************************
  *  end my customer css
  ***************************** */
@@ -963,7 +1052,8 @@ form.search-form button {
       display: none; }
 
 .single-faq {
-  border: 1px solid #cad4de;
+  /*border: 1px solid #cad4de;*/
+  border: 1px solid #fde981;
   padding: 35px;
   margin-bottom: 30px;
   border-radius: 5px;
@@ -990,7 +1080,7 @@ form.search-form button {
           margin-right: 15px; } }
 
 .faq-sidebar-wrap {
-  border: 1px solid #cad4de;
+  border: 1px solid #fde981;
   margin-bottom: 30px;
   padding: 35px;
   border-radius: 4px; }
@@ -1008,9 +1098,20 @@ form.search-form button {
   margin: 0; }
   .faq-sidebar li {
     position: relative;
-    padding-left: 20px; }
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    }
+    .faq-sidebar-li-hover, .faq-sidebar li:hover {
+      background-color: #fde981;
+      /*border-left: 5px solid #fbdf51;*/
+    }
     .faq-sidebar li a:hover {
-      color: #222; }
+      color: #000;
+    }
+    .faq-sidebar li a:visited {
+      color: #fff;
+    }
     .faq-sidebar li span {
       color: #7d91aa;
       position: absolute;
@@ -1050,8 +1151,8 @@ footer {
 }
 
 .footer_widget_noborder {
-    /*padding: 0 35px;*/
-    padding: 0 60px;
+    /*padding: 0 35px;
+    padding: 0 60px;*/
     border-right: none;
 }
 

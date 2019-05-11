@@ -56,6 +56,7 @@ def product_list(req):
 
 # 品牌产品详情
 def product_detail(req, id):
+    index = 2
     try:
         if id:
             # product = models.ChfProduct.objects.filter(id=id).update(read_count=read_count+1)
@@ -98,6 +99,7 @@ def resp_list(req):
 
 # 社会责任详情
 def resp_detail(req, id):
+    index = 4
     try:
         if id:
             resp = models.ChfNews.objects.get(id=id)
@@ -132,6 +134,7 @@ def news_list(req):
 
 # 新闻资讯
 def news_detail(req, id):
+    index = 5
     try:
         if id:
             news = models.ChfNews.objects.get(id=id)

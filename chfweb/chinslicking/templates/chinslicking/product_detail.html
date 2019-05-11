@@ -60,7 +60,7 @@
                             <i class="glyphicon glyphicon-time"></i>
                         </span>
                         <span>时间：{{ product.create_time }}</span>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="icon">
                             <i class="glyphicon glyphicon-eye-open"></i>
                         </span>
@@ -73,20 +73,13 @@
             <div class="col-md-4">
                 <div class="faq-sidebar-wrap">
                     <h3>推荐产品</h3>
-                    <!--<ul class="faq-sidebar">
-                        <li><a href="#"><span>1.</span> 青春芽酱</a></li>
-                        <li><a href="#"><span>2.</span> 怀旧零嘴</a></li>
-                        <li><a href="#"><span>3.</span> 养生素食</a></li>
-                        <li><a href="#"><span>4.</span> 礼盒包装</a></li>
-                    </ul>-->
-                    <!--<img src="{% static 'chinslicking/images/about.png' %}">
-                    <br><br>
-                    <img src="{% static 'chinslicking/images/about.png' %}">-->
-
                     {% for item in product_command_list %}
-                    <a href="/king/product_detail/{{item.id}}">
-                        <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.name}}" title="{{item.name}}">
-                    </a><br><br>
+                    <div class="product-commend">
+                        <a href="/king/product_detail/{{item.id}}">
+                            <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.name}}" title="{{item.name}}">
+                        </a>
+                        <div class="product-commend-title">{{item.name}}</div>
+                    </div>
                     {% endfor %}
                 </div>
             </div>

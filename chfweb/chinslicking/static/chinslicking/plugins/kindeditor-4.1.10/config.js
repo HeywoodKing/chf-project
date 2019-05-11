@@ -21,7 +21,7 @@ KindEditor.ready(function(K){
         allowImageRemote: false,
         uploadJson: '/admin/upload/kindeditor',
     });
-    editor[1] = K.create('textarea[name="job_require"]', {
+    /*editor[1] = K.create('textarea[name="job_require"]', {
         width:'680px',
         height:'600px',
         resizeType:1,
@@ -29,7 +29,7 @@ KindEditor.ready(function(K){
         allowImageRemote: false,
         uploadJson: '/admin/upload/kindeditor',
     });
-    /*editor[2] = K.create('textarea[name=skill_require]', {
+    editor[2] = K.create('textarea[name=skill_require]', {
         width:'680px',
         height:'600px',
         resizeType:1,
