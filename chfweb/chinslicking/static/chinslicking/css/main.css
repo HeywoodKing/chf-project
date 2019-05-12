@@ -442,6 +442,12 @@ iframe {
     color:#fff;
     margin: 30px auto;
 }
+.back .back-content h2 a{
+    color:#fff;
+}
+.back .back-content h2 a:hover{
+    color:#fde981;
+}
 
 .outer:hover .front{
     transform:rotateY(-180deg);
@@ -449,9 +455,69 @@ iframe {
 .outer:hover .back{
     transform:rotateY(0deg);
 }
-
-
 /*翻牌效果 end*/
+
+.timeline .timeline-item .timeline-content img{
+    border-radius: 10px;
+}
+
+/* 悬浮固定窗口 start*/
+.fixed-box{
+    position:fixed;
+    right:10px;
+    bottom:10%;
+    z-index: 9000;
+    width: 60px;
+    /*height:200px;*/
+    background-color: transparent;
+    color:#fff;
+}
+.fixed-box>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #fff;
+    height: 60px;
+    background-color:#fde981;
+}
+.fixed-box>div:hover{
+    cursor: pointer;
+}
+.fixed-box>div span{
+    color:#000;
+    font-size: 23px;
+}
+.fixed-box div:last-child{
+    margin-bottom: 0;
+    border-bottom: none;
+}
+.fixed-box .fixed-box-content{
+    color:#000;
+    text-align:center;
+    line-height:15px;
+}
+
+.fixed-box .fixed-box-content-title, .fixed-box .fixed-box-content-qrcode{
+    display: none;
+    position: absolute;
+    right: 60px;
+    padding: 0 0 0 15px;
+    line-height: 58px;
+    color: #000;
+    font-size: 25px;
+    width: 200px;
+    background-color: #fde981;
+}
+.fixed-box .fixed-box-content-qrcode{
+    padding: 0;
+    right: 70px;
+    bottom: 0;
+}
+.fixed-box .fixed-box-content-qrcode img{
+    display: inline-block;
+}
+
+/* 悬浮固定窗口 end*/
 
 /*****************************
  *  end my customer css

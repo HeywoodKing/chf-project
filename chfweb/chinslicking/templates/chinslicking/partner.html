@@ -140,7 +140,7 @@
                     $('#' + $(this).attr('data-id')).css('display', 'block');
                     $(this).addClass('faq-sidebar-li-hover');
                 }else{
-                    alert('下载申请表');
+                    window.open("{% static 'chinslicking/apply_table.xls' %}");
                 }
             });
         });

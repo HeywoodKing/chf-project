@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ SITE_NAME2 }} - {{ title }}</title>
+    <title class="i18n" name="title">{{ SITE_NAME2 }} - {{ title }}</title>
+    <meta id="i18n_pagename" content="index-common">
     <meta name="keywords" content="{{ SITE_DESC2 }}">
     <meta name="author" content="{{ SITE_AUTHOR2 }}">
     <meta name="descriptions" content="{{ SITE_DESC2 }}">
@@ -31,25 +32,30 @@
 </div>
 <div class="site">
 
-    <div class="hero-slider">
-        <div class="single-slide" style="background-image: url({% static 'chinslicking/images/index_top.jpg' %})">
+    <div class="container-fluid">
+        <div class="row">
+            <div style="min-height:1080px; background-image: url({% static 'chinslicking/images/index_top.jpg' %})"></div>
+        </div>
+    </div>
+    <!--<div class="hero-slider">-->
+        <!--<div class="single-slide" style="background-image: url({% static 'chinslicking/images/index_top.jpg' %})">
             <div class="inner">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6">
-                            <!--<div class="slide-content">
+                            <div class="slide-content">
                                 <h2>做美食，品美食，享美食我们更专业</h2>
                                 <p>Do food, taste food, enjoy food we more professional.</p>
                                 <div class="slide-btn">
                                     <a href="#" class="button">Learn More</a>
                                     <a href="#" class="button-2">Live Preview</a>
                                 </div>
-                            </div>-->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!--<div class="single-slide" style="background-image: url({% static 'chinslicking/images/slide2.jpg' %})">
             <div class="inner">
@@ -92,7 +98,7 @@
                 </div>
             </div>
         </div>-->
-    </div>
+    <!--</div>-->
 
 
 
