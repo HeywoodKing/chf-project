@@ -398,54 +398,54 @@ iframe {
     backface-visibility:hidden;
     transition:all 1.0s;
 }
-.front{
+.outer .front{
     transform:rotateY(0);
 }
-.front .front-content{
+.outer .front .front-content{
     position:absolute;
-    top:40%;
+    top:34%;
     left:143px;
     text-align:center;
     color: #fff;
 }
-.front .front-content hr{
+.outer .front .front-content hr{
     width: 100px;
     height: 3px;
     margin: 40px auto;
     background-color: #fff;
 }
-.front .front-content h2{
+.outer .front .front-content h2{
     color: #fff;
     margin: 30px auto;
 }
 
-.back{
+
+.outer .back{
     transform:rotateY(-180deg);
     background-color: rgba(0,0,0,0.8);
-    height: 100%;
 }
-.back .back-content{
+.outer .back .back-content{
     position:absolute;
     top:80px;
     left:10px;
-    margin: 100px 40px 30px 30px;
+    margin: 50px 40px 30px 30px;
     text-align:center;
     color: #fff;
 }
-.back .back-content hr{
+.outer .back .back-content hr{
     width: 100px;
     height: 3px;
     margin: 25px auto;
     background-color: #fff;
 }
-.back .back-content h2{
+.outer .back .back-content h2{
     color:#fff;
     margin: 30px auto;
 }
-.back .back-content h2 a{
+.outer .back .back-content h2 a{
     color:#fff;
 }
-.back .back-content h2 a:hover{
+.outer .back .back-content h2 a:hover{
     color:#fde981;
 }
 
@@ -455,6 +455,13 @@ iframe {
 .outer:hover .back{
     transform:rotateY(0deg);
 }
+
+
+.outer .front .front-content img, .outer .back .back-content img{
+    width: 50px;
+    height: 50px;
+}
+
 /*翻牌效果 end*/
 
 .timeline .timeline-item .timeline-content img{
@@ -898,9 +905,9 @@ form.search-form button {
     height: 100%;
 }
 
-.single-portfolio .inner .portfolio-img-height img {
+/*.single-portfolio .inner .portfolio-img-height img {
     min-height: 520px;
-}
+}*/
 
 .single-portfolio .inner .portfolio-img .hover-content {
       position: absolute;

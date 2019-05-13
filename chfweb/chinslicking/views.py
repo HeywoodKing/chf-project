@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect, HttpResponse
 from django.conf import settings
-import logging
-from home import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.utils.translation import ugettext as _
+import logging
 import random
+from home import models
 
 
 # Create your views here.

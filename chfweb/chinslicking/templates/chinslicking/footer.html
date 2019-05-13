@@ -105,8 +105,8 @@
 </div>
 
 <script src="{% static 'chinslicking/plugins/jquery/jquery-3.1.0.min.js' %}"></script>
-<script src="{% static 'chinslicking/plugins/jquery/jquery.i18n.properties.min.js' %}"></script>
-<script src="{% static 'chinslicking/js/language.js' %}"></script>
+<!--<script src="{% static 'chinslicking/plugins/jquery/jquery.i18n.properties.min.js' %}"></script>
+<script src="{% static 'chinslicking/js/language.js' %}"></script>-->
 <script src="{% static 'chinslicking/js/vendor/popper.min.js' %}"></script>
 <script src="{% static 'chinslicking/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'chinslicking/plugins/layui/layui.all.js' %}"></script>
@@ -119,8 +119,8 @@
 
 <script>
     $(function(){
-        //公共初始化
-        <!--alert('I am footer.html页面的js');-->
+        //公共footer
+        <!--alert('I am footer.html的js');-->
         //$('#menu').on('click', 'ul li', function(){
             //移除所有li上的class=current-menu-item的样式
             //$('#menu').find('ul').find('li').each(function(){
@@ -130,23 +130,21 @@
             //$(this).addClass('current-menu-item');
         //});
 
+
         //移除所有li上的class=current-menu-item的样式
         //$('#menu').find('ul').find('li').each(function(){
         //    $(this).removeClass('current-menu-item');
-        //    console.log(123);
         //});
 
 
         /*执行I18n翻译*/
-        execI18n();
-
+        //execI18n();
         /*将语言选择默认选中缓存中的值*/
         //$("#language option[value="+i18nLanguage+"]").attr("selected",true);
-
         /* 选择语言 */
         $("#i18nZhEn").on('click', function() {
             alert(i18nLanguage);
-            var language = i18nLanguage;
+            /*var language = i18nLanguage;
             console.log(language);
             getCookie("userLanguage", language, {
                 expires: 30,
@@ -160,14 +158,15 @@
                 //选择了英文
                 i18nLanguage = 'zh-CN';
             }
-            location.reload();
+            location.reload();*/
         });
+
 
         //头部菜单导航栏选中时候的显示样式
         $('#menu').find('ul').find('li:eq({{index}})').addClass('current-menu-item');
 
 
-        //页面右侧悬浮固定功能
+        /*页面右侧悬浮固定功能 start*/
         var topDistance = 600;//gotoTop距浏览器顶端的距离，这个距离可以根据你的需求修改
         var showDistance = 1;//距离浏览器顶端多少距离开始显示gotoTop按钮，这个距离也可以修改，但不能超过浏览器默认宽度，为了兼容不同分辨率的浏览器，我建议在这里设置值为1；
         var thisTop = $(window).scrollTop() + topDistance;
@@ -200,8 +199,10 @@
             <!--$('html,body').animate({scrollTop:0}, '500');-->
             return false;
         });
+        /*页面右侧悬浮固定功能 end*/
 
-        // 鼠标移入移出事件
+
+        //鼠标移入移出事件
         $('.fixed-box-left-show').hover(function() {
             // 鼠标移入时添加hover类
             $(this).children('.fixed-box-content-title').css('display', 'block');
