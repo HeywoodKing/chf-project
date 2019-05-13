@@ -780,7 +780,8 @@ form.search-form button {
 
 .single-service-row{
     background-color: #fff;
-    box-shadow: 2px 2px 25px rgba(157, 220, 95, 0.7);
+    /*box-shadow: 2px 2px 25px rgba(253, 233, 129, 0.7);*/
+    box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
 }
 

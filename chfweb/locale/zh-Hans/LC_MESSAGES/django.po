@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-14 00:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\chfweb\settings.py:149
+msgid "English"
+msgstr ""
+
+#: .\chfweb\settings.py:150
+msgid "中文简体"
+msgstr ""
+
+#: .\chfweb\settings.py:151
+msgid "中文繁體"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\index.html:40
+msgid "首页"
+msgstr "首页"
+
+#: .\chinslicking\templates\chinslicking\index.html:41
+msgid "关于我们"
+msgstr "关于我们"
+
+#: .\chinslicking\templates\chinslicking\index.html:42
+msgid "品牌产品"
+msgstr "品牌产品"
+
+#: .\chinslicking\templates\chinslicking\index.html:43
+msgid "品牌合作"
+msgstr "品牌合作"
+
+#: .\chinslicking\templates\chinslicking\index.html:44
+msgid "社会责任"
+msgstr "社会责任"
+
+#: .\chinslicking\templates\chinslicking\index.html:45
+msgid "新闻资讯"
+msgstr "新闻资讯"
+
+#: .\chinslicking\templates\chinslicking\index.html:46
+msgid "工作机会"
+msgstr "工作机会"
+
+#: .\chinslicking\templates\chinslicking\index.html:47
+msgid "联系秦食皇"
+msgstr "联系秦食皇"
