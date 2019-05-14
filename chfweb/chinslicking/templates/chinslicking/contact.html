@@ -1,5 +1,6 @@
 {% extends "chinslicking/layout.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block header %}
     {% include "chinslicking/header.html" with title="联系我们" %}
@@ -49,7 +50,7 @@
 <div class="service-area sp">
     <div class="container">
         <div class="section-title">
-            <h2>联系我们</h2>
+            <h2>{% trans "联系我们" %}</h2>
             <div class="sub-title">
                 <hr class="hr-2">
                 <span>CONTACT</span>
@@ -63,7 +64,7 @@
                         <div class="icon">
                             <i class="glyphicon glyphicon-earphone"></i>
                         </div>
-                        <h4>电话</h4>
+                        <h4>{% trans "电话" %}</h4>
                     </div>
                     <div class="content">
                         <h3>029-8918 9518</h3>
@@ -76,7 +77,7 @@
                         <div class="icon">
                             <i class="glyphicon glyphicon-envelope"></i>
                         </div>
-                        <h4>邮箱</h4>
+                        <h4>{% trans "邮箱" %}</h4>
                     </div>
                     <div class="content">
                         <h3>Johndarphy@xachf.com</h3>
@@ -89,10 +90,10 @@
                         <div class="icon">
                             <i class="glyphicon glyphicon-map-marker"></i>
                         </div>
-                        <h4>地址</h4>
+                        <h4>{% trans "地址" %}</h4>
                     </div>
                     <div class="content">
-                        <h3>西安市高新区丈八二路31号</h3>
+                        <h3>{% trans "西安市高新区丈八二路31号" %}</h3>
                     </div>
                 </div>
             </div>
@@ -102,14 +103,14 @@
 <div class="gallery-area sp bg2">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
-            <h2>公司地址</h2>
+            <h2>{% trans "公司地址" %}</h2>
             <div class="sub-title">
                 <hr class="hr-2">
                 <span>COMPANY ADDRESS</span>
                 <hr class="hr-2">
             </div>
-            <div>如果，您是亲临秦食皇，有以下交通方式可供选择：</div>
-            <div>乘坐公交：251路、107路、高新2号线都可到达，自驾车：参考地图标示行驶高新六路，科技四路，团结南路前往双水磨公交站均可到达。</div>
+            <div>{% trans "如果，您是亲临秦食皇，有以下交通方式可供选择" %}：</div>
+            <div>{% trans "乘坐公交：251路、107路、高新2号线都可到达，自驾车：参考地图标示行驶高新六路，科技四路，团结南路前往双水磨公交站均可到达。" %}</div>
         </div>
         <div class="row">
             <div class="col-md-12 single-gallery">

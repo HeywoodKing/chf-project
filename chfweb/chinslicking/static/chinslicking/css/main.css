@@ -392,6 +392,9 @@ iframe {
     margin: 0 auto;
     width: 100%;
     height: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .outer .front, .outer .back{
     position: absolute;
@@ -428,8 +431,8 @@ iframe {
 .outer .back .back-content{
     position:absolute;
     top:80px;
-    left:10px;
-    margin: 50px 40px 30px 30px;
+    left:0px;
+    margin: 50px 30px 30px 30px;
     text-align:center;
     color: #fff;
 }
@@ -793,7 +796,9 @@ form.search-form button {
   .single-service .inner, .single-service-2 .inner, .single-service-3 .inner {
     background-color: #fff;
     border-radius: 7px;
-    padding: 30px; }
+    padding: 30px;
+    min-height: 175px;
+}
     .single-service .inner:hover, .single-service-2 .inner:hover, .single-service-3 .inner:hover {
       box-shadow: 2px 2px 25px rgba(157, 220, 95, 0.7); }
     .single-service .inner .title, .single-service-2 .inner .title, .single-service-3 .inner .title {
@@ -1225,6 +1230,7 @@ footer {
 .footer_widget {
     /*padding: 0 35px;*/
     padding: 0 60px;
+    border-left: 1px solid #caba2a;
     border-right: 1px solid #caba2a;
 }
 

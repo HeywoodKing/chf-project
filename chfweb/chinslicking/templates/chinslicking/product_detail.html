@@ -1,5 +1,7 @@
 {% extends "chinslicking/layout.html" %}
 {% load staticfiles %}
+{% load my_filter_tag %}
+{% load i18n %}
 
 {% block header %}
     {% include "chinslicking/header.html" with title="品牌产品详情" %}
@@ -34,10 +36,10 @@
 <div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_4.jpg' %});height: 300px;">
     <div class="container text-center">
         <h3 class="banner-h3">
-            纯粹&nbsp;&nbsp;&sdot;&nbsp;&nbsp;纯粮&nbsp;&nbsp;&sdot;&nbsp;&nbsp;纯手工&nbsp;&nbsp;&sdot;&nbsp;&nbsp;纯天然
+            {% trans "纯粹" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯粮" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯手工" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯天然" %}
         </h3>
         <h3 class="banner-h3">
-            秦韵&nbsp;&nbsp;&sdot;&nbsp;&nbsp;秦风&nbsp;&nbsp;&sdot;&nbsp;&nbsp;秦文化&nbsp;&nbsp;&sdot;&nbsp;&nbsp;秦饮食
+            {% trans "秦韵" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "秦风" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "秦文化" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "秦饮食" %}
         </h3>
     </div>
 </div>
@@ -59,12 +61,12 @@
                         <span class="icon">
                             <i class="glyphicon glyphicon-time"></i>
                         </span>
-                        <span>时间：{{ product.create_time }}</span>
+                        <span>{% trans "时间" %}：{{ product.create_time }}</span>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="icon">
                             <i class="glyphicon glyphicon-eye-open"></i>
                         </span>
-                        <span>浏览：{{ product.read_count }}</span>
+                        <span>{% trans "浏览" %}：{{ product.read_count }}</span>
                     </div>
                     <hr>
                     <div>{{ product.content|safe }}</div>
@@ -72,13 +74,13 @@
             </div>
             <div class="col-md-4">
                 <div class="faq-sidebar-wrap">
-                    <h3>推荐产品</h3>
+                    <h3>{% trans "推荐产品" %}</h3>
                     {% for item in product_command_list %}
                     <div class="product-commend">
                         <a href="/king/product_detail/{{item.id}}">
                             <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.name}}" title="{{item.name}}">
                         </a>
-                        <div class="product-commend-title">{{item.name}}</div>
+                        <div class="product-commend-title">{{item.name|truncate_point:'12'}}</div>
                     </div>
                     {% endfor %}
                 </div>

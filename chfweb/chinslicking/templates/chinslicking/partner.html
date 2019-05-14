@@ -1,5 +1,6 @@
 {% extends "chinslicking/layout.html" %}
 {% load staticfiles %}
+{% load i18n %}
 
 {% block header %}
     {% include "chinslicking/header.html" with title="品牌合作" %}
@@ -51,13 +52,13 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="faq-sidebar-wrap">
-                    <h3>品牌合作</h3>
+                    <h3>{% trans "品牌合作" %}</h3>
                     <div style="color: #7ac729;">COOPERATION</div>
                     <ul class="faq-sidebar">
-                        <li class="faq-sidebar-li-hover" data-id="hzzc"><a href="javascript:void(0);">合作政策</a></li>
-                        <li data-id="xmys"><a href="javascript:void(0);">项目优势</a></li>
-                        <li data-id="jxswd"><a href="javascript:void(0);">经销商问答</a></li>
-                        <li data-id="sqbxz"><a href="javascript:void(0);">申请表下载</a></li>
+                        <li class="faq-sidebar-li-hover" data-id="hzzc"><a href="javascript:void(0);">{% trans "合作政策" %}</a></li>
+                        <li data-id="xmys"><a href="javascript:void(0);">{% trans "项目优势" %}</a></li>
+                        <li data-id="jxswd"><a href="javascript:void(0);">{% trans "经销商问答" %}</a></li>
+                        <li data-id="sqbxz"><a href="javascript:void(0);">{% trans "申请表下载" %}</a></li>
                     </ul>
                 </div>
             </div>

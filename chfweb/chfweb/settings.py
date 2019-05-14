@@ -26,7 +26,7 @@ SECRET_KEY = 'rnx96978^u&3g*e12j7rt-b@-95rj+=(bl791)(^gllw$j(-nl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.4.30', ]
+ALLOWED_HOSTS = ['192.168.4.30', '192.168.0.100', '127.0.0.1']
 
 
 # Application definition
@@ -175,7 +175,7 @@ STATICFILES_DIRS = (
 AUTH_USER_MODEL = 'home.User'
 
 SITE_NAME = '春和方'
-SITE_DESC = 'CHF官网'
+SITE_DESC = '春和方官网'
 SITE_AUTHOR = 'flack'
 
 SITE_NAME2 = '秦食皇'

@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title class="i18n" name="title">{{ SITE_NAME2 }} - {{ title }}</title>
+    <title class="i18n" name="title">{% trans SITE_NAME2 %} - {% trans title %}</title>
     <meta id="i18n_pagename" content="index-common">
     <meta name="keywords" content="{{ SITE_DESC2 }}">
     <meta name="author" content="{{ SITE_AUTHOR2 }}">
@@ -56,15 +57,15 @@
                     <nav id="menu" class="d-none d-lg-block">
                         <ul>
                             <li>
-                                <a href="/king/index">首页</a>
+                                <a href="/king/index">{% trans "首页" %}</a>
                             </li>
-                            <li><a href="/king/about">关于我们</a></li>
-                            <li><a href="/king/product_list">品牌产品</a></li>
-                            <li><a href="/king/partner">品牌合作</a></li>
-                            <li><a href="/king/resp_list">社会责任</a></li>
-                            <li><a href="/king/news_list">新闻资讯</a></li>
-                            <li><a href="/king/job_list">工作机会</a></li>
-                            <li><a href="/king/contact">联系秦食皇</a></li>
+                            <li><a href="/king/about">{% trans "关于我们" %}</a></li>
+                            <li><a href="/king/product_list">{% trans "品牌产品" %}</a></li>
+                            <li><a href="/king/partner">{% trans "品牌合作" %}</a></li>
+                            <li><a href="/king/resp_list">{% trans "社会责任" %}</a></li>
+                            <li><a href="/king/news_list">{% trans "新闻资讯" %}</a></li>
+                            <li><a href="/king/job_list">{% trans "工作机会" %}</a></li>
+                            <li><a href="/king/contact">{% trans "联系秦食皇" %}</a></li>
                             <!--<li class="has-child">
                                 <a href="#">Pages</a>
                                 <ul class="sub-menu">

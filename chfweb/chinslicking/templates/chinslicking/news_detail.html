@@ -1,5 +1,7 @@
 {% extends "chinslicking/layout.html" %}
 {% load staticfiles %}
+{% load my_filter_tag %}
+{% load i18n %}
 
 {% block header %}
     {% include "chinslicking/header.html" with title="新闻资讯详情" %}
@@ -51,17 +53,17 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="single-faq">
-                    <h2><span>1</span>{{ news.title }}</h2>
+                    <h2><span>1</span>{{ news.title|truncate_point:'30' }}</h2>
                     <div>
                         <span class="icon">
                             <i class="glyphicon glyphicon-time"></i>
                         </span>
-                        <span>时间：{{ news.create_time }}</span>
+                        <span>{% trans "时间" %}：{{ news.create_time }}</span>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="icon">
                             <i class="glyphicon glyphicon-eye-open"></i>
                         </span>
-                        <span>浏览：{{ news.read_count }}</span>
+                        <span>{% trans "浏览" %}：{{ news.read_count }}</span>
                     </div>
                     <hr>
                     <div>{{ news.content|safe }}</div>
@@ -69,7 +71,7 @@
             </div>
             <div class="col-md-3">
                 <div class="faq-sidebar-wrap">
-                    <h3>最新资讯</h3>
+                    <h3>{% trans "最新资讯" %}</h3>
                     <!--<ul class="faq-sidebar">
                         {% for item in news_lasted %}
                         <li><a href="/king/news_detail/{{item.id}}"><span>{{ forloop.counter }}.</span>&nbsp;{{item.title}}</a></li>
@@ -81,7 +83,7 @@
                         <a href="/king/news_detail/{{item.id}}">
                             <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
                         </a>
-                        <div class="product-commend-title">{{item.title}}</div>
+                        <div class="product-commend-title">{{item.title|truncate_point:'30'}}</div>
                     </div>
                     {% endfor %}
                 </div>

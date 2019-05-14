@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-14 00:03+0800\n"
+"POT-Creation-Date: 2019-05-14 23:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,34 +28,311 @@ msgstr ""
 msgid "中文繁體"
 msgstr ""
 
-#: .\chinslicking\templates\chinslicking\index.html:40
+#: .\chinslicking\templates\chinslicking\about.html:38
+msgid "华夏传统美食的国际级复刻者"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:51
+#: .\chinslicking\templates\chinslicking\about.html:308
+#: .\chinslicking\templates\chinslicking\about.html:321
+#: .\chinslicking\templates\chinslicking\about.html:331
+#: .\chinslicking\templates\chinslicking\about.html:341
+msgid "年"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:54
+msgid "公司正式成立"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:64
+msgid "注册认证"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:71
+msgid "个"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:74
+msgid "系列产品"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:82
+#: .\chinslicking\templates\chinslicking\index.html:90
+#: .\chinslicking\templates\chinslicking\index.html:102
+msgid "公司简介"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:296
+msgid "发展历程"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:308
+#: .\chinslicking\templates\chinslicking\about.html:321
+#: .\chinslicking\templates\chinslicking\about.html:331
+#: .\chinslicking\templates\chinslicking\about.html:341
+msgid "月"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:309
+msgid "西安秦始皇食品有限公司成立"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:322
+msgid "荣获感动陕西&sdot;2017旅游影响力十佳最具人气奖"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:332
+msgid "荣获2017促进陕西经济发展突出贡献单位奖"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:342
+msgid "2018中国特色旅游商品大赛获奖"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:366
+msgid "愿景规划"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\about.html:373
+msgid ""
+"\"秦食皇\"希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视"
+"野，意图通过境外宣传与销售通道，改变海外华人对中国美食的认知。实现我们\"一口"
+"国土味，入胃解乡愁\"的夙愿，让老百姓\"送的安心，吃的放心\"。"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\contact.html:53
+msgid "联系我们"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\contact.html:67
+msgid "电话"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\contact.html:80
+#: .\chinslicking\templates\chinslicking\footer.html:20
+msgid "邮箱"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\contact.html:93
+#: .\chinslicking\templates\chinslicking\footer.html:24
+msgid "地址"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\contact.html:96
+#: .\chinslicking\templates\chinslicking\footer.html:25
+msgid "西安市高新区丈八二路31号"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\contact.html:106
+msgid "公司地址"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\contact.html:112
+msgid "如果，您是亲临秦食皇，有以下交通方式可供选择"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\contact.html:113
+msgid ""
+"乘坐公交：251路、107路、高新2号线都可到达，自驾车：参考地图标示行驶高新六路，"
+"科技四路，团结南路前往双水磨公交站均可到达。"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\duty_detail.html:61
+#: .\chinslicking\templates\chinslicking\news_detail.html:61
+#: .\chinslicking\templates\chinslicking\product_detail.html:64
+msgid "时间"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\duty_detail.html:66
+#: .\chinslicking\templates\chinslicking\news_detail.html:66
+#: .\chinslicking\templates\chinslicking\product_detail.html:69
+msgid "浏览"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\duty_detail.html:74
+#: .\chinslicking\templates\chinslicking\duty_list.html:135
+msgid "最新动态"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\footer.html:17
+msgid "西安秦食皇食品有限公司"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\footer.html:39
+msgid "商务合作"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\footer.html:55
+msgid "陕ICP备"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\footer.html:55
+msgid "西安秦食皇食品有限公司版权所有"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\footer.html:80
+msgid "中文<br>英文"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\footer.html:84
+msgid "在线<br>商城"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\footer.html:89
+msgid "在线<br>客服"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\header.html:60
+#: .\chinslicking\templates\chinslicking\index.html:41
 msgid "首页"
 msgstr ""
 
-#: .\chinslicking\templates\chinslicking\index.html:41
+#: .\chinslicking\templates\chinslicking\header.html:62
+#: .\chinslicking\templates\chinslicking\index.html:42
 msgid "关于我们"
 msgstr ""
 
-#: .\chinslicking\templates\chinslicking\index.html:42
+#: .\chinslicking\templates\chinslicking\header.html:63
+#: .\chinslicking\templates\chinslicking\index.html:43
+#: .\chinslicking\templates\chinslicking\index.html:129
+#: .\chinslicking\templates\chinslicking\index.html:141
 msgid "品牌产品"
 msgstr ""
 
-#: .\chinslicking\templates\chinslicking\index.html:43
+#: .\chinslicking\templates\chinslicking\header.html:64
+#: .\chinslicking\templates\chinslicking\index.html:44
+#: .\chinslicking\templates\chinslicking\partner.html:55
 msgid "品牌合作"
 msgstr ""
 
-#: .\chinslicking\templates\chinslicking\index.html:44
+#: .\chinslicking\templates\chinslicking\header.html:65
+#: .\chinslicking\templates\chinslicking\index.html:45
 msgid "社会责任"
 msgstr ""
 
-#: .\chinslicking\templates\chinslicking\index.html:45
+#: .\chinslicking\templates\chinslicking\header.html:66
+#: .\chinslicking\templates\chinslicking\index.html:46
 msgid "新闻资讯"
 msgstr ""
 
-#: .\chinslicking\templates\chinslicking\index.html:46
+#: .\chinslicking\templates\chinslicking\header.html:67
+#: .\chinslicking\templates\chinslicking\index.html:47
 msgid "工作机会"
 msgstr ""
 
-#: .\chinslicking\templates\chinslicking\index.html:47
+#: .\chinslicking\templates\chinslicking\header.html:68
+#: .\chinslicking\templates\chinslicking\index.html:48
 msgid "联系秦食皇"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\index.html:105
+#: .\chinslicking\templates\chinslicking\index.html:144
+#: .\chinslicking\templates\chinslicking\index.html:180
+#: .\chinslicking\templates\chinslicking\index.html:216
+msgid ""
+"公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司"
+"简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介"
+"公司简介公司简介公司简介"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\index.html:165
+#: .\chinslicking\templates\chinslicking\index.html:177
+msgid "招商合作"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\index.html:201
+#: .\chinslicking\templates\chinslicking\index.html:213
+msgid "新闻中心"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\job_list.html:54
+msgid "招贤纳士"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\job_list.html:57
+msgid "我们期待您的加入"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\job_list.html:69
+msgid "经验"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\news_detail.html:74
+msgid "最新资讯"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\news_list.html:75
+msgid "更多"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\partner.html:58
+msgid "合作政策"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\partner.html:59
+msgid "项目优势"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\partner.html:60
+msgid "经销商问答"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\partner.html:61
+msgid "申请表下载"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_detail.html:39
+#: .\chinslicking\templates\chinslicking\product_list.html:40
+msgid "纯粹"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_detail.html:39
+#: .\chinslicking\templates\chinslicking\product_list.html:40
+msgid "纯粮"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_detail.html:39
+#: .\chinslicking\templates\chinslicking\product_list.html:40
+msgid "纯手工"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_detail.html:39
+#: .\chinslicking\templates\chinslicking\product_list.html:40
+msgid "纯天然"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_detail.html:42
+#: .\chinslicking\templates\chinslicking\product_list.html:43
+msgid "秦韵"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_detail.html:42
+#: .\chinslicking\templates\chinslicking\product_list.html:43
+msgid "秦风"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_detail.html:42
+#: .\chinslicking\templates\chinslicking\product_list.html:43
+msgid "秦文化"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_detail.html:42
+#: .\chinslicking\templates\chinslicking\product_list.html:43
+msgid "秦饮食"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_detail.html:77
+msgid "推荐产品"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_list.html:53
+msgid "秦食皇系列"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_list.html:56
+msgid "一口国土味，入胃解乡愁"
+msgstr ""
+
+#: .\chinslicking\templates\chinslicking\product_list.html:86
+msgid "查看详情"
 msgstr ""

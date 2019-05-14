@@ -1,6 +1,7 @@
 {% extends "chinslicking/layout.html" %}
 {% load staticfiles %}
 {% load my_filter_tag %}
+{% load i18n %}
 
 {% block header %}
     {% include "chinslicking/header.html" with title="品牌产品" %}
@@ -36,10 +37,10 @@
 <div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_4.jpg' %});height: 300px;">
     <div class="container text-center">
         <h3 class="banner-h3">
-            纯粹&nbsp;&nbsp;&sdot;&nbsp;&nbsp;纯粮&nbsp;&nbsp;&sdot;&nbsp;&nbsp;纯手工&nbsp;&nbsp;&sdot;&nbsp;&nbsp;纯天然
+            {% trans "纯粹" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯粮" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯手工" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯天然" %}
         </h3>
         <h3 class="banner-h3">
-            秦韵&nbsp;&nbsp;&sdot;&nbsp;&nbsp;秦风&nbsp;&nbsp;&sdot;&nbsp;&nbsp;秦文化&nbsp;&nbsp;&sdot;&nbsp;&nbsp;秦饮食
+            {% trans "秦韵" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "秦风" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "秦文化" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "秦饮食" %}
         </h3>
     </div>
 </div>
@@ -49,10 +50,10 @@
 <div class="portfolio-area sp bg2">
     <div class="container">
         <div class="section-title">
-            <h2>秦食皇系列</h2>
+            <h2>{% trans "秦食皇系列" %}</h2>
             <div class="sub-title">
                 <hr class="hr-2">
-                <span style="color:#fbdf51;">一口国土味，入胃解乡愁</span>
+                <span style="color:#fbdf51;">{% trans "一口国土味，入胃解乡愁" %}</span>
                 <hr class="hr-2">
             </div>
         </div>
@@ -82,13 +83,13 @@
                         <img src="/uploads/{{item.cover_image_url}}" alt="{{item.name}}">
                         <div class="hover-content">
                             <div>
-                                <a href="/king/product_detail/{{item.id}}" class="button">查看详情</a>
+                                <a href="/king/product_detail/{{item.id}}" class="button">{% trans "查看详情" %}</a>
                             </div>
                         </div>
                     </div>
                     <div class="portfolio-content">
-                        <a href="/king/product_detail/{{item.id}}"><h3>{{item.name}}</h3></a>
-                        <span>{{item.brief}}</span>
+                        <a href="/king/product_detail/{{item.id}}"><h3>{{item.name|truncate_point:'15'}}</h3></a>
+                        <span>{{item.brief|truncate_point:'30'}}</span>
                     </div>
                 </div>
             </div>

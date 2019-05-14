@@ -1,6 +1,7 @@
 {% extends "chinslicking/layout.html" %}
 {% load staticfiles %}
 {% load my_filter_tag %}
+{% load i18n %}
 
 {% block header %}
     {% include "chinslicking/header.html" with title="新闻资讯" %}
@@ -60,8 +61,8 @@
                     </div>
                     <div class="col-md-7">
                         <div class="about-content" style="margin-top:0;">
-                            <h3 style="margin: 5px 0;"><a href="/king/news_detail/{{item.id}}">{{item.title}}</a></h3>
-                            <div>{{item.brief}}...</div>
+                            <h3 style="margin: 5px 0;"><a href="/king/news_detail/{{item.id}}">{{item.title|truncate_point:'30'}}</a></h3>
+                            <div>{{item.brief|truncate_point:'300'}}</div>
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -71,7 +72,7 @@
                             <!--<div>{{item.create_time|date:'Y年m月d日 H:i:s'}}</div>-->
                         </div>
                         <div class="about-content" style="margin-top: 130px;">
-                            <a class="btn btn-default pull-right" href="/king/news_detail/{{item.id}}">更多>></a>
+                            <a class="btn btn-default pull-right" href="/king/news_detail/{{item.id}}">{% trans "更多" %}>></a>
                         </div>
                     </div>
                 </div>
