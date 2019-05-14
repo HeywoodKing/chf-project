@@ -349,6 +349,7 @@ iframe {
     padding: 5px 15px;
     color:#fff;
     background-color: #fbdf51;
+    border-radius: 50px;
 }
 
 .pager li>a, .pager li>span{
@@ -961,6 +962,7 @@ form.search-form button {
 .single-portfolio .inner .portfolio-img-pro img {
     min-width: 360px;
     min-height: 323px;
+    border-radius: 15px;
 }
 .single-portfolio .inner .portfolio-img-pro .hover-content {
       position: absolute;
@@ -1157,7 +1159,8 @@ form.search-form button {
   border: 1px solid #fde981;
   margin-bottom: 30px;
   padding: 35px;
-  border-radius: 4px; }
+  border-radius: 5px;
+}
   @media only screen and (max-width: 991px) {
     .faq-sidebar-wrap {
       padding: 15px; } }
@@ -1196,9 +1199,10 @@ form.search-form button {
  *   08. footer-top
  ***************************** */
 footer {
-  /*background-color: #272938;*/
-  background-color: #fff;
-  color: #7286a0;
+  /*background-color: #272938;
+  color: #7286a0;*/
+  background-color: #f9e633;
+  color: #000;
   line-height: 24px; }
 
 .footer-top {
@@ -1216,12 +1220,12 @@ footer {
 
 .footer_widget h4,
 .footer_widget h5 {
-  color: #7286a0; }
+  color: #000; }
 
 .footer_widget {
     /*padding: 0 35px;*/
     padding: 0 60px;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid #caba2a;
 }
 
 .footer_widget_noborder {

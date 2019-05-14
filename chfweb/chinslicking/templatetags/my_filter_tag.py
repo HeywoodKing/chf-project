@@ -7,6 +7,7 @@
 
 from django import template
 from django.utils.html import format_html
+from django.template.defaultfilters import stringfilter
 
 
 register = template.Library()
@@ -35,3 +36,26 @@ def circle_page(curr_page, loop_page):
 @register.filter(name='displayName')
 def displayName(value, arg):
     return eval('value.get_' + arg + '_display()')
+
+
+@stringfilter
+def truncate_point(value, arg):
+    """
+    Truncates a string after a certain number of words including
+    alphanumeric and CJK characters.
+    Argument: Number of words to truncate after.
+    """
+    try:
+        bits = []
+        for x in arg.split(u':'):
+            if len(x) == 0:
+                bits.append(None)
+            else:
+                bits.append(int(x))
+        if int(x) < len(value):
+            return value[slice(*bits)] + '...'
+        return value[slice(*bits)]
+    except (ValueError, TypeError):
+        return value  # Fail silently.
+
+register.filter('truncate_point', truncate_point)
