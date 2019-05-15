@@ -105,6 +105,19 @@
     </div>
 </div>
 
+<form action="/i18n/setlang/" method="post" id="change_language_form">
+    {% csrf_token %}
+    {% get_available_languages as LANGUAGES %}
+    <select class="change_language" name="language" id="language">
+    {% for lang in LANGUAGES %}
+        <option value="{{ lang.0 }}" {% ifequal lang.0 current_language %} selected {% endifequal %}>
+            {{lang.1}}
+        </option>
+    {% endfor %}
+    </select>
+</form>
+
+
 <script src="{% static 'chinslicking/plugins/jquery/jquery-3.1.0.min.js' %}"></script>
 <!--<script src="{% static 'chinslicking/plugins/jquery/jquery.i18n.properties.min.js' %}"></script>
 <script src="{% static 'chinslicking/js/language.js' %}"></script>-->
@@ -212,6 +225,15 @@
             // 鼠标移出时移出hover类
             $(this).children('.fixed-box-content-title').css('display', 'none');
         });
+
+        //切换语言
+        $('.change_language').on('change', function(e){
+            e.preventDefault();
+            $('#change_language_form').submit();
+            return false;
+        });
+
+
     });
 </script>
 

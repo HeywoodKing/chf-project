@@ -19,11 +19,19 @@ from django.conf.urls import url
 from django.conf import settings
 from django.views.static import serve
 from home import upload
+from django.conf.urls.i18n import i18n_patterns
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('chf/', include('home.urls')),
-    path('king/', include('chinslicking.urls')),
+    # path('king/', include('chinslicking.urls')),
+    # path('chf/', include('home.urls')),
     url(r'^uploads/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),  # 单独上传图片后显示图片的url地址路径
     url(r'^admin/upload/(?P<dir_name>[^/]+)$', upload.upload_image, name='upload_image'), # 富文本编辑器上传图片路径
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
+
+urlpatterns += i18n_patterns(
+    path('king/', include('chinslicking.urls')),
+    # path('chf/', include('home.urls')),
+)
