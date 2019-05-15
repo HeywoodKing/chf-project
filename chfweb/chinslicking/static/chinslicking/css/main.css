@@ -783,7 +783,7 @@ form.search-form button {
 }
 
 .single-service-row{
-    background-color: #fff;
+    background-color: #fde981;
     /*box-shadow: 2px 2px 25px rgba(253, 233, 129, 0.7);*/
     box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
@@ -794,7 +794,7 @@ form.search-form button {
 }*/
 
   .single-service .inner, .single-service-2 .inner, .single-service-3 .inner {
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 7px;
     padding: 30px;
     min-height: 175px;

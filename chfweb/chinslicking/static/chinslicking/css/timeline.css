@@ -102,7 +102,7 @@ a:hover {
 }
 .timeline-marker:before {
   /*background: #FF6B6B;*/
-  background: #fbdf51;
+  background: #7d7d7d;
   border: 3px solid transparent;
   border-radius: 100%;
   content: "";
@@ -118,7 +118,7 @@ a:hover {
   content: "";
   width: 3px;
   /*background: #CCD5DB;*/
-  background: #fde981;
+  background: #adaa9d;
   display: block;
   position: absolute;
   top: 24px;
