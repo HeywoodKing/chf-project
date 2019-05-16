@@ -1,20 +1,17 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from home import models
 
 # Register your models here.
 admin.site.site_header = '春和方 | 秦食皇 后台管理系统'
 admin.site.site_title = '后台管理系统'
 
-@admin.register(models.User)
-class UserAdmin(admin.ModelAdmin):
+
+@admin.register(models.ChfUserProfile)
+class ChfUserProfileAdmin(UserAdmin):
     list_display = ('username', 'password', 'email', 'nick_name', 'qq', 'phone', 'is_lock', 'is_enable')
     list_display_links = ('username', )
-    # class Media:
-    #     js = (
-    #         '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-    #         '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-    #         '/static/plugins/kindeditor-4.1.10/config.js',
-    #     )
+
 
 @admin.register(models.ChfProduct)
 class ChfProductAdmin(admin.ModelAdmin):
@@ -48,6 +45,7 @@ class ChfProductAdmin(admin.ModelAdmin):
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
 
+
 @admin.register(models.ChfProductType)
 class ChfProductTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'sort', 'is_enable', 'data_filter_name')
@@ -78,6 +76,7 @@ class ChfPartnerAdmin(admin.ModelAdmin):
 #     #         '/static/plugins/kindeditor-4.1.10/config.js',
 #     #     )
 
+
 @admin.register(models.ChfCompanyHistory)
 class ChfCompanyHistoryAdmin(admin.ModelAdmin):
     # exclude = ('breif', 'content', )
@@ -92,6 +91,7 @@ class ChfCompanyHistoryAdmin(admin.ModelAdmin):
             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
+
 
 @admin.register(models.ChfJobRecruit)
 class ChfJobRecruitAdmin(admin.ModelAdmin):
@@ -123,3 +123,25 @@ class ChfNewsAdmin(admin.ModelAdmin):
             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
+
+
+@admin.register(models.ChfApplyRecord)
+class ChfApplyRecordAdmin(admin.ModelAdmin):
+    list_display = ('name', 'sex', 'birthday', 'phone', 'email', 'is_get', 'is_inform', 'state', 'sort')
+    list_display_links = ('name', )
+    list_editable = ('is_get', 'is_inform', 'state', 'sort', )
+    exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username',)
+
+
+@admin.register(models.ChfUserWateringRecord)
+class ChfUserWateringRecordAdmin(admin.ModelAdmin):
+    list_display = ('ip', 'init_amount', 'amount', 'final_amount')
+    list_filter = ('ip', )
+    search_fields = ('ip', )
+    exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username',)
+
+
+@admin.register(models.ChfWateringQty)
+class ChfWateringQtyAdmin(admin.ModelAdmin):
+    list_display = ('amount', 'total_amount')
+    exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username',)

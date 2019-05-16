@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin,BaseUserMa
 from django.core.validators import RegexValidator
 from django.template.defaultfilters import slugify
 
+
 # Create your models here.
 class BaseModel(models.Model):
     create_time = models.DateTimeField('创建时间', auto_now_add=True)
@@ -16,6 +17,7 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
 
 # 系统|站点配置
 class SysConfig(BaseModel):
@@ -29,7 +31,7 @@ class SysConfig(BaseModel):
     icp = models.CharField('备案号', max_length=15)
     remark = models.CharField('备注', max_length=200)
 
-    def __str__(self):
+    class Meta:
         db_table = "sys_config"
         verbose_name = '站点配置'
         verbose_name_plural = 'SysConfig'
@@ -157,7 +159,7 @@ class SysConfig(BaseModel):
 #         return self.email
 
 
-class User(AbstractUser):
+class ChfUserProfile(AbstractUser):
     avatar = models.ImageField(upload_to='avatar/%Y/%m', default='avatar/default.png', max_length=200,
                                verbose_name='用户头像')
     qq = models.CharField(max_length=20, blank=True, null=True, verbose_name='QQ')
@@ -173,12 +175,14 @@ class User(AbstractUser):
     #     ordering = ['-id']
 
     class Meta:
+        db_table = 'chf_userprofile'
         verbose_name = '用户'
         verbose_name_plural = verbose_name
         ordering = ['-id']
 
     def __str__(self):
         return self.username
+
 
 # 公司发展历程
 class ChfCompanyHistory(BaseModel):
@@ -200,13 +204,13 @@ class ChfCompanyHistory(BaseModel):
     def __str__(self):
         return self.title
 
+
 # 产品类型
 class ChfProductType(BaseModel):
     name = models.CharField('类型名称', max_length=30)
     sort = models.IntegerField('排序', default=0)
     is_enable = models.BooleanField('是否启用', default=True)
     data_filter_name = models.CharField('数据类型标识', max_length=20, default='*')
-
 
     class Meta:
         db_table = 'chf_producttype'
@@ -217,6 +221,7 @@ class ChfProductType(BaseModel):
 
     def __str__(self):
         return self.name
+
 
 # 品牌产品
 class ChfProduct(BaseModel):
@@ -242,11 +247,11 @@ class ChfProduct(BaseModel):
     def __str__(self):
         return self.name
 
-
     def get_absolute_url(self, *args, **kwargs):
         # return reverse('product', args=(self.slug, ))
         self.slug = slugify(self.name)
         super(ChfProduct, self).get_absolute_url(*args, **kwargs)
+
 
 # 品牌合作
 class ChfPartner(BaseModel):
@@ -267,6 +272,7 @@ class ChfPartner(BaseModel):
 
     def __str__(self):
         return self.name
+
 
 # 社会责任
 # 新闻资讯
@@ -299,6 +305,7 @@ class ChfNews(BaseModel):
         self.slug = slugify(self.title)
         super(ChfNews, self).get_absolute_url(*args, **kwargs)
 
+
 # 工作机会
 class ChfJobRecruit(BaseModel):
     job_name = models.CharField('职位名称', max_length=50)
@@ -327,8 +334,7 @@ class ChfJobRecruit(BaseModel):
                                      ('1', '兼职'),
                                      ('2', '自由职业'),
                                      ('3', '其他'),
-                                 ),default=0
-                                 )
+                                 ), default=0)
     # job_require = models.TextField('岗位要求', default=None, null=True, blank=True)
     # skill_require = models.TextField('技能要求', default=None, null=True, blank=True)
     content = models.TextField('招聘要求', default=None, null=True, blank=True)
@@ -362,13 +368,17 @@ class ChfApplyRecord(BaseModel):
                                ('1', '女'),
                                ('2', '保密'),
                                ('3', '未知'),
-                           ), default=0),
+                           ), default=0)
     birthday = models.DateField('生日', )
-    telephone = models.CharField('电话', max_length=11)
+    phone = models.CharField('电话', max_length=11)
     email = models.EmailField('邮箱', max_length=50)
-    is_get = models.SmallIntegerField('是否已领取', default=0)
-    is_inform = models.SmallIntegerField('是否已通知', default=0)
-    state = models.SmallIntegerField('状态', default=0)
+    is_get = models.BooleanField('是否已领取', default=False)
+    is_inform = models.BooleanField('是否已通知', default=False)
+    state = models.SmallIntegerField('是否中奖', default=0,
+                                     choices=(
+                                         (0, '未中奖'),
+                                         (1, '中奖'),
+                                     ))
     sort = models.IntegerField('排序', default=0)
     
     class Meta:
@@ -380,9 +390,10 @@ class ChfApplyRecord(BaseModel):
     def __str__(self):
         return self.name
 
+
 # 用户浇水记录
 class ChfUserWateringRecord(BaseModel):
-    ip = models.IPAddressField('IP')
+    ip = models.GenericIPAddressField('IP', default='127.0.0.1', protocol='both')
     init_amount = models.IntegerField('期初水量', default=0)
     amount = models.IntegerField('本次水量', default=0)
     final_amount = models.IntegerField('期末水量', default=0)
@@ -396,16 +407,17 @@ class ChfUserWateringRecord(BaseModel):
     def __str__(self):
         return self.ip
 
+
 # 浇水量余额表
 class ChfWateringQty(BaseModel):
     amount = models.IntegerField('水量余额', default=0)
-
+    total_amount = models.IntegerField('浇水总量', default=0)
 
     class Meta:
         db_table = "chf_wateringqty"
         ordering = ['-create_time']
-        verbose_name = '用户浇水记录'
+        verbose_name = '浇水量余额表'
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.ip
+        return str(self.amount)

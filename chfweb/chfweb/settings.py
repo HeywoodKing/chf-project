@@ -172,7 +172,7 @@ STATICFILES_DIRS = (
 )
 
 # 自定义用户model 否则会报：HINT: Add or change a related_name argument to the definition for ‘User.user_permissions’ or ‘User.user_permissions’.
-AUTH_USER_MODEL = 'home.User'
+AUTH_USER_MODEL = 'home.ChfUserProfile'
 
 SITE_NAME = '春和方'
 SITE_DESC = '春和方官网'
