@@ -12,15 +12,15 @@ KindEditor.ready(function(K){
         height: '600px'
     };
 
-    var editor = new Array();
-    editor[0] = K.create('textarea[name=content]', {
-        width:'680px',
+    /*var editor = new Array();
+    editor[0] = K.create('textarea[name="content"]', {
+        width:'800px',
         height:'600px',
         resizeType:1,
         allowPreviewEmoticons: false,
         allowImageRemote: false,
         uploadJson: '/admin/upload/kindeditor',
-    });
+    });*/
     /*editor[1] = K.create('textarea[name="job_require"]', {
         width:'680px',
         height:'600px',

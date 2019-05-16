@@ -86,12 +86,12 @@ class ChfCompanyHistoryAdmin(admin.ModelAdmin):
     list_editable = ('title', 'is_enable', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
 
-    # class Media:
-    #     js = (
-    #         '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-    #         '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-    #         '/static/plugins/kindeditor-4.1.10/config.js',
-    #     )
+    class Media:
+        js = (
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
+        )
 
 @admin.register(models.ChfJobRecruit)
 class ChfJobRecruitAdmin(admin.ModelAdmin):
@@ -101,6 +101,13 @@ class ChfJobRecruitAdmin(admin.ModelAdmin):
     list_editable = ('education', 'work_prop', 'sort', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
 
+    class Media:
+        js = (
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
+        )
+
 
 @admin.register(models.ChfNews)
 class ChfNewsAdmin(admin.ModelAdmin):
@@ -109,3 +116,10 @@ class ChfNewsAdmin(admin.ModelAdmin):
     list_display_links = ('title', )
     list_editable = ('sort', 'read_count', 'is_enable', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
+
+    class Media:
+        js = (
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
+        )

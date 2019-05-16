@@ -168,7 +168,7 @@
         /*将语言选择默认选中缓存中的值*/
         //$("#language option[value="+i18nLanguage+"]").attr("selected",true);
         /* 选择语言 */
-        $("#i18nZh").on('click', function() {
+        $("#i18nZh").on('click', function(e) {
             /*var language = i18nLanguage;
             console.log(language);
             getCookie("userLanguage", language, {
@@ -184,11 +184,13 @@
                 i18nLanguage = 'zh-CN';
             }*/
 
+            e.preventDefault();
             $.post('/i18n/setlang/', {
                 csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
                 language: 'zh-hans'
             }, function(data){
                 location.reload();
+                return false;
             });
         });
 
@@ -208,11 +210,13 @@
                 i18nLanguage = 'zh-CN';
             }*/
 
+            e.preventDefault();
             $.post('/i18n/setlang/', {
                 csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
                 language: 'en'
             }, function(data){
                 location.reload();
+                return false;
             });
 
         });

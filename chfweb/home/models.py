@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.timezone import timezone
 from django.contrib.auth.models import AbstractUser, PermissionsMixin,BaseUserManager,AbstractBaseUser
 from django.core.validators import RegexValidator
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 class BaseModel(models.Model):
@@ -242,10 +243,10 @@ class ChfProduct(BaseModel):
         return self.name
 
 
-    def get_absolute_url(self):
-        return reverse('product', args=(self.slug, ))
-
-
+    def get_absolute_url(self, *args, **kwargs):
+        # return reverse('product', args=(self.slug, ))
+        self.slug = slugify(self.name)
+        super(ChfProduct, self).get_absolute_url(*args, **kwargs)
 
 # 品牌合作
 class ChfPartner(BaseModel):
@@ -266,7 +267,6 @@ class ChfPartner(BaseModel):
 
     def __str__(self):
         return self.name
-
 
 # 社会责任
 # 新闻资讯
@@ -292,8 +292,12 @@ class ChfNews(BaseModel):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
-        return reverse('news', args=(self.slug, ))
+    # def get_absolute_url(self):
+    #     return reverse('news', args=(self.slug, ))
+
+    def get_absolute_url(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(ChfNews, self).get_absolute_url(*args, **kwargs)
 
 # 工作机会
 class ChfJobRecruit(BaseModel):
@@ -341,7 +345,67 @@ class ChfJobRecruit(BaseModel):
     def __str__(self):
         return self.job_name
 
-    def get_absolute_url(self):
-        return reverse('jobrecruit', args=(self.slug, ))
+    # def get_absolute_url(self):
+    #     return reverse('jobrecruit', args=(self.slug, ))
+
+    def get_absolute_url(self, *args, **kwargs):
+        self.slug = slugify(self.job_name)
+        super(ChfJobRecruit, self).get_absolute_url(*args, **kwargs)
 
 
+# 用户抢购优惠券表
+class ChfApplyRecord(BaseModel):
+    name = models.CharField('姓名', max_length=100)
+    sex = models.CharField('性别', max_length=5,
+                           choices=(
+                               ('0', '男'),
+                               ('1', '女'),
+                               ('2', '保密'),
+                               ('3', '未知'),
+                           ), default=0),
+    birthday = models.DateField('生日', )
+    telephone = models.CharField('电话', max_length=11)
+    email = models.EmailField('邮箱', max_length=50)
+    is_get = models.SmallIntegerField('是否已领取', default=0)
+    is_inform = models.SmallIntegerField('是否已通知', default=0)
+    state = models.SmallIntegerField('状态', default=0)
+    sort = models.IntegerField('排序', default=0)
+    
+    class Meta:
+        db_table = "chf_applyrecord"
+        ordering = ['sort', '-create_time']
+        verbose_name = '用户抢券记录'
+        verbose_name_plural = verbose_name
+        
+    def __str__(self):
+        return self.name
+
+# 用户浇水记录
+class ChfUserWateringRecord(BaseModel):
+    ip = models.IPAddressField('IP')
+    init_amount = models.IntegerField('期初水量', default=0)
+    amount = models.IntegerField('本次水量', default=0)
+    final_amount = models.IntegerField('期末水量', default=0)
+
+    class Meta:
+        db_table = "chf_userwateringrecord"
+        ordering = ['-create_time']
+        verbose_name = '用户浇水记录'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.ip
+
+# 浇水量余额表
+class ChfWateringQty(BaseModel):
+    amount = models.IntegerField('水量余额', default=0)
+
+
+    class Meta:
+        db_table = "chf_wateringqty"
+        ordering = ['-create_time']
+        verbose_name = '用户浇水记录'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.ip
