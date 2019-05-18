@@ -791,7 +791,7 @@
 	background: url(background.png) no-repeat scroll 0 -25px transparent;
 	cursor: pointer;
 	height: auto;
-	line-height: 10px;
+	/*line-height: 23px;*/
 	overflow: visible;
 	display: inline-block;
 	vertical-align: top;
@@ -859,10 +859,10 @@
 }
 .ke-upload-area {
 	position: relative;
-	/*overflow: hidden;*/
+	overflow: inherit;
 	margin: 0;
 	padding: 0;
-	height: 25px;
+	*height: 25px;
 }
 .ke-upload-area .ke-upload-file {
 	position: absolute;

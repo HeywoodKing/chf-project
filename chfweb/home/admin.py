@@ -18,8 +18,8 @@ class ChfProductAdmin(admin.ModelAdmin):
     # fields = ()
     # inlines = ()
     list_display = ('name', 'slug', 'brief', 'cover_image_url', 'read_count', 'product_type', 'sort', 'is_recommand', 'is_enable')
-    list_display_links = ('name', 'product_type', )
-    list_editable = ('sort', 'is_recommand', 'is_enable')
+    list_display_links = ('name', )
+    list_editable = ('sort', 'is_recommand', 'is_enable', 'product_type')
     list_filter = ('product_type', 'is_recommand', 'is_enable')
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
     # fieldsets = (

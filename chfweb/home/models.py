@@ -159,6 +159,9 @@ class SysConfig(BaseModel):
 #         return self.email
 
 
+# AbstractBaseUser中只含有3个field: password, last_login和is_active.
+# 如果你对django user model默认的first_name, last_name不满意,
+# 或者只想保留默认的密码储存方式, 则可以选择这一方式.
 class ChfUserProfile(AbstractUser):
     avatar = models.ImageField(upload_to='avatar/%Y/%m', default='avatar/default.png', max_length=200,
                                verbose_name='用户头像')
@@ -168,20 +171,45 @@ class ChfUserProfile(AbstractUser):
     is_lock = models.BooleanField(default=False, verbose_name='是否锁定')
     is_enable = models.BooleanField(default=True, verbose_name='是否启用')
 
-    # class Meta(AbstractUser.Meta):
-    #     swappable = 'AUTH_USER_MODEL'
-    #     verbose_name = '用户'
-    #     verbose_name_plural = verbose_name
-    #     ordering = ['-id']
-
-    class Meta:
+    class Meta(AbstractUser.Meta):
         db_table = 'chf_userprofile'
+        swappable = 'AUTH_USER_MODEL'
         verbose_name = '用户'
         verbose_name_plural = verbose_name
         ordering = ['-id']
 
+    # class Meta:
+    #     db_table = 'chf_userprofile'
+    #     verbose_name = '用户'
+    #     verbose_name_plural = verbose_name
+    #     ordering = ['-id']
+
     def __str__(self):
         return self.username
+
+    # def create_user(self, username, nickname, password=None):
+    #     # create user here
+    #     pass
+    #
+    # def create_superuser(self, username, password):
+    #     # create superuser here
+    #     pass
+
+# class ChfUserProfileBase(AbstractBaseUser):
+#     identifier = models.CharField(max_length=50, unique=True)
+#     nickname = models.CharField(max_length=10, unique=True)
+#     data_of_birth = models.DateField()
+#     height = models.FloatField()
+#     is_active = models.BooleanField(default=True)
+#
+#     USERNAME_FIELD = 'identifier'
+#     REQUIRED_FIELDS = ['date_of_birth', 'height']
+#
+#     def get_full_name(self):
+#         return self.identifier
+#
+#     def get_short_name(self):
+#         return self.nickname
 
 
 # 公司发展历程

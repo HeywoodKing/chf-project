@@ -146,10 +146,14 @@ USE_L10N = True
 USE_TZ = True
 
 LANGUAGES = (
+    ('zh-hans', _('中文简体')),
     ('en', _('English')),
-    ('zh-Hans', _('中文简体')),
-    ('zh-Hant', _('中文繁體')),
+    # ('zh-Hant', _('中文繁體')),
 )
+
+LANGUAGES_SUPPORTED = ('en', 'zh-hans', )
+
+
 
 # 翻译文件所在目录，需要手工创建
 LOCALE_PATHS = [
@@ -171,7 +175,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'chinslicking', 'static'),
 )
 
-# 自定义用户model 否则会报：HINT: Add or change a related_name argument to the definition for ‘User.user_permissions’ or ‘User.user_permissions’.
+
+# 自定义用户model 否则会报：HINT: Add or change a related_name argument to the definition
+# for ‘User.user_permissions’ or ‘User.user_permissions’.
 AUTH_USER_MODEL = 'home.ChfUserProfile'
 
 SITE_NAME = '春和方'
@@ -184,14 +190,15 @@ SITE_AUTHOR2 = 'flack'
 
 
 MEDIA_URL = '/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  #设置静态文件路径为主目录下的uploads文件夹
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静态文件路径为主目录下的uploads文件夹
 
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
         'standard': {
-            'fotmat': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'  #日志格式
+            'fotmat': '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] '
+                      '[%(levelname)s]- %(message)s'  # 日志格式
         },
         'verbose': {
             'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',

@@ -527,8 +527,58 @@ iframe {
 .fixed-box .fixed-box-content-qrcode img{
     display: inline-block;
 }
-
 /* 悬浮固定窗口 end*/
+
+/* 语言选择悬浮固定 start*/
+.fixed-box-language{
+    position:fixed;
+    top:40px;
+    right:25px;
+    z-index: 9000;
+    width: 60px;
+    background-color: transparent;
+}
+/* 语言选择悬浮固定 end*/
+
+.language-form, #change_language_form{
+    margin-top: -5px;
+}
+
+.language-form .bootstrap-select, #change_language_form .bootstrap-select{
+    width: auto;
+}
+
+.language-form .bootstrap-select button, #change_language_form .bootstrap-select button{
+    background-color: #fde981;
+    font-size: 16px;
+}
+.language-form .bootstrap-select ul, #change_language_form .bootstrap-select ul{
+    background-color: #fde981;
+    font-size: 16px;
+}
+
+.language-form .bootstrap-select ul li>.active>a,
+.language-form .bootstrap-select ul li>.active>a:focus,
+.language-form .bootstrap-select ul li>.active>a:hover,
+#change_language_form .bootstrap-select .dropdown-menu>.active>a,
+#change_language_form .bootstrap-select .dropdown-menu>.active>a:focus,
+#change_language_form .bootstrap-select .dropdown-menui>.active>a:hover {
+    background-color: #80bf17;
+    color: #000;
+    font-size: 16px;
+}
+
+.language-form .bootstrap-select ul li>.active>a>span:hover,
+.language-form .bootstrap-select ul li>.active>a>span:hover,
+.language-form .bootstrap-select ul li>.active>a>span:hover,
+#change_language_form .bootstrap-select .dropdown-menu>.active>a>span:hover,
+#change_language_form .bootstrap-select .dropdown-menu>.active>a>span:hover,
+#change_language_form .bootstrap-select .dropdown-menui>.active>a>span:hover {
+    color: #000;
+    font-size: 16px;
+}
+
+
 
 /*****************************
  *  end my customer css
@@ -564,8 +614,9 @@ header {
   .nav-column .right-nav {
     float: right;
     position: relative; }
-    .nav-column .right-nav span {
-      padding: 0 15px; }
+    .nav-column .right-nav>span {
+      padding: 0 15px;
+    }
     .nav-column .right-nav .search-icon.active {
       color: red; }
     .nav-column .right-nav .search-icon.active::before {

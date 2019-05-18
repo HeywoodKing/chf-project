@@ -1,14 +1,17 @@
 from django.shortcuts import render,redirect, HttpResponse
+from django import http
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.translation import ugettext as _
 import logging
 import random
+import datetime
 from home import models
 
 
 # Create your views here.
 logger = logging.getLogger("chinslicking.views")
+
 
 def global_setting(req):
     SITE_NAME2 = settings.SITE_NAME2
@@ -17,6 +20,30 @@ def global_setting(req):
     MEDIA_URL = settings.MEDIA_URL
 
     return locals()
+
+
+# def set_language(req):
+#     from django.utils.translation import check_for_language
+#     next = req.REQUEST.get('next', None)
+#
+#     if not next:
+#         next = req.META.get('HTTP_REFERER', None)
+#     if not next:
+#         next = '/'
+#
+#     response = http.HttpResponseRedirect(next)
+#     if req.method == 'POST':
+#         lang_code = req.POST.get('language', None)
+#
+#     if lang_code and check_for_language(lang_code):
+#         if hasattr(req, 'session'):
+#             req.session['django_language'] = lang_code
+#
+#         max_age = 60*60*24*365
+#         expires = datetime.datetime.strftime(datetime.datetime.utctime() + datetime.timedelta(seconds=max_age), "%a, %d-%b-%Y %H:%M:%S GMT")
+#         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang_code, max_age, expires)
+#     return response
+
 
 # 首页
 def index(req):
@@ -29,11 +56,10 @@ def about(req):
     index = 1
     return render(req, 'chinslicking/about.html', locals())
 
+
 def contact(req):
     index = 7
     return render(req, 'chinslicking/contact.html', locals())
-
-
 
 
 # 品牌产品
@@ -55,6 +81,7 @@ def product_list(req):
     # 获取产品
     return render(req, 'chinslicking/product_list.html', locals())
 
+
 # 品牌产品详情
 def product_detail(req, id):
     index = 2
@@ -73,6 +100,7 @@ def product_detail(req, id):
     product_command_list = random.sample(list(models.ChfProduct.objects.filter(is_recommand=True)), 3)
 
     return render(req, 'chinslicking/product_detail.html', locals())
+
 
 # 品牌合作
 def partner(req):
@@ -97,6 +125,7 @@ def resp_list(req):
     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
 
     return render(req, 'chinslicking/duty_list.html', locals())
+
 
 # 社会责任详情
 def resp_detail(req, id):
@@ -132,6 +161,7 @@ def news_list(req):
     news_lasted = models.ChfNews.objects.filter(type=0)[:10]
 
     return render(req, 'chinslicking/news_list.html', locals())
+
 
 # 新闻资讯
 def news_detail(req, id):

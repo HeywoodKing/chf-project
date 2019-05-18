@@ -44,13 +44,48 @@ var getCookie = function(name, value, options) {
 };
 
 /**
+ * 执行写入或读取缓存方法
+ * @return
+ */
+var setCookie = function(value){
+    /*
+    首先获取用户浏览器设备之前选择过的语言类型
+     */
+    if (getCookie("userLanguage")) {
+        i18nLanguage = getCookie("userLanguage");
+    } else {
+        // 获取浏览器语言
+        var navLanguage = getNavLanguage();
+        if(navLanguage != value){
+            navLanguage = value;
+        }
+        if (navLanguage) {
+            // 判断是否在网站支持语言数组里
+            var charSize = $.inArray(navLanguage, webLanguage);
+            if (charSize > -1) {
+                i18nLanguage = navLanguage;
+                // 存到缓存中
+                getCookie("userLanguage", navLanguage);
+            };
+        } else{
+            console.log("not navigator");
+            return false;
+        }
+    }
+}
+
+/**
  * 获取浏览器语言类型
  * @return {string} 浏览器国家语言
  */
 var getNavLanguage = function(){
     if(navigator.appName == "Netscape"){
         var navLanguage = navigator.language;
-        return navLanguage.substr(0,2);
+        if(navLanguage.toLowerCase() == "zh-cn"){
+            navLanguage = "zh-Hans";
+        }
+        //return navLanguage.substr(0,2);
+        return navLanguage;
     }
     return false;
 }
@@ -58,12 +93,13 @@ var getNavLanguage = function(){
 /**
  * 设置语言类型： 默认为中文
  */
-var i18nLanguage = "zh-CN";
+var i18nLanguage = "zh-Hans";
 
-/*
-设置一下网站支持的语言种类
+/**
+ * 设置一下网站支持的语言种类
  */
-var webLanguage = ['zh-CN', 'zh-TW', 'en'];
+var webLanguage = ['zh-Hans', 'zh-Hant', 'en', 'en-us'];
+
 
 /**
  * 执行页面i18n方法
