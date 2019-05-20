@@ -408,7 +408,7 @@ iframe {
 .outer .front .front-content{
     position:absolute;
     top:34%;
-    left:143px;
+    left:30%;
     text-align:center;
     color: #fff;
 }
@@ -427,11 +427,12 @@ iframe {
 .outer .back{
     transform:rotateY(-180deg);
     background-color: rgba(0,0,0,0.8);
+    overflow: hidden;
 }
 .outer .back .back-content{
     position:absolute;
-    top:80px;
-    left:0px;
+    top: 0px;
+    left: 0px;
     margin: 50px 30px 30px 30px;
     text-align:center;
     color: #fff;
