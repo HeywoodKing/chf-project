@@ -390,7 +390,7 @@ iframe {
 /*翻牌效果 start*/
 .outer{
     margin: 0 auto;
-    width: 100%;
+    width: 98%;
     height: 520px;
     display: flex;
     justify-content: center;
@@ -408,7 +408,7 @@ iframe {
 .outer .front .front-content{
     position:absolute;
     top:34%;
-    left:30%;
+    left:35%;
     text-align:center;
     color: #fff;
 }
@@ -433,7 +433,7 @@ iframe {
     position:absolute;
     top: 0px;
     left: 0px;
-    margin: 50px 30px 30px 30px;
+    padding: 50px 30px 30px 30px;
     text-align:center;
     color: #fff;
 }
