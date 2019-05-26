@@ -33,22 +33,22 @@
     </div>
 </div>-->
 
-<div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_8.jpg' %});height: 360px;">
+<div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_8.jpg' %});">
     <div class="container text-center">
-        <h3 class="banner-h3">{% trans "华夏传统美食的国际级复刻者" %}</h3>
+        <h2>{% trans "华夏传统美食的国际级复刻者" %}</h2>
     </div>
 </div>
 {% endblock %}
 
 {% block content %}
-<div class="service-area bg2 sp" style="background-color: #fbdf51;">
+<div class="service-area bg2 sp" style="background-color: #a7d676;">
     <div class="container">
         <div class="row">
             <div class="single-service-row">
                 <div class="col-lg-4 col-md-6 single-service" style="border-right: 1px solid #eee;">
                     <div class="text-center">
                         <div class="title">
-                            <h2>2015{% trans "年" %}</h2>
+                            <h2><b>2015{% trans "年" %}</b></h2>
                         </div>
                         <div class="content">
                             <p>{% trans "公司正式成立" %}</p>
@@ -58,7 +58,7 @@
                 <div class="col-lg-4 col-md-6 single-service" style="border-right: 1px solid #eee;">
                     <div class="text-center">
                         <div class="title">
-                            <h2>FDA</h2>
+                            <h2><b>FDA</b></h2>
                         </div>
                         <div class="content">
                             <p>{% trans "注册认证" %}</p>
@@ -68,7 +68,7 @@
                 <div class="col-lg-4 col-md-6 single-service">
                     <div class="text-center">
                         <div class="title">
-                            <h2>3{% trans "个" %}</h2>
+                            <h2><b>3{% trans "个" %}</b></h2>
                         </div>
                         <div class="content">
                             <p>{% trans "系列产品" %}</p>
@@ -79,7 +79,11 @@
             </div>
         </div>
         <div class="section-title">
-            <h2>{% trans "公司简介" %}<div style="background-color: #fde981; width: 200px; height: 20px; margin-top: -20px; margin-left:  auto; margin-right: auto;"></div></h2>
+            <h2>{% trans "公司简介" %}
+            </h2>
+            <div class="section-title-bg">
+                <div class="section-title-bg-box" style=""></div>
+            </div>
             <div class="sub-title">
                 <hr class="hr-2">
                 <span style="color: #000;">ABOUT</span>
@@ -93,10 +97,11 @@
                 </div>
             </div>
             <div class="col-lg-7 col-md-6 single-service">
-                <div class="inner">
-                    <div class="content">
+                <div class="inner" style="padding: 0;">
+                    <div>
+                        <h2><i>{% trans "西安秦食皇食品有限公司<br>是一家集研发、生产、销售“秦食皇”<br>品牌产品及陕西当地优质农副产品的食品公司" %}</i></h2>
                         <p style="text-indent:2em; font-size:16px; letter-spacing:1px;">
-                            {% trans "西安秦食皇食品有限公司是一家集研发、生产、销售“秦食皇”品牌产品及陕西当地优质农副产品的食品公司。“秦食皇”——华夏传统美食的国际级复刻者，诞生于2015年，是在国家工商总局注册，通过国家版权局认证的民族品牌，并于2017年向全球72个国家递交了商标国际注册，使其日趋成为国际化品牌。“秦食皇”致力于打造营养、健康的全素食品。
+                            {% trans "“秦食皇”——华夏传统美食的国际级复刻者，诞生于2015年，是在国家工商总局注册，通过国家版权局认证的民族品牌，并于2017年向全球72个国家递交了商标国际注册，使其日趋成为国际化品牌。“秦食皇”致力于打造营养、健康的全素食品。
       陕西拥抱着素称——华夏文明龙脉的秦岭，这里一山四季、物产丰富，蕴藏着许多植物资源。由国内知名植物科研专家组成的“秦食皇”产品研发中心，致力于发掘陕西特有植物的科学提取和运用。“秦食皇”以秦岭山脉生长的各种植物为原料，利用高科技植物提取技术，结合陕西传统民俗食品的配方，通过现代化设备无菌生产，精心推出新理念的全素健康食品。从原料到生产，严格把控每一个环节，确保所有的食材绿色、健康、安全且符合国际标准；满足消费者对优质生活的要求，做让老百姓“送的安心、吃的放心”产品。
       基于新丝路这趟经济动车，“秦食皇”希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视野。我们希望通过境内外宣传与销售通道，改变世人对中国食品的传统认知，实现“一口国土味，入胃解乡愁”夙愿的同时，更致力于把“秦食皇”打造成可以代表中国特色食品的名片。" %}
                         </p>
@@ -104,319 +109,60 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="inner" style="width: 100%; height: 370px; background-color: #a6e67d; margin-top: -415px;"></div>
+        </div>
     </div>
 </div>
 
-<!--<div class="service-area sp">
-    <div class="container">
-        <div class="section-title" data-margin="0 0 40px">
-            <h2>关于我们</h2>
-            <p>&mdash;&mdash;&mdash;&mdash; ABOUT &mdash;&mdash;&mdash;&mdash;</p>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 single-service-2">
-                <div class="inner">
-                    <div class="title">
-                        <div class="icon">
-                            <i class="glyphicon glyphicon-object-align-bottom"></i>
-                        </div>
-                        <h1>2015年</h1>
-                    </div>
-                    <div class="content">
-                        <p>公司正式成立</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 single-service-2">
-                <div class="inner">
-                    <div class="title">
-                        <div class="icon">
-                            <i class="glyphicon glyphicon-tags"></i>
-                        </div>
-                        <h1>FDA</h1>
-                    </div>
-                    <div class="content">
-                        <p>注册认证</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 single-service-2">
-                <div class="inner">
-                    <div class="title">
-                        <div class="icon">
-                            <i class="glyphicon glyphicon-stats"></i>
-                        </div>
-                        <h1>3个</h1>
-                    </div>
-                    <div class="content">
-                        <p>系列产品</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 single-service-2">
-                <div class="">
-                    <img src="{% static 'chinslicking/images/company.jpg' %}" alt="portfolio-image">
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-6 single-service-2">
-                <div class="content">
-                    <p style="text-indent: 2em;">
-                        西安秦食皇食品有限公司是一家集研发、生产、销售“秦食皇”品牌产品及陕西当地优质农副产品的食品公司。“秦食皇”——华夏传统美食的国际级复刻者，诞生于2015年，是在国家工商总局注册，通过国家版权局认证的民族品牌，并于2017年向全球72个国家递交了商标国际注册，使其日趋成为国际化品牌。“秦食皇”致力于打造营养、健康的全素食品。陕西拥抱着素称——华夏文明龙脉的秦岭，这里一山四季、物产丰富，蕴藏着许多植物资源。由国内知名植物科研专家组成的“秦食皇”产品研发中心，致力于发掘陕西特有植物的科学提取和运用。“秦食皇”以秦岭山脉生长的各种植物为原料，利用高科技植物提取技术，结合陕西传统民俗食品的配方，通过现代化设备无菌生产，精心推出新理念的全素健康食品。从原料到生产，严格把控每一个环节，确保所有的食材绿色、健康、安全且符合国际标准；满足消费者对优质生活的要求，做让老百姓“送的安心、吃的放心”产品。基于新丝路这趟经济动车，“秦食皇”希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视野。我们希望通过境内外宣传与销售通道，改变世人对中国食品的传统认知，实现“一口国土味，入胃解乡愁”夙愿的同时，更致力于把“秦食皇”打造成可以代表中国特色食品的名片。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
-
-<!--<div class="faq-area sp bg2">
-    <div class="container">
-        <div class="section-title">
-            <h3>发展历程</h3>
-            <div class="sub-title">
-                <hr class="hr-2">
-                <span>DEVELOPMENT HISTORY</span>
-                <hr class="hr-2">
-            </div>
-        </div>
-        <div class="row spb">
-            <div class="col-md-6">
-                <div class="faq-img text-center">
-                    <img src="{% static 'chinslicking/images/comp_1.jpg' %}" alt="faq">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="faq" style="border-left: 1px solid #fbdf51;">
-                    <div class="single-item">
-                        <h4>2019-05&nbsp;&nbsp;&nbsp;&nbsp;热烈祝贺春和方认证通过FDA</h4>
-                        <div class="content">
-                            热烈祝贺春和方认证通过FDA
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>2019-03&nbsp;&nbsp;&nbsp;&nbsp;和百度签订战略合作协议</h4>
-                        <div class="content">
-                            和百度签订战略合作协议
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row spb">
-            <div class="col-md-6">
-                <div class="faq" style="border-right: 1px solid #fbdf51;">
-                    <div class="single-item">
-                        <h4>2018-10&nbsp;&nbsp;&nbsp;&nbsp;热烈祝贺春和方认证通过FDA</h4>
-                        <div class="content">
-                            热烈祝贺春和方认证通过FDA
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>2018-05&nbsp;&nbsp;&nbsp;&nbsp;和百度签订战略合作协议</h4>
-                        <div class="content">
-                            和百度签订战略合作协议
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>2018-01&nbsp;&nbsp;&nbsp;&nbsp;和百度签订战略合作协议</h4>
-                        <div class="content">
-                            和百度签订战略合作协议
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="faq-img text-center">
-                    <img src="{% static 'chinslicking/images/comp_2.jpg' %}" alt="faq">
-                </div>
-            </div>
-        </div>
-        <div class="row spb">
-            <div class="col-md-6">
-                <div class="faq-img text-center">
-                    <img src="{% static 'chinslicking/images/comp_1.jpg' %}" alt="faq">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="faq" style="border-left: 1px solid #fbdf51;">
-                    <div class="single-item">
-                        <h4>2017-07&nbsp;&nbsp;&nbsp;&nbsp;热烈祝贺春和方认证通过FDA</h4>
-                        <div class="content">
-                            热烈祝贺春和方认证通过FDA
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row spb">
-            <div class="col-md-6">
-                <div class="faq" style="border-right: 1px solid #fbdf51;">
-                    <div class="single-item">
-                        <h4>2016-10&nbsp;&nbsp;&nbsp;&nbsp;热烈祝贺春和方认证通过FDA</h4>
-                        <div class="content">
-                            热烈祝贺春和方认证通过FDA
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>2016-05&nbsp;&nbsp;&nbsp;&nbsp;和百度签订战略合作协议</h4>
-                        <div class="content">
-                            和百度签订战略合作协议
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>2016-01&nbsp;&nbsp;&nbsp;&nbsp;和百度签订战略合作协议</h4>
-                        <div class="content">
-                            和百度签订战略合作协议
-                        </div>
-                    </div>
-                    <div class="single-item">
-                        <h4>2016-01&nbsp;&nbsp;&nbsp;&nbsp;和百度签订战略合作协议</h4>
-                        <div class="content">
-                            和百度签订战略合作协议
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="faq-img text-center">
-                    <img src="{% static 'chinslicking/images/comp_2.jpg' %}" alt="faq">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
-<div class="gallery-area sp" style="background-color: #fde981;">
+<div class="gallery-area sp" style="background-color: #99cc67;">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
             <h2>{% trans "企业文化" %}</h2>
+            <div class="section-title-bg">
+                <div class="section-title-bg-box" style=""></div>
+            </div>
             <div class="sub-title">
                 <hr class="hr-2">
-                <span style="color: #000;">我们的理念：绿色、健康、安全</span>
-                <hr class="hr-2">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 single-gallery">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/company_culture.jpg' %}" alt="">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-sm-6 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/company_culture.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/company_culture.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/company_culture.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/company_culture.jpg' %}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 single-gallery">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/company_culture.jpg' %}" alt="">
-                </div>
-            </div>
-            <div class="col-md-4 single-gallery">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/company_culture.jpg' %}" alt="">
-                </div>
-            </div>
-            <div class="col-md-4 single-gallery">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/company_culture.jpg' %}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="gallery-area sp" style="background-color: #fbdf51;">
-    <div class="container">
-        <div class="section-title" data-margin="0 0 40px">
-            <h2>{% trans "组织架构" %}</h2>
-            <div class="sub-title">
-                <hr class="hr-2">
-                <span style="color: #000;">ORGANIZATION CHART</span>
+                <span>我们的理念：绿色、健康、安全</span>
                 <hr class="hr-2">
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 single-gallery">
                 <div class="inner">
-                    <img src="{% static 'chinslicking/images/org.jpg' %}" alt="">
+                    <img src="{% static 'chinslicking/images/about.png' %}" alt="">
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="gallery-area sp" style="background-color: #fde981;">
-    <div class="container">
-        <div class="section-title" data-margin="0 0 40px">
-            <h2>{% trans "品牌故事" %}</h2>
-            <div class="sub-title">
-                <hr class="hr-2">
-                <span style="color: #000;">HORNOR</span>
-                <hr class="hr-2">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 single-gallery">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/gallery-1.jpg' %}" alt="">
-                </div>
-            </div>
-            <div class="col-md-6 single-gallery">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/gallery-1.jpg' %}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="gallery-area sp" style="background-color: #fde981;">
+<div class="gallery-area sp" style="background-color: #a7d676;">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
             <h2>{% trans "品牌荣誉" %}</h2>
+            <div class="section-title-bg">
+                <div class="section-title-bg-box" style=""></div>
+            </div>
             <div class="sub-title">
                 <hr class="hr-2">
-                <span style="color: #000;">HORNOR</span>
+                <span>HORNOR</span>
                 <hr class="hr-2">
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 single-gallery">
+            <div class="col-md-4">
                 <div class="inner">
                     <img src="{% static 'chinslicking/images/gallery-1.jpg' %}" alt="">
                 </div>
             </div>
-            <div class="col-md-4 single-gallery">
+            <div class="col-md-4">
                 <div class="inner">
                     <img src="{% static 'chinslicking/images/gallery-1.jpg' %}" alt="">
                 </div>
             </div>
-            <div class="col-md-4 single-gallery">
+            <div class="col-md-4">
                 <div class="inner">
                     <img src="{% static 'chinslicking/images/gallery-1.jpg' %}" alt="">
                 </div>
@@ -425,57 +171,16 @@
     </div>
 </div>
 
-<div class="gallery-area sp" style="background-color: #fbdf51;">
-    <div class="container">
-        <div class="section-title" data-margin="0 0 40px">
-            <h2>{% trans "团队风采" %}</h2>
-            <div class="sub-title">
-                <hr class="hr-2">
-                <span style="color: #000;">HORNOR</span>
-                <hr class="hr-2">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 single-gallery">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/gallery-1.jpg' %}" alt="">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-sm-6 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-2.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-3.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-4.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-5.jpg' %}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="faq-area sp bg" style="background-color: #fde981;">
+<div class="faq-area sp bg" style="background-color: #99cc67;">
     <div class="container">
         <div class="section-title">
             <h2>{% trans "发展历程" %}</h2>
+            <div class="section-title-bg">
+                <div class="section-title-bg-box" style=""></div>
+            </div>
             <div class="sub-title">
                 <hr class="hr-2">
-                <span style="color: #000;">DEVELOPMENT HISTORY</span>
+                <span>DEVELOPMENT HISTORY</span>
                 <hr class="hr-2">
             </div>
         </div>
@@ -484,8 +189,11 @@
                 <ul class="timeline timeline-centered">
                     <li class="timeline-item">
                         <div class="timeline-info">
-                            <span>2015{% trans "年" %}xx{% trans "月" %}</span>
-                            <p>{% trans "西安秦始皇食品有限公司成立" %}</p>
+                            <div class="timeline-info-bg">
+                                <h3>2015{% trans "年" %}xx{% trans "月" %}</h3>
+                                <p>{% trans "西安秦始皇食品有限公司成立" %}</p>
+                            </div>
+                            <div class="arrow"></div>
                         </div>
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
@@ -497,8 +205,11 @@
                     </li>
                     <li class="timeline-item">
                         <div class="timeline-info">
-                            <span>2017{% trans "年" %}xx{% trans "月" %}</span>
-                            <p>{% trans "荣获感动陕西&sdot;2017旅游影响力十佳最具人气奖" %}</p>
+                            <div class="timeline-info-bg">
+                                <h3>2017{% trans "年" %}xx{% trans "月" %}</h3>
+                                <p>{% trans "荣获感动陕西&sdot;2017旅游影响力十佳最具人气奖" %}</p>
+                            </div>
+                            <div class="arrow"></div>
                         </div>
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
@@ -507,8 +218,11 @@
                     </li>
                     <li class="timeline-item">
                         <div class="timeline-info">
-                            <span>2017{% trans "年" %}xx{% trans "月" %}</span>
-                            <p>{% trans "荣获2017促进陕西经济发展突出贡献单位奖" %}</p>
+                            <div class="timeline-info-bg">
+                                <h3>2017{% trans "年" %}xx{% trans "月" %}</h3>
+                                <p>{% trans "荣获2017促进陕西经济发展突出贡献单位奖" %}</p>
+                            </div>
+                            <div class="arrow"></div>
                         </div>
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
@@ -517,8 +231,11 @@
                     </li>
                     <li class="timeline-item">
                         <div class="timeline-info">
-                            <span>2018{% trans "年" %}xx{% trans "月" %}</span>
-                            <p>{% trans "2018中国特色旅游商品大赛获奖" %}</p>
+                            <div class="timeline-info-bg">
+                                <h3>2018{% trans "年" %}xx{% trans "月" %}</h3>
+                                <p>{% trans "2018中国特色旅游商品大赛获奖" %}</p>
+                            </div>
+                            <div class="arrow"></div>
                         </div>
                         <div class="timeline-marker"></div>
                         <div class="timeline-content">
@@ -539,17 +256,17 @@
     </div>
 </div>
 
-<div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_7.jpg' %});height: 300px;">
+<div class="page-bottom-title sp" style="background-image: url({% static 'chinslicking/images/banner_7.jpg' %});height: 300px;">
     <div class="container text-center">
-        <h3 class="banner-h3" style="color: #0b0b0b">
+        <h2 class="banner-h3" style="color:rgb(255,255,255,0.8);">
             {% trans "愿景规划" %}
-        </h3>
+        </h2>
         <h4 class="banner-h4">
             <hr class="hr-1">
             <span>VISION</span>
             <hr class="hr-1">
         </h4>
-        <p style="color:#000; letter-spacing:1px;">{% trans '"秦食皇"希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视野，意图通过境外宣传与销售通道，改变海外华人对中国美食的认知。实现我们"一口国土味，入胃解乡愁"的夙愿，让老百姓"送的安心，吃的放心"。' %}</p>
+        <p style="color:rgb(255,255,255,0.8); letter-spacing:1px;">{% trans '"秦食皇"希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视野，意图通过境外宣传与销售通道，改变海外华人对中国美食的认知。实现我们"一口国土味，入胃解乡愁"的夙愿，让老百姓"送的安心，吃的放心"。' %}</p>
     </div>
 </div>
 

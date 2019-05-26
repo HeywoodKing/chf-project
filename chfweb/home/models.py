@@ -256,7 +256,7 @@ class ChfProduct(BaseModel):
     name = models.CharField('产品名称', max_length=100)
     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
                             help_text='根据name生成的，用于生成页面URL，必须唯一')
-    brief = models.CharField('产品摘要', max_length=50)
+    brief = models.CharField('产品摘要', max_length=40)
     content = models.TextField('产品描述', default=None, null=True, blank=True)
     cover_image_url = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='product/%Y/%m')
     read_count = models.IntegerField('浏览量', default=0)

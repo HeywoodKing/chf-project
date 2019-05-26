@@ -51,18 +51,18 @@ def index(req):
     return render(req, 'chinslicking/index.html', locals())
 
 
-# 关于我们 联系我们
+# 关于我们 => 品牌介绍
 def about(req):
     index = 1
     return render(req, 'chinslicking/about.html', locals())
 
-
+# 联系我们 为您服务
 def contact(req):
-    index = 7
+    index = 6
     return render(req, 'chinslicking/contact.html', locals())
 
 
-# 品牌产品
+# 品牌产品 => 在线商城
 def product_list(req):
     index = 2
     # 获取产品类型
@@ -82,7 +82,7 @@ def product_list(req):
     return render(req, 'chinslicking/product_list.html', locals())
 
 
-# 品牌产品详情
+# 品牌产品详情  没有啦
 def product_detail(req, id):
     index = 2
     try:
@@ -102,53 +102,53 @@ def product_detail(req, id):
     return render(req, 'chinslicking/product_detail.html', locals())
 
 
-# 品牌合作
+# 品牌合作 => 合作共赢
 def partner(req):
     index = 3
     return render(req, 'chinslicking/partner.html', locals())
 
 
-# 社会责任
-def resp_list(req):
-    index = 4
-
-    resp_lists = models.ChfNews.objects.filter(type=1,is_enable=True)
-    paginator = Paginator(resp_lists, 10, 2)
-    page = req.GET.get('page')
-    try:
-        resp_list = paginator.page(page)
-    except PageNotAnInteger:
-        resp_list = paginator.page(1)
-    except EmptyPage:
-        resp_list = paginator.page(paginator.num_pages)
-
-    resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
-
-    return render(req, 'chinslicking/duty_list.html', locals())
-
-
-# 社会责任详情
-def resp_detail(req, id):
-    index = 4
-    try:
-        if id:
-            resp = models.ChfNews.objects.get(id=id)
-
-            resp.read_count += 1
-            resp.save()
-    except Exception as e:
-        logger.error(e)
-
-    resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
-
-    return render(req, 'chinslicking/duty_detail.html', locals())
+# # 社会责任 和 新闻资讯合并为一个菜单了
+# def resp_list(req):
+#     index = 4
+#
+#     resp_lists = models.ChfNews.objects.filter(type=1,is_enable=True)
+#     paginator = Paginator(resp_lists, 10, 2)
+#     page = req.GET.get('page')
+#     try:
+#         resp_list = paginator.page(page)
+#     except PageNotAnInteger:
+#         resp_list = paginator.page(1)
+#     except EmptyPage:
+#         resp_list = paginator.page(paginator.num_pages)
+#
+#     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
+#
+#     return render(req, 'chinslicking/duty_list.html', locals())
+#
+#
+# # 社会责任详情
+# def resp_detail(req, id):
+#     index = 4
+#     try:
+#         if id:
+#             resp = models.ChfNews.objects.get(id=id)
+#
+#             resp.read_count += 1
+#             resp.save()
+#     except Exception as e:
+#         logger.error(e)
+#
+#     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
+#
+#     return render(req, 'chinslicking/duty_detail.html', locals())
 
 
 # 新闻资讯
 def news_list(req):
-    index = 5
+    index = 4
 
-    news_lists = models.ChfNews.objects.filter(type=0,is_enable=True)
+    news_lists = models.ChfNews.objects.filter(is_enable=True)
     paginator = Paginator(news_lists, 10, 2)
     page = req.GET.get('page')
     try:
@@ -165,7 +165,7 @@ def news_list(req):
 
 # 新闻资讯
 def news_detail(req, id):
-    index = 5
+    index = 4
     try:
         if id:
             news = models.ChfNews.objects.get(id=id)
@@ -175,14 +175,14 @@ def news_detail(req, id):
     except Exception as e:
         logger.error(e)
 
-    news_lasted = models.ChfNews.objects.filter(type=0)[:10]
+    news_lasted = models.ChfNews.objects.all()[:10]
 
     return render(req, 'chinslicking/news_detail.html', locals())
 
 
 # 工作机会
 def job_list(req):
-    index = 6
+    index = 5
 
     job_list = models.ChfJobRecruit.objects.filter(is_enable=True)
 

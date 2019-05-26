@@ -33,11 +33,11 @@
     </div>
 </div>-->
 
-<div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_6.jpg' %});height: 300px;">
+<div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_6.jpg' %});">
     <div class="container text-center">
-        <h3 class="banner-h3">
+        <h2 class="banner-h2">
             NEWS
-        </h3>
+        </h2>
         <h4 class="banner-h4">
             <hr class="hr-1">
             <span>新闻资讯</span>
@@ -50,10 +50,10 @@
 {% block content %}
 <div class="faq-area-2 sp bg2">
     <div class="container">
-        <div class="row">
-            <!--<div class="col-md-12">-->
-                {% for item in news_list %}
-                <div class="row single-faq" style="padding: 25px 10px;">
+        <div class="row bg1">
+            {% for item in news_list %}
+            <div class="col-md-12 list-last-box">
+                <div class="row">
                     <div class="col-md-3">
                         <div class="about-img">
                             <a href="/king/news_detail/{{item.id}}"><img src="/uploads/{{item.cover_image_url}}" alt="{{item.title}}"></a>
@@ -66,80 +66,72 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <div class="about-content" style="margin-top:0;">
+                        <div class="about-content" style="margin-top:0; text-align: center;">
                             <h2 style="margin: 5px 0; font-size:35px; color: #fbdf51;">{{item.read_count}}</h2>
                             <div>{{item.create_time|date:'Y年m月d日 f'}}</div>
                             <!--<div>{{item.create_time|date:'Y年m月d日 H:i:s'}}</div>-->
                         </div>
-                        <div class="about-content" style="margin-top: 130px;">
-                            <a class="btn btn-default pull-right" href="/king/news_detail/{{item.id}}">{% trans "更多" %}>></a>
+                        <div class="about-content" style="text-align: center;">
+                            <a class="btn btn-default" style="width: 120px; background-color: #73ad37; color: #fff;" href="/king/news_detail/{{item.id}}">{% trans "更多" %}>></a>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
-
-                <!--<div class="single-faq">
-                    <h2><span>1</span>社会责任标题</h2>
-                    <p>我们的理念：陕西拥抱着素称——华夏文明龙脉的秦岭，物产丰富、一山四季的秦岭大山脉，蕴藏着许多植物资源。“秦食皇”产品以秦岭山脉生长的各种植物为原料，利用高科技植物提取技术，结合陕西传统民俗食品的配方，通过现代化设备无菌生产，精心推出新理念的全素健康食品，确保所有的食材都是绿色、健康、安全且符合国际标准。
-我们的愿景：“秦食皇”希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视野，意图通过境外宣传与销售通道，改变海外华人对中国美食的传统认知。实现我们“一口国土味，入胃解乡愁”的夙愿，让老百姓“送的安心、吃的放心”。
-企业精神：生机 和谐 诚信 共赢
-价 值 观：创造服务、回报客户；创造利润、回报员工；创造价值、回报社会。
-质量服务：为保证食材安全，“秦食皇”做好了前端把控，精选秦岭大山中生长的有机植物为原料，将千年古方与现代工艺完美结合，确保产品安全、无添加。按照“高起点、高标准、国际化”的要求，品质加工。已通过美国FDA注册认证以及国家食品质量监督检验中心的富硒食品检测等权威认证。现正在申请HALAL国际清真和AENOR认证。目前推出青春芽酱、怀旧零嘴、养生速食三个系列产品，这些都是流传千年的中国美食。</p>
-                </div>-->
-
-                {% if news_list.paginator.num_pages > 1 %}
-                <div class="row">
-                    <div class="col-12 text-center" data-margin="0 0 0 0">
-                        <!--<a href="#" class="button">More Works</a>-->
-                        <nav aria-label="Page navigation">
-                            <!--<span>
-                                当前第 {{ news_list.number }} 页&nbsp;&nbsp;&nbsp;&nbsp;共{{ news_list.paginator.num_pages }}页
-                            </span>-->
-                            <ul class="pager">
-
-                                {% if news_list.has_previous %}
-                                    <li>
-                                        <a href="?page={{ news_list.previous_page_number }}" aria-label="Previous">
-                                            <span aria-hidden="true">&lsaquo;</span>
-                                        </a>
-                                    </li>
-                                {% else %}
-                                    <li class="disabled">
-                                        <a href="javascript:void(0);" aria-label="Previous">
-                                            <span aria-hidden="true">&lsaquo;</span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-
-                                {% for pg in news_list.paginator.page_range %}
-                                    <!--{% if news_list.number == pg %}
-                                        <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
-                                    {% else %}
-                                        <li><a href="?page={{ pg }}">{{ pg }}</a></li>
-                                    {% endif %}-->
-
-                                    {% circle_page news_list.number pg %}
-                                {% endfor %}
-
-                                {% if news_list.has_next %}
-                                    <li>
-                                        <a href="?page={{ news_list.next_page_number }}" aria-label="Next">
-                                            <span aria-hidden="true">&rsaquo;</span>
-                                        </a>
-                                    </li>
-                                {% else %}
-                                    <li class="disabled">
-                                        <a href="javascript:void(0);" aria-label="Next">
-                                            <span aria-hidden="true">&rsaquo;</span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                {% endif %}
             </div>
+            {% endfor %}
+
+            {% if news_list.paginator.num_pages > 1 %}
+            <div class="row">
+                <div class="col-12 text-center" data-margin="0 0 0 0">
+                    <!--<a href="#" class="button">More Works</a>-->
+                    <nav aria-label="Page navigation">
+                        <!--<span>
+                            当前第 {{ news_list.number }} 页&nbsp;&nbsp;&nbsp;&nbsp;共{{ news_list.paginator.num_pages }}页
+                        </span>-->
+                        <ul class="pager">
+
+                            {% if news_list.has_previous %}
+                                <li>
+                                    <a href="?page={{ news_list.previous_page_number }}" aria-label="Previous">
+                                        <span aria-hidden="true">&lsaquo;</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                    <a href="javascript:void(0);" aria-label="Previous">
+                                        <span aria-hidden="true">&lsaquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% for pg in news_list.paginator.page_range %}
+                                <!--{% if news_list.number == pg %}
+                                    <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+                                {% else %}
+                                    <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+                                {% endif %}-->
+
+                                {% circle_page news_list.number pg %}
+                            {% endfor %}
+
+                            {% if news_list.has_next %}
+                                <li>
+                                    <a href="?page={{ news_list.next_page_number }}" aria-label="Next">
+                                        <span aria-hidden="true">&rsaquo;</span>
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="disabled">
+                                    <a href="javascript:void(0);" aria-label="Next">
+                                        <span aria-hidden="true">&rsaquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            {% endif %}
+        </div>
             <!--<div class="col-md-3">
                 <div class="faq-sidebar-wrap">
                     <h3>最新资讯</h3>
