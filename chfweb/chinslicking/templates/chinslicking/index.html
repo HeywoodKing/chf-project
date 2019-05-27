@@ -6,9 +6,6 @@
     {% include "chinslicking/header-index.html" with title="首页" %}
     {% block style_tag %}
     <style>
-    body{
-        color: red;
-    }
     </style>
     {% endblock %}
 {% endblock %}
@@ -25,12 +22,6 @@
             </div>
             <div class="col-6 col-sm-9 nav-column clearfix">
                 <div class="right-nav">
-                    <!--<span class="search-icon fa fa-search"></span>-->
-                    <!--<form action="#" class="search-form">
-                        <input type="search" placeholder="search now">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>-->
-
                     <form action="/i18n/setlang/" method="post" id="change_language_form" class="language-form">
                         {% csrf_token %}
                         {% get_current_language as LANGUAGE_CODE %}
@@ -237,148 +228,9 @@
 
                 </div>
             </div>
-
-            <!--<div class="single-portfolio col-md-3 pdlr-2">
-                <div class="inner">
-                    <div class="portfolio-img portfolio-img-height">
-                        <img src="{% static 'chinslicking/images/index_2.png' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>品牌产品</div>
-                            <div style="padding: 15px;">
-                                <a href="/king/product_list">
-                                    公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-3 pdlr-2">
-                <div class="inner">
-                    <div class="portfolio-img portfolio-img-height">
-                        <img src="{% static 'chinslicking/images/index_3.png' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>品牌合作</div>
-                            <div style="padding: 15px;">
-                                <a href="/king/partner">
-                                    公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-3 pdlr-2">
-                <div class="inner">
-                    <div class="portfolio-img portfolio-img-height">
-                        <img src="{% static 'chinslicking/images/index_4.png' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>新闻资讯</div>
-                            <div style="padding: 15px;">
-                                <a href="/king/news_list">
-                                    公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
         </div>
-
-        <!--<div class="row">
-            <div class="col-12 text-center" data-margin="40px 0 0">
-                <a href="#" class="button">More Works</a>
-            </div>
-        </div>-->
     </div>
 </div>
-
-<!--<div class="pricing-area sp bg2">
-    <div class="container">
-        <div class="section-title">
-            <h2>See our Pricings</h2>
-            <p>Malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-lg-3 single-pricing-2">
-                <div class="inner">
-                   <div class="title">
-                        <h2>Free</h2>
-                        <div class="price">
-                            <span>$29</span>
-                            <span>2 month</span>
-                        </div>
-                   </div>
-                   <ul>
-                       <li>5GB Storage</li>
-                        <li>1GB RAM</li>
-                        <li>400GB Bandwidth</li>
-                        <li>10 Email Address</li>
-                        <li>Forum Support</li>
-                   </ul>
-                   <a href="#" class="button">Sign Up</a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 single-pricing-2 active">
-                <div class="inner">
-                   <div class="title">
-                        <h2>Free</h2>
-                        <div class="price">
-                            <span>$29</span>
-                            <span>2 month</span>
-                        </div>
-                   </div>
-                   <ul>
-                       <li>5GB Storage</li>
-                        <li>1GB RAM</li>
-                        <li>400GB Bandwidth</li>
-                        <li>10 Email Address</li>
-                        <li>Forum Support</li>
-                   </ul>
-                   <a href="#" class="button">Sign Up</a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 single-pricing-2">
-                <div class="inner">
-                   <div class="title">
-                        <h2>Free</h2>
-                        <div class="price">
-                            <span>$29</span>
-                            <span>2 month</span>
-                        </div>
-                   </div>
-                   <ul>
-                       <li>5GB Storage</li>
-                        <li>1GB RAM</li>
-                        <li>400GB Bandwidth</li>
-                        <li>10 Email Address</li>
-                        <li>Forum Support</li>
-                   </ul>
-                   <a href="#" class="button">Sign Up</a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 single-pricing-2">
-                <div class="inner">
-                   <div class="title">
-                        <h2>Free</h2>
-                        <div class="price">
-                            <span>$29</span>
-                            <span>2 month</span>
-                        </div>
-                   </div>
-                   <ul>
-                       <li>5GB Storage</li>
-                        <li>1GB RAM</li>
-                        <li>400GB Bandwidth</li>
-                        <li>10 Email Address</li>
-                        <li>Forum Support</li>
-                   </ul>
-                   <a href="#" class="button">Sign Up</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
 {% endblock %}
 
 

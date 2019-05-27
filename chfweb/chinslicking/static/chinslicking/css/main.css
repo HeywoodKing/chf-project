@@ -52,17 +52,18 @@
   background-color: #222538; }
 
 .c2-bo {
-  border-color: #222538 !important; }
+  border-color: #222538 !important;
+}
 
 .c3, #menu ul ul li a:hover, .single-service.bordered .inner:hover .icon, .bordered.single-service-2 .inner:hover .icon, .bordered.single-service-3 .inner:hover .icon,
 .single-service.bordered .inner:hover h4,
 .bordered.single-service-2 .inner:hover h4,
 .bordered.single-service-3 .inner:hover h4, .single-service-3 .inner:hover .title .icon, .isotope-menu li.active, .isotope-menu li:hover, .single-portfolio .inner .portfolio-img .hover-content .button, .single-portfolio .inner .portfolio-img-pro .hover-content .button, .single-portfolio .inner .portfolio-content h3:hover, .faq-sidebar li a, .single-pricing .inner a.button:hover, .single-pricing-2 .inner a.button:hover, .single-pricing-2.active .inner a.button {
-   color: #fde981;
+   color: #330000;
 }
 
 .c3-bg, .button, .hero-slider .owl-dots .owl-dot.active, .single-service-2:hover .inner, .single-faq h2 span, .footer_widget .nw_form button, .tabs-area .tabs-nav li a.active, .single-team .inner .team-img::after, .single-pricing.active .inner, .active.single-pricing-2 .inner, .single-pricing-2.active .inner .title .price {
-  background-color: #fbdf51;
+  background-color: #fbdf50;
 }
 
 .single-portfolio .inner .portfolio-img .hover-content{
@@ -146,6 +147,14 @@ span {
 
 .bg4 {
   background-color: #fbdf51;
+}
+
+.bg5{
+    background-color: #0fe475;
+}
+
+.bg6{
+    background-color: #abe491;
 }
 
 .sp {
@@ -329,7 +338,6 @@ body {
   font-size: 14px;
   line-height: 27px;
   font-weight: 400;
-  /*color: #2d3666; */
     color: #330000;
 }
 
@@ -805,8 +813,8 @@ form.search-form button {
  *   02. hero-area
  ***************************** */
 .hero-slider .single-slide {
-  /*height: 715px;*/
-  height: 1080px;
+  /*height: 715px 1080px;*/
+  height: 634px;
   background-size: cover;
   /*background-position: center center;*/
   background-position: 100% 100%;
@@ -850,7 +858,9 @@ form.search-form button {
     font-size: 50px;
     line-height: 67px;
     margin: 0 0 25px;
-    font-weight: 700; }
+    font-weight: 700;
+      color: #fff;
+  }
     @media only screen and (max-width: 767px) {
       .hero-slider .single-slide h2 {
         font-size: 30px;
@@ -913,7 +923,7 @@ form.search-form button {
 .single-service-row{
     background-color: #cae479;
     box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.1);
-    margin-top: -130px;
+    /*margin-top: -130px;*/
     margin-bottom: 50px;
 }
 
@@ -1222,7 +1232,7 @@ form.search-form button {
   list-style: none;
 }
   .faq .single-item {
-    background-color: #fbdf50;
+    background-color: #bbe295;
     padding: 20px;
     padding-left: 50px;
     line-height: 28px;
@@ -1248,13 +1258,13 @@ form.search-form button {
     }
     .faq .single-item.active::after {
       content: "-";
-      background-color: #fbdf50;
+      background-color: #99cc67;
       color: #fff;
     }
 
 .faq .single-item.active {
       color: #000;
-      background-color: #99cc67;
+      background-color: #bbe295;
     }
       .faq .single-item.active h4 {
         color: #000;
@@ -1296,11 +1306,12 @@ form.search-form button {
           margin-right: 15px; } }
 
 .faq-sidebar-wrap {
-    border-left: 1px solid #fbdf50;
-    margin-top: 30px;
+    /*border-left: 1px solid #fbdf50;*/
+    /*margin-top: 30px;*/
     margin-bottom: 30px;
-    padding: 0 20px 35px 35px;
+    padding: 20px 35px 35px 35px;
     border-radius: 5px;
+    background-color: #99cc67;
 }
   @media only screen and (max-width: 991px) {
     .faq-sidebar-wrap {
@@ -1316,13 +1327,13 @@ form.search-form button {
   margin: 0; }
   .faq-sidebar li {
     position: relative;
-    padding-left: 20px;
+    padding-left: 40px;
     padding-top: 5px;
     padding-bottom: 5px;
     }
     .faq-sidebar-li-hover, .faq-sidebar li:hover {
-      background-color: #fde981;
-      /*border-left: 5px solid #fbdf51;*/
+      background-color: #fbdf50;
+        border-radius: 30px;
     }
     .faq-sidebar li a:hover {
       color: #000;

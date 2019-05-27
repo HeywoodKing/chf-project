@@ -32,7 +32,51 @@
     </div>
 </div>-->
 
-<div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_5.jpg' %});">
+<!--滚动切换图片-->
+<div class="hero-slider">
+    <div class="single-slide" style="background-image: url({% static 'chinslicking/images/banner_5.jpg' %})">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="slide-content">
+                            <h2 class="banner-h2">
+                                COOPERATION
+                            </h2>
+                            <h4 class="banner-h4">
+                                <hr class="hr-1">
+                                <span>品牌合作</span>
+                                <hr class="hr-1">
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-slide" style="background-image: url({% static 'chinslicking/images/banner_6.jpg' %})">
+        <div class="inner">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="slide-content">
+                            <h2 class="banner-h2">
+                                COOPERATION
+                            </h2>
+                            <h4 class="banner-h4">
+                                <hr class="hr-1">
+                                <span>品牌合作</span>
+                                <hr class="hr-1">
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="page-title sp" style="background-image: url({% static 'chinslicking/images/banner_5.jpg' %});">
     <div class="container text-center">
         <h2 class="banner-h2">
             COOPERATION
@@ -43,7 +87,7 @@
             <hr class="hr-1">
         </h4>
     </div>
-</div>
+</div>-->
 {% endblock %}
 
 {% block content %}
@@ -53,7 +97,7 @@
             <div class="col-md-3">
                 <div class="faq-sidebar-wrap">
                     <h3>{% trans "品牌合作" %}</h3>
-                    <div style="color: #7ac729;">COOPERATION</div>
+                    <div>COOPERATION</div>
                     <ul class="faq-sidebar">
                         <li class="faq-sidebar-li-hover" data-id="hzzc"><a href="javascript:void(0);">{% trans "合作政策" %}</a></li>
                         <li data-id="xmys"><a href="javascript:void(0);">{% trans "项目优势" %}</a></li>
@@ -62,8 +106,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-9">
-                <div id="hzzc" class="single-faq">
+            <div class="col-md-9 bg6">
+                <div id="hzzc" class="single-faq" style="padding-top: 0;">
                     <h2><span>1</span>合作政策</h2>
                     <p>我们的理念：陕西拥抱着素称——华夏文明龙脉的秦岭，物产丰富、一山四季的秦岭大山脉，蕴藏着许多植物资源。“秦食皇”产品以秦岭山脉生长的各种植物为原料，利用高科技植物提取技术，结合陕西传统民俗食品的配方，通过现代化设备无菌生产，精心推出新理念的全素健康食品，确保所有的食材都是绿色、健康、安全且符合国际标准。
 我们的愿景：“秦食皇”希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视野，意图通过境外宣传与销售通道，改变海外华人对中国美食的传统认知。实现我们“一口国土味，入胃解乡愁”的夙愿，让老百姓“送的安心、吃的放心”。
@@ -82,7 +126,7 @@
 质量服务：为保证食材安全，“秦食皇”做好了前端把控，精选秦岭大山中生长的有机植物为原料，将千年古方与现代工艺完美结合，确保产品安全、无添加。按照“高起点、高标准、国际化”的要求，品质加工。已通过美国FDA注册认证以及国家食品质量监督检验中心的富硒食品检测等权威认证。现正在申请HALAL国际清真和AENOR认证。目前推出青春芽酱、怀旧零嘴、养生速食三个系列产品，这些都是流传千年的中国美食。</p>
                 </div>
 
-                <div id="xmys" class="single-faq" style="display:none">
+                <div id="xmys" class="single-faq" style="display:none;padding-top: 0;">
                     <h2><span>2</span>项目优势</h2>
                     <p>我们的理念：陕西拥抱着素称——华夏文明龙脉的秦岭，物产丰富、一山四季的秦岭大山脉，蕴藏着许多植物资源。“秦食皇”产品以秦岭山脉生长的各种植物为原料，利用高科技植物提取技术，结合陕西传统民俗食品的配方，通过现代化设备无菌生产，精心推出新理念的全素健康食品，确保所有的食材都是绿色、健康、安全且符合国际标准。
 我们的愿景：“秦食皇”希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视野，意图通过境外宣传与销售通道，改变海外华人对中国美食的传统认知。实现我们“一口国土味，入胃解乡愁”的夙愿，让老百姓“送的安心、吃的放心”。
@@ -101,7 +145,7 @@
 质量服务：为保证食材安全，“秦食皇”做好了前端把控，精选秦岭大山中生长的有机植物为原料，将千年古方与现代工艺完美结合，确保产品安全、无添加。按照“高起点、高标准、国际化”的要求，品质加工。已通过美国FDA注册认证以及国家食品质量监督检验中心的富硒食品检测等权威认证。现正在申请HALAL国际清真和AENOR认证。目前推出青春芽酱、怀旧零嘴、养生速食三个系列产品，这些都是流传千年的中国美食。</p>
                 </div>
 
-                <div id="jxswd" class="single-faq" style="display:none">
+                <div id="jxswd" class="single-faq" style="display:none;padding-top: 0;">
                     <h2><span>3</span>经销商问答</h2>
                     <p>我们的理念：陕西拥抱着素称——华夏文明龙脉的秦岭，物产丰富、一山四季的秦岭大山脉，蕴藏着许多植物资源。“秦食皇”产品以秦岭山脉生长的各种植物为原料，利用高科技植物提取技术，结合陕西传统民俗食品的配方，通过现代化设备无菌生产，精心推出新理念的全素健康食品，确保所有的食材都是绿色、健康、安全且符合国际标准。
 我们的愿景：“秦食皇”希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视野，意图通过境外宣传与销售通道，改变海外华人对中国美食的传统认知。实现我们“一口国土味，入胃解乡愁”的夙愿，让老百姓“送的安心、吃的放心”。
