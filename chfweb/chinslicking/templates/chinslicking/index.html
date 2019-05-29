@@ -6,12 +6,54 @@
     {% include "chinslicking/header-index.html" with title="首页" %}
     {% block style_tag %}
     <style>
+        .full-video{
+            z-index: 9999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: fill;
+            width: auto;
+            height: auto;
+            /*-ms-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            background: url(../images/cover.jpg) no-repeat;*/
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+
+        .full-video-close{
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            background-color: #fbdf50;
+            background-image: url({% static 'chinslicking/images/close.png' %});
+            background-size: cover;
+            background-position: center left;
+            z-index: 10000;
+        }
+        .full-video-close:hover{
+            background-position: -54px 0;
+        }
     </style>
     {% endblock %}
 {% endblock %}
 
 
 {% block content %}
+<div class="video-box full-video hidden animated">
+    <div class="full-video-close"></div>
+    <video id="video" class="full-video" type="video/mp4" loop preload="auto" controls x5-video-player-type="h5" x5-video-orientation="landscape"
+           poster="http://v11.pfs.56img.com/images/27/5/qq987564321i56olo56i56.com_141300459978hd_m.jpg">
+        <source src="{% static 'chinslicking/images/video_01.mp4' %}">
+    </video>
+</div>
+
 <header>
     <div class="container">
         <div class="row">
@@ -83,7 +125,7 @@
         </div>-->
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 animated flip">
                 <div class="inner">
                     <div class="outer">
                         <div class="front">
@@ -121,7 +163,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 animated bounceInRight">
                 <div class="inner">
 
                     <div class="outer">
@@ -144,8 +186,8 @@
                                 </span>-->
                                 <img src="{% static 'chinslicking/images/play.png' %}">
                                 <hr>
-                                <h2><a href="/king/product_list">{% trans "视频展播" %}</a></h2>
-                                <a href="/king/product_list">
+                                <h2><a href="javascript:void(0);" class="video-play">{% trans "视频展播" %}</a></h2>
+                                <a href="javascript:void(0);" class="video-play">
                                     <div style="">
                                         <span style="color:#fff;">{% trans "公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介" %}</span>
                                     </div>
@@ -157,7 +199,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 animated bounceInDown">
                 <div class="inner">
 
                     <div class="outer">
@@ -193,7 +235,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-3 animated bounceInUp">
                 <div class="inner">
 
                     <div class="outer">
@@ -231,6 +273,8 @@
         </div>
     </div>
 </div>
+
+
 {% endblock %}
 
 
@@ -240,7 +284,103 @@
     <script>
         $(function(){
             <!--alert("我是index.html的js");-->
+            var myVideo = document.getElementById('video');
+            myVideo.volume = 0.3;
+
+            $('.video-box').height(window.innerHeight);
+            $('#video').height(window.innerHeight);
+            $(window).resize(function(){
+                $('.video-box').height(window.innerHeight);
+                $('#video').attr('height', window.innerHeight);
+                $('#video').attr('width', window.innerWidth);
+            });
+
+            //进入全屏播放器
+            $(".video-play").on('click', function(){
+                if(myVideo.paused){
+                    myVideo.currentTime = 0;
+                    myVideo.play();
+                }
+
+                $('.video-box').removeClass('hidden zoomOut').addClass('zoomIn');
+                // $('.container').addClass('hidden');
+                // $('.container-fluid').addClass('hidden');
+                // fullScreen();
+            });
+
+            //退出全屏播放器
+            $('.full-video-close').on('click', function(){
+                if(!myVideo.paused){
+                    myVideo.pause();
+                }
+
+                $('.video-box').addClass('hidden zoomOut').removeClass('zoomIn');
+                // $('.container').removeClass('hidden');
+                // $('.container-fluid').removeClass('hidden');
+                // exitFullScreen();
+            });
+
+            // 浇水动作
+            $('.water-btn').on('click', function(){
+                $('.bottle').removeClass('hidden').addClass('bottle-fadeIn');
+                $('.tree').removeClass('pulse');
+            });
+
+            //水壶动画结束触发
+            $('.bottle').on('webkitAnimationEnd',function(){
+                $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
+
+                // $('.line li').addClass('a-watering');
+
+                $('.waternumber').removeClass('hidden').addClass('waternumber-fadeIn');
+                $('.tree').addClass('pulse');
+            });
+
+            //水滴数量增加效果结束触发
+            $(".waternumber").on("webkitAnimationEnd", function(){
+                $(".waternumber").removeClass("waternumber-fadeIn").addClass('zoomOut');
+            });
+
+            /*//雨水动画结束触发
+            $('.line li').on('webkitAnimationEnd',function(){
+                $('.bottle').hide();
+                // $('.line li').removeClass('a-watering');
+                // $('.tree').addClass('a-swing');
+
+                // $('.number').addClass('number-fadeIn');
+            });
+
+            //树动画结束触发
+            $('.tree').on('webkitAnimationEnd',function(){
+
+                // $('.tree').css({'-webkit-transform':'scale(1.2,1.2)'});
+                // $('.tree').removeClass('a-swing');
+            });*/
         });
+
+        //进入全屏
+        function fullScreen(){
+            var ele = document.documentElement;
+            if(ele.requestFullscreen){
+                ele.requestFullscreen();
+            }else if(ele.mozRequestFullScreen){
+                ele.mozRequestFullScreen();
+            }else if(ele.webkitRequestFullScreen){
+                ele.webkitRequestFullScreen();
+            }
+        }
+
+        //退出全屏
+        function exitFullScreen(){
+            var de = document;
+            if (de.exitFullscreen) {
+                de.exitFullscreen();
+            } else if (de.mozCancelFullScreen) {
+                de.mozCancelFullScreen();
+            } else if (de.webkitCancelFullScreen) {
+                de.webkitCancelFullScreen();
+            }
+        }
     </script>
     {% endblock %}
 {% endblock %}

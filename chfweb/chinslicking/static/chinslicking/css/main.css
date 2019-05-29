@@ -1247,7 +1247,7 @@ form.search-form button {
       width: 25px;
       height: 25px;
       border-radius: 50%;
-      background-color: #99cc67;
+      background-color: #fbdf50;
       color: #fff;
       position: absolute;
       left: 15px;
@@ -1258,13 +1258,13 @@ form.search-form button {
     }
     .faq .single-item.active::after {
       content: "-";
-      background-color: #99cc67;
+      background-color: #fbdf50;
       color: #fff;
     }
 
 .faq .single-item.active {
       color: #000;
-      background-color: #bbe295;
+      /*background-color: #bbe295;*/
     }
       .faq .single-item.active h4 {
         color: #000;
