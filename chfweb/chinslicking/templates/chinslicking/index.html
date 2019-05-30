@@ -284,6 +284,7 @@
     <script>
         $(function(){
             <!--alert("我是index.html的js");-->
+            var rainNumber = 100;
             var myVideo = document.getElementById('video');
             myVideo.volume = 0.3;
 
@@ -294,6 +295,9 @@
                 $('#video').attr('height', window.innerHeight);
                 $('#video').attr('width', window.innerWidth);
             });
+
+            initTreeBox();
+
 
             //进入全屏播放器
             $(".video-play").on('click', function(){
@@ -320,25 +324,164 @@
                 // exitFullScreen();
             });
 
+
+
+            function initTreeBox(){
+                if(rainNumber <= 200){
+                    $('.watering-box-01').show();
+                    $('.watering-box-02').hide();
+                    $('.watering-box-03').hide();
+                    $('.watering-box-04').hide();
+                    $('.soil').show();
+                }else if(rainNumber > 200 && rainNumber <= 400){
+                    $('.watering-box-01').hide();
+                    $('.watering-box-02').show();
+                    $('.watering-box-03').hide();
+                    $('.watering-box-04').hide();
+                    $('.soil').show();
+                }else if(rainNumber > 400 && rainNumber < 888){
+                    $('.watering-box-01').hide();
+                    $('.watering-box-02').hide();
+                    $('.watering-box-03').show();
+                    $('.watering-box-04').hide();
+                    $('.soil').hide();
+                }else if(rainNumber >= 888){
+                    $('.watering-box-01').hide();
+                    $('.watering-box-02').hide();
+                    $('.watering-box-03').hide();
+                    $('.watering-box-04').show();
+                    $('.soil').hide();
+                }
+            }
+
+
+
             // 浇水动作
             $('.water-btn').on('click', function(){
-                $('.bottle').removeClass('hidden').addClass('bottle-fadeIn');
-                $('.tree').removeClass('pulse');
+                if(rainNumber <= 200) {
+                    //01
+                    $('.bottle-01').removeClass('hidden').addClass('bottle-fadeIn');
+                    var rainTimeout = setTimeout(function(){
+                        $('.rain-01').removeClass('hidden').addClass('rain-fadeIn');
+                        clearTimeout(rainTimeout);
+                    }, 500);
+                    $('.tree-01').removeClass('tada');
+                    $(".waternumber-01").addClass('hidden').removeClass("waternumber-01-fadeIn")
+                }else if(rainNumber > 200 && rainNumber <= 400) {
+                    //02
+                    $('.bottle-02').removeClass('hidden').addClass('bottle-fadeIn');
+                    var rainTimeout = setTimeout(function(){
+                        $('.rain-02').removeClass('hidden').addClass('rain-fadeIn');
+                        clearTimeout(rainTimeout);
+                    }, 500);
+                    $('.tree-02').removeClass('tada');
+                    $(".waternumber-02").addClass('hidden').removeClass("waternumber-02-fadeIn")
+                }else if(rainNumber > 400 && rainNumber < 888) {
+                    //03
+                    $('.bottle-03').removeClass('hidden').addClass('bottle-fadeIn');
+                    var rainTimeout = setTimeout(function(){
+                        $('.rain-03').removeClass('hidden').addClass('rain-fadeIn');
+                        clearTimeout(rainTimeout);
+                    }, 500);
+                    $('.tree-03').removeClass('tada');
+                    $(".waternumber-03").addClass('hidden').removeClass("waternumber-03-fadeIn")
+                }else if(rainNumber >= 888) {
+                    //04
+                    $('.bottle-04').removeClass('hidden').addClass('bottle-fadeIn');
+                    var rainTimeout = setTimeout(function(){
+                        $('.rain-04').removeClass('hidden').addClass('rain-fadeIn');
+                        clearTimeout(rainTimeout);
+                    }, 500);
+                    $('.tree-04').removeClass('tada');
+                    $(".waternumber-04").addClass('hidden').removeClass("waternumber-04-fadeIn")
+                }
+
+                rainNumber += 100;
             });
 
             //水壶动画结束触发
-            $('.bottle').on('webkitAnimationEnd',function(){
+            //01
+            $('.bottle-01').on('webkitAnimationEnd',function(){
                 $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
+                var rainTimeout = setTimeout(function(){
+                    $('.rain-01').removeClass('rain-fadeIn').addClass('hidden');
+                    clearTimeout(rainTimeout);
+                }, 500);
+                $('.tree-01').addClass('tada');
+                $('.waternumber-01').removeClass('hidden').addClass('waternumber-01-fadeIn');
+            });
 
-                // $('.line li').addClass('a-watering');
+            //02
+            $('.bottle-02').on('webkitAnimationEnd',function(){
+                $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
+                var rainTimeout = setTimeout(function(){
+                    $('.rain-02').removeClass('rain-fadeIn').addClass('hidden');
+                    clearTimeout(rainTimeout);
+                }, 500);
+                $('.tree-02').addClass('tada');
+                $('.waternumber-02').removeClass('hidden').addClass('waternumber-02-fadeIn');
+            });
 
-                $('.waternumber').removeClass('hidden').addClass('waternumber-fadeIn');
-                $('.tree').addClass('pulse');
+            //03
+            $('.bottle-03').on('webkitAnimationEnd',function(){
+                $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
+                var rainTimeout = setTimeout(function(){
+                    $('.rain-03').removeClass('rain-fadeIn').addClass('hidden');
+                    clearTimeout(rainTimeout);
+                }, 500);
+                $('.tree-03').addClass('tada');
+                $('.waternumber-03').removeClass('hidden').addClass('waternumber-03-fadeIn');
+            });
+
+            //04
+            $('.bottle-04').on('webkitAnimationEnd',function(){
+                $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
+                var rainTimeout = setTimeout(function(){
+                    $('.rain-04').removeClass('rain-fadeIn').addClass('hidden');
+                    clearTimeout(rainTimeout);
+                }, 500);
+                $('.tree-04').addClass('tada');
+                $('.waternumber-04').removeClass('hidden').addClass('waternumber-04-fadeIn');
             });
 
             //水滴数量增加效果结束触发
-            $(".waternumber").on("webkitAnimationEnd", function(){
-                $(".waternumber").removeClass("waternumber-fadeIn").addClass('zoomOut');
+            $(".waternumber-01").on("webkitAnimationEnd", function(){
+                // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
+                initTreeBox();
+            });
+            $(".waternumber-02").on("webkitAnimationEnd", function(){
+                // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
+                initTreeBox();
+            });
+            $(".waternumber-03").on("webkitAnimationEnd", function(){
+                // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
+                initTreeBox();
+            });
+            $(".waternumber-04").on("webkitAnimationEnd", function(){
+                // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
+                initTreeBox();
+            });
+
+            $('.tree-01').on('click', function(){
+                layer.open({
+                    type: 2,
+                    title: "优惠券抢购",
+                    area: ['500px', '400px'],
+                    content: "/king/layer_coupon_form",
+                    success: function(o, index){
+                        console.log('layer.open success');
+                    },
+                    // btn: ['提交', '取消'],
+                    // yes: function (index, o){
+                    //     layer.msg('您的信息已提交，工作人员正在处理中，请稍后...');
+                    // },
+                    // btn2: function (index, o){
+                    //     layer.close(0);
+                    // },
+                    // cancel: function (index, o) {
+                    //     layer.close();
+                    // }
+                });
             });
 
             /*//雨水动画结束触发
@@ -348,13 +491,11 @@
                 // $('.tree').addClass('a-swing');
 
                 // $('.number').addClass('number-fadeIn');
-            });
+            });*/
 
             //树动画结束触发
-            $('.tree').on('webkitAnimationEnd',function(){
-
-                // $('.tree').css({'-webkit-transform':'scale(1.2,1.2)'});
-                // $('.tree').removeClass('a-swing');
+            /*$('.tree-01').on('webkitAnimationEnd',function(){
+                $('.waternumber-01').removeClass('hidden').addClass('waternumber-01-fadeIn');
             });*/
         });
 

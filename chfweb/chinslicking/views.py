@@ -61,6 +61,15 @@ def contact(req):
     index = 6
     return render(req, 'chinslicking/contact.html', locals())
 
+def layer_coupon_form(req):
+    return render(req, 'chinslicking/layer_coupon_form.html')
+
+# 新增抢优惠券的用户信息
+def add_coupon(req):
+    username = req.POST.get('username', None)
+    print(username)
+    return HttpResponse('信息保存成功！');
+
 
 # 品牌产品 => 在线商城
 def product_list(req):

@@ -19,6 +19,9 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('partner/', views.partner, name='partner'),
     path('job_list/', views.job_list, name='job_list'),
+    path('layer_coupon_form/', views.layer_coupon_form, name='layer_coupon_form'),
+    path('add_coupon/', views.add_coupon, name='add_coupon'),
+
     url(r'product_list/', views.product_list, name='product_list'),
     url(r'^product_detail/(?P<id>\d+)/$', views.product_detail, name='product_detail'),
 
@@ -29,5 +32,7 @@ urlpatterns = [
 
     url(r'^resp_list/$', views.resp_list, name='resp_list'),
     url(r'^resp_detail/(?P<id>\d+)/$', views.resp_detail, name='resp_detail'),
+
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
