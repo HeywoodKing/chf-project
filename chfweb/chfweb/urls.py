@@ -33,6 +33,6 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('king/', include('chinslicking.urls')),
+    url(r'^king/', include('chinslicking.urls')),
     # path('chf/', include('home.urls')),
 )

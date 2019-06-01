@@ -1,11 +1,12 @@
-from django.shortcuts import render,redirect, HttpResponse
-from django import http
+from django.shortcuts import render, redirect, HttpResponse
 from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django import http
 from django.utils.translation import ugettext as _
 import logging
 import random
 import datetime
+import json
 from home import models
 
 
@@ -48,6 +49,7 @@ def global_setting(req):
 # 首页
 def index(req):
     index = 0
+    water_qty = models.ChfWateringQty.objects.all()[0]
     return render(req, 'chinslicking/index.html', locals())
 
 
@@ -56,19 +58,117 @@ def about(req):
     index = 1
     return render(req, 'chinslicking/about.html', locals())
 
+
 # 联系我们 为您服务
 def contact(req):
     index = 6
     return render(req, 'chinslicking/contact.html', locals())
 
+
 def layer_coupon_form(req):
     return render(req, 'chinslicking/layer_coupon_form.html')
 
+
 # 新增抢优惠券的用户信息
 def add_coupon(req):
-    username = req.POST.get('username', None)
-    print(username)
-    return HttpResponse('信息保存成功！');
+    res = {
+        'code': -1,
+        'flag': 'fail',
+        'msg': '异常错误！',
+        'data': None
+    }
+
+    if req.method == 'POST':
+        # 接收参数
+        # csrf_token=afdasfasf&username=aaa&phone=13256235689&email=aaa@123.com&sex=adfsfd
+        # json_params = req.body.replace('=', '":"').replace('&', '","')
+        # print(json_params)
+        username = req.POST.get('username', None)
+        phone = req.POST.get('phone', None)
+        email = req.POST.get('email', None)
+        sex = req.POST.get('sex', None)
+        birthday = req.POST.get('birthday', datetime.datetime.now().strftime("%Y-%m-%d"))
+
+        # 保存记录
+        model = models.ChfApplyRecord(name=username, phone=phone, email=email, sex=sex, birthday=birthday)
+        model.save()
+
+        # models.ChfApplyRecord.objects.create(name=username, phone=phone, email=email, sex=sex)
+
+        # 返回结果
+        res['code'] = 0
+        res['flag'] = 'success'
+        res['msg'] = '保存成功'
+        res['data'] = None
+
+    return HttpResponse(json.dumps(res), content_type='application/json')
+
+
+# 增加浇水水量
+def add_watering_qty(req):
+    res = {
+        'code': -1,
+        'flag': 'fail',
+        'msg': '异常错误！',
+        'data': None
+    }
+
+    if req.method == 'POST':
+        # 接收参数
+        # 获取客户端IP地址，判断同一个IP一天不能浇水超过3次
+        client_ip = '127.0.0.1'
+        client_host = '127.0.0.1'
+        client_user_agent = '127.0.0.1'
+        server_ip = '127.0.0.1'
+        server_host = '127.0.0.1'
+        server_port = '127.0.0.1'
+        ip_count = models.ChfUserWateringRecord.objects.filter(client_ip=client_ip).count()
+        if ip_count > 3:
+            # 返回结果
+            res['code'] = 1
+            res['flag'] = 'fail'
+            res['msg'] = '浇水失败，您今天浇水次数太多了，<br>明天再继续吧！'
+            res['data'] = None
+            return HttpResponse(json.dumps(res), content_type='application/json')
+
+        # amount_str = req.POST.get('amount', 0)
+        # amount = int(amount_str)
+
+        amount = random.randint(1, 20)
+
+        # 保存本次浇水水量到余额表
+        water_qty = models.ChfWateringQty.objects.all()[0]
+
+        # 保存本次用户浇水记录
+        end_amount = water_qty.amount + amount
+        user_watering_record = models.ChfUserWateringRecord(
+            client_ip=client_ip,
+            client_host=client_host,
+            client_user_agent=client_user_agent,
+            server_ip=server_ip,
+            server_host=server_host,
+            server_port=server_port,
+            init_amount=water_qty.amount,
+            amount=amount,
+            final_amount=end_amount)
+        user_watering_record.save()
+
+        water_qty.amount = end_amount
+        water_qty.total_amount = water_qty.total_amount + amount
+        water_qty.save()
+
+        # 返回结果
+        res['code'] = 0
+        res['flag'] = 'success'
+        res['msg'] = '浇水成功'
+        res['data'] = end_amount
+    else:
+        res['code'] = 2
+        res['flag'] = 'fail'
+        res['msg'] = '非法请求'
+        res['data'] = None
+
+    return HttpResponse(json.dumps(res), content_type='application/json')
 
 
 # 品牌产品 => 在线商城

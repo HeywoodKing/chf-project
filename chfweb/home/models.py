@@ -397,7 +397,7 @@ class ChfApplyRecord(BaseModel):
                                ('2', '保密'),
                                ('3', '未知'),
                            ), default=0)
-    birthday = models.DateField('生日', )
+    birthday = models.DateField('生日', default=None, null=None, blank=None)
     phone = models.CharField('电话', max_length=11)
     email = models.EmailField('邮箱', max_length=50)
     is_get = models.BooleanField('是否已领取', default=False)
@@ -407,7 +407,7 @@ class ChfApplyRecord(BaseModel):
                                          (0, '未中奖'),
                                          (1, '中奖'),
                                      ))
-    sort = models.IntegerField('排序', default=0)
+    sort = models.IntegerField('排序', default=1)
     
     class Meta:
         db_table = "chf_applyrecord"
@@ -421,7 +421,12 @@ class ChfApplyRecord(BaseModel):
 
 # 用户浇水记录
 class ChfUserWateringRecord(BaseModel):
-    ip = models.GenericIPAddressField('IP', default='127.0.0.1', protocol='both')
+    client_ip = models.GenericIPAddressField('客户端IP', default='127.0.0.1', protocol='both')
+    client_host = models.CharField('客户端主机名', default=None, max_length=100)
+    client_user_agent = models.CharField('客户端浏览器', default=None, max_length=255)
+    server_ip = models.GenericIPAddressField('服务器IP', default='127.0.0.1', protocol='both')
+    server_host = models.CharField('服务器主机名', default=None, max_length=100)
+    server_port = models.IntegerField('服务器端口', default=0, max_length=6)
     init_amount = models.IntegerField('期初水量', default=0)
     amount = models.IntegerField('本次水量', default=0)
     final_amount = models.IntegerField('期末水量', default=0)
