@@ -3,10 +3,13 @@ from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django import http
 from django.utils.translation import ugettext as _
+from django.utils.timezone import now, timedelta
 import logging
 import random
-import datetime
+from datetime import datetime
 import json
+import socket
+import pytz
 from home import models
 
 
@@ -50,12 +53,16 @@ def global_setting(req):
 def index(req):
     index = 0
     water_qty = models.ChfWateringQty.objects.all()[0]
+    print(water_qty)
     return render(req, 'chinslicking/index.html', locals())
 
 
 # 关于我们 => 品牌介绍
 def about(req):
     index = 1
+
+    comp_history_list = models.ChfCompanyHistory.objects.filter(is_enable=True)
+
     return render(req, 'chinslicking/about.html', locals())
 
 
@@ -87,7 +94,7 @@ def add_coupon(req):
         phone = req.POST.get('phone', None)
         email = req.POST.get('email', None)
         sex = req.POST.get('sex', None)
-        birthday = req.POST.get('birthday', datetime.datetime.now().strftime("%Y-%m-%d"))
+        birthday = req.POST.get('birthday', datetime.now().replace(tzinfo=pytz.utc).strftime("%Y-%m-%d"))
 
         # 保存记录
         model = models.ChfApplyRecord(name=username, phone=phone, email=email, sex=sex, birthday=birthday)
@@ -104,6 +111,21 @@ def add_coupon(req):
     return HttpResponse(json.dumps(res), content_type='application/json')
 
 
+def get_host_ip():
+    """
+    查询本机ip
+    :return:
+    """
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('8.8.8.8', 80))
+        ip = s.getsockname()[0]
+    finally:
+        s.close()
+
+    return ip
+
+
 # 增加浇水水量
 def add_watering_qty(req):
     res = {
@@ -116,13 +138,37 @@ def add_watering_qty(req):
     if req.method == 'POST':
         # 接收参数
         # 获取客户端IP地址，判断同一个IP一天不能浇水超过3次
-        client_ip = '127.0.0.1'
-        client_host = '127.0.0.1'
-        client_user_agent = '127.0.0.1'
-        server_ip = '127.0.0.1'
-        server_host = '127.0.0.1'
-        server_port = '127.0.0.1'
-        ip_count = models.ChfUserWateringRecord.objects.filter(client_ip=client_ip).count()
+        client_ip = req.META['REMOTE_ADDR'].split(':')[0]
+        remote_host = req.META['REMOTE_HOST']
+        client_host = remote_host if remote_host else req.META['USERDOMAIN']
+        client_user_agent = req.META['HTTP_USER_AGENT']
+        server_ip = get_host_ip()
+        server_host = req.META['SERVER_NAME']
+        server_port = req.META['SERVER_PORT']
+        # print(req.META)
+        # 获取当天的日期,日期格式为yyyy-MM-dd
+        # curr_date = now().date() + timedelta(days=0)
+        # 获取当前时间
+        curr_now = datetime.now()  # .replace(pytz.utc)
+        print(curr_now)
+        # 获取今天零点
+        start_date = curr_now - timedelta(hours=curr_now.hour,
+                                          minutes=curr_now.minute,
+                                          seconds=curr_now.second,
+                                          microseconds=curr_now.microsecond)
+        # 获取今天23:59:59
+        end_date = start_date + timedelta(hours=23, minutes=59, seconds=59)
+        # 获取昨天的当前时间
+        # yesterday_now = curr_now - timedelta(hours=23, minutes=59, seconds=59)
+        # 获取明天的当前时间
+        # tomorrow_now = curr_now + timedelta(hours=23, minutes=59, seconds=59)
+
+        # start_date = datetime.date(2019, 5, 1)
+        # end_date = datetime.date(2019, 6, 1)
+
+        ip_count = models.ChfUserWateringRecord.objects\
+            .filter(client_ip=client_ip, create_time__range=(start_date, curr_now))\
+            .count()
         if ip_count > 3:
             # 返回结果
             res['code'] = 1

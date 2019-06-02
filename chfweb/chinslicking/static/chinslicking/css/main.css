@@ -1131,7 +1131,9 @@ form.search-form button {
       flex-direction: column;
       text-align: center;
       opacity: 0;
-      visibility: hidden; }
+      visibility: hidden;
+    border-radius: 15px;
+}
       .single-portfolio .inner .portfolio-img-pro .hover-content .button {
         background-color: #fff;
         border-color: #fff !important; }

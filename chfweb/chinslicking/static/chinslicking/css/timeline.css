@@ -95,7 +95,7 @@ a:hover {
   letter-spacing: 3px;
   margin: 0 0 .5em 0;
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 /*----- TIMELINE MARKER -----*/
@@ -307,7 +307,6 @@ a:hover {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  white-space: normal;
 }
 /*向右箭头*/
 .timeline-centered > .timeline-item:nth-child(odd) .timeline-info .arrow{

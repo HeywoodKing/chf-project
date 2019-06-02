@@ -121,6 +121,11 @@
                         <div class="hover-content">
                             <div>
                                 <a href="/king/product_detail/{{item.id}}" class="button">{% trans "查看详情" %}</a>
+                                {% if item.mall_url %}
+                                    <a href="{{item.mall_url}}" class="button">{% trans "商城选购" %}</a>
+                                {% else %}
+                                    <a href="/king/product_detail/{{item.id}}" class="button">{% trans "商城选购" %}</a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

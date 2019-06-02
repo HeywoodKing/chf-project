@@ -1,17 +1,20 @@
 from django.db import models
 from django.urls import reverse
-from django.utils.timezone import timezone
+from django.utils import timezone
 from django.contrib.auth.models import AbstractUser, PermissionsMixin,BaseUserManager,AbstractBaseUser
 from django.core.validators import RegexValidator
 from django.template.defaultfilters import slugify
+from datetime import datetime
+import pytz
 
 
 # Create your models here.
 class BaseModel(models.Model):
-    create_time = models.DateTimeField('创建时间', auto_now_add=True)
+    # , default=datetime.now().replace(tzinfo=pytz.utc)
+    create_time = models.DateTimeField('创建时间', default=timezone.now)
     create_uid= models.IntegerField('创建人ID', default=123456789, auto_created=True)
     create_username = models.CharField('创建人名称', max_length=30, default='admin', auto_created=True)
-    operate_time = models.DateTimeField('操作时间', auto_now_add=True)
+    operate_time = models.DateTimeField('操作时间', auto_now=True)
     operate_uid = models.IntegerField('操作人ID', default=123456789, auto_created=True)
     operate_username = models.CharField('操作人名称', max_length=30, default='admin', auto_created=True)
 
@@ -258,11 +261,12 @@ class ChfProduct(BaseModel):
                             help_text='根据name生成的，用于生成页面URL，必须唯一')
     brief = models.CharField('产品摘要', max_length=40)
     content = models.TextField('产品描述', default=None, null=True, blank=True)
+    mall_url = models.URLField('在线商城地址', default=None, null=True, blank=True)
     cover_image_url = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='product/%Y/%m')
     read_count = models.IntegerField('浏览量', default=0)
     product_type = models.ForeignKey(to='ChfProductType', null=True, blank=True, on_delete=models.CASCADE, verbose_name='产品类型')
     sort = models.IntegerField('排序', default=0)
-    is_recommand =  models.BooleanField('是否推荐', default=True)
+    is_recommand = models.BooleanField('是否推荐', default=True)
     is_enable = models.BooleanField('是否启用', default=True)
 
     class Meta:
@@ -426,7 +430,7 @@ class ChfUserWateringRecord(BaseModel):
     client_user_agent = models.CharField('客户端浏览器', default=None, max_length=255)
     server_ip = models.GenericIPAddressField('服务器IP', default='127.0.0.1', protocol='both')
     server_host = models.CharField('服务器主机名', default=None, max_length=100)
-    server_port = models.IntegerField('服务器端口', default=0, max_length=6)
+    server_port = models.IntegerField('服务器端口', default=0)
     init_amount = models.IntegerField('期初水量', default=0)
     amount = models.IntegerField('本次水量', default=0)
     final_amount = models.IntegerField('期末水量', default=0)
@@ -438,7 +442,7 @@ class ChfUserWateringRecord(BaseModel):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.ip
+        return self.client_ip
 
 
 # 浇水量余额表

@@ -82,7 +82,7 @@ class ChfCompanyHistoryAdmin(admin.ModelAdmin):
     # exclude = ('breif', 'content', )
     list_display = ('timeline_title', 'title', 'breif', 'cover_image_url', 'sort', 'is_enable', )
     list_display_links = ('timeline_title', )
-    list_editable = ('title', 'is_enable', )
+    list_editable = ('title', 'is_enable', 'sort', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
 
     class Media:
@@ -135,9 +135,10 @@ class ChfApplyRecordAdmin(admin.ModelAdmin):
 
 @admin.register(models.ChfUserWateringRecord)
 class ChfUserWateringRecordAdmin(admin.ModelAdmin):
-    list_display = ('ip', 'init_amount', 'amount', 'final_amount')
-    list_filter = ('ip', )
-    search_fields = ('ip', )
+    list_display = ('client_ip', 'client_host', 'client_user_agent', 'server_ip', 'server_host', 'server_port',
+                    'init_amount', 'amount', 'final_amount')
+    list_filter = ('client_ip', )
+    search_fields = ('client_ip', 'client_host', 'client_user_agent', 'server_ip', 'server_host', 'server_port', )
     exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username',)
 
 

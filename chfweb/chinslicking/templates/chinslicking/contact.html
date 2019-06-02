@@ -266,9 +266,10 @@
             }
 
             var map = new AMap.Map('map-container', {
-                zoom: 16,
-                zooms: [4, 18], //设置地图级别范围
+                zoom: 17,
+                zooms: [4, 25], //设置地图级别范围
                 // center: [116.397428, 39.90923]
+                center: [108.886135,34.185397],
                 viewMode: '3D',
                 resizeEnable: true,
                 //layers: [//使用多个图层
@@ -515,7 +516,7 @@
             // addRegularPrism(center_3d.add(new AMap.Pixel(-770, 3200)), 32, 1600, 500) //圆柱
 
             // addRegularPrism(center_3d.add(new AMap.Pixel(-1500, 0)), 3, 800, 500, [1, 0, 0, 1]) //三棱柱
-            // addRegularPrism(center_3d.add(new AMap.Pixel(-770, 3200)), 5, 1500, 400, [0, 1, 0, 1])//五棱柱
+            addRegularPrism(center_3d.add(new AMap.Pixel(-50, 350)), 5, 1500, 400, [0, 1, 0, 1])//五棱柱
             // addRegularPrism(center_3d.add(new AMap.Pixel(-770, 3200)), 32, 1600, 500, [0, 0, 1, 1])//圆柱
 
 
