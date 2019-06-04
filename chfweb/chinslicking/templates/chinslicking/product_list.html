@@ -97,9 +97,9 @@
             <ul class="isotope-menu">
                 {% for item in product_type_list %}
                     {% if forloop.counter0 == 0 %}
-                    <li data-filter="{{item.data_filter_name}}" class="active">{{ item.name }}</li>
+                    <li data-filter="{{item.data_filter_name}}" class="active">{% trans item.name %}</li>
                     {% else %}
-                    <li data-filter=".{{item.data_filter_name}}">{{ item.name }}</li>
+                    <li data-filter=".{{item.data_filter_name}}">{% trans item.name %}</li>
                     {% endif %}
                 {% endfor %}
 
@@ -136,235 +136,8 @@
                 </div>
             </div>
             {% endfor %}
-
-            <!--<div class="single-portfolio col-md-4 ceramics design photography">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'chinslicking/images/portfolio2.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="/king/product_detail/2" class="button">查看详情</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>香椿芽酱</h3></a>
-                        <span>香椿芽酱简介</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4 ceramics branding ceramics">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'chinslicking/images/portfolio3.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="/king/product_detail/3" class="button">查看详情</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>香菇酱</h3></a>
-                        <span>香菇酱简介</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4 design photography">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'chinslicking/images/portfolio4.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="/king/product_detail/4" class="button">查看详情</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>手工空心挂面（小袋装）</h3></a>
-                        <span>手工空心挂面简介</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4 ceramics photography branding">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'chinslicking/images/portfolio5.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="/king/product_detail/5" class="button">查看详情</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>豌豆糊（小罐装）</h3></a>
-                        <span>豌豆糊简介</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4 branding design">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'chinslicking/images/portfolio6.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="/king/product_detail/6" class="button">查看详情</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>荞麦面</h3></a>
-                        <span>荞麦面简介</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4 design photography">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'chinslicking/images/portfolio4.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="/king/product_detail/4" class="button">查看详情</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>手工空心挂面（小袋装）</h3></a>
-                        <span>手工空心挂面简介</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4 ceramics photography branding">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'chinslicking/images/portfolio5.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="/king/product_detail/5" class="button">查看详情</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>豌豆糊（小罐装）</h3></a>
-                        <span>豌豆糊简介</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4 branding design">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'chinslicking/images/portfolio6.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="/king/product_detail/6" class="button">查看详情</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>荞麦面</h3></a>
-                        <span>荞麦面简介</span>
-                    </div>
-                </div>
-            </div>-->
         </div>
 
-        <!--<div class="row">
-            <div class="single-portfolio col-md-4">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'images/portfolio1.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="#" class="button">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>The Back Chiropractor</h3></a>
-                        <span>Ceramics, Design</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'images/portfolio2.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="#" class="button">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>The Back Chiropractor</h3></a>
-                        <span>Ceramics, Design</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'images/portfolio3.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="#" class="button">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>The Back Chiropractor</h3></a>
-                        <span>Ceramics, Design</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'images/portfolio4.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="#" class="button">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>The Back Chiropractor</h3></a>
-                        <span>Ceramics, Design</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'images/portfolio5.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="#" class="button">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>The Back Chiropractor</h3></a>
-                        <span>Ceramics, Design</span>
-                    </div>
-                </div>
-            </div>
-            <div class="single-portfolio col-md-4">
-                <div class="inner">
-                    <div class="portfolio-img">
-                        <img src="{% static 'images/portfolio6.jpg' %}" alt="portfolio-image">
-                        <div class="hover-content">
-                            <div>
-                                <a href="#" class="button">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <a href="#"><h3>The Back Chiropractor</h3></a>
-                        <span>Ceramics, Design</span>
-                    </div>
-                </div>
-            </div>
-        </div>-->
         {% if product_list.paginator.num_pages > 1 %}
         <div class="row">
             <div class="col-12 text-center" data-margin="0 0 0 0">
@@ -398,32 +171,11 @@
 
                             {% circle_page product_list.number pg %}
                         {% endfor %}
-                        <!--<li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">5</a>
-                        </li>
-                        <li>
-                            <a href="#">...</a>
-                        </li>
-                        <li>
-                            <a href="#">8</a>
-                        </li>
-                        <li>
-                            <a href="#">9</a>
-                        </li>-->
 
                         {% if product_list.has_next %}
                             <li>
                                 <a href="?page={{ product_list.next_page_number }}" aria-label="Next">
-                                    <span aria-hidden="true">>&rsaquo;</span>
+                                    <span aria-hidden="true">&rsaquo;</span>
                                 </a>
                             </li>
                         {% else %}

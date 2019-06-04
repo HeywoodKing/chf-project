@@ -48,9 +48,9 @@
 {% block content %}
 <div class="video-box full-video hidden animated">
     <div class="full-video-close"></div>
-    <video id="video" class="full-video" type="video/mp4" loop preload="auto" controls x5-video-player-type="h5" x5-video-orientation="landscape"
-           poster="http://v11.pfs.56img.com/images/27/5/qq987564321i56olo56i56.com_141300459978hd_m.jpg">
-        <source src="{% static 'chinslicking/images/video_01.mp4' %}">
+    <video id="video" class="full-video" type="video/mp4" loop preload="auto" controls x5-video-player-type="h5"
+           x5-video-orientation="landscape" poster="{% static 'chinslicking/images/pro_3.jpg' %}">
+        <!--<source src="{% static 'chinslicking/images/video_01.mp4' %}">-->
     </video>
 </div>
 
@@ -117,7 +117,7 @@
     </div>
 </header>
 
-<div class="portfolio-area sp bg4">
+<div class="portfolio-area sp bg2">
     <div class="container-fluid pdlr-150">
         <!--<div class="section-title">
             <h2>美食美味</h2>
@@ -125,7 +125,8 @@
         </div>-->
 
         <div class="row">
-            <div class="col-md-3 animated flip">
+            {% for item in index_plate_list %}
+            <div class="col-md-3 animated {{item.animate_type}}">
                 <div class="inner">
                     <div class="outer">
                         <div class="front">
@@ -133,147 +134,45 @@
                                 <!--<span class="icon" style="font-size: 50px;">
                                     <i class="glyphicon glyphicon-object-align-bottom"></i>
                                 </span>-->
-                                <img src="{% static 'chinslicking/images/product.png' %}">
+                                <img src="/uploads/{{item.plate_image_url}}">
                                 <hr>
-                                <h2>{% trans "品牌故事" %}</h2>
+                                <h2>{% trans item.title %}</h2>
                             </div>
-                            <img src="{% static 'chinslicking/images/index_1.png' %}" alt="portfolio-image">
+                            <img src="/uploads/{{item.front_image}}" alt="{{item.title}}">
                         </div>
                         <div class="back">
-                            <img src="{% static 'chinslicking/images/index_1.png' %}" alt="portfolio-image">
+                            <img src="/uploads/{{item.back_image}}" alt="{{item.title}}">
                             <div class="back-content">
-                                <!--<span class="icon">
-                                    <i class="glyphicon glyphicon-object-align-bottom"></i>
-                                </span>-->
-                                <img src="{% static 'chinslicking/images/product.png' %}">
+                                <img src="/uploads/{{item.plate_image_url}}">
                                 <hr>
-                                <h2><a href="/king/about">{% trans "品牌故事" %}</a></h2>
-                                <a href="/king/about">
-                                    <div style="">
-                                        <span style="color:#fff;">{% trans "公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介" %}</span>
+                                {% if item.is_redirect_sub_page %}
+                                <h2><a href="{{item.sub_page_url}}">{% trans item.title %}</a></h2>
+                                <a href="{{item.sub_page_url}}">
+                                    <div>
+                                        <span style="color:#fff;">{% trans item.descr %}</span>
                                     </div>
                                 </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--<div class="portfolio-content">
-                        <a href="#"><h3>蓝莓山药</h3></a>
-                        <span>Ceramics, Design</span>
-                    </div>-->
-                </div>
-            </div>
-
-            <div class="col-md-3 animated bounceInRight">
-                <div class="inner">
-
-                    <div class="outer">
-                        <div class="front">
-                            <div class="front-content">
-                                <!--<span class="icon">
-                                    <i class="glyphicon glyphicon-object-align-bottom"></i>
-                                </span>-->
-                                <img src="{% static 'chinslicking/images/play.png' %}">
-                                <hr>
-                                <h2>{% trans "视频展播" %}</h2>
-                            </div>
-                            <img src="{% static 'chinslicking/images/index_2.png' %}" alt="portfolio-image">
-                        </div>
-                        <div class="back">
-                            <img src="{% static 'chinslicking/images/index_2.png' %}" alt="portfolio-image">
-                            <div class="back-content">
-                                <!--<span class="icon">
-                                    <i class="glyphicon glyphicon-object-align-bottom"></i>
-                                </span>-->
-                                <img src="{% static 'chinslicking/images/play.png' %}">
-                                <hr>
-                                <h2><a href="javascript:void(0);" class="video-play">{% trans "视频展播" %}</a></h2>
-                                <a href="javascript:void(0);" class="video-play">
-                                    <div style="">
-                                        <span style="color:#fff;">{% trans "公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介" %}</span>
+                                {% else %}
+                                <h2>
+                                    <a href="javascript:void(0);" class="video-play" data-image="/uploads/{{item.front_image}}"
+                                       data-source="/uploads/{{item.video_source}}">{% trans item.title %}</a>
+                                </h2>
+                                <a href="javascript:void(0);" class="video-play" data-image="/uploads/{{item.front_image}}"
+                                   data-source="/uploads/{{item.video_source}}">
+                                    <div>
+                                        <span style="color:#fff;">{% trans item.descr %}</span>
                                     </div>
                                 </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-md-3 animated bounceInUp">
-                <div class="inner">
-
-                    <div class="outer">
-                        <div class="front">
-                            <div class="front-content">
-                                <!--<span class="icon">
-                                    <i class="glyphicon glyphicon-object-align-bottom"></i>
-                                </span>-->
-                                <img src="{% static 'chinslicking/images/news.png' %}">
-                                <hr>
-                                <h2>{% trans "新闻中心" %}</h2>
-                            </div>
-                            <img src="{% static 'chinslicking/images/index_4.png' %}" alt="portfolio-image">
-                        </div>
-                        <div class="back">
-                            <img src="{% static 'chinslicking/images/index_4.png' %}" alt="portfolio-image">
-                            <div class="back-content">
-                                <!--<span class="icon">
-                                    <i class="glyphicon glyphicon-object-align-bottom"></i>
-                                </span>-->
-                                <img src="{% static 'chinslicking/images/news.png' %}">
-                                <hr>
-                                <h2><a href="/king/news_list">{% trans "新闻中心" %}</a></h2>
-                                <a href="/king/news_list">
-                                    <div style="">
-                                        <span style="color:#fff;">{% trans "公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介" %}</span>
-                                    </div>
-                                </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-3 animated bounceInDown">
-                <div class="inner">
-
-                    <div class="outer">
-                        <div class="front">
-                            <div class="front-content">
-                                <!--<span class="icon">
-                                    <i class="glyphicon glyphicon-object-align-bottom"></i>
-                                </span>-->
-                                <img src="{% static 'chinslicking/images/partner.png' %}">
-                                <hr>
-                                <h2>{% trans "招商合作" %}</h2>
-                            </div>
-                            <img src="{% static 'chinslicking/images/index_3.png' %}" alt="portfolio-image">
-                        </div>
-                        <div class="back">
-                            <img src="{% static 'chinslicking/images/index_3.png' %}" alt="portfolio-image">
-                            <div class="back-content">
-                                <!--<span class="icon">
-                                    <i class="glyphicon glyphicon-object-align-bottom"></i>
-                                </span>-->
-                                <img src="{% static 'chinslicking/images/partner.png' %}">
-                                <hr>
-                                <h2><a href="/king/partner">{% trans "招商合作" %}</a></h2>
-                                <a href="/king/partner">
-                                    <div style="">
-                                        <span style="color:#fff;">{% trans "公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介公司简介" %}</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
-
-
 {% endblock %}
 
 
@@ -301,10 +200,17 @@
 
             //进入全屏播放器
             $(".video-play").on('click', function(){
-                if(myVideo.paused){
-                    myVideo.currentTime = 0;
-                    myVideo.play();
-                }
+                alert($(this).attr('data-source'));
+                alert($(this).attr('data-image'));
+                myVideo.poster = $(this).attr('data-image');
+                myVideo.src = $(this).attr('data-source');
+                myVideo.load();
+                myVideo.oncanplay = function(){
+                    if(myVideo.paused){
+                        myVideo.currentTime = 0;
+                        myVideo.play();
+                    }
+                };
 
                 $('.video-box').removeClass('hidden zoomOut').addClass('zoomIn');
                 // $('.container').addClass('hidden');

@@ -81,31 +81,65 @@ class SysConfig(BaseModel):
 #     def get_absolute_url(self):
 #         return reverse('sys_adrecord', args=(self.slug, ))
 
+
+# 品牌介绍图片资源
+class ChfAboutResource(BaseModel):
+    """
+    type_code: 1 企业文化 2 品牌荣誉 3 企业资质 4 团队风采 5 品牌故事
+    """
+    type_code = models.PositiveSmallIntegerField('图片业务类型', default=0)
+    type_name = models.CharField('图片业务类型名称', max_length=15, default=None)
+    image_url = models.ImageField('图片', default=None, null=True, blank=True, upload_to='company/%Y/%m')
+    about = models.ForeignKey(to='ChfAbout', default=None, null=True, blank=True, related_name='about_resource',
+                              related_query_name='about', on_delete=models.CASCADE, verbose_name='品牌介绍')
+    sort = models.IntegerField('排序', default=0)
+    is_enable = models.BooleanField('是否启用', default=True)
+
+    class Meta:
+        db_table = 'chf_aboutresource'
+        ordering = ['sort', '-create_time']
+        verbose_name = '品牌介绍图片资源'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.type_name
+
+
 # 关于我们
 # 联系我们
-# class ChfAbout(BaseModel):
-#     comp_name = models.CharField('公司名称', max_length=100)
-#     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
-#                             help_text='根据name生成的，用于生成页面URL，必须唯一')
-#     descr = models.TextField('公司简介', default=None, null=True, blank=True)
-#     comp_culture = models.TextField('公司文化', default=None, null=True, blank=True)
-#     org_structure = models.ImageField('图片', max_length=255, null=True, blank=True, upload_to='company/%Y/%m')
-#     comp_honor = models.TextField('证书荣誉', default=None, null=True, blank=True)
-#     is_enable = models.BooleanField('是否启用', default=True)
-#
-#     class Meta:
-#         db_table = 'chf_about'
-#         verbose_name = '关于我们'
-#         verbose_name_plural = 'ChfAbouts'
-#
-#     def __str__(self):
-#         return self.comp_name
-#
-#     def get_absolute_url(self):
-#         return reverse('about', args=(self.slug, ))
+class ChfAbout(BaseModel):
+    comp_name = models.CharField('公司名称', max_length=100)
+    slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
+                            help_text='根据name生成的，用于生成页面URL，必须唯一')
+    title = models.CharField('公司简介标题', max_length=100)
+    content = models.TextField('公司简介', default=None, null=True, blank=True)
+    comp_image = models.ImageField('公司简介图片', max_length=255, null=True, blank=True, upload_to='company/%Y/%m')
+    # culture = models.ForeignKey(to='ChfAboutResource', related_name='culture_resource', to_field='type_code',
+    #                             default=None, null=True, blank=True, on_delete=models.CASCADE, verbose_name='企业文化')
+    # honor = models.ForeignKey(to='ChfAboutResource', related_name='honor_resource', to_field='type_code',
+    #                           default=None, null=True, blank=True, on_delete=models.CASCADE, verbose_name='品牌荣誉')
+    # aptitude = models.ForeignKey(to='ChfAboutResource', related_name='aptitude_resource', to_field='type_code',
+    #                              default=None, null=True, blank=True, on_delete=models.CASCADE, verbose_name='企业资质')
+    # team = models.ForeignKey(to='ChfAboutResource', related_name='team_resource', to_field='type_code',
+    #                          default=None, null=True, blank=True, on_delete=models.CASCADE, verbose_name='团队风采')
+    # brand_story = models.ForeignKey(to='ChfAboutResource', related_name='brand_story_resource', to_field='type_code',
+    #                                 default=None, null=True, blank=True, on_delete=models.CASCADE,
+    #                                 verbose_name='品牌故事')
+    is_enable = models.BooleanField('是否启用', default=True)
+
+    class Meta:
+        db_table = 'chf_about'
+        verbose_name = '关于我们'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.comp_name
+
+    def get_absolute_url(self):
+        return reverse('about', args=(self.slug, ))
+
 
 # 用户,继承方式扩展
-
 # class UserManager(BaseUserManager):
 #     def create_user(self, username, email, password=None):
 #         if not email:
@@ -197,6 +231,48 @@ class ChfUserProfile(AbstractUser):
     # def create_superuser(self, username, password):
     #     # create superuser here
     #     pass
+
+
+# 动画类型
+class ChfAnimateType(BaseModel):
+    name = models.CharField('动画名称', max_length=30, default=None)
+    class_name = models.CharField('class样式名', max_length=50, default='flip')
+    descr = models.CharField('动画描述', max_length=100, default=None, null=True, blank=True)
+    is_enable = models.BooleanField('是否启用', default=True)
+
+    class Meta:
+        db_table = 'chf_animatetype'
+        ordering = ['-create_time']
+        verbose_name = '动画类型'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.class_name
+
+
+# 首页板块管理
+class ChfIndexPlate(BaseModel):
+    title = models.CharField('板块标题', max_length=8, default=None)
+    plate_image_url = models.ImageField('图标', max_length=255, null=True, blank=True, upload_to='index_plate/%Y/%m')
+    front_image = models.ImageField('正面图', max_length=255, null=True, blank=True, upload_to='index_plate/%Y/%m')
+    back_image = models.ImageField('背面图', max_length=255, null=True, blank=True, upload_to='index_plate/%Y/%m')
+    descr = models.CharField('简介', max_length=100, default=None, null=True, blank=True)
+    is_redirect_sub_page = models.BooleanField('是否跳转到子页面', default=True)
+    sub_page_url = models.CharField('子页面地址', max_length=150, default=None, null=True, blank=True)
+    video_source = models.FileField('视频文件地址', max_length=200, default=None, null=True, blank=True, upload_to='media/%Y/%m')
+    animate_type = models.ForeignKey(to='ChfAnimateType', null=True, blank=True, on_delete=models.CASCADE, verbose_name='动画类型')
+    sort = models.IntegerField('排序', default=0)
+    is_enable = models.BooleanField('是否启用', default=True)
+
+    class Meta:
+        db_table = 'chf_indexplate'
+        ordering = ['sort', '-create_time']
+        verbose_name = '首页板块'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.title
+
 
 # class ChfUserProfileBase(AbstractBaseUser):
 #     identifier = models.CharField(max_length=50, unique=True)

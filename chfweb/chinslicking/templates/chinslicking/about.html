@@ -123,17 +123,19 @@
         <div class="row">
             <div class="col-lg-5 col-md-6 single-service">
                 <div class="">
+                    {% if comp_about_model %}
+                    <img src="/uploads/{{ comp_about_model.comp_image }}" alt="portfolio-image">
+                    {% else %}
                     <img src="{% static 'chinslicking/images/company.jpg' %}" alt="portfolio-image">
+                    {% endif %}
                 </div>
             </div>
             <div class="col-lg-7 col-md-6 single-service">
                 <div class="inner" style="padding: 0;">
                     <div>
-                        <h2><i>{% trans "西安秦食皇食品有限公司<br>是一家集研发、生产、销售“秦食皇”<br>品牌产品及陕西当地优质农副产品的食品公司" %}</i></h2>
+                        <h2><i>{% trans comp_about_model.title %}</i></h2>
                         <p style="text-indent:2em; font-size:16px; letter-spacing:1px;">
-                            {% trans "“秦食皇”——华夏传统美食的国际级复刻者，诞生于2015年，是在国家工商总局注册，通过国家版权局认证的民族品牌，并于2017年向全球72个国家递交了商标国际注册，使其日趋成为国际化品牌。“秦食皇”致力于打造营养、健康的全素食品。
-      陕西拥抱着素称——华夏文明龙脉的秦岭，这里一山四季、物产丰富，蕴藏着许多植物资源。由国内知名植物科研专家组成的“秦食皇”产品研发中心，致力于发掘陕西特有植物的科学提取和运用。“秦食皇”以秦岭山脉生长的各种植物为原料，利用高科技植物提取技术，结合陕西传统民俗食品的配方，通过现代化设备无菌生产，精心推出新理念的全素健康食品。从原料到生产，严格把控每一个环节，确保所有的食材绿色、健康、安全且符合国际标准；满足消费者对优质生活的要求，做让老百姓“送的安心、吃的放心”产品。
-      基于新丝路这趟经济动车，“秦食皇”希望把中国农副产品和民间特色美食，以品牌的形式展示到境外华人的视野。我们希望通过境内外宣传与销售通道，改变世人对中国食品的传统认知，实现“一口国土味，入胃解乡愁”夙愿的同时，更致力于把“秦食皇”打造成可以代表中国特色食品的名片。" %}
+                            {% trans comp_about_model.content|safe %}
                         </p>
                     </div>
                 </div>
@@ -145,6 +147,7 @@
     </div>
 </div>
 
+{% if culture %}
 <div class="gallery-area sp" style="background-color: #99cc67;">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
@@ -159,15 +162,18 @@
             </div>
         </div>
         <div class="row">
+
             <div class="col-md-12 single-gallery">
                 <div class="inner">
-                    <img src="{% static 'chinslicking/images/about.png' %}" alt="">
+                    <img src="/uploads/{{culture.image_url}}" alt="企业文化">
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endif %}
 
+{% if honor %}
 <div class="gallery-area sp" style="background-color: #a7d676;">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
@@ -182,64 +188,23 @@
             </div>
         </div>
         <div class="row">
-            <!--<div class="col-md-4">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/gallery-1.jpg' %}" alt="">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/gallery-1.jpg' %}" alt="">
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/gallery-1.jpg' %}" alt="">
-                </div>
-            </div>-->
-
             <div class="col-md-12">
                 <div class="row">
+                    {% for item in honor %}
                     <div class="col-sm-4 single-gallery">
                         <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-2.jpg' %}" alt="">
+                            <img src="/uploads/{{item.image_url}}" alt="{{item.type_name}}">
                         </div>
                     </div>
-                    <div class="col-sm-4 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-3.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-4 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-4.jpg' %}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-sm-4 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-2.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-4 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-3.jpg' %}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm-4 single-gallery">
-                        <div class="inner">
-                            <img src="{% static 'chinslicking/images/gallery-4.jpg' %}" alt="">
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endif %}
 
+{% if aptitude %}
 <div class="gallery-area sp" style="background-color: #99cc67;">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
@@ -253,26 +218,20 @@
                 <hr class="hr-2">
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4 single-gallery">
+        <div class="row grid">
+            {% for item in aptitude %}
+            <div class="col-sm-4 single-gallery grid-item">
                 <div class="inner">
-                    <img src="{% static 'chinslicking/images/gallery-2.jpg' %}" alt="">
+                    <img src="/uploads/{{item.image_url}}" alt="{{item.type_name}}">
                 </div>
             </div>
-            <div class="col-sm-4 single-gallery">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/gallery-3.jpg' %}" alt="">
-                </div>
-            </div>
-            <div class="col-sm-4 single-gallery">
-                <div class="inner">
-                    <img src="{% static 'chinslicking/images/gallery-4.jpg' %}" alt="">
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
+{% endif %}
 
+{% if comp_history_list %}
 <div class="faq-area sp bg" style="background-color: #a7d676;">
     <div class="container">
         <div class="section-title">
@@ -294,7 +253,7 @@
                         <div class="timeline-info">
                             <div class="timeline-info-bg">
                                 <h3>{{ item.timeline_title }}</h3>
-                                <p>{% trans item.title %}</p>
+                                <p>{{ item.title }}</p>
                             </div>
                             <div class="arrow"></div>
                         </div>
@@ -320,8 +279,9 @@
         </div>
     </div>
 </div>
+{% endif %}
 
-<div class="page-bottom-title sp" style="background-image: url({% static 'chinslicking/images/banner_7.jpg' %});height: 300px;">
+<div class="page-bottom-title sp" style="background-image: url({% static 'chinslicking/images/banner_7.jpg' %});min-height: 300px; max-height: 400px;">
     <div class="container text-center">
         <h2 class="banner-h3" style="color:rgb(255,255,255,0.8);">
             {% trans "愿景规划" %}
@@ -343,6 +303,10 @@
     {% block script_tag %}
     <script>
         $(function(){
+            $('.grid').masonry({
+                itemSelector: '.grid-item',
+                // columnWidth: 200
+            });
         });
     </script>
     {% endblock %}

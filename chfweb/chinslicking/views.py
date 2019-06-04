@@ -53,13 +53,26 @@ def global_setting(req):
 def index(req):
     index = 0
     water_qty = models.ChfWateringQty.objects.all()[0]
-    print(water_qty)
+
+    index_plate_list = models.ChfIndexPlate.objects.filter(is_enable=True)
     return render(req, 'chinslicking/index.html', locals())
 
 
 # 关于我们 => 品牌介绍
 def about(req):
     index = 1
+
+    comp_about_model = models.ChfAbout.objects.get(is_enable=True)
+    # 反向查找
+    culture = comp_about_model.about_resource.get(type_code=1)
+    honor = comp_about_model.about_resource.filter(type_code=2)
+    aptitude = comp_about_model.about_resource.filter(type_code=3)
+    # comp_about = {
+    #     'comp': comp_about_model,
+    #     'culture': culture,
+    #     'honor': honor,
+    #     'aptitude': aptitude
+    # }
 
     comp_history_list = models.ChfCompanyHistory.objects.filter(is_enable=True)
 
@@ -224,7 +237,7 @@ def product_list(req):
     product_type_list = models.ChfProductType.objects.filter(is_enable=True)
     product_lists = models.ChfProduct.objects.filter(is_enable=True)
 
-    paginator = Paginator(product_lists, 9, 2)  # 每页显示9条，少于2条则合并到上一页
+    paginator = Paginator(product_lists, 6)  # 每页显示6条，第三个参数2: 少于2条则合并到上一页
     page = req.GET.get('page')
     try:
         product_list = paginator.page(page)

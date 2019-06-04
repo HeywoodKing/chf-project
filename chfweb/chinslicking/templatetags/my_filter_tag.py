@@ -24,7 +24,7 @@ def circle_page(curr_page, loop_page):
 
     if offset < 3:
         if curr_page == loop_page:
-            page_ele = '<li class="active"><a href="?page=%s">%s</a></li>' % (loop_page, loop_page)
+            page_ele = '<li class="active"><a id="active" href="?page=%s">%s</a></li>' % (loop_page, loop_page)
         else:
             page_ele = '<li><a href="?page=%s">%s</a></li>' % (loop_page, loop_page)
 

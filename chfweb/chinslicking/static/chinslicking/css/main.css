@@ -430,15 +430,16 @@ iframe {
 
 .pager li>a, .pager li>span{
     border: none;
-    background-color: #fff;
-    /*padding: 5px 15px;*/
+    /*background-color: #fff;*/
 }
 
 .pager li>a:hover, .pager li>span{
-    border-radius: 20px;
-    background-color: #fbdf51;
+    /*border-radius: 18px;*/
+    background-color: #fbdf50;
 }
-
+#active {
+    background-color: #fbdf50;
+}
 /*.pager .disabled>a, .pager .disabled>a:focus, .pager .disabled>a:hover, .pager .disabled>span{
     background-color: transparent;
 }*/
@@ -677,7 +678,7 @@ iframe {
  ***************************** */
 header {
   /*background-color: #222538;*/
-  background-color: #fbdf51;
+  background-color: #99cc67;
   padding: 18px 0; }
 
 .logo-column a.logo {
@@ -695,7 +696,7 @@ header {
     vertical-align: top;
     cursor: pointer; }
     .nav-column a:hover, .nav-column span:hover {
-      color: #b5c3d4; }
+      color: #fbdf50; }
   .nav-column .right-nav {
     float: right;
     position: relative; }
@@ -764,7 +765,7 @@ form.search-form button {
       color: #330000;
       }
       #menu ul > li > a:hover {
-        color: #b5c3d4; }
+        color: #fbdf50; }
 #menu ul > li.current-menu-item > a {
       color: #5d9c1e;
 }
@@ -1105,11 +1106,22 @@ form.search-form button {
     position: relative;
 }
 
-.single-portfolio .inner .portfolio-img-pro img {
-    min-width: 360px;
-    min-height: 323px;
-    border-radius: 15px;
+@media only screen and (min-width: 991px) {
+    .single-portfolio .inner .portfolio-img-pro img {
+        min-width: 360px;
+        min-height: 323px;
+        border-radius: 15px;
+    }
 }
+
+@media only screen and (max-width: 991px){
+    .single-portfolio .inner .portfolio-img-pro img {
+        min-width: 330px;
+        min-height: 323px;
+        border-radius: 15px;
+    }
+}
+
 .single-portfolio .inner .portfolio-img-pro .hover-content {
       position: absolute;
       height: 100%;
@@ -1313,7 +1325,7 @@ form.search-form button {
     margin-bottom: 30px;
     padding: 20px 35px 35px 35px;
     border-radius: 5px;
-    background-color: #99cc67;
+    background-color: #a7d676;
 }
   @media only screen and (max-width: 991px) {
     .faq-sidebar-wrap {

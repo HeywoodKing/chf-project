@@ -102,7 +102,7 @@ msgid ""
 msgstr "\"qin shi huang\" hopes to show Chinese agricultural and sideline products and folk characteristic delicacies to overseas Chinese's vision in the form of brand, and intends to change overseas Chinese's cognition of Chinese cuisine through overseas publicity and sales channels.Item we realize our long-cherished wish of \"one mouthful of land flavor, solution of homesickness in the stomach\", let the common people \" send peace of mind, eat peace of mind \"."
 
 #: .\chinslicking\templates\chinslicking\contact.html:53
-msgid "联系我们"
+msgid "为您服务"
 msgstr "Contact"
 
 #: .\chinslicking\templates\chinslicking\contact.html:67
@@ -191,17 +191,20 @@ msgstr "Home"
 msgid "关于我们"
 msgstr "About"
 
+msgid "品牌介绍"
+msgstr "About"
+
 #: .\chinslicking\templates\chinslicking\header.html:63
 #: .\chinslicking\templates\chinslicking\index.html:43
 #: .\chinslicking\templates\chinslicking\index.html:131
 #: .\chinslicking\templates\chinslicking\index.html:143
-msgid "品牌产品"
+msgid "在线商城"
 msgstr "Product"
 
 #: .\chinslicking\templates\chinslicking\header.html:64
 #: .\chinslicking\templates\chinslicking\index.html:44
 #: .\chinslicking\templates\chinslicking\partner.html:54
-msgid "品牌合作"
+msgid "合作共赢"
 msgstr "Partner"
 
 #: .\chinslicking\templates\chinslicking\header.html:65
@@ -211,12 +214,12 @@ msgstr "Resposibility"
 
 #: .\chinslicking\templates\chinslicking\header.html:66
 #: .\chinslicking\templates\chinslicking\index.html:46
-msgid "新闻资讯"
+msgid "新闻动态"
 msgstr "News"
 
 #: .\chinslicking\templates\chinslicking\header.html:67
 #: .\chinslicking\templates\chinslicking\index.html:47
-msgid "工作机会"
+msgid "静候伯乐"
 msgstr "Job"
 
 #: .\chinslicking\templates\chinslicking\header.html:68
@@ -332,3 +335,54 @@ msgstr "One mouthful national territory flavour, solution homesickness into the 
 #: .\chinslicking\templates\chinslicking\product_list.html:86
 msgid "查看详情"
 msgstr "Details"
+
+msgid "品牌故事"
+msgstr "Story"
+
+msgid "视频展播"
+msgstr "Video"
+
+msgid "企业文化"
+msgstr "Company Culture"
+
+msgid "品牌荣誉"
+msgstr "Company Honor"
+
+msgid "企业资质"
+msgstr "Company Aptitude"
+
+msgid "秦食皇产品"
+msgstr "Chinslicking Product"
+
+msgid "全部"
+msgstr "All"
+
+msgid "青春芽酱"
+msgstr "Young shoots sauce"
+
+msgid "怀旧零嘴"
+msgstr "Nostalgic snacks"
+
+msgid "养生素食"
+msgstr "Healthy vegetarian"
+
+msgid "魔芋塑身"
+msgstr "Konjac toning"
+
+msgid "礼盒包装"
+msgstr "Gift box packaging"
+
+msgid "定制产品"
+msgstr "Custom products"
+
+msgid "衍生品"
+msgstr "Derivatives"
+
+msgid "商城选购"
+msgstr "Online Shopping"
+
+msgid "新闻资讯"
+msgstr "News"
+
+msgid "联系我们"
+msgstr "Contact US"
