@@ -124,58 +124,7 @@
                 </div>
                 {% endfor %}
 
-                {% if resp_list.paginator.num_pages > 1 %}
-                <div class="row">
-                    <div class="col-12 text-center" data-margin="0 0 0 0">
-                        <!--<a href="#" class="button">More Works</a>-->
-                        <nav aria-label="Page navigation">
-                            <!--<span>
-                                当前第 {{ resp_list.number }} 页&nbsp;&nbsp;&nbsp;&nbsp;共{{ resp_list.paginator.num_pages }}页
-                            </span>-->
-                            <ul class="pager">
-
-                                {% if resp_list.has_previous %}
-                                    <li>
-                                        <a href="?page={{ resp_list.previous_page_number }}" aria-label="Previous">
-                                            <span aria-hidden="true">&lsaquo;</span>
-                                        </a>
-                                    </li>
-                                {% else %}
-                                    <li class="disabled">
-                                        <a href="javascript:void(0);" aria-label="Previous">
-                                            <span aria-hidden="true">&lsaquo;</span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-
-                                {% for pg in resp_list.paginator.page_range %}
-                                    <!--{% if resp_list.number == pg %}
-                                        <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
-                                    {% else %}
-                                        <li><a href="?page={{ pg }}">{{ pg }}</a></li>
-                                    {% endif %}-->
-
-                                    {% circle_page resp_list.number pg %}
-                                {% endfor %}
-
-                                {% if resp_list.has_next %}
-                                    <li>
-                                        <a href="?page={{ resp_list.next_page_number }}" aria-label="Next">
-                                            <span aria-hidden="true">&rsaquo;</span>
-                                        </a>
-                                    </li>
-                                {% else %}
-                                    <li class="disabled">
-                                        <a href="javascript:void(0);" aria-label="Next">
-                                            <span aria-hidden="true">&rsaquo;</span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                {% endif %}
+                {% include "./pager.html" with page_list=resp_list %}
             </div>
             <div class="col-md-3">
                 <div class="faq-sidebar-wrap">
@@ -243,58 +192,7 @@
             </div>
             {% endfor %}
 
-            {% if news_list.paginator.num_pages > 1 %}
-            <div class="row">
-                <div class="col-12 text-center" data-margin="0 0 0 0">
-                    <!--<a href="#" class="button">More Works</a>-->
-                    <nav aria-label="Page navigation">
-                        <!--<span>
-                            当前第 {{ news_list.number }} 页&nbsp;&nbsp;&nbsp;&nbsp;共{{ news_list.paginator.num_pages }}页
-                        </span>-->
-                        <ul class="pager">
-
-                            {% if news_list.has_previous %}
-                                <li>
-                                    <a href="?page={{ news_list.previous_page_number }}" aria-label="Previous">
-                                        <span aria-hidden="true">&lsaquo;</span>
-                                    </a>
-                                </li>
-                            {% else %}
-                                <li class="disabled">
-                                    <a href="javascript:void(0);" aria-label="Previous">
-                                        <span aria-hidden="true">&lsaquo;</span>
-                                    </a>
-                                </li>
-                            {% endif %}
-
-                            {% for pg in news_list.paginator.page_range %}
-                                <!--{% if news_list.number == pg %}
-                                    <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
-                                {% else %}
-                                    <li><a href="?page={{ pg }}">{{ pg }}</a></li>
-                                {% endif %}-->
-
-                                {% circle_page news_list.number pg %}
-                            {% endfor %}
-
-                            {% if news_list.has_next %}
-                                <li>
-                                    <a href="?page={{ news_list.next_page_number }}" aria-label="Next">
-                                        <span aria-hidden="true">&rsaquo;</span>
-                                    </a>
-                                </li>
-                            {% else %}
-                                <li class="disabled">
-                                    <a href="javascript:void(0);" aria-label="Next">
-                                        <span aria-hidden="true">&rsaquo;</span>
-                                    </a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            {% endif %}
+            {% include "./pager.html" with page_list=news_list %}
         </div>
     </div>
 </div>
