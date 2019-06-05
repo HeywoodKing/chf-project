@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from home import models
+# from jet.filters import DateRangeFilter
 
 # Register your models here.
 admin.site.site_header = '春和方 | 秦食皇 后台管理系统'
@@ -22,7 +23,7 @@ class ChfProductAdmin(admin.ModelAdmin):
     list_display_links = ('name', )
     list_editable = ('sort', 'is_recommand', 'is_enable', 'product_type')
     list_filter = ('product_type', 'is_recommand', 'is_enable')
-    exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
     # fieldsets = (
     #     ('基本设置', {
     #         'fields': ('name', 'brief', 'product_type', )

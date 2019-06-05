@@ -332,6 +332,13 @@ h1,h2,h3,h4,h5,h6{
     margin-bottom: 0;
 }
 
+.page-bottom-bg{
+    background-image: url('../images/banner_7.jpg');
+    background-size: cover;
+    min-height: 300px;
+    max-height: 400px;
+}
+
 
 body {
   font-family: "Roboto", sans-serif;

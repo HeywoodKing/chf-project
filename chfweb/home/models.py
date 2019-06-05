@@ -22,6 +22,15 @@ class BaseModel(models.Model):
         abstract = True
 
 
+# 系统相关
+# class SysSetting(BaseModel):
+#
+#     class Meta:
+#         db_table = 'sys_setting'
+#         verbose_name = '系统相关'
+#         verbose_name_plural = verbose_name
+
+
 # 系统|站点配置
 class SysConfig(BaseModel):
     site_name = models.CharField('站点名称', max_length=50)
@@ -106,7 +115,7 @@ class ChfAboutResource(BaseModel):
 
 
 # 关于我们
-# 联系我们
+# 品牌介绍
 class ChfAbout(BaseModel):
     comp_name = models.CharField('公司名称', max_length=100)
     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
@@ -129,7 +138,7 @@ class ChfAbout(BaseModel):
 
     class Meta:
         db_table = 'chf_about'
-        verbose_name = '关于我们'
+        verbose_name = '品牌介绍'
         verbose_name_plural = verbose_name
 
     def __str__(self):

@@ -33,5 +33,7 @@ urlpatterns = [
 
     url(r'^resp_list/$', views.resp_list, name='resp_list'),
     url(r'^resp_detail/(?P<id>\d+)/$', views.resp_detail, name='resp_detail'),
+]
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

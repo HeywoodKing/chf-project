@@ -171,6 +171,8 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# 如果不设置STATIC_ROOT这个参数，使用django-jet美化后台python manage.py collectstatic 会报错
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
     # os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'home', 'static'),
@@ -193,6 +195,208 @@ SITE_AUTHOR2 = 'flack'
 
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静态文件路径为主目录下的uploads文件夹
+
+# django-jet
+JET_DEFAULT_THEME = 'default'
+# default green light-violet light-green light-blue light-gray
+# JET_THEMES = [
+#     {
+#         'theme': 'default', # theme folder name
+#         'color': '#47bac1', # color of the theme's button in user menu
+#         'title': 'Default' # theme title
+#     },
+#     {
+#         'theme': 'green',
+#         'color': '#44b78b',
+#         'title': 'Green'
+#     },
+#     {
+#         'theme': 'light-green',
+#         'color': '#2faa60',
+#         'title': 'Light Green'
+#     },
+#     {
+#         'theme': 'light-violet',
+#         'color': '#a464c4',
+#         'title': 'Light Violet'
+#     },
+#     {
+#         'theme': 'light-blue',
+#         'color': '#5EADDE',
+#         'title': 'Light Blue'
+#     },
+#     {
+#         'theme': 'light-gray',
+#         'color': '#222',
+#         'title': 'Light Gray'
+#     }
+# ]
+
+# 上下最近的导航，默认True
+# JET_CHANGE_FORM_SIBLING_LINKS = True
+
+# 侧边栏压缩
+JET_SIDE_MENU_COMPACT = False
+
+# A list of application or custom item dicts
+# 多站点管理
+# JET_SIDE_MENU_ITEMS = {
+#     'system': [
+#         {
+#             'label': _('系统'),
+#             'app_label': 'home',
+#             'items': []
+#         }
+#     ],
+#     'descr_manager': [
+#         {
+#             'label': _('简介管理'),
+#             'app_label': 'home',
+#             'items': [
+#                 {
+#                     'name': 'ChfAbout',
+#                     'label': _('品牌介绍'),
+#                     'url': '',
+#                 },
+#                 {'name': 'ChfAboutResource', 'label': _('品牌介绍图片资源')},
+#                 {'name': 'ChfCompanyHistory', 'label': _('发展历程'), 'url': 'http://example.com', 'url_blank': True},
+#             ]
+#         }
+#     ],
+#     'user_manager': [
+#         {
+#             'label': _('管理员管理'),
+#             'items': [
+#                 {'name': 'core.user'},
+#                 {'name': 'auth.group'},
+#                 {'name': 'core.userprofile', 'permissions': ['core.user']},
+#             ]
+#         }
+#     ]
+# }
+JET_SIDE_MENU_ITEMS = [
+    {
+        'label': _('系统'),
+        'app_label': 'sys',
+        'items': [
+            {'name': 'SysClearCache', 'label': _('清除系统缓存')},
+            {'name': 'SysLoginLog', 'label': _('管理员登录情况')},
+            {'name': 'SysDbBackup', 'label': _('数据库备份')},
+            {'name': 'SysKeyWords', 'label': _('关键词管理')},
+        ]
+    },
+    {
+        'label': _('信息管理'),
+        'app_label': 'info',
+        'items': [
+            {'name': 'ChfIndexPlate', 'label': _('首页模块'), 'url': '/admin/home/chfindexplate/', 'url_blank': False},
+            {'name': 'ChfUserWateringRecord', 'label': _('用户浇水记录'), 'url': '/admin/home/chfuserwateringrecord/', 'url_blank': False},
+            {'name': 'ChfApplyRecord', 'label': _('用户抢券记录'), 'url': '/admin/home/chfapplyrecord/', 'url_blank': False},
+            {'name': 'ChfWateringQty', 'label': _('浇水水量余额'), 'url': '/admin/home/chfwateringqty/', 'url_blank': False},
+            {'name': 'ChfNews', 'label': _('新闻资讯'), 'url': '/admin/home/chfnews/', 'url_blank': False},
+            {'name': 'ChfPartner', 'label': _('品牌合作'), 'url': '/admin/home/chfpartner/', 'url_blank': False},
+            {'name': 'ChfAnimateType', 'label': _('动画类型'), 'url': '/admin/home/chfanimatetype/', 'url_blank': False},
+            # {
+            #     'name': 'ChfAnimateType',
+            #     'label': _('动画类型000'),
+            #     'items': [
+            #         {'name': 'ChfPartner', 'label': _('品牌合作111')},
+            #         {'name': 'ChfAnimateType', 'label': _('动画类型222')},
+            #     ]
+            # },
+        ]
+    },
+    {
+        'label': _('产品管理'),
+        'app_label': 'product',
+        'items': [
+            {'name': 'ChfProduct', 'label': _('产品管理'), 'url': '/admin/home/chfproduct/', 'url_blank': False},
+            {'name': 'ChfProductType', 'label': _('产品类型'), 'url': '/admin/home/chfproducttype/', 'url_blank': False},
+        ]
+    },
+    {
+        'label': _('简介管理'),
+        'app_label': 'breif',
+        'items': [
+            {'name': 'ChfAbout', 'label': _('品牌介绍'), 'url': '/admin/home/chfabout/', 'url_blank': False},
+            {'name': 'ChfAboutResource', 'label': _('品牌介绍图片资源'), 'url': '/admin/home/chfaboutresource/', 'url_blank': False},
+            {'name': 'ChfCompanyHistory', 'label': _('发展历程'), 'url': '/admin/home/chfcompanyhistory/', 'url_blank': False},
+        ]
+    },
+    {
+        'label': _('留言管理'),
+        'app_label': 'message',
+        'items': []
+    },
+    {
+        'label': _('招聘管理'),
+        'app_label': 'job',
+        'items': [
+            {'name': 'ChfJobRecruit', 'label': _('工作机会'), 'url': '/admin/home/chfjobrecruit/', 'url_blank': False},
+        ]
+    },
+    {
+        'label': _('管理员管理'),
+        'app_label': 'user',
+        'items': [
+            {'name': 'ChfUserProfile', 'label': _('用户'), 'url': '/admin/home/chfuserprofile/', 'url_blank': False},
+            {'name': 'auth.group', 'label': _('用户组')},
+            # {'name': 'ChfUserProfile', 'permissions': ['core.user']},
+        ]
+    },
+    {
+        'label': _('中英文版管理'),
+        'app_label': 'version',
+        'items': []
+    }
+]
+
+
+# 1.0.6之前采用此设置，现已弃用
+# JET_SIDE_MENU_CUSTOM_APPS = [
+#     # ('home', [
+#     #     'SysConfig',
+#     #     'ChfAboutResource',
+#     #     'ChfAbout',
+#     # ]),
+#
+#     ('home', [
+#         '__all__',
+#     ]),
+#     ('feedback', [
+#        'Feedback',
+#     ]),
+# ]
+
+
+# JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+JET_INDEX_DASHBOARD = 'chfweb.dashboard.CustomIndexDashboard'
+# JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
+
+# JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = os.path.join(PROJECT_DIR, 'client_secrets.json')
+# JET_MODULE_YANDEX_METRIKA_CLIENT_ID = 'YANDEX_METRIKA_CLIENT_ID'
+# JET_MODULE_YANDEX_METRIKA_CLIENT_SECRET = 'YANDEX_METRIKA_CLIENT_SECRET'
+
+
+# 富文本编辑器配置优化
+# SUMMERNOTE_CONFIG = {
+#     # Using SummernoteWidget - iframe mode
+#     'iframe': True,  # or set False to use SummernoteInplaceWidget - no iframe mode
+#
+#     # Using Summernote Air-mode
+#     'airMode': False,
+#
+#     # Use native HTML tags (`<b>`, `<i>`, ...) instead of style attributes
+#     'styleWithSpan': False,
+#
+#     # Change editor size
+#     'width': '80%',
+#     'height': '480',
+#
+#     # Use proper language setting automatically (default)
+#     'lang': 'zh-CN',
+# }
+
 
 LOGGING = {
     'version': 1,
@@ -267,3 +471,4 @@ LOGGING = {
         # },
     },
 }
+
