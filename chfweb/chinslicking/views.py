@@ -14,7 +14,7 @@ from home import models
 
 
 # Create your views here.
-logger = logging.getLogger("chinslicking.views")
+logger = logging.getLogger("me")
 
 
 def global_setting(req):
@@ -337,8 +337,10 @@ def news_list(req):
         news_list = paginator.page(page)
     except PageNotAnInteger:
         news_list = paginator.page(1)
+        logger.error('传入的页码错误')
     except EmptyPage:
         news_list = paginator.page(paginator.num_pages)
+        logger.error('空页')
 
     # news_lasted = models.ChfNews.objects.filter(type=0)[:10]
 

@@ -12,7 +12,7 @@ import pytz
 class BaseModel(models.Model):
     # , default=datetime.now().replace(tzinfo=pytz.utc)
     create_time = models.DateTimeField('创建时间', default=timezone.now)
-    create_uid= models.IntegerField('创建人ID', default=123456789, auto_created=True)
+    create_uid = models.IntegerField('创建人ID', default=123456789, auto_created=True)
     create_username = models.CharField('创建人名称', max_length=30, default='admin', auto_created=True)
     operate_time = models.DateTimeField('操作时间', auto_now=True)
     operate_uid = models.IntegerField('操作人ID', default=123456789, auto_created=True)
@@ -147,6 +147,15 @@ class ChfAbout(BaseModel):
     def get_absolute_url(self):
         return reverse('about', args=(self.slug, ))
 
+    def profile(self):
+        if len(str(self.content)) > 40:
+            return '{}...'.format(str(self.content)[0:40])
+        else:
+            return str(self.content)
+
+    profile.allow_tags = True
+    profile.short_description = u'公司简介'
+
 
 # 用户,继承方式扩展
 # class UserManager(BaseUserManager):
@@ -256,7 +265,16 @@ class ChfAnimateType(BaseModel):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.class_name
+        return self.name
+
+    def profile(self):
+        if len(str(self.descr)) > 50:
+            return '{}...'.format(str(self.descr)[0:50])
+        else:
+            return str(self.descr)
+
+    profile.allow_tags = True
+    profile.short_description = u'动画描述'
 
 
 # 首页板块管理
@@ -281,6 +299,15 @@ class ChfIndexPlate(BaseModel):
 
     def __str__(self):
         return self.title
+
+    def profile(self):
+        if len(str(self.descr)) > 20:
+            return '{}...'.format(str(self.descr)[0:20])
+        else:
+            return str(self.descr)
+
+    profile.allow_tags = True
+    profile.short_description = u'简介'
 
 
 # class ChfUserProfileBase(AbstractBaseUser):
@@ -319,6 +346,15 @@ class ChfCompanyHistory(BaseModel):
 
     def __str__(self):
         return self.title
+
+    def profile(self):
+        if len(str(self.content)) > 20:
+            return '{}...'.format(str(self.content)[0:20])
+        else:
+            return str(self.content)
+
+    profile.allow_tags = True
+    profile.short_description = u'描述'
 
 
 # 产品类型
@@ -369,6 +405,24 @@ class ChfProduct(BaseModel):
         self.slug = slugify(self.name)
         super(ChfProduct, self).get_absolute_url(*args, **kwargs)
 
+    def brief_profile(self):
+        if len(str(self.brief)) > 10:
+            return '{}...'.format(str(self.brief)[0:10])
+        else:
+            return str(self.brief)
+
+    brief_profile.allow_tags = True
+    brief_profile.short_description = u'产品描述'
+
+    def profile(self):
+        if len(str(self.content)) > 40:
+            return '{}...'.format(str(self.content)[0:40])
+        else:
+            return str(self.content)
+
+    profile.allow_tags = True
+    profile.short_description = u'产品描述'
+
 
 # 品牌合作
 class ChfPartner(BaseModel):
@@ -389,6 +443,15 @@ class ChfPartner(BaseModel):
 
     def __str__(self):
         return self.name
+
+    def profile(self):
+        if len(str(self.brief)) > 20:
+            return '{}...'.format(str(self.brief)[0:20])
+        else:
+            return str(self.brief)
+
+    profile.allow_tags = True
+    profile.short_description = u'简介'
 
 
 # 社会责任
@@ -421,6 +484,15 @@ class ChfNews(BaseModel):
     def get_absolute_url(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(ChfNews, self).get_absolute_url(*args, **kwargs)
+
+    def profile(self):
+        if len(str(self.content)) > 20:
+            return '{}...'.format(str(self.content)[0:20])
+        else:
+            return str(self.content)
+
+    profile.allow_tags = True
+    profile.short_description = u'内容'
 
 
 # 工作机会
@@ -475,6 +547,16 @@ class ChfJobRecruit(BaseModel):
         self.slug = slugify(self.job_name)
         super(ChfJobRecruit, self).get_absolute_url(*args, **kwargs)
 
+    def profile(self):
+        if len(str(self.content)) > 80:
+            return '{}...'.format(str(self.content)[0:80])
+        else:
+            return str(self.content)
+
+    # 如何将一个TextField字段设为safe
+    profile.allow_tags = True
+    profile.short_description = u'招聘要求'
+
 
 # 用户抢购优惠券表
 class ChfApplyRecord(BaseModel):
@@ -528,6 +610,15 @@ class ChfUserWateringRecord(BaseModel):
 
     def __str__(self):
         return self.client_ip
+
+    def profile(self):
+        if len(str(self.client_user_agent)) > 60:
+            return '{}...'.format(str(self.client_user_agent)[0:60])
+        else:
+            return str(self.client_user_agent)
+
+    profile.allow_tags = True
+    profile.short_description = u'客户端浏览器'
 
 
 # 浇水量余额表
