@@ -44,7 +44,8 @@ def global_setting(req):
 #             req.session['django_language'] = lang_code
 #
 #         max_age = 60*60*24*365
-#         expires = datetime.datetime.strftime(datetime.datetime.utctime() + datetime.timedelta(seconds=max_age), "%a, %d-%b-%Y %H:%M:%S GMT")
+#         expires = datetime.datetime.strftime(datetime.datetime.utctime() +
+#         datetime.timedelta(seconds=max_age), "%a, %d-%b-%Y %H:%M:%S GMT")
 #         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang_code, max_age, expires)
 #     return response
 
@@ -250,7 +251,7 @@ def product_list(req):
     return render(req, 'chinslicking/product_list.html', locals())
 
 
-# 品牌产品详情  没有啦
+# 品牌产品详情
 def product_detail(req, id):
     index = 2
     try:
@@ -273,6 +274,24 @@ def product_detail(req, id):
 # 品牌合作 => 合作共赢
 def partner(req):
     index = 3
+    try:
+        policy = models.ChfCooperationPolicy.objects.get(is_enable=True)
+    except Exception as e:
+        policy = None
+        logger.error(e)
+
+    try:
+        superiority = models.ChfCooperationSuperiority.objects.get(is_enable=True)
+    except Exception as e:
+        superiority = None
+        logger.error(e)
+
+    try:
+        question = models.ChfCooperationQuestion.objects.get(is_enable=True)
+    except Exception as e:
+        question = None
+        logger.error(e)
+
     return render(req, 'chinslicking/partner.html', locals())
 
 
@@ -280,7 +299,7 @@ def partner(req):
 def resp_list(req):
     index = 4
 
-    resp_lists = models.ChfNews.objects.filter(type=1,is_enable=True)
+    resp_lists = models.ChfNews.objects.filter(type=1, is_enable=True)
     paginator = Paginator(resp_lists, 10, 2)
     page = req.GET.get('page')
     try:

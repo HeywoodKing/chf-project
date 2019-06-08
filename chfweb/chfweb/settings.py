@@ -149,7 +149,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 LANGUAGES = (
     ('zh-hans', _('中文简体')),
@@ -497,10 +497,25 @@ SIMPLEUI_CONFIG = {
                     'icon': 'fa fa-newspaper',
                     'url': 'home/chfnews/'
                 },
+                # {
+                #     'name': '合作伙伴',
+                #     'icon': 'fa fa-glass-cheers',
+                #     'url': 'home/chfpartner/'
+                # },
                 {
-                    'name': '品牌合作',
+                    'name': '合作政策',
                     'icon': 'fa fa-glass-cheers',
-                    'url': 'home/chfpartner/'
+                    'url': 'home/chfcooperationpolicy/'
+                },
+                {
+                    'name': '项目优势',
+                    'icon': 'fa fa-glass-cheers',
+                    'url': 'home/chfcooperationsuperiority/'
+                },
+                {
+                    'name': '经销商问答',
+                    'icon': 'fa fa-glass-cheers',
+                    'url': 'home/chfcooperationquestion/'
                 },
                 {
                     'name': '动画类型',

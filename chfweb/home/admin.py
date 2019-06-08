@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from home import models
+from django.contrib.admin import SimpleListFilter
 # from jet.filters import DateRangeFilter
 
 # Register your models here.
@@ -8,12 +9,126 @@ admin.site.site_header = '春和方 | 秦食皇 后台管理系统'
 admin.site.site_title = '后台管理系统'
 
 
+# 是否启用过滤
+class IsEnableFilter(SimpleListFilter):
+    title = '是否启用'
+    parameter_name = 'is_enable'
+
+    def lookups(self, request, model_admin):
+        return [(1, '是'), (0, '否')]
+
+    def queryset(self, request, queryset):
+        # pdb.set_trace()
+        if self.value() == '1':
+            return queryset.filter(is_enable=True)
+        elif self.value() == '0':
+            return queryset.filter(is_enable=False)
+        else:
+            return queryset.filter()
+
+
+# 是否领取
+class IsGetFilter(SimpleListFilter):
+    title = '是否领取'
+    parameter_name = 'is_get'
+
+    def lookups(self, request, model_admin):
+        return [(1, '已领取'), (0, '未领取')]
+
+    def queryset(self, request, queryset):
+        # pdb.set_trace()
+        if self.value() == '1':
+            return queryset.filter(is_get=True)
+        elif self.value() == '0':
+            return queryset.filter(is_get=False)
+        else:
+            return queryset.filter()
+
+
+# 是否已通知
+class IsInformFilter(SimpleListFilter):
+    title = '是否通知'
+    parameter_name = 'is_inform'
+
+    def lookups(self, request, model_admin):
+        return [(1, '已通知'), (0, '未通知')]
+
+    def queryset(self, request, queryset):
+        # pdb.set_trace()
+        if self.value() == '1':
+            return queryset.filter(is_inform=True)
+        elif self.value() == '0':
+            return queryset.filter(is_inform=False)
+        else:
+            return queryset.filter()
+
+
+# 是否推荐
+class IsRecommandFilter(SimpleListFilter):
+    title = '是否推荐'
+    parameter_name = 'is_recommand'
+
+    def lookups(self, request, model_admin):
+        return [(1, '是'), (0, '否')]
+
+    def queryset(self, request, queryset):
+        # pdb.set_trace()
+        if self.value() == '1':
+            return queryset.filter(is_recommand=True)
+        elif self.value() == '0':
+            return queryset.filter(is_recommand=False)
+        else:
+            return queryset.filter()
+
+
+# 超级用户状态
+class IsSuperUserFilter(SimpleListFilter):
+    title = '超级用户状态'
+    parameter_name = 'is_superuser'
+
+    def lookups(self, request, model_admin):
+        return [(1, '是'), (0, '否')]
+
+    def queryset(self, request, queryset):
+        # pdb.set_trace()
+        if self.value() == '1':
+            return queryset.filter(is_superuser=True)
+        elif self.value() == '0':
+            return queryset.filter(is_superuser=False)
+        else:
+            return queryset.filter()
+
+
+# 超级用户状态
+class IsActiveFilter(SimpleListFilter):
+    title = '是否有效'
+    parameter_name = 'is_superuser'
+
+    def lookups(self, request, model_admin):
+        return [(1, '是'), (0, '否')]
+
+    def queryset(self, request, queryset):
+        # pdb.set_trace()
+        if self.value() == '1':
+            return queryset.filter(is_active=True)
+        elif self.value() == '0':
+            return queryset.filter(is_active=False)
+        else:
+            return queryset.filter()
+
+
 # 管理员
 @admin.register(models.ChfUserProfile)
 class ChfUserProfileAdmin(UserAdmin):
-    list_display = ('username', 'password', 'email', 'nick_name', 'qq', 'phone', 'is_lock', 'is_enable')
+    list_display = ('username', 'email', 'nick_name', 'first_name', 'last_name', 'qq', 'phone',
+                    'is_superuser', 'is_active', )
     list_display_links = ('username', )
+    list_editable = ('nick_name', 'qq', 'phone', 'is_superuser', 'is_active', )
     list_per_page = 30
+    list_filter = (IsSuperUserFilter, IsActiveFilter, 'groups')
+    search_fields = ('username', 'nick_name', 'first_name', 'last_name', 'email')
+    ordering = ('username',)
+    filter_horizontal = ('groups', 'user_permissions',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
 
@@ -23,10 +138,10 @@ class ChfProductAdmin(admin.ModelAdmin):
     # fields = ()
     # inlines = ()
     list_display = ('name', 'brief_profile', 'profile', 'cover_image_url', 'read_count',
-                    'product_type', 'sort', 'is_recommand', 'is_enable')
+                    'product_type', 'sort', 'is_recommand', 'is_enable', 'create_time')
     list_display_links = ('name', 'brief_profile', 'profile',)
     list_editable = ('sort', 'is_recommand', 'is_enable', 'product_type')
-    list_filter = ('product_type', 'is_recommand', 'is_enable', 'create_time', )
+    list_filter = ('product_type', IsRecommandFilter, IsEnableFilter, 'create_time', )
     list_per_page = 30
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
     # fieldsets = (
@@ -39,7 +154,6 @@ class ChfProductAdmin(admin.ModelAdmin):
     #     }),
     # )
     search_fields = ('name', 'product_type', )
-
     # list_max_show_all =
     # list_per_page =
     # list_select_related =
@@ -67,21 +181,75 @@ class ChfProductTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'sort', 'is_enable', 'data_filter_name')
     list_display_links = ('name', )
     list_editable = ('is_enable', 'sort', 'data_filter_name', )
-    list_filter = ('is_enable', )
+    list_filter = (IsEnableFilter, )
     list_per_page = 30
     search_fields = ('name', )
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
 
-# 品牌合作
+# 合作伙伴
 @admin.register(models.ChfPartner)
 class ChfPartnerAdmin(admin.ModelAdmin):
     list_display = ('name', 'logo', 'brief', 'profile', 'url', 'address', 'sort', 'is_enable', )
     list_display_links = ('name', 'profile',)
     list_editable = ('sort', 'is_enable', 'url', )
-    list_filter = ('is_enable', 'create_time',)
+    list_filter = (IsEnableFilter, 'create_time',)
     search_fields = ('name', 'brief',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+
+
+# 合作共赢 品牌合作-合作政策
+@admin.register(models.ChfCooperationPolicy)
+class ChfCooperationPolicyAdmin(admin.ModelAdmin):
+    list_display = ('title', 'profile', 'is_enable')
+    list_display_links = ('title', 'profile')
+    list_editable = ('is_enable', )
+    list_filter = (IsEnableFilter, )
+    search_fields = ('title', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+
+    class Media:
+        js = (
+            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/home/plugins/kindeditor-4.1.10/config.js',
+        )
+
+
+# 合作共赢 品牌合作-项目优势
+@admin.register(models.ChfCooperationSuperiority)
+class ChfCooperationSuperiorityAdmin(admin.ModelAdmin):
+    list_display = ('title', 'profile', 'is_enable')
+    list_display_links = ('title', 'profile')
+    list_editable = ('is_enable', )
+    list_filter = (IsEnableFilter, )
+    search_fields = ('title', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+
+    class Media:
+        js = (
+            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/home/plugins/kindeditor-4.1.10/config.js',
+        )
+
+
+# 合作共赢 品牌合作-项目优势
+@admin.register(models.ChfCooperationQuestion)
+class ChfCooperationQuestionAdmin(admin.ModelAdmin):
+    list_display = ('title', 'profile', 'is_enable')
+    list_display_links = ('title', 'profile')
+    list_editable = ('is_enable', )
+    list_filter = (IsEnableFilter, )
+    search_fields = ('title', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+
+    class Media:
+        js = (
+            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/home/plugins/kindeditor-4.1.10/config.js',
+        )
 
 
 # 关于我们 品牌介绍
@@ -90,7 +258,7 @@ class ChfAboutAdmin(admin.ModelAdmin):
     list_display = ('comp_name', 'title', 'profile', 'comp_image', 'is_enable')
     list_display_links = ('comp_name', 'profile', )
     list_editable = ('title', 'is_enable')
-    list_filter = ('is_enable', 'create_time',)
+    list_filter = (IsEnableFilter, 'create_time',)
     search_fields = ('comp_name', 'title',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
@@ -108,7 +276,7 @@ class ChfAboutResourceAdmin(admin.ModelAdmin):
     list_display = ('type_code', 'type_name', 'image_url', 'sort', 'is_enable')
     list_display_links = ('type_name',)
     list_editable = ('type_code', 'sort', 'is_enable')
-    list_filter = ('type_name', 'is_enable', 'create_time',)
+    list_filter = ('type_name', IsEnableFilter, 'create_time',)
     list_per_page = 30
     search_fields = ('type_code', 'type_name')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
@@ -120,7 +288,7 @@ class ChfAnimateTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'class_name', 'profile', 'is_enable')
     list_display_links = ('id', )
     list_editable = ('name', 'class_name', 'is_enable', )
-    list_filter = ('is_enable', )
+    list_filter = (IsEnableFilter, )
     list_per_page = 30
     search_fields = ('name', 'class_name', )
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
@@ -135,6 +303,7 @@ class ChfIndexPlateAdmin(admin.ModelAdmin):
                     'is_redirect_sub_page', 'sub_page_url', 'video_source', 'sort', 'is_enable',)
     list_display_links = ('id', 'profile')
     list_editable = ('title', 'animate_type', 'is_redirect_sub_page', 'is_enable', 'sort', )
+    list_filter = (IsEnableFilter, 'create_time',)
     search_fields = ('title', 'desc', 'animate_type')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
@@ -146,7 +315,7 @@ class ChfCompanyHistoryAdmin(admin.ModelAdmin):
     list_display = ('timeline_title', 'title', 'breif', 'cover_image_url', 'sort', 'is_enable', )
     list_display_links = ('timeline_title', )
     list_editable = ('title', 'is_enable', 'sort', )
-    list_filter = ('is_enable', 'create_time',)
+    list_filter = (IsEnableFilter, 'create_time',)
     list_per_page = 30
     search_fields = ('title', 'breif', 'timeline_title')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
@@ -166,7 +335,7 @@ class ChfJobRecruitAdmin(admin.ModelAdmin):
     list_display = ('job_name', 'work_year', 'education', 'work_prop', 'profile', 'sort', 'is_enable')
     list_display_links = ('job_name', 'profile', )
     list_editable = ('education', 'work_prop', 'sort', 'is_enable')
-    list_filter = ('education', 'work_prop', 'is_enable', 'create_time',)
+    list_filter = ('education', 'work_prop', IsEnableFilter, 'create_time',)
     list_per_page = 30
     search_fields = ('job_name', 'work_year', )
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
@@ -187,7 +356,7 @@ class ChfNewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'brief', 'profile', 'read_count', 'cover_image_url', 'type', 'sort', 'is_enable', )
     list_display_links = ('title', 'profile')
     list_editable = ('brief', 'sort', 'read_count', 'type', 'is_enable', )
-    list_filter = ('type', 'is_enable', )
+    list_filter = ('type', IsEnableFilter, )
     list_per_page = 30
     search_fields = ('title', 'brief',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
@@ -206,9 +375,9 @@ class ChfApplyRecordAdmin(admin.ModelAdmin):
     list_display = ('name', 'sex', 'birthday', 'phone', 'email', 'is_get', 'is_inform', 'state', 'sort', 'create_time')
     list_display_links = ('name', )
     list_editable = ('is_get', 'is_inform', 'state', 'sort', )
-    list_filter = ('is_get', 'is_inform', 'state')
+    list_filter = (IsGetFilter, IsInformFilter, 'state')
     list_per_page = 30
-    search_fields = ('name', 'sex', 'phone', 'email', 'is_get', 'is_inform', 'state', )
+    search_fields = ('name', 'sex', 'phone', 'email', )
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
     # 屏蔽增加功能按钮
@@ -218,6 +387,9 @@ class ChfApplyRecordAdmin(admin.ModelAdmin):
     # 屏蔽删除功能按钮
     def has_delete_permission(self, request, obj=None):
         return False
+
+    # def get_list_filter(self, request):
+    #     return [('1', '是'), ('0', '否')]
 
 
 # 用户浇水记录

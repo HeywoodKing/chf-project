@@ -21,20 +21,28 @@ KindEditor.ready(function(K){
         allowImageRemote: false,
         uploadJson: '/admin/upload/kindeditor',
     });
-    /*editor[1] = K.create('textarea[name="job_require"]', {
+    editor[1] = K.create('textarea[name="cooper_policy"]', {
         width:'680px',
         height:'600px',
         resizeType:1,
         allowPreviewEmoticons: false,
         allowImageRemote: false,
         uploadJson: '/admin/upload/kindeditor',
-    });*/
-    /*editor[2] = K.create('textarea[name=skill_require]', {
+    });
+    editor[2] = K.create('textarea[name=cooper_superiority]', {
         width:'680px',
         height:'600px',
         resizeType:1,
         allowPreviewEmoticons: false,
         allowImageRemote: false,
         uploadJson: '/admin/upload/kindeditor',
-    });*/
+    });
+    editor[3] = K.create('textarea[name=cooper_question]', {
+        width:'680px',
+        height:'600px',
+        resizeType:1,
+        allowPreviewEmoticons: false,
+        allowImageRemote: false,
+        uploadJson: '/admin/upload/kindeditor',
+    });
 });
