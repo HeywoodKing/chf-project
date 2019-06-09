@@ -14,9 +14,76 @@ def global_setting(req):
 
     return locals()
 
+# 首页
 def index(req):
-    return render(req, 'index.html')
+    index = 0
+    return render(req, 'home/index.html', locals())
 
 
+# 关于我们 联系我们
 def about(req):
-    return render(req, 'about.html')
+    index = 1
+    return render(req, 'home/about.html', locals())
+
+def contact(req):
+    index = 7
+    return render(req, 'home/contact.html', locals())
+
+
+# 品牌产品
+def product_list(req):
+    index = 2
+    return render(req, 'home/product_list.html', locals())
+
+# 品牌产品详情
+def product_detail(req, id):
+    return render(req, 'home/product_detail.html')
+
+# 品牌合作
+def partner(req):
+    index = 3
+    return render(req, 'home/partner.html', locals())
+
+# 新闻资讯
+def news_list(req):
+    # if mtype == '0':
+    #     print(mtype)
+    #     chf_title = "新闻资讯"
+    #     index = 5
+    # else:
+    #     print(mtype)
+    #     chf_title = "社会责任"
+    #     index = 4
+    index = 5
+
+    return render(req, 'home/news_list.html', locals())
+
+# 新闻资讯
+def news_detail(req, id):
+    return render(req, 'home/news_detail.html', locals())
+
+
+# 社会责任
+def resp_list(req):
+    # if mtype == '0':
+    #     print(mtype)
+    #     chf_title = "新闻资讯"
+    #     index = 5
+    # else:
+    #     print(mtype)
+    #     chf_title = "社会责任"
+    #     index = 4
+    index = 4
+
+    return render(req, 'home/duty_list.html', locals())
+
+# 社会责任详情
+def resp_detail(req, id):
+    return render(req, 'home/duty_detail.html', locals())
+
+
+# 工作机会
+def job_list(req):
+    index = 6
+    return render(req, 'home/job_list.html', locals())
+
