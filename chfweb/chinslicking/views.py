@@ -53,9 +53,14 @@ def global_setting(req):
 # 首页
 def index(req):
     index = 0
-    water_qty = models.ChfWateringQty.objects.all()[0]
+    water_qty_model = models.ChfWateringQty.objects.all()
+    if water_qty_model:
+        water_qty = water_qty_model[0]
+    else:
+        water_qty = models.ChfWateringQty()
 
     index_plate_list = models.ChfIndexPlate.objects.filter(is_enable=True)
+    print(index_plate_list)
     return render(req, 'chinslicking/index.html', locals())
 
 
@@ -63,9 +68,13 @@ def index(req):
 def about(req):
     index = 1
 
-    comp_about_model = models.ChfAbout.objects.get(is_enable=True)
+    try:
+        comp_about_model = models.ChfAbout.objects.get(is_enable=True)
+    except Exception as e:
+        comp_about_model = models.ChfAbout()
+        logger.error(e)
     # 反向查找
-    culture = comp_about_model.about_resource.get(type_code=1)
+    culture = comp_about_model.about_resource.filter(type_code=1)
     honor = comp_about_model.about_resource.filter(type_code=2)
     aptitude = comp_about_model.about_resource.filter(type_code=3)
     # comp_about = {

@@ -424,7 +424,7 @@ class ChfWateringQtyAdmin(admin.ModelAdmin):
 
     # 屏蔽增加功能按钮
     def has_add_permission(self, request):
-        return False
+        return True
 
     # 屏蔽删除功能按钮
     def has_delete_permission(self, request, obj=None):

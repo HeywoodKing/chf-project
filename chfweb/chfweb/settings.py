@@ -29,7 +29,12 @@ SECRET_KEY = 'rnx96978^u&3g*e12j7rt-b@-95rj+=(bl791)(^gllw$j(-nl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.4.30', '192.168.0.100', '127.0.0.1']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '192.168.0.100',
+    '192.168.0.122',
+    'www.chinslicking.local'
+]
 
 
 # Application definition
