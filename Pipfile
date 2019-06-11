@@ -4,8 +4,28 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+django = "*"
+django-simpleui = "*"
+pillow = "*"
+mysqlclient = "*"
+pytz = "*"
+setuptools = "*"
+sqlparse = "*"
+pip = "*"
+wheel = "*"
+uwsgi = "*"
 
 [packages]
+django = "*"
+django-simpleui = "*"
+pillow = "*"
+mysqlclient = "*"
+pytz = "*"
+setuptools = "*"
+sqlparse = "*"
+pip = "*"
+wheel = "*"
+uwsgi = "*"
 
 [requires]
 python_version = "3.7"
