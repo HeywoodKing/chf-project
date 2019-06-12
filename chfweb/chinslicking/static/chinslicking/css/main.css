@@ -17,7 +17,7 @@
  *
  * 00 - 00 - common & reset css
  * 01. header
- * 02. hero-area 
+ * 02. hero-area
  * 03. brand-area
  * 04. service-area
  * 05. portfolio-area
@@ -471,14 +471,28 @@ iframe {
 }
 
 /*翻牌效果 start*/
-.outer{
+@media (min-width: 768px) {
+  .outer{
     margin: 0 auto;
-    width: 98%;
-    height: 520px;
+    /*width: 98%;*/
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
 }
+@media (min-width: 1200px) {
+  .outer{
+    margin: 0 auto;
+    /*width: 98%;*/
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
 .outer .front, .outer .back{
     position: absolute;
     transform-style: preserve-3d;
@@ -490,8 +504,9 @@ iframe {
 }
 .outer .front .front-content{
     position:absolute;
-    top:34%;
-    left:35%;
+    top: 0;
+    left: 0;
+    padding: 80px 30px 30px 60px;
     text-align:center;
     color: #fff;
 }

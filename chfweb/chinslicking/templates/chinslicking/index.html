@@ -200,8 +200,8 @@
 
             //进入全屏播放器
             $(".video-play").on('click', function(){
-                alert($(this).attr('data-source'));
-                alert($(this).attr('data-image'));
+                // alert($(this).attr('data-source'));
+                // alert($(this).attr('data-image'));
                 myVideo.poster = $(this).attr('data-image');
                 myVideo.src = $(this).attr('data-source');
                 myVideo.load();

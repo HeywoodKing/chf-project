@@ -60,7 +60,7 @@ def index(req):
         water_qty = models.ChfWateringQty()
 
     index_plate_list = models.ChfIndexPlate.objects.filter(is_enable=True)
-    print(index_plate_list)
+
     return render(req, 'chinslicking/index.html', locals())
 
 
