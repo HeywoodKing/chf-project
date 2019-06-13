@@ -130,15 +130,12 @@
                 <div class="inner">
                     <div class="outer">
                         <div class="front">
+                            <img src="/uploads/{{item.front_image}}" alt="{{item.title}}">
                             <div class="front-content">
-                                <!--<span class="icon" style="font-size: 50px;">
-                                    <i class="glyphicon glyphicon-object-align-bottom"></i>
-                                </span>-->
                                 <img src="/uploads/{{item.plate_image_url}}">
                                 <hr>
                                 <h2>{% trans item.title %}</h2>
                             </div>
-                            <img src="/uploads/{{item.front_image}}" alt="{{item.title}}">
                         </div>
                         <div class="back">
                             <img src="/uploads/{{item.back_image}}" alt="{{item.title}}">

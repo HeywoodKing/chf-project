@@ -471,27 +471,25 @@ iframe {
 }
 
 /*翻牌效果 start*/
-@media (min-width: 768px) {
-  .outer{
-    margin: 0 auto;
-    /*width: 98%;*/
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-@media (min-width: 1200px) {
-  .outer{
-    margin: 0 auto;
-    /*width: 98%;*/
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+@media only screen and (min-width: 991px) {
+    .outer{
+        margin: 0 auto;
+        height: 520px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
+@media only screen and (max-width: 768px) {
+    .outer{
+        margin: 0 auto;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
 .outer .front, .outer .back{
     position: absolute;
@@ -501,12 +499,15 @@ iframe {
 }
 .outer .front{
     transform:rotateY(0);
+    background-color: rgba(0,0,0,0.8);
+    overflow: hidden;
 }
 .outer .front .front-content{
     position:absolute;
-    top: 0;
-    left: 0;
-    padding: 80px 30px 30px 60px;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 170px 30px 30px 30px;
     text-align:center;
     color: #fff;
 }
@@ -531,6 +532,7 @@ iframe {
     position:absolute;
     top: 0px;
     left: 0px;
+    width: 100%;
     padding: 50px 30px 30px 30px;
     text-align:center;
     color: #fff;
