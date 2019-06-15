@@ -162,12 +162,13 @@
             </div>
         </div>
         <div class="row">
-
+            {% for item in culture %}
             <div class="col-md-12 single-gallery">
                 <div class="inner">
-                    <img src="/uploads/{{culture.image_url}}" alt="企业文化">
+                    <img src="/uploads/{{item.image_url}}" alt="企业文化">
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

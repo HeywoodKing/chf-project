@@ -92,7 +92,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="faq-area-2 sp bg1">
+<div class="faq-area-2 sp bg5">
     <div class="container">
         <div class="section-title">
             <h2>{% trans "社会责任" %}
@@ -109,7 +109,7 @@
         <div class="row">
             <div class="col-md-9">
                 {% for item in resp_list %}
-                <div class="row bg2" style="padding: 25px 10px;margin-bottom: 10px;">
+                <div class="row bg6" style="padding: 25px 10px;margin-bottom: 10px;">
                     <div class="col-md-4">
                         <div class="about-img">
                             <a href="/chf/news_detail/{{item.id}}"><img src="/uploads/{{item.cover_image_url}}" alt="{{item.title}}"></a>
@@ -149,7 +149,7 @@
     </div>
 </div>
 
-<div class="faq-area-2 sp bg2">
+<div class="faq-area-2 sp bg6">
     <div class="container">
         <div class="section-title">
             <h2>{% trans "新闻资讯" %}
@@ -163,7 +163,7 @@
                 <hr class="hr-2">
             </div>
         </div>
-        <div class="row bg1">
+        <div class="row bg5">
             {% for item in news_list %}
             <div class="col-md-12 list-last-box">
                 <div class="row">
@@ -185,7 +185,7 @@
                             <!--<div>{{item.create_time|date:'Y年m月d日 H:i:s'}}</div>-->
                         </div>
                         <div class="about-content" style="text-align: center;">
-                            <a class="btn btn-default" style="width: 120px; background-color: #fbdf50; color: #fff;" href="/chf/news_detail/{{item.id}}">{% trans "更多" %}>></a>
+                            <a class="btn btn-default" style="width: 120px; background-color: #fee97c; color: #fff;" href="/chf/news_detail/{{item.id}}">{% trans "更多" %}>></a>
                         </div>
                     </div>
                 </div>

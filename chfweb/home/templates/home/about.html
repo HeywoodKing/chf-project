@@ -71,11 +71,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="service-area bg2 sp" style="background-color: #a7d676;">
+<div class="service-area bg6 sp">
     <div class="container">
         <div class="row">
             <div class="single-service-row">
-                <div class="col-lg-4 col-md-6 single-service" style="border-right: 1px solid #eee;">
+                <div class="col-lg-4 col-md-6 single-service" style="border-right: 1px solid #666666;">
                     <div class="text-center">
                         <div class="title">
                             <h2><b>2015{% trans "年" %}</b></h2>
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 single-service" style="border-right: 1px solid #eee;">
+                <div class="col-lg-4 col-md-6 single-service" style="border-right: 1px solid #666666;">
                     <div class="text-center">
                         <div class="title">
                             <h2><b>FDA</b></h2>
@@ -148,7 +148,7 @@
 </div>
 
 {% if culture %}
-<div class="gallery-area sp" style="background-color: #99cc67;">
+<div class="gallery-area bg5 sp">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
             <h2>{% trans "企业文化" %}</h2>
@@ -162,19 +162,20 @@
             </div>
         </div>
         <div class="row">
-
+            {% for item in culture %}
             <div class="col-md-12 single-gallery">
                 <div class="inner">
-                    <img src="/uploads/{{culture.image_url}}" alt="企业文化">
+                    <img src="/uploads/{{item.image_url}}" alt="企业文化">
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>
 {% endif %}
 
 {% if honor %}
-<div class="gallery-area sp" style="background-color: #a7d676;">
+<div class="gallery-area bg6 sp">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
             <h2>{% trans "品牌荣誉" %}</h2>
@@ -205,7 +206,7 @@
 {% endif %}
 
 {% if aptitude %}
-<div class="gallery-area sp" style="background-color: #99cc67;">
+<div class="gallery-area bg5 sp">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
             <h2>{% trans "企业资质" %}</h2>
@@ -235,7 +236,7 @@
 {% endif %}
 
 {% if comp_history_list %}
-<div class="faq-area sp bg" style="background-color: #a7d676;">
+<div class="faq-area bg6 sp">
     <div class="container">
         <div class="section-title">
             <h2>{% trans "发展历程" %}</h2>
