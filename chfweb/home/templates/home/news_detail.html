@@ -118,7 +118,7 @@
                     <h3>{% trans "最新资讯" %}</h3>
                     {% for item in news_lasted %}
                     <div class="product-commend about-img">
-                        <a href="/king/news_detail/{{item.id}}">
+                        <a href="/chf/news_detail/{{item.id}}">
                             <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
                         </a>
                         <div class="product-commend-title">{{item.title|truncate_point:'14'}}</div>

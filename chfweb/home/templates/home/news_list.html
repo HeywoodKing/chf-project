@@ -112,12 +112,12 @@
                 <div class="row bg2" style="padding: 25px 10px;margin-bottom: 10px;">
                     <div class="col-md-4">
                         <div class="about-img">
-                            <a href="/king/news_detail/{{item.id}}"><img src="/uploads/{{item.cover_image_url}}" alt="{{item.title}}"></a>
+                            <a href="/chf/news_detail/{{item.id}}"><img src="/uploads/{{item.cover_image_url}}" alt="{{item.title}}"></a>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="about-content" style="margin-top:0;">
-                            <h3 style="margin: 5px 0;"><a href="/king/news_detail/{{item.id}}">{{item.title|truncate_point:'12'}}</a></h3>
+                            <h3 style="margin: 5px 0;"><a href="/chf/news_detail/{{item.id}}">{{item.title|truncate_point:'12'}}</a></h3>
                             <div>{{item.brief|truncate_point:'180'}}</div>
                         </div>
                     </div>
@@ -131,13 +131,13 @@
                     <h3>{% trans "最新动态" %}</h3>
                     <!--<ul class="faq-sidebar">
                         {% for item in resp_lasted %}
-                        <li><a href="/king/resp_detail/{{item.id}}"><span>{{ forloop.counter }}.</span>&nbsp;{{item.title}}</a></li>
+                        <li><a href="/chf/resp_detail/{{item.id}}"><span>{{ forloop.counter }}.</span>&nbsp;{{item.title}}</a></li>
                         {% endfor %}
                     </ul>-->
 
                     {% for item in resp_lasted %}
                     <div class="product-commend about-img">
-                        <a href="/king/news_detail/{{item.id}}">
+                        <a href="/chf/news_detail/{{item.id}}">
                             <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
                         </a>
                         <div class="product-commend-title">{{item.title|truncate_point:'12'}}</div>
@@ -169,12 +169,12 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="about-img">
-                            <a href="/king/news_detail/{{item.id}}"><img src="/uploads/{{item.cover_image_url}}" alt="{{item.title}}"></a>
+                            <a href="/chf/news_detail/{{item.id}}"><img src="/uploads/{{item.cover_image_url}}" alt="{{item.title}}"></a>
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="about-content" style="margin-top:0;">
-                            <h3 style="margin: 5px 0;"><a href="/king/news_detail/{{item.id}}">{{item.title|truncate_point:'30'}}</a></h3>
+                            <h3 style="margin: 5px 0;"><a href="/chf/news_detail/{{item.id}}">{{item.title|truncate_point:'30'}}</a></h3>
                             <div>{{item.brief|truncate_point:'300'}}</div>
                         </div>
                     </div>
@@ -185,7 +185,7 @@
                             <!--<div>{{item.create_time|date:'Y年m月d日 H:i:s'}}</div>-->
                         </div>
                         <div class="about-content" style="text-align: center;">
-                            <a class="btn btn-default" style="width: 120px; background-color: #fbdf50; color: #fff;" href="/king/news_detail/{{item.id}}">{% trans "更多" %}>></a>
+                            <a class="btn btn-default" style="width: 120px; background-color: #fbdf50; color: #fff;" href="/chf/news_detail/{{item.id}}">{% trans "更多" %}>></a>
                         </div>
                     </div>
                 </div>

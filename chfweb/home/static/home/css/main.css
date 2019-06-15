@@ -133,6 +133,7 @@ span {
 .relative {
   position: relative; }
 
+/*绿色系 start*/
 .bg1{
     background-color: #99cc67;
 }
@@ -144,7 +145,9 @@ span {
 .bg3 {
   background-color: #4cd48d;
   }
+/*绿色系 end*/
 
+/*黄色系 start*/
 .bg4 {
   background-color: #fbdf51;
 }
@@ -156,6 +159,11 @@ span {
 .bg6{
     background-color: #abe491;
 }
+
+.bg7{
+    background-color: #fde981;
+}
+/*黄色系 end*/
 
 .sp {
   padding-top: 90px;

@@ -34,10 +34,10 @@ urlpatterns = [
     url(r'^admin/upload/(?P<dir_name>[^/]+)$', upload.upload_image, name='upload_image'),  # 富文本编辑器上传图片路径
     url(r'^i18n/', include('django.conf.urls.i18n')),
     # url(r'^i18n/setlang', 'home.views.set_language'),
-    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/chinslicking/media/favicon.ico')),
+    url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico')),
 ]
 
 urlpatterns += i18n_patterns(
     url(r'^king/', include('chinslicking.urls')),
-    # path('chf/', include('home.urls')),
+    url(r'^chf/', include('home.urls')),
 )

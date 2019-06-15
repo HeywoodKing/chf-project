@@ -120,17 +120,17 @@
                         <img src="/uploads/{{item.cover_image_url}}" alt="{{item.name}}">
                         <div class="hover-content">
                             <div>
-                                <a href="/king/product_detail/{{item.id}}" class="button">{% trans "查看详情" %}</a>
+                                <a href="/chf/product_detail/{{item.id}}" class="button">{% trans "查看详情" %}</a>
                                 {% if item.mall_url %}
                                     <a href="{{item.mall_url}}" class="button">{% trans "商城选购" %}</a>
                                 {% else %}
-                                    <a href="/king/product_detail/{{item.id}}" class="button">{% trans "商城选购" %}</a>
+                                    <a href="/chf/product_detail/{{item.id}}" class="button">{% trans "商城选购" %}</a>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                     <div class="portfolio-content">
-                        <a href="/king/product_detail/{{item.id}}"><h3>{{item.name|truncate_point:'15'}}</h3></a>
+                        <a href="/chf/product_detail/{{item.id}}"><h3>{{item.name|truncate_point:'15'}}</h3></a>
                         <span>{{item.brief|truncate_point:'30'}}</span>
                     </div>
                 </div>

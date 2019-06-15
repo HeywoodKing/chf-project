@@ -59,7 +59,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6 col-sm-3 logo-column">
-                <a href="/king/index" class="logo">
+                <a href="/chf/index" class="logo">
                     <img src="{% static 'home/images/logo_nav.png' %}" alt="logo">
                 </a>
             </div>
@@ -88,13 +88,13 @@
                 </div>
                 <nav id="menu" class="d-none d-lg-block">
                     <ul>
-                        <li><a href="/king/index">{% trans "首页" %}</a></li>
-                        <li><a href="/king/about">{% trans "品牌介绍" %}</a></li>
-                        <li><a href="/king/product_list">{% trans "在线商城" %}</a></li>
-                        <li><a href="/king/partner">{% trans "合作共赢" %}</a></li>
-                        <li><a href="/king/news_list">{% trans "新闻动态" %}</a></li>
-                        <li><a href="/king/job_list">{% trans "静候伯乐" %}</a></li>
-                        <li><a href="/king/contact">{% trans "为您服务" %}</a></li>
+                        <li><a href="/chf/index">{% trans "首页" %}</a></li>
+                        <li><a href="/chf/about">{% trans "品牌介绍" %}</a></li>
+                        <li><a href="/chf/product_list">{% trans "在线商城" %}</a></li>
+                        <li><a href="/chf/partner">{% trans "合作共赢" %}</a></li>
+                        <li><a href="/chf/news_list">{% trans "新闻动态" %}</a></li>
+                        <li><a href="/chf/job_list">{% trans "静候伯乐" %}</a></li>
+                        <li><a href="/chf/contact">{% trans "为您服务" %}</a></li>
                         <!--<li class="has-child">
                             <a href="#">Pages</a>
                             <ul class="sub-menu">
@@ -118,7 +118,7 @@
     </div>
 </header>
 
-<div class="portfolio-area bg2">
+<div class="portfolio-area bg4">
     <div class="container-fluid pdlr-150">
         <!--<div class="section-title">
             <h2>美食美味</h2>
@@ -431,7 +431,7 @@
                     title: "优惠券抢购",
                     area: ['500px', '330px'],
                     // area: ['25%', '35%'],
-                    content: "/king/layer_coupon_form",
+                    content: "/chf/layer_coupon_form",
                     zIndex: layer.zIndex,
                     /*success: function(o, index){
                         // layer.close(index);
@@ -448,7 +448,7 @@
                         console.log($('#myform').serialize());
                         $.ajax({
                             type: 'POST',
-                            url: '/king/add_coupon',
+                            url: '/chf/add_coupon',
                             data: $('#myform').serialize(),
                             dataType: 'json',
                             timeout: 3000,

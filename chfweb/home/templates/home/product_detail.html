@@ -77,7 +77,7 @@
                     <h3>{% trans "推荐产品" %}</h3>
                     {% for item in product_command_list %}
                     <div class="product-commend about-img">
-                        <a href="/king/product_detail/{{item.id}}">
+                        <a href="/chf/product_detail/{{item.id}}">
                             <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.name}}" title="{{item.name}}">
                         </a>
                         <div class="product-commend-title">{{item.name|truncate_point:'12'}}</div>
