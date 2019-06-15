@@ -17,7 +17,7 @@
  *
  * 00 - 00 - common & reset css
  * 01. header
- * 02. hero-area 
+ * 02. hero-area
  * 03. brand-area
  * 04. service-area
  * 05. portfolio-area
@@ -332,6 +332,13 @@ h1,h2,h3,h4,h5,h6{
     margin-bottom: 0;
 }
 
+.page-bottom-bg{
+    background-image: url('../images/banner_7.jpg');
+    background-size: cover;
+    min-height: 300px;
+    max-height: 400px;
+}
+
 
 body {
   font-family: "Roboto", sans-serif;
@@ -464,14 +471,46 @@ iframe {
 }
 
 /*翻牌效果 start*/
-.outer{
-    margin: 0 auto;
-    width: 98%;
-    height: 520px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media only screen and (min-width: 991px) {
+    .outer{
+        margin: 0px auto;
+        height: 520px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .outer .front .front-content{
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        padding: 100px 30px 30px 30px;
+        text-align:center;
+        color: #fff;
+    }
 }
+
+@media only screen and (max-width: 768px) {
+    .outer{
+        margin: 225px auto;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .outer .front .front-content{
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        padding: 30px 30px 30px 30px;
+        text-align:center;
+        color: #fff;
+    }
+}
+
 .outer .front, .outer .back{
     position: absolute;
     transform-style: preserve-3d;
@@ -480,14 +519,10 @@ iframe {
 }
 .outer .front{
     transform:rotateY(0);
+    background-color: rgba(0,0,0,0.8);
+    overflow: hidden;
 }
-.outer .front .front-content{
-    position:absolute;
-    top:34%;
-    left:35%;
-    text-align:center;
-    color: #fff;
-}
+
 .outer .front .front-content hr{
     width: 100px;
     height: 3px;
@@ -509,6 +544,7 @@ iframe {
     position:absolute;
     top: 0px;
     left: 0px;
+    width: 100%;
     padding: 50px 30px 30px 30px;
     text-align:center;
     color: #fff;

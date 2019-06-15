@@ -1,6 +1,7 @@
 {% extends "chinslicking/layout-index.html" %}
 {% load staticfiles %}
 {% load i18n %}
+{% load my_filter_tag %}
 
 {% block header %}
     {% include "chinslicking/header-index.html" with title="首页" %}
@@ -117,7 +118,7 @@
     </div>
 </header>
 
-<div class="portfolio-area sp bg2">
+<div class="portfolio-area bg2">
     <div class="container-fluid pdlr-150">
         <!--<div class="section-title">
             <h2>美食美味</h2>
@@ -146,7 +147,7 @@
                                 <h2><a href="{{item.sub_page_url}}">{% trans item.title %}</a></h2>
                                 <a href="{{item.sub_page_url}}">
                                     <div>
-                                        <span style="color:#fff;">{% trans item.descr %}</span>
+                                        <span style="color:#fff;">{% trans item.descr|truncate_point:'50' %}</span>
                                     </div>
                                 </a>
                                 {% else %}
@@ -157,7 +158,7 @@
                                 <a href="javascript:void(0);" class="video-play" data-image="/uploads/{{item.front_image}}"
                                    data-source="/uploads/{{item.video_source}}">
                                     <div>
-                                        <span style="color:#fff;">{% trans item.descr %}</span>
+                                        <span style="color:#fff;">{% trans item.descr|truncate_point:'50' %}</span>
                                     </div>
                                 </a>
                                 {% endif %}

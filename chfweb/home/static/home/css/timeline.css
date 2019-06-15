@@ -39,8 +39,9 @@ a:hover {
 }
 
 .container-fluid .row {
-  padding: 0 0 4em 0;
+  /*padding: 0 0 4em 0;*/
 }
+
 .container-fluid .row:nth-child(even) {
   background: #F1F4F5;
 }
