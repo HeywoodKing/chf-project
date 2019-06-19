@@ -17,7 +17,7 @@
  *
  * 00 - 00 - common & reset css
  * 01. header
- * 02. hero-area 
+ * 02. hero-area
  * 03. brand-area
  * 04. service-area
  * 05. portfolio-area
@@ -63,7 +63,7 @@
 }
 
 .c3-bg, .button, .hero-slider .owl-dots .owl-dot.active, .single-service-2:hover .inner, .single-faq h2 span, .footer_widget .nw_form button, .tabs-area .tabs-nav li a.active, .single-team .inner .team-img::after, .single-pricing.active .inner, .active.single-pricing-2 .inner, .single-pricing-2.active .inner .title .price {
-  background-color: #fbdf50;
+  background-color: #fee97c;
 }
 
 .single-portfolio .inner .portfolio-img .hover-content{
@@ -133,6 +133,7 @@ span {
 .relative {
   position: relative; }
 
+/*绿色系 start*/
 .bg1{
     background-color: #99cc67;
 }
@@ -143,19 +144,30 @@ span {
 
 .bg3 {
   background-color: #4cd48d;
-  }
-
-.bg4 {
-  background-color: #fbdf51;
 }
 
-.bg5{
-    background-color: #0fe475;
+.bg4 {
+  background-color: #8abd58;
+}
+/*绿色系 end*/
+
+/*黄色系 start*/
+.bg5 {
+  background-color: #fbdf50;
 }
 
 .bg6{
-    background-color: #abe491;
+    background-color: #fee97c;
 }
+
+.bg7{
+    background-color: #fcf080;
+}
+
+.bg8{
+    background-color: #fde981;
+}
+/*黄色系 end*/
 
 .sp {
   padding-top: 90px;
@@ -289,7 +301,7 @@ h1,h2,h3,h4,h5,h6{
     padding-left: 102px;
 }
 .section-title .section-title-bg .section-title-bg-box{
-    background-color: #fde981;
+    background-color: #99cc67;
     width: 100px;
     height: 27px;
 }
@@ -330,6 +342,13 @@ h1,h2,h3,h4,h5,h6{
 
 .page-bottom-title p:last-child {
     margin-bottom: 0;
+}
+
+.page-bottom-bg{
+    background-image: url('../images/banner_7.jpg');
+    background-size: cover;
+    min-height: 300px;
+    max-height: 400px;
 }
 
 
@@ -424,7 +443,7 @@ iframe {
 .isotope-menu li.active, .isotope-menu li:hover{
     padding: 5px 15px;
     color:#fff;
-    background-color: #fbdf51;
+    background-color: #99cc67;
     border-radius: 50px;
 }
 
@@ -435,10 +454,10 @@ iframe {
 
 .pager li>a:hover, .pager li>span{
     /*border-radius: 18px;*/
-    background-color: #fbdf50;
+    background-color: #99cc67;
 }
 #active {
-    background-color: #fbdf50;
+    background-color: #99cc67;
 }
 /*.pager .disabled>a, .pager .disabled>a:focus, .pager .disabled>a:hover, .pager .disabled>span{
     background-color: transparent;
@@ -464,14 +483,46 @@ iframe {
 }
 
 /*翻牌效果 start*/
-.outer{
-    margin: 0 auto;
-    width: 98%;
-    height: 520px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media only screen and (min-width: 991px) {
+    .outer{
+        margin: 0px auto;
+        height: 520px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .outer .front .front-content{
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        padding: 100px 30px 30px 30px;
+        text-align:center;
+        color: #fff;
+    }
 }
+
+@media only screen and (max-width: 768px) {
+    .outer{
+        margin: 225px auto;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .outer .front .front-content{
+        position:absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        padding: 30px 30px 30px 30px;
+        text-align:center;
+        color: #fff;
+    }
+}
+
 .outer .front, .outer .back{
     position: absolute;
     transform-style: preserve-3d;
@@ -480,14 +531,10 @@ iframe {
 }
 .outer .front{
     transform:rotateY(0);
+    background-color: rgba(0,0,0,0.8);
+    overflow: hidden;
 }
-.outer .front .front-content{
-    position:absolute;
-    top:34%;
-    left:35%;
-    text-align:center;
-    color: #fff;
-}
+
 .outer .front .front-content hr{
     width: 100px;
     height: 3px;
@@ -509,6 +556,7 @@ iframe {
     position:absolute;
     top: 0px;
     left: 0px;
+    width: 100%;
     padding: 50px 30px 30px 30px;
     text-align:center;
     color: #fff;
@@ -566,7 +614,7 @@ iframe {
     align-items: center;
     border-bottom: 2px solid #fff;
     height: 60px;
-    background-color:#fde981;
+    background-color:#fde151;
 }
 .fixed-box>div:hover{
     cursor: pointer;
@@ -658,7 +706,7 @@ iframe {
 
 .faq-area-2 .list-last-box {
     padding: 25px;
-    border-bottom: 1px solid #fbdf50;
+    border-bottom: 1px solid #fee97c;
 }
 .faq-area-2 .list-last-box:last-child {
     padding: 25px;
@@ -677,8 +725,7 @@ iframe {
  *   01. header
  ***************************** */
 header {
-  /*background-color: #222538;*/
-  background-color: #99cc67;
+  background-color: #fbdf50;
   padding: 18px 0; }
 
 .logo-column a.logo {
@@ -935,7 +982,7 @@ form.search-form button {
 }
 
 .single-service-row{
-    background-color: #cae479;
+    background-color: #fbdf50;
     box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.1);
     /*margin-top: -130px;*/
     margin-bottom: 50px;
@@ -952,7 +999,8 @@ form.search-form button {
     min-height: 175px;
 }
     .single-service .inner:hover, .single-service-2 .inner:hover, .single-service-3 .inner:hover {
-      box-shadow: 2px 2px 25px rgba(157, 220, 95, 0.7); }
+      /*box-shadow: 2px 2px 25px rgba(157, 220, 95, 0.7); */
+    }
     .single-service .inner .title, .single-service-2 .inner .title, .single-service-3 .inner .title {
       overflow: hidden;
       margin-bottom: 15px; }
@@ -1259,7 +1307,7 @@ form.search-form button {
   list-style: none;
 }
   .faq .single-item {
-    background-color: #bbe295;
+    background-color: #fee97c;
     padding: 20px;
     padding-left: 50px;
     line-height: 28px;
@@ -1338,7 +1386,7 @@ form.search-form button {
     margin-bottom: 30px;
     padding: 20px 35px 35px 35px;
     border-radius: 5px;
-    background-color: #a7d676;
+    background-color: #fee97c;
 }
   @media only screen and (max-width: 991px) {
     .faq-sidebar-wrap {
@@ -1378,7 +1426,7 @@ form.search-form button {
  *   08. footer-top
  ***************************** */
 footer {
-  background-color: #99cc67;
+  background-color: #f7d83d;
   color: #330000;
   line-height: 24px; }
 
@@ -1402,8 +1450,8 @@ footer {
 
 .footer_widget {
     padding: 0 70px;
-    border-left: 1px solid #999999;
-    border-right: 1px solid #999999;
+    border-left: 1px solid #666666;
+    border-right: 1px solid #666666;
 }
 
 .footer_widget_noborder {
@@ -1474,9 +1522,9 @@ footer {
     border-radius: 0 3px 3px 0; }
 
 .footer-bottom {
-    background-color: #99cc67;
+    background-color: #f7d83d;
     padding: 25px 0;
-    border-top: 1px solid #999999;
+    border-top: 1px solid #666666;
 }
   .footer-bottom a {
     color: #7286a0;
