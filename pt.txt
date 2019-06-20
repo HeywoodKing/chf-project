@@ -1,0 +1,16 @@
+
+
+8000  nginxÒ»Õ¾
+8001  nginx¶þÕ¾
+
+8020  uwsgi 1
+8021  uwsgi 2
+
+8022  uwsgi 3 /var/www/test  helloworld.py
+
+8040  test
+
+
+8050  apache
+
+

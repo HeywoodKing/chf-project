@@ -464,16 +464,18 @@ class ChfPartner(BaseModel):
     profile.short_description = u'简介'
 
 
-# 合作共赢 品牌合作-合作政策
-class ChfCooperationPolicy(BaseModel):
+# 合作共赢 品牌合作
+class ChfCooperation(BaseModel):
     title = models.CharField('名称', max_length=100)
     content = models.TextField('内容', default=None, null=True, blank=True)
+    type = models.CharField('类型', max_length=10, choices=(('0', '合作政策'), ('1', '项目优势'), ('2', '经销商问答')), default=0)
+    sort = models.IntegerField('排序', default=0)
     is_enable = models.BooleanField('是否启用', default=True)
 
     class Meta:
-        db_table = 'chf_cooperationpolicy'
+        db_table = 'chf_cooperation'
         ordering = ['-create_time']
-        verbose_name = '合作政策'
+        verbose_name = '合作共赢'
         verbose_name_plural = verbose_name
 
     def __str__(self):
@@ -489,54 +491,79 @@ class ChfCooperationPolicy(BaseModel):
     profile.short_description = u'内容'
 
 
-# 合作共赢 品牌合作-项目优势
-class ChfCooperationSuperiority(BaseModel):
-    title = models.CharField('名称', max_length=100)
-    content = models.TextField('内容', default=None, null=True, blank=True)
-    is_enable = models.BooleanField('是否启用', default=True)
-
-    class Meta:
-        db_table = 'chf_cooperationsuperiority'
-        ordering = ['-create_time']
-        verbose_name = '项目优势'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return self.title
-
-    def profile(self):
-        if len(str(self.content)) > 30:
-            return '{}...'.format(str(self.content)[0:30])
-        else:
-            return str(self.content)
-
-    profile.allow_tags = True
-    profile.short_description = u'内容'
-
-
-# 合作共赢 品牌合作-经销商问答
-class ChfCooperationQuestion(BaseModel):
-    title = models.CharField('名称', max_length=100)
-    content = models.TextField('内容', default=None, null=True, blank=True)
-    is_enable = models.BooleanField('是否启用', default=True)
-
-    class Meta:
-        db_table = 'chf_cooperationquestion'
-        ordering = ['-create_time']
-        verbose_name = '经销商问答'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return self.title
-
-    def profile(self):
-        if len(str(self.content)) > 30:
-            return '{}...'.format(str(self.content)[0:30])
-        else:
-            return str(self.content)
-
-    profile.allow_tags = True
-    profile.short_description = u'内容'
+# # 合作共赢 品牌合作-合作政策
+# class ChfCooperationPolicy(BaseModel):
+#     title = models.CharField('名称', max_length=100)
+#     content = models.TextField('内容', default=None, null=True, blank=True)
+#     is_enable = models.BooleanField('是否启用', default=True)
+#
+#     class Meta:
+#         db_table = 'chf_cooperationpolicy'
+#         ordering = ['-create_time']
+#         verbose_name = '合作政策'
+#         verbose_name_plural = verbose_name
+#
+#     def __str__(self):
+#         return self.title
+#
+#     def profile(self):
+#         if len(str(self.content)) > 30:
+#             return '{}...'.format(str(self.content)[0:30])
+#         else:
+#             return str(self.content)
+#
+#     profile.allow_tags = True
+#     profile.short_description = u'内容'
+#
+#
+# # 合作共赢 品牌合作-项目优势
+# class ChfCooperationSuperiority(BaseModel):
+#     title = models.CharField('名称', max_length=100)
+#     content = models.TextField('内容', default=None, null=True, blank=True)
+#     is_enable = models.BooleanField('是否启用', default=True)
+#
+#     class Meta:
+#         db_table = 'chf_cooperationsuperiority'
+#         ordering = ['-create_time']
+#         verbose_name = '项目优势'
+#         verbose_name_plural = verbose_name
+#
+#     def __str__(self):
+#         return self.title
+#
+#     def profile(self):
+#         if len(str(self.content)) > 30:
+#             return '{}...'.format(str(self.content)[0:30])
+#         else:
+#             return str(self.content)
+#
+#     profile.allow_tags = True
+#     profile.short_description = u'内容'
+#
+#
+# # 合作共赢 品牌合作-经销商问答
+# class ChfCooperationQuestion(BaseModel):
+#     title = models.CharField('名称', max_length=100)
+#     content = models.TextField('内容', default=None, null=True, blank=True)
+#     is_enable = models.BooleanField('是否启用', default=True)
+#
+#     class Meta:
+#         db_table = 'chf_cooperationquestion'
+#         ordering = ['-create_time']
+#         verbose_name = '经销商问答'
+#         verbose_name_plural = verbose_name
+#
+#     def __str__(self):
+#         return self.title
+#
+#     def profile(self):
+#         if len(str(self.content)) > 30:
+#             return '{}...'.format(str(self.content)[0:30])
+#         else:
+#             return str(self.content)
+#
+#     profile.allow_tags = True
+#     profile.short_description = u'内容'
 
 
 # 社会责任

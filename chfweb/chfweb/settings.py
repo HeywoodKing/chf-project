@@ -33,7 +33,12 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '192.168.0.100',
     '192.168.0.122',
-    'www.chinslicking.local'
+    '47.99.121.101',
+    '172.16.40.247',
+    'www.chinslicking.local',
+    'www.chf.local',
+    'www.chinslicking.com',
+    'www.chf.com',
 ]
 
 
@@ -49,8 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
     'chinslicking',
+    'home',
     'chinslicking.templatetags',
 ]
 
@@ -426,7 +431,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静�
 # 首页图标
 # SIMPLEUI_HOME_ICON = 'fa fa-user'
 # 设置simpleui 点击首页图标跳转的地址
-SIMPLEUI_INDEX = 'http://127.0.0.1:9090/king/index'
+SIMPLEUI_INDEX = 'http://47.99.121.101:8000/king/index'
 # 自定义SIMPLEUI的Logo 修改LOGO
 SIMPLEUI_LOGO = STATIC_URL + 'home/images/apple.png'
 

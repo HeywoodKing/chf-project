@@ -198,14 +198,14 @@ class ChfPartnerAdmin(admin.ModelAdmin):
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
 
-# 合作共赢 品牌合作-合作政策
-@admin.register(models.ChfCooperationPolicy)
-class ChfCooperationPolicyAdmin(admin.ModelAdmin):
-    list_display = ('title', 'profile', 'is_enable')
+# 合作共赢 品牌合作-0:合作政策 1:项目优势 2:经销商问答
+@admin.register(models.ChfCooperation)
+class ChfCooperationAdmin(admin.ModelAdmin):
+    list_display = ('title', 'profile', 'type', 'sort', 'is_enable')
     list_display_links = ('title', 'profile')
-    list_editable = ('is_enable', )
-    list_filter = (IsEnableFilter, )
-    search_fields = ('title', )
+    list_editable = ('type', 'sort', 'is_enable', )
+    list_filter = (IsEnableFilter, 'type', )
+    search_fields = ('title', 'profile', )
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
     class Media:
@@ -216,40 +216,58 @@ class ChfCooperationPolicyAdmin(admin.ModelAdmin):
         )
 
 
-# 合作共赢 品牌合作-项目优势
-@admin.register(models.ChfCooperationSuperiority)
-class ChfCooperationSuperiorityAdmin(admin.ModelAdmin):
-    list_display = ('title', 'profile', 'is_enable')
-    list_display_links = ('title', 'profile')
-    list_editable = ('is_enable', )
-    list_filter = (IsEnableFilter, )
-    search_fields = ('title', )
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-
-    class Media:
-        js = (
-            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-            '/static/home/plugins/kindeditor-4.1.10/config.js',
-        )
-
-
-# 合作共赢 品牌合作-项目优势
-@admin.register(models.ChfCooperationQuestion)
-class ChfCooperationQuestionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'profile', 'is_enable')
-    list_display_links = ('title', 'profile')
-    list_editable = ('is_enable', )
-    list_filter = (IsEnableFilter, )
-    search_fields = ('title', )
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-
-    class Media:
-        js = (
-            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-            '/static/home/plugins/kindeditor-4.1.10/config.js',
-        )
+# # 合作共赢 品牌合作-合作政策
+# @admin.register(models.ChfCooperationPolicy)
+# class ChfCooperationPolicyAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'profile', 'is_enable')
+#     list_display_links = ('title', 'profile')
+#     list_editable = ('is_enable', )
+#     list_filter = (IsEnableFilter, )
+#     search_fields = ('title', )
+#     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+#
+#     class Media:
+#         js = (
+#             '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+#             '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+#             '/static/home/plugins/kindeditor-4.1.10/config.js',
+#         )
+#
+#
+# # 合作共赢 品牌合作-项目优势
+# @admin.register(models.ChfCooperationSuperiority)
+# class ChfCooperationSuperiorityAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'profile', 'is_enable')
+#     list_display_links = ('title', 'profile')
+#     list_editable = ('is_enable', )
+#     list_filter = (IsEnableFilter, )
+#     search_fields = ('title', )
+#     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+#
+#     class Media:
+#         js = (
+#             '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+#             '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+#             '/static/home/plugins/kindeditor-4.1.10/config.js',
+#         )
+#
+#
+# # 合作共赢 品牌合作-项目优势
+# @admin.register(models.ChfCooperationQuestion)
+# class ChfCooperationQuestionAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'profile', 'is_enable')
+#     list_display_links = ('title', 'profile')
+#     list_editable = ('is_enable', )
+#     list_filter = (IsEnableFilter, )
+#     search_fields = ('title', )
+#     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+#
+#     class Media:
+#         js = (
+#             '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+#             '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+#             '/static/home/plugins/kindeditor-4.1.10/config.js',
+#         )
 
 
 # 关于我们 品牌介绍

@@ -69,20 +69,20 @@ def about(req):
     index = 1
 
     try:
-        comp_about_model = models.ChfAbout.objects.get(is_enable=True)
+        comp_about_models = models.ChfAbout.objects.filter(is_enable=True)
+        if comp_about_models:
+            comp_about_model = comp_about_models[0]
+
+            # 反向查找
+            culture = comp_about_model.about_resource.filter(type_code=1)
+            honor = comp_about_model.about_resource.filter(type_code=2)
+            aptitude = comp_about_model.about_resource.filter(type_code=3)
     except Exception as e:
         comp_about_model = models.ChfAbout()
+        culture = []
+        honor = []
+        aptitude = []
         logger.error(e)
-    # 反向查找
-    culture = comp_about_model.about_resource.filter(type_code=1)
-    honor = comp_about_model.about_resource.filter(type_code=2)
-    aptitude = comp_about_model.about_resource.filter(type_code=3)
-    # comp_about = {
-    #     'comp': comp_about_model,
-    #     'culture': culture,
-    #     'honor': honor,
-    #     'aptitude': aptitude
-    # }
 
     comp_history_list = models.ChfCompanyHistory.objects.filter(is_enable=True)
 
@@ -283,20 +283,27 @@ def product_detail(req, id):
 # 品牌合作 => 合作共赢
 def partner(req):
     index = 3
+
     try:
-        policy = models.ChfCooperationPolicy.objects.get(is_enable=True)
+        policys = models.ChfCooperationPolicy.objects.filter(is_enable=True)
+        if policys:
+            policy = policys[0]
     except Exception as e:
         policy = None
         logger.error(e)
 
     try:
-        superiority = models.ChfCooperationSuperiority.objects.get(is_enable=True)
+        superiorities = models.ChfCooperationSuperiority.objects.filter(is_enable=True)
+        if superiorities:
+            superiority = superiorities[0]
     except Exception as e:
         superiority = None
         logger.error(e)
 
     try:
-        question = models.ChfCooperationQuestion.objects.get(is_enable=True)
+        questions = models.ChfCooperationQuestion.objects.filter(is_enable=True)
+        if questions:
+            question = questions[0]
     except Exception as e:
         question = None
         logger.error(e)

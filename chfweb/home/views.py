@@ -18,9 +18,9 @@ logger = logging.getLogger("me")
 
 
 def global_setting(req):
-    SITE_NAME2 = settings.SITE_NAME2
-    SITE_DESC2 = settings.SITE_DESC2
-    SITE_AUTHOR2 = settings.SITE_AUTHOR2
+    SITE_NAME = settings.SITE_NAME
+    SITE_DESC = settings.SITE_DESC
+    SITE_AUTHOR = settings.SITE_AUTHOR
     MEDIA_URL = settings.MEDIA_URL
 
     return locals()
@@ -69,20 +69,20 @@ def about(req):
     index = 1
 
     try:
-        comp_about_model = models.ChfAbout.objects.get(is_enable=True)
+        comp_about_models = models.ChfAbout.objects.filter(is_enable=True)
+        if comp_about_models:
+            comp_about_model = comp_about_models[0]
+
+            # 反向查找
+            culture = comp_about_model.about_resource.filter(type_code=1)
+            honor = comp_about_model.about_resource.filter(type_code=2)
+            aptitude = comp_about_model.about_resource.filter(type_code=3)
     except Exception as e:
         comp_about_model = models.ChfAbout()
+        culture = []
+        honor = []
+        aptitude = []
         logger.error(e)
-    # 反向查找
-    culture = comp_about_model.about_resource.filter(type_code=1)
-    honor = comp_about_model.about_resource.filter(type_code=2)
-    aptitude = comp_about_model.about_resource.filter(type_code=3)
-    # comp_about = {
-    #     'comp': comp_about_model,
-    #     'culture': culture,
-    #     'honor': honor,
-    #     'aptitude': aptitude
-    # }
 
     comp_history_list = models.ChfCompanyHistory.objects.filter(is_enable=True)
 
