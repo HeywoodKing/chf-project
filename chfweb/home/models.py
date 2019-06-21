@@ -422,7 +422,7 @@ class ChfProduct(BaseModel):
             return str(self.brief)
 
     brief_profile.allow_tags = True
-    brief_profile.short_description = u'产品描述'
+    brief_profile.short_description = u'产品简介'
 
     def profile(self):
         if len(str(self.content)) > 40:
@@ -474,7 +474,7 @@ class ChfCooperation(BaseModel):
 
     class Meta:
         db_table = 'chf_cooperation'
-        ordering = ['-create_time']
+        ordering = ['sort', '-create_time']
         verbose_name = '合作共赢'
         verbose_name_plural = verbose_name
 
@@ -706,6 +706,7 @@ class ChfApplyRecord(BaseModel):
 class ChfUserWateringRecord(BaseModel):
     client_ip = models.GenericIPAddressField('客户端IP', default='127.0.0.1', protocol='both')
     client_host = models.CharField('客户端主机名', default=None, max_length=100)
+    client_port = models.IntegerField('客户端端口', default=0)
     client_user_agent = models.CharField('客户端浏览器', default=None, max_length=255)
     server_ip = models.GenericIPAddressField('服务器IP', default='127.0.0.1', protocol='both')
     server_host = models.CharField('服务器主机名', default=None, max_length=100)
@@ -746,3 +747,28 @@ class ChfWateringQty(BaseModel):
 
     def __str__(self):
         return str(self.amount)
+
+
+# 申请模板表
+class ChfTableTemplate(BaseModel):
+    name = models.CharField('名称', max_length=30, default=None)
+    file = models.FileField('文件', max_length=255, upload_to='file/%Y/%m')
+    is_enable = models.BooleanField('是否启用', default=True)
+
+    class Meta:
+        db_table = 'chf_tabletemplate'
+        ordering = ['-create_time']
+        verbose_name = '申请表格'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+    def profile(self):
+        if len(str(self.file)) > 20:
+            return '{}...'.format(str(self.file)[0:20])
+        else:
+            return str(self.file)
+
+    profile.allow_tags = True
+    profile.short_description = u'文件'

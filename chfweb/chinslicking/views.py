@@ -162,8 +162,10 @@ def add_watering_qty(req):
         # 接收参数
         # 获取客户端IP地址，判断同一个IP一天不能浇水超过3次
         client_ip = req.META['REMOTE_ADDR'].split(':')[0]
-        remote_host = req.META['REMOTE_HOST']
-        client_host = remote_host if remote_host else req.META['USERDOMAIN']
+        # remote_host = req.META['REMOTE_HOST']
+
+        client_host = client_ip if client_ip else req.META['USERDOMAIN']
+        client_port = req.META['REMOTE_PORT']
         client_user_agent = req.META['HTTP_USER_AGENT']
         server_ip = get_host_ip()
         server_host = req.META['SERVER_NAME']
@@ -173,7 +175,7 @@ def add_watering_qty(req):
         # curr_date = now().date() + timedelta(days=0)
         # 获取当前时间
         curr_now = datetime.now()  # .replace(pytz.utc)
-        print(curr_now)
+
         # 获取今天零点
         start_date = curr_now - timedelta(hours=curr_now.hour,
                                           minutes=curr_now.minute,
@@ -196,7 +198,7 @@ def add_watering_qty(req):
             # 返回结果
             res['code'] = 1
             res['flag'] = 'fail'
-            res['msg'] = '浇水失败，您今天浇水次数太多了，<br>明天再继续吧！'
+            res['msg'] = '您今天浇水次数太多了，<br>明天再继续吧！'
             res['data'] = None
             return HttpResponse(json.dumps(res), content_type='application/json')
 
@@ -213,6 +215,7 @@ def add_watering_qty(req):
         user_watering_record = models.ChfUserWateringRecord(
             client_ip=client_ip,
             client_host=client_host,
+            client_port=client_port,
             client_user_agent=client_user_agent,
             server_ip=server_ip,
             server_host=server_host,
@@ -275,7 +278,10 @@ def product_detail(req, id):
     except Exception as e:
         logger.error(e)
 
-    product_command_list = random.sample(list(models.ChfProduct.objects.filter(is_recommand=True)), 3)
+    product_list = list(models.ChfProduct.objects.filter(is_recommand=True))
+    count = len(product_list)
+
+    product_command_list = random.sample(product_list, 3 if count >= 3 else count)
 
     return render(req, 'chinslicking/product_detail.html', locals())
 
@@ -285,27 +291,20 @@ def partner(req):
     index = 3
 
     try:
-        policys = models.ChfCooperationPolicy.objects.filter(is_enable=True)
-        if policys:
-            policy = policys[0]
-    except Exception as e:
-        policy = None
-        logger.error(e)
+        cooperation_list = models.ChfCooperation.objects.filter(is_enable=True)
+        policy_list = cooperation_list.filter(type=0)
+        superiority_list = cooperation_list.filter(type=1)
+        question_list = cooperation_list.filter(type=2)
 
-    try:
-        superiorities = models.ChfCooperationSuperiority.objects.filter(is_enable=True)
-        if superiorities:
-            superiority = superiorities[0]
+        apply_table_list = models.ChfTableTemplate.objects.filter(is_enable=True)
+        if apply_table_list:
+            apply_table = apply_table_list[0]
+        else:
+            apply_table = models.ChfTableTemplate()
     except Exception as e:
-        superiority = None
-        logger.error(e)
-
-    try:
-        questions = models.ChfCooperationQuestion.objects.filter(is_enable=True)
-        if questions:
-            question = questions[0]
-    except Exception as e:
-        question = None
+        policy_list = []
+        superiority_list = []
+        question_list = []
         logger.error(e)
 
     return render(req, 'chinslicking/partner.html', locals())

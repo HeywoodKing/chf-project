@@ -1,14 +1,21 @@
 
+8000  nginx chf一站
+8001  nginx chinslicking二站
 
-8000  nginx一站
-8001  nginx二站
+8040  nginx test
 
-8020  uwsgi 1
-8021  uwsgi 2
+
+chf
+8020  uwsgi 1 socket
+8021  uwsgi 1 http
+
+
+chinslicking
+8023  uwsgi 2 socket
+8024  uwsgi 2 http
+
 
 8022  uwsgi 3 /var/www/test  helloworld.py
-
-8040  test
 
 
 8050  apache

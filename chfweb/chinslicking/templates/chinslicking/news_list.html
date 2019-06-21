@@ -181,8 +181,8 @@
                     <div class="col-md-2">
                         <div class="about-content" style="margin-top:0; text-align: center;">
                             <h2 style="margin: 5px 0; font-size:35px; color: #fbdf51;">{{item.read_count}}</h2>
-                            <div>{{item.create_time|date:'Y年m月d日 f'}}</div>
-                            <!--<div>{{item.create_time|date:'Y年m月d日 H:i:s'}}</div>-->
+                            <!--<div>{{item.create_time|date:'Y年m月d日 f'}}</div>-->
+                            <div>{{item.create_time|date:'Y年m月d日 H:i:s'}}</div>
                         </div>
                         <div class="about-content" style="text-align: center;">
                             <a class="btn btn-default" style="width: 120px; background-color: #fbdf50; color: #fff;" href="/king/news_detail/{{item.id}}">{% trans "更多" %}>></a>

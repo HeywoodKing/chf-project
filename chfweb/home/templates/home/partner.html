@@ -107,19 +107,31 @@
                 </div>
             </div>
             <div class="col-md-9 bg6">
-                <div id="hzzc" class="single-faq" style="padding-top: 0;">
-                    <h2><span>1</span>{{policy.title}}</h2>
-                    {{policy.content|safe}}
+                <div id="hzzc" style="padding-top: 0;">
+                    {% for item in policy_list %}
+                    <div class="single-faq">
+                        <h2><span>{{ forloop.counter }}</span>{{item.title}}</h2>
+                        {{item.content|safe}}
+                    </div>
+                    {% endfor %}
                 </div>
 
-                <div id="xmys" class="single-faq" style="display:none;padding-top: 0;">
-                    <h2><span>2</span>{{superiority.title}}</h2>
-                    {{superiority.content|safe}}
+                <div id="xmys" style="display:none;padding-top: 0;">
+                    {% for item in superiority_list %}
+                    <div class="single-faq">
+                        <h2><span>{{ forloop.counter }}</span>{{item.title}}</h2>
+                        {{item.content|safe}}
+                    </div>
+                    {% endfor %}
                 </div>
 
-                <div id="jxswd" class="single-faq" style="display:none;padding-top: 0;">
-                    <h2><span>3</span>{{question.title}}</h2>
-                    {{question.content|safe}}
+                <div id="jxswd" style="display:none;padding-top: 0;">
+                    {% for item in question_list %}
+                    <div class="single-faq">
+                        <h2><span>{{ forloop.counter }}</span>{{item.title}}</h2>
+                        {{item.content|safe}}
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

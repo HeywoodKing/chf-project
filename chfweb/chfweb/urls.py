@@ -38,6 +38,6 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    url(r'^king/', include('chinslicking.urls')),
     url(r'^chf/', include('home.urls')),
+    url(r'^king/', include('chinslicking.urls')),
 )

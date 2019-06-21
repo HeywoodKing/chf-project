@@ -475,6 +475,11 @@ SIMPLEUI_CONFIG = {
                 {
                     'name': '关键词管理',
                     'icon': 'fa fa-book-open',
+                },
+                {
+                    'name': '动画类型',
+                    'icon': 'fa fa-allergies',
+                    'url': 'home/chfanimatetype/'
                 }
             ]
         },
@@ -513,24 +518,24 @@ SIMPLEUI_CONFIG = {
                 #     'url': 'home/chfpartner/'
                 # },
                 {
-                    'name': '合作政策',
+                    'name': '合作共赢',
                     'icon': 'fa fa-glass-cheers',
-                    'url': 'home/chfcooperationpolicy/'
+                    'url': 'home/chfcooperation/'
                 },
+                # {
+                #     'name': '项目优势',
+                #     'icon': 'fa fa-glass-cheers',
+                #     'url': 'home/chfcooperationsuperiority/'
+                # },
+                # {
+                #     'name': '经销商问答',
+                #     'icon': 'fa fa-glass-cheers',
+                #     'url': 'home/chfcooperationquestion/'
+                # },
                 {
-                    'name': '项目优势',
-                    'icon': 'fa fa-glass-cheers',
-                    'url': 'home/chfcooperationsuperiority/'
-                },
-                {
-                    'name': '经销商问答',
-                    'icon': 'fa fa-glass-cheers',
-                    'url': 'home/chfcooperationquestion/'
-                },
-                {
-                    'name': '动画类型',
+                    'name': '申请表管理',
                     'icon': 'fa fa-allergies',
-                    'url': 'home/chfanimatetype/'
+                    'url': 'home/chftabletemplate/'
                 }
             ]
         },

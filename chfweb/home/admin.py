@@ -413,11 +413,11 @@ class ChfApplyRecordAdmin(admin.ModelAdmin):
 # 用户浇水记录
 @admin.register(models.ChfUserWateringRecord)
 class ChfUserWateringRecordAdmin(admin.ModelAdmin):
-    list_display = ('client_ip', 'client_host', 'profile', 'server_ip', 'server_host', 'server_port',
+    list_display = ('client_ip', 'client_host', 'client_port', 'profile', 'server_ip', 'server_host', 'server_port',
                     'init_amount', 'amount', 'final_amount', 'create_time')
     list_filter = ('client_ip', 'create_time')
     list_per_page = 30
-    search_fields = ('client_ip', 'client_host', 'client_user_agent', 'server_ip', 'server_host', 'server_port', )
+    search_fields = ('client_ip', 'client_host', 'client_port', 'client_user_agent', 'server_ip', 'server_host', 'server_port', )
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
     # 屏蔽增加功能按钮
@@ -447,3 +447,16 @@ class ChfWateringQtyAdmin(admin.ModelAdmin):
     # 屏蔽删除功能按钮
     def has_delete_permission(self, request, obj=None):
         return False
+
+
+# 申请模板表
+@admin.register(models.ChfTableTemplate)
+class ChfTableTemplateAdmin(admin.ModelAdmin):
+    list_display = ('name', 'profile', 'is_enable', 'operate_time')
+    list_display_links = ('name', 'profile', )
+    list_editable = ('is_enable', )
+    list_filter = (IsEnableFilter, )
+    list_per_page = 30
+    search_fields = ('name', 'is_enable',)
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
+
