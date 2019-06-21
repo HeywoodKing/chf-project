@@ -2,11 +2,11 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser, PermissionsMixin,BaseUserManager,AbstractBaseUser
-from django.core.validators import RegexValidator
+# from django.core.validators import RegexValidator
 from django.template.defaultfilters import slugify
-from datetime import datetime
+# from datetime import datetime
 from django.db.models import BooleanField as _BooleanField
-import pytz
+# import pytz
 
 
 # Create your models here.
@@ -114,7 +114,7 @@ class ChfUserProfile(AbstractUser):
 
 
 class BaseModel(models.Model):
-    # , default=datetime.now().replace(tzinfo=pytz.utc)
+    # default=datetime.now().replace(tzinfo=pytz.utc)
     create_time = models.DateTimeField('创建时间', default=timezone.now)
     create_uid = models.IntegerField('创建人ID', default=123456789, auto_created=True)
     create_username = models.CharField('创建人名称', max_length=30, default='admin', auto_created=True)

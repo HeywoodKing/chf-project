@@ -61,7 +61,7 @@ def index(req):
 
     index_plate_list = models.ChfIndexPlate.objects.filter(is_enable=True)
 
-    return render(req, 'home/index.html', locals())
+    return render(req, 'index.html', locals())
 
 
 # 关于我们 => 品牌介绍
@@ -86,17 +86,17 @@ def about(req):
 
     comp_history_list = models.ChfCompanyHistory.objects.filter(is_enable=True)
 
-    return render(req, 'home/about.html', locals())
+    return render(req, 'about.html', locals())
 
 
 # 联系我们 为您服务
 def contact(req):
     index = 6
-    return render(req, 'home/contact.html', locals())
+    return render(req, 'contact.html', locals())
 
 
 def layer_coupon_form(req):
-    return render(req, 'home/layer_coupon_form.html')
+    return render(req, 'layer_coupon_form.html')
 
 
 # 新增抢优惠券的用户信息
@@ -260,7 +260,7 @@ def product_list(req):
         product_list = paginator.page(paginator.num_pages)
 
     # 获取产品
-    return render(req, 'home/product_list.html', locals())
+    return render(req, 'product_list.html', locals())
 
 
 # 品牌产品详情
@@ -283,7 +283,7 @@ def product_detail(req, id):
 
     product_command_list = random.sample(product_list, 3 if count >= 3 else count)
 
-    return render(req, 'home/product_detail.html', locals())
+    return render(req, 'product_detail.html', locals())
 
 
 # 品牌合作 => 合作共赢
@@ -301,7 +301,7 @@ def partner(req):
         question_list = []
         logger.error(e)
 
-    return render(req, 'home/partner.html', locals())
+    return render(req, 'partner.html', locals())
 
 
 # 社会责任 和 新闻资讯合并为一个菜单了
@@ -320,7 +320,7 @@ def resp_list(req):
 
     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
 
-    return render(req, 'home/duty_list.html', locals())
+    return render(req, 'duty_list.html', locals())
 
 
 # 社会责任详情
@@ -337,7 +337,7 @@ def resp_detail(req, id):
 
     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
 
-    return render(req, 'home/duty_detail.html', locals())
+    return render(req, 'duty_detail.html', locals())
 
 
 # 新闻资讯
@@ -372,7 +372,7 @@ def news_list(req):
 
     # news_lasted = models.ChfNews.objects.filter(type=0)[:10]
 
-    return render(req, 'home/news_list.html', locals())
+    return render(req, 'news_list.html', locals())
 
 
 # 新闻资讯
@@ -389,7 +389,7 @@ def news_detail(req, id):
 
     news_lasted = models.ChfNews.objects.all()[:10]
 
-    return render(req, 'home/news_detail.html', locals())
+    return render(req, 'news_detail.html', locals())
 
 
 # 工作机会
@@ -398,5 +398,5 @@ def job_list(req):
 
     job_list = models.ChfJobRecruit.objects.filter(is_enable=True)
 
-    return render(req, 'home/job_list.html', locals())
+    return render(req, 'job_list.html', locals())
 

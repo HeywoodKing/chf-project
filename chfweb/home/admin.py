@@ -169,9 +169,9 @@ class ChfProductAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-            '/static/home/plugins/kindeditor-4.1.10/config.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
         )
 
 
@@ -210,9 +210,9 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-            '/static/home/plugins/kindeditor-4.1.10/config.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
         )
 
 
@@ -228,9 +228,9 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 #
 #     class Media:
 #         js = (
-#             '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-#             '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-#             '/static/home/plugins/kindeditor-4.1.10/config.js',
+#             '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+#             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+#             '/static/plugins/kindeditor-4.1.10/config.js',
 #         )
 #
 #
@@ -246,9 +246,9 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 #
 #     class Media:
 #         js = (
-#             '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-#             '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-#             '/static/home/plugins/kindeditor-4.1.10/config.js',
+#             '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+#             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+#             '/static/plugins/kindeditor-4.1.10/config.js',
 #         )
 #
 #
@@ -264,9 +264,9 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 #
 #     class Media:
 #         js = (
-#             '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-#             '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-#             '/static/home/plugins/kindeditor-4.1.10/config.js',
+#             '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+#             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+#             '/static/plugins/kindeditor-4.1.10/config.js',
 #         )
 
 
@@ -282,9 +282,9 @@ class ChfAboutAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-            '/static/home/plugins/kindeditor-4.1.10/config.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
         )
 
 
@@ -340,9 +340,9 @@ class ChfCompanyHistoryAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-            '/static/home/plugins/kindeditor-4.1.10/config.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
         )
 
 
@@ -360,9 +360,9 @@ class ChfJobRecruitAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-            '/static/home/plugins/kindeditor-4.1.10/config.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
         )
 
 
@@ -381,9 +381,9 @@ class ChfNewsAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/home/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-            '/static/home/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-            '/static/home/plugins/kindeditor-4.1.10/config.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
         )
 
 

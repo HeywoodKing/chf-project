@@ -35,9 +35,7 @@ ALLOWED_HOSTS = [
     '192.168.0.122',
     '47.99.121.101',
     '172.16.40.247',
-    'www.chinslicking.local',
     'www.chf.local',
-    'www.chinslicking.com',
     'www.chf.com',
 ]
 
@@ -54,9 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chinslicking',
     'home',
-    'chinslicking.templatetags',
+    'home.templatetags',
 ]
 
 MIDDLEWARE = [
@@ -76,9 +73,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'chinslicking', 'templates'),
-            os.path.join(BASE_DIR, 'home', 'templates'),
+            os.path.join(BASE_DIR, 'templates'),
+            # os.path.join(BASE_DIR, 'chinslicking', 'templates'),
+            # os.path.join(BASE_DIR, 'home', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -91,7 +88,6 @@ TEMPLATES = [
                 # 添加这一行，可以理解为中间件的意思
                 # 'django.template.context_processors.uploads',
                 'home.views.global_setting',
-                'chinslicking.views.global_setting',
             ],
         },
     },
@@ -115,7 +111,7 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
-        'PASSWORD': '123456'
+        'PASSWORD': '123456',
     }
 }
 
@@ -170,7 +166,6 @@ LANGUAGES = (
 LANGUAGES_SUPPORTED = ('en', 'zh-hans', )
 
 
-
 # 翻译文件所在目录，需要手工创建
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),
@@ -188,9 +183,9 @@ STATIC_URL = '/static/'
 # 如果不设置STATIC_ROOT这个参数，使用django-jet美化后台python manage.py collectstatic 会报错
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = (
-    # os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'home', 'static'),
-    os.path.join(BASE_DIR, 'chinslicking', 'static'),
+    os.path.join(BASE_DIR, 'static'),
+    # os.path.join(BASE_DIR, 'home', 'static'),
+    # os.path.join(BASE_DIR, 'chinslicking', 'static'),
 )
 
 
@@ -201,10 +196,6 @@ AUTH_USER_MODEL = 'home.ChfUserProfile'
 SITE_NAME = '春和方'
 SITE_DESC = '春和方官网'
 SITE_AUTHOR = 'flack'
-
-SITE_NAME2 = '秦食皇'
-SITE_DESC2 = '秦食皇官网'
-SITE_AUTHOR2 = 'flack'
 
 
 MEDIA_URL = '/uploads/'
@@ -431,7 +422,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静�
 # 首页图标
 # SIMPLEUI_HOME_ICON = 'fa fa-user'
 # 设置simpleui 点击首页图标跳转的地址
-SIMPLEUI_INDEX = 'http://47.99.121.101:8000/king/index'
+SIMPLEUI_INDEX = 'http://47.99.121.101:8000/chf/index'
 # 自定义SIMPLEUI的Logo 修改LOGO
 SIMPLEUI_LOGO = STATIC_URL + 'home/images/apple.png'
 
