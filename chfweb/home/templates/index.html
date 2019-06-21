@@ -1,10 +1,10 @@
-{% extends "home/layout-index.html" %}
+{% extends "layout-index.html" %}
 {% load staticfiles %}
 {% load i18n %}
 {% load my_filter_tag %}
 
 {% block header %}
-    {% include "home/header-index.html" with title="首页" %}
+    {% include "header-index.html" with title="首页" %}
     {% block style_tag %}
     <style>
         .full-video{
@@ -33,7 +33,7 @@
             height: 26px;
             cursor: pointer;
             background-color: #fbdf50;
-            background-image: url({% static 'home/images/close.png' %});
+            background-image: url({% static 'images/close.png' %});
             background-size: cover;
             background-position: center left;
             z-index: 10000;
@@ -50,8 +50,8 @@
 <div class="video-box full-video hidden animated">
     <div class="full-video-close"></div>
     <video id="video" class="full-video" type="video/mp4" loop preload="auto" controls x5-video-player-type="h5"
-           x5-video-orientation="landscape" poster="{% static 'home/images/pro_3.jpg' %}">
-        <!--<source src="{% static 'home/images/video_01.mp4' %}">-->
+           x5-video-orientation="landscape" poster="{% static 'images/pro_3.jpg' %}">
+        <!--<source src="{% static 'images/video_01.mp4' %}">-->
     </video>
 </div>
 
@@ -60,7 +60,7 @@
         <div class="row">
             <div class="col-6 col-sm-3 logo-column">
                 <a href="/chf/index" class="logo">
-                    <img src="{% static 'home/images/logo_01.png' %}" alt="logo" style="margin-top: 17px;">
+                    <img src="{% static 'images/logo_01.png' %}" alt="logo" style="margin-top: 17px;">
                 </a>
             </div>
             <div class="col-6 col-sm-9 nav-column clearfix">
@@ -175,7 +175,7 @@
 
 
 {% block footer %}
-    {% include "home/footer.html" with footer="footer" %}
+    {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
     <script>
         $(function(){

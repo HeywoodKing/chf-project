@@ -1,8 +1,8 @@
-{% extends "home/layout.html" %}
+{% extends "layout.html" %}
 {% load staticfiles %}
 
 {% block header %}
-    {% include "home/header.html" with title="首页" %}
+    {% include "header.html" with title="首页" %}
     {% block style_tag %}
     <style>
     body{
@@ -326,7 +326,7 @@
 
 
 {% block footer %}
-    {% include "home/footer.html" with footer="footer" %}
+    {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
     <script>
         $(function(){

@@ -1,10 +1,10 @@
-{% extends "home/layout.html" %}
+{% extends "layout.html" %}
 {% load staticfiles %}
 {% load my_filter_tag %}
 {% load i18n %}
 
 {% block header %}
-    {% include "home/header.html" with title="新闻资讯" %}
+    {% include "header.html" with title="新闻资讯" %}
     {% block style_tag %}
     <style>
     </style>
@@ -35,7 +35,7 @@
 
 <!--滚动切换图片-->
 <div class="hero-slider">
-    <div class="single-slide" style="background-image: url({% static 'home/images/banner_6.jpg' %})">
+    <div class="single-slide" style="background-image: url({% static 'images/banner_6.jpg' %})">
         <div class="inner">
             <div class="container">
                 <div class="row">
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div class="single-slide" style="background-image: url({% static 'home/images/banner_7.jpg' %})">
+    <div class="single-slide" style="background-image: url({% static 'images/banner_7.jpg' %})">
         <div class="inner">
             <div class="container">
                 <div class="row justify-content-center">
@@ -77,7 +77,7 @@
     </div>
 </div>
 
-<!--<div class="page-title sp" style="background-image: url({% static 'home/images/banner_6.jpg' %});">
+<!--<div class="page-title sp" style="background-image: url({% static 'images/banner_6.jpg' %});">
     <div class="container text-center">
         <h2 class="banner-h2">
             NEWS
@@ -124,7 +124,7 @@
                 </div>
                 {% endfor %}
 
-                {% include "home/pager.html" with page_list=resp_list %}
+                {% include "pager.html" with page_list=resp_list %}
             </div>
             <div class="col-md-3">
                 <div class="faq-sidebar-wrap">
@@ -192,7 +192,7 @@
             </div>
             {% endfor %}
 
-            {% include "home/pager.html" with page_list=news_list %}
+            {% include "pager.html" with page_list=news_list %}
         </div>
     </div>
 </div>
@@ -200,7 +200,7 @@
 
 
 {% block footer %}
-    {% include "home/footer.html" with footer="footer" %}
+    {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
     <script>
         $(function(){

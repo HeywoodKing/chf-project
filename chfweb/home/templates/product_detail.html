@@ -1,10 +1,10 @@
-{% extends "home/layout.html" %}
+{% extends "layout.html" %}
 {% load staticfiles %}
 {% load my_filter_tag %}
 {% load i18n %}
 
 {% block header %}
-    {% include "home/header.html" with title="品牌产品详情" %}
+    {% include "header.html" with title="品牌产品详情" %}
     {% block style_tag %}
     <style>
     </style>
@@ -33,7 +33,7 @@
     </div>
 </div>-->
 
-<div class="page-title sp" style="background-image: url({% static 'home/images/banner_4.jpg' %});height: 300px;">
+<div class="page-title sp" style="background-image: url({% static 'images/banner_4.jpg' %});height: 300px;">
     <div class="container text-center">
         <h3 class="banner-h3">
             {% trans "纯粹" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯粮" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯手工" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯天然" %}
@@ -92,7 +92,7 @@
 
 
 {% block footer %}
-    {% include "home/footer.html" with footer="footer" %}
+    {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
     <script>
         $(function(){

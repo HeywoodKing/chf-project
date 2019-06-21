@@ -1,10 +1,10 @@
-{% extends "home/layout.html" %}
+{% extends "layout.html" %}
 {% load staticfiles %}
 {% load my_filter_tag %}
 {% load i18n %}
 
 {% block header %}
-    {% include "home/header.html" with title="品牌产品" %}
+    {% include "header.html" with title="品牌产品" %}
     {% block style_tag %}
     <style>
     </style>
@@ -35,7 +35,7 @@
 
 <!--滚动切换图片-->
 <div class="hero-slider">
-    <div class="single-slide" style="background-image: url({% static 'home/images/banner_4.jpg' %})">
+    <div class="single-slide" style="background-image: url({% static 'images/banner_4.jpg' %})">
         <div class="inner">
             <div class="container">
                 <div class="row">
@@ -51,7 +51,7 @@
             </div>
         </div>
     </div>
-    <div class="single-slide" style="background-image: url({% static 'home/images/banner_5.jpg' %})">
+    <div class="single-slide" style="background-image: url({% static 'images/banner_5.jpg' %})">
         <div class="inner">
             <div class="container">
                 <div class="row justify-content-center">
@@ -69,7 +69,7 @@
     </div>
 </div>
 
-<!--<div class="page-title sp" style="background-image: url({% static 'home/images/banner_4.jpg' %});">
+<!--<div class="page-title sp" style="background-image: url({% static 'images/banner_4.jpg' %});">
     <div class="container text-center">
         <h2 class="banner-h3">
             {% trans "纯粹" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯粮" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯手工" %}&nbsp;&nbsp;&sdot;&nbsp;&nbsp;{% trans "纯天然" %}<br>
@@ -116,7 +116,7 @@
                 <div class="single-portfolio col-md-4 {{item.product_type.data_filter_name}}">
                     <div class="inner">
                         <div class="portfolio-img-pro">
-                            <!--<img src="{% static 'home/images/portfolio1.jpg' %}" alt="portfolio-image">-->
+                            <!--<img src="{% static 'images/portfolio1.jpg' %}" alt="portfolio-image">-->
                             <img src="/uploads/{{item.cover_image_url}}" alt="{{item.name}}">
                             <div class="hover-content">
                                 <div>
@@ -140,7 +140,7 @@
             {% endfor %}
         </div>
 
-        {% include "home/pager.html" with page_list=product_list %}
+        {% include "pager.html" with page_list=product_list %}
     </div>
 </div>
 
@@ -148,7 +148,7 @@
 
 
 {% block footer %}
-    {% include "home/footer.html" with footer="footer" %}
+    {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
     <script>
         $(function(){

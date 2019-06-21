@@ -1,9 +1,9 @@
-{% extends "home/layout.html" %}
+{% extends "layout.html" %}
 {% load staticfiles %}
 {% load i18n %}
 
 {% block header %}
-    {% include "home/header.html" with title="联系我们" %}
+    {% include "header.html" with title="联系我们" %}
     {% block style_tag %}
     <!--<link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>-->
     <style>
@@ -106,7 +106,7 @@
 
 <!--滚动切换图片-->
 <div class="hero-slider">
-    <div class="single-slide" style="background-image: url({% static 'home/images/banner_5.jpg' %})">
+    <div class="single-slide" style="background-image: url({% static 'images/banner_5.jpg' %})">
         <div class="inner">
             <div class="container">
                 <div class="row">
@@ -126,7 +126,7 @@
             </div>
         </div>
     </div>
-    <div class="single-slide" style="background-image: url({% static 'home/images/banner_6.jpg' %})">
+    <div class="single-slide" style="background-image: url({% static 'images/banner_6.jpg' %})">
         <div class="inner">
             <div class="container">
                 <div class="row justify-content-center">
@@ -148,7 +148,7 @@
     </div>
 </div>
 
-<!--<div class="page-title sp" style="background-image: url({% static 'home/images/banner_5.jpg' %});">
+<!--<div class="page-title sp" style="background-image: url({% static 'images/banner_5.jpg' %});">
     <div class="container text-center">
         <h2 class="banner-h2">
             CONTACT US
@@ -237,7 +237,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="">
-                    <!--<img src="{% static 'home/images/gallery-1.jpg' %}" alt="">-->
+                    <!--<img src="{% static 'images/gallery-1.jpg' %}" alt="">-->
                     <div id="map-container" style="width: 100%; height: 600px; border: 3px solid #fde981; border-radius: 10px;"></div>
                 </div>
             </div>
@@ -253,7 +253,7 @@
 
 
 {% block footer %}
-    {% include "home/footer.html" with footer="footer" %}
+    {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.14&key=02ab55357c0d803a0cb144049c8ae5d2"></script>
     <!--<script src="https://a.amap.com/jsapi_demos/static/resource/heatmapData.js"></script>-->
