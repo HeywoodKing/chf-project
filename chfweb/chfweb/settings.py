@@ -111,7 +111,7 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
-        # 'PASSWORD': '123456',
+        'PASSWORD': '123456',
     }
 }
 
@@ -157,6 +157,21 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+STATIC_URL = '/static/'
+
+# 如果不设置STATIC_ROOT这个参数，使用django-jet美化后台python manage.py collectstatic 会报错
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+    # os.path.join(BASE_DIR, 'home', 'static'),
+    # os.path.join(BASE_DIR, 'chinslicking', 'static'),
+)
+
+
 LANGUAGES = (
     ('zh-hans', _('中文简体')),
     ('en', _('English')),
@@ -175,18 +190,6 @@ LOCALE_PATHS = [
 #     'django.core.context_processors.i18n',
 # )
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-STATIC_URL = '/static/'
-# 如果不设置STATIC_ROOT这个参数，使用django-jet美化后台python manage.py collectstatic 会报错
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    # os.path.join(BASE_DIR, 'home', 'static'),
-    # os.path.join(BASE_DIR, 'chinslicking', 'static'),
-)
 
 
 # 自定义用户model 否则会报：HINT: Add or change a related_name argument to the definition
@@ -424,7 +427,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静�
 # 设置simpleui 点击首页图标跳转的地址
 SIMPLEUI_INDEX = 'http://47.99.121.101:8000/chf/index'
 # 自定义SIMPLEUI的Logo 修改LOGO
-SIMPLEUI_LOGO = STATIC_URL + 'home/images/apple.png'
+SIMPLEUI_LOGO = STATIC_URL + 'images/apple.png'
 
 # 服务器信息
 SIMPLEUI_HOME_INFO = True
@@ -743,6 +746,11 @@ LOGGING = {
         #     'level': 'INFO',
         #     'filters': ['special'],
         # }
+        'django.db.backends': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
     },
 }
 

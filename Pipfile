@@ -13,7 +13,6 @@ setuptools = "*"
 sqlparse = "*"
 pip = "*"
 wheel = "*"
-uWSGI = "*"
 
 [packages]
 django = "*"
@@ -25,7 +24,6 @@ setuptools = "*"
 sqlparse = "*"
 pip = "*"
 wheel = "*"
-uWSGI = "*"
 
 [requires]
 python_version = "3.7"
