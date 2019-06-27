@@ -164,12 +164,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # 如果不设置STATIC_ROOT这个参数，使用django-jet美化后台python manage.py collectstatic 会报错
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-    # os.path.join(BASE_DIR, 'home', 'static'),
-    # os.path.join(BASE_DIR, 'chinslicking', 'static'),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+#     # os.path.join(BASE_DIR, 'home', 'static'),
+#     # os.path.join(BASE_DIR, 'chinslicking', 'static'),
+# )
 
 
 LANGUAGES = (
@@ -474,6 +474,11 @@ SIMPLEUI_CONFIG = {
                     'name': '动画类型',
                     'icon': 'fa fa-allergies',
                     'url': 'home/chfanimatetype/'
+                },
+                {
+                    'name': '导航菜单',
+                    'icon': 'fa fa-book-open',
+                    'url': 'home/sysnav/'
                 }
             ]
         },
@@ -485,6 +490,11 @@ SIMPLEUI_CONFIG = {
                     'name': '首页模块',
                     'icon': 'fa fa-info',
                     'url': 'home/chfindexplate/'
+                },
+                {
+                    'name': 'Banner图',
+                    'icon': 'fa fa-book-open',
+                    'url': 'home/chfbanner/'
                 },
                 {
                     'name': '用户浇水记录',

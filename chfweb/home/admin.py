@@ -3,10 +3,12 @@ from django.contrib.auth.admin import UserAdmin
 from home import models
 from django.contrib.admin import SimpleListFilter
 # from jet.filters import DateRangeFilter
+from django.contrib.admin.models import LogEntry
 
 # Register your models here.
-admin.site.site_header = '春和方后台管理系统'
+admin.site.index_title = '欢迎使用春和方后台管理系统'
 admin.site.site_title = '后台管理系统'
+admin.site.site_header = '春和方后台管理系统'
 
 
 # 是否启用过滤
@@ -132,6 +134,36 @@ class ChfUserProfileAdmin(UserAdmin):
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
 
+# 导航菜单管理
+@admin.register(models.SysNav)
+class SysNavAdmin(admin.ModelAdmin):
+    list_display = ('id', 'code', 'name', 'url', 'parent', 'sort', 'is_root', 'is_enable', 'is_delete')
+    list_display_links = ('id', 'name', 'url', )
+    list_editable = ('code', 'sort', 'is_enable', )
+    list_filter = (IsEnableFilter, )
+    list_per_page = 30
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    search_fields = ('name', 'url', )
+
+
+# 用户日志
+@admin.register(LogEntry)
+class LogEntryAdmin(admin.ModelAdmin):
+    list_display = ('object_id', 'object_repr', 'action_flag', 'user', 'change_message', )
+
+
+# Banner管理
+@admin.register(models.ChfBanner)
+class ChfBannerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'nav', 'image_url', 'sort', 'is_enable')
+    list_display_links = ('id', )
+    list_editable = ('nav', 'sort', 'is_enable', )
+    list_filter = (IsEnableFilter, )
+    list_per_page = 30
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    search_fields = ('nav', )
+
+
 # 产品列表
 @admin.register(models.ChfProduct)
 class ChfProductAdmin(admin.ModelAdmin):
@@ -141,7 +173,7 @@ class ChfProductAdmin(admin.ModelAdmin):
                     'product_type', 'sort', 'is_recommand', 'is_enable', 'create_time')
     list_display_links = ('name', 'brief_profile', 'profile',)
     list_editable = ('sort', 'is_recommand', 'is_enable', 'product_type')
-    list_filter = ('product_type', IsRecommandFilter, IsEnableFilter, 'create_time', )
+    list_filter = ('product_type', IsRecommandFilter, IsEnableFilter, )
     list_per_page = 30
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
     # fieldsets = (

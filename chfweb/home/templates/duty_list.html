@@ -12,6 +12,22 @@
 {% endblock %}
 
 {% block banner %}
+
+    {% for item in banner_list %}
+    <div class="single-slide" style="background-image: url(/uploads/{{ item.image_url }})">
+        <div class="inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                        <div class="slide-content">
+                            <h2>{% trans item.text %}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 <!--<div class="hero-slider">
     <div class="single-slide" style="background-image: url({% static 'images/slide1.jpg' %})">
         <div class="inner">
@@ -33,7 +49,7 @@
     </div>
 </div>-->
 
-<div class="page-title sp" style="background-image: url({% static 'images/banner_2.jpg' %});height: 300px;">
+{% comment %}<div class="page-title sp" style="background-image: url({% static 'images/banner_2.jpg' %});height: 300px;">
     <div class="container text-center">
         <h3 class="banner-h3">
             RESPONSIBILITY
@@ -44,7 +60,7 @@
             <hr class="hr-1">
         </h4>
     </div>
-</div>
+</div>{% endcomment %}
 {% endblock %}
 
 {% block content %}

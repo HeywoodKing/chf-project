@@ -18,10 +18,38 @@ logger = logging.getLogger("me")
 
 
 def global_setting(req):
+    # 网站头部公共信息
     SITE_NAME = settings.SITE_NAME
     SITE_DESC = settings.SITE_DESC
     SITE_AUTHOR = settings.SITE_AUTHOR
     MEDIA_URL = settings.MEDIA_URL
+
+    # 菜单
+    nav_list = models.SysNav.objects.filter(is_enable=True)
+
+    # 查询banner
+    banner = req.GET.get('banner', None)
+    if banner:
+        nav = models.SysNav.objects.get(code=banner)
+
+        # 方式一:主表.子表_set()
+        # Django默认每个主表对象都有一个外键的属性
+        # 可以通过它来查询所有属于主表的子表信息
+        # 返回值为一个queryset对象
+        # banner_list = nav.ChfBanner_set.all()
+
+        # 方式二：
+        # 通过在外键中设置related_name属性值既可
+        banner_list = nav.navs.all()
+
+        # 方式三：
+        # 通过@property装饰器在model中预定义方法实现
+        # banner_list = nav.all_navs
+
+        # 方式四：
+        # banner_list = models.ChfBanner.objects.filter(nav=nav)
+
+    # 网站底部公共信息
 
     return locals()
 
