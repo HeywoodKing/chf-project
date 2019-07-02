@@ -7,6 +7,7 @@
     {% block style_tag %}
     <link rel="stylesheet" href="{% static 'css/timeline.css' %}">
     <style>
+
     </style>
     {% endblock %}
 {% endblock %}
@@ -30,6 +31,7 @@
     </div>
     {% endfor %}
 </div>
+<div class="slider-counter"></div>
 {% endblock %}
 
 {% block content %}
@@ -83,16 +85,26 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-5 col-md-6 single-service">
-                <div class="">
+            <div class="col-lg-5 col-md-6 col-sm-6 single-service">
+                <div class="animated-box-img">
                     {% if comp_about_model %}
                     <img src="/uploads/{{ comp_about_model.comp_image }}" alt="portfolio-image">
                     {% else %}
                     <img src="{% static 'images/company.jpg' %}" alt="portfolio-image">
                     {% endif %}
+                    {% comment %}<div class="animated-box-img-content">
+                        <div class="animated-box-img-inner-content">
+                            <h3 class="title">Williamson</h3>
+                            <span class="post">Web Developer</span>
+                            <ul class="icon">
+                                <li><a class="fa fa-search" href="#"></a></li>
+                                <li><a class="fa fa-link" href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>{% endcomment %}
                 </div>
             </div>
-            <div class="col-lg-7 col-md-6 single-service">
+            <div class="col-lg-7 col-md-6 col-sm-6 single-service">
                 <div class="inner" style="padding: 0;">
                     <div>
                         <h2><i>{% trans comp_about_model.title %}</i></h2>
@@ -126,7 +138,7 @@
         <div class="row">
             {% for item in culture %}
             <div class="col-md-12 single-gallery">
-                <div class="inner">
+                <div class="outter">
                     <img src="/uploads/{{item.image_url}}" alt="企业文化">
                 </div>
             </div>
@@ -155,7 +167,7 @@
                 <div class="row">
                     {% for item in honor %}
                     <div class="col-sm-4 single-gallery">
-                        <div class="inner">
+                        <div class="inner animated-box-img">
                             <img src="/uploads/{{item.image_url}}" alt="{{item.type_name}}" style="height: 220px;">
                         </div>
                     </div>
@@ -224,7 +236,7 @@
                             <div class="arrow"></div>
                         </div>
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content">
+                        <div class="timeline-content outter">
                             <!--<h3 class="timeline-title">Event Title</h3>
                             <p>Nullam vel sem. Nullam vel sem. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Donec vitae sapien ut libero venenatis faucibus. ullam dictum felis
                                 eu pede mollis pretium. Pellentesque ut neque.</p>-->

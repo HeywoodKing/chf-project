@@ -89,24 +89,58 @@ var document,
         }
     };
 
+
+
+    // function counter(event) {
+    //     if (!event.namespace) {
+    //         return;
+    //     }
+    //     var slides = event.relatedTarget;
+    //     $('.hero-slider').text(slides.relative(slides.current()) + 1 + '/' + slides.items().length);
+    // }
+
     flat.fnSlider = () => {
         if ($.fn.owlCarousel) {
             flat.heroSlider = $('.hero-slider');
             flat.heroSlider.addClass('owl-carousel');
             flat.heroSlider.owlCarousel({
                 items: 1,
-                autoplay: true,
-                animateIn: 'fadeIn',
-                animateOut: 'fadeOutLeft',
                 loop: true,
-                autoplayHoverPause: true,
                 nav: true,
+                autoplay: true,
+                autoplayHoverPause: true,
+                // autoplayTimeout: 5000,
                 autoHeight:true,
                 navText: [
                     '<i class="fa fa-angle-left"></i>',
                     '<i class="fa fa-angle-right"></i>'
-                ]
+                ],
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOutLeft',
             });
+
+            // flat.heroSlider.on('initialized.owl.carousel changed.owl.carousel', function(e){
+            //     if(!e.namespace){
+            //         return;
+            //     }
+            //     var carousel = e.relatedTarget;
+            //     $('.slider-counter').text(carousel.relative(carousel.current()) + 1 + '/' + carousel.items().length);
+            // }).owlCarousel({
+            //     items: 1,
+            //     autoplay: true,
+            //     animateIn: 'fadeIn',
+            //     animateOut: 'fadeOutLeft',
+            //     loop: true,
+            //     // autoplayHoverPause: true,
+            //     nav: true,
+            //     autoHeight:true,
+            //     navText: [
+            //         '<i class="fa fa-angle-left"></i>',
+            //         '<i class="fa fa-angle-right"></i>'
+            //     ],
+            //     // onInitialized: counter,
+            //     // onChanged: counter,
+            // });
 
             flat.tstSlider = $('.testimonial-slider');
             flat.tstSlider.addClass('owl-carousel');
@@ -114,6 +148,7 @@ var document,
                 items: 3,
                 autoplay: true,
                 loop: true,
+                autoplayHoverPause: false,
                 margin: 30,
                 dots: false,
                 nav: true,

@@ -111,7 +111,7 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
-        'PASSWORD': '123456',
+        # 'PASSWORD': '123456',
     }
 }
 
