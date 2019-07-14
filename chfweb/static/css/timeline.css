@@ -91,6 +91,7 @@ a:hover {
 
 /*----- TIMELINE INFO -----*/
 .timeline-info {
+  position: relative;
   /*font-size: 12px;*/
   font-weight: 700;
   letter-spacing: 3px;
@@ -215,6 +216,29 @@ a:hover {
   }
 }
 
+@media only screen and (max-width: 767px) {
+  /*向右箭头*/
+  .timeline-centered > .timeline-item:nth-child(odd) .timeline-info .arrow{
+    position:absolute;
+    top: 10px;
+    left: -4%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top: 20px solid #99cc67;
+  }
+  /*向左箭头*/
+  .timeline-centered > .timeline-item:nth-child(even) .timeline-info .arrow{
+    position: absolute;
+    top: 10px;
+    left: -4%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top: 20px solid #99cc67;
+  }
+}
+
 /*----------------------------------------------
     MOD: TIMELINE CENTERED
 ----------------------------------------------*/
@@ -281,6 +305,28 @@ a:hover {
   .timeline-centered .period .timeline-title {
     left: auto;
   }
+
+
+  /*向右箭头*/
+  .timeline-centered > .timeline-item:nth-child(odd) .timeline-info .arrow{
+    position:absolute;
+    top: 10px;
+    right: 4%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top: 20px solid #99cc67;
+  }
+  /*向左箭头*/
+  .timeline-centered > .timeline-item:nth-child(even) .timeline-info .arrow{
+    position: absolute;
+    top: 10px;
+    left: 4.3%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top: 20px solid #99cc67;
+  }
 }
 
 /*----------------------------------------------
@@ -300,7 +346,7 @@ a:hover {
   background-color: #fde981;
 }*/
 
-/*左侧背景色*/
+/*左侧文字背景色*/
 .timeline-centered > .timeline-item:nth-child(odd) .timeline-info .timeline-info-bg {
   margin: 0px 10px 10px 10px;
   padding: 15px;
@@ -309,19 +355,7 @@ a:hover {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-/*向右箭头*/
-.timeline-centered > .timeline-item:nth-child(odd) .timeline-info .arrow{
-  position:absolute;
-  top: 10px;
-  left: 413px;
-  width: 0;
-  height: 0;
-  border: 20px solid transparent;
-  border-top: 20px solid #99cc67;
-}
-
-
-/*右侧背景色*/
+/*右侧文字背景色*/
 .timeline-centered > .timeline-item:nth-child(even) .timeline-info .timeline-info-bg {
   margin: 0px 10px 10px 10px;
   padding: 15px;
@@ -330,13 +364,4 @@ a:hover {
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-/*向左箭头*/
-.timeline-centered > .timeline-item:nth-child(even) .timeline-info .arrow{
-  position: absolute;
-  top: 10px;
-  left: 493px;
-  width: 0;
-  height: 0;
-  border: 20px solid transparent;
-  border-top: 20px solid #99cc67;
-}
+

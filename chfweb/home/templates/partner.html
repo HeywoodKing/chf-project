@@ -10,7 +10,7 @@
     {% endblock %}
 {% endblock %}
 
-{% block banner %}
+{% comment %}{% block banner %}
 <!--滚动切换图片-->
 <div class="hero-slider">
     {% for item in banner_list %}
@@ -28,49 +28,8 @@
         </div>
     </div>
     {% endfor %}
-
-    {% comment %}<div class="single-slide" style="background-image: url({% static 'images/banner_5.jpg' %})">
-        <div class="inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="slide-content">
-                            <h2 class="banner-h2">
-                                COOPERATION
-                            </h2>
-                            <h4 class="banner-h4">
-                                <hr class="hr-1">
-                                <span>品牌合作</span>
-                                <hr class="hr-1">
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="single-slide" style="background-image: url({% static 'images/banner_6.jpg' %})">
-        <div class="inner">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12 text-center">
-                        <div class="slide-content">
-                            <h2 class="banner-h2">
-                                COOPERATION
-                            </h2>
-                            <h4 class="banner-h4">
-                                <hr class="hr-1">
-                                <span>品牌合作</span>
-                                <hr class="hr-1">
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>{% endcomment %}
 </div>
-{% endblock %}
+{% endblock %}{% endcomment %}
 
 {% block content %}
 <div class="faq-area-2 sp bg5">
@@ -83,6 +42,7 @@
                     <ul class="faq-sidebar">
                         <li class="faq-sidebar-li-hover" data-id="hzzc"><a href="javascript:void(0);">{% trans "合作政策" %}</a></li>
                         <li data-id="xmys"><a href="javascript:void(0);">{% trans "项目优势" %}</a></li>
+                        <li data-id="zcyfw"><a href="javascript:void(0);">{% trans "支持与服务" %}</a></li>
                         <li data-id="jxswd"><a href="javascript:void(0);">{% trans "经销商问答" %}</a></li>
                         <li data-id="sqbxz"><a href="javascript:void(0);">{% trans "申请表下载" %}</a></li>
                     </ul>
@@ -100,6 +60,15 @@
 
                 <div id="xmys" style="display:none;padding-top: 0;">
                     {% for item in superiority_list %}
+                    <div class="single-faq">
+                        <h2><span>{{ forloop.counter }}</span>{{item.title}}</h2>
+                        {{item.content|safe}}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div id="zcyfw" style="display:none;padding-top: 0;">
+                    {% for item in support_list %}
                     <div class="single-faq">
                         <h2><span>{{ forloop.counter }}</span>{{item.title}}</h2>
                         {{item.content|safe}}
@@ -137,7 +106,9 @@
                     $('#' + $(this).attr('data-id')).css('display', 'block');
                     $(this).addClass('faq-sidebar-li-hover');
                 }else{
-                    window.open("{% static 'apply_table.xls' %}");
+                    {#window.open("{% static 'apply_table.xls' %}");#}
+
+                    window.open("/uploads/{{ apply_table.file }}");
                 }
             });
         });

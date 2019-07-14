@@ -62,7 +62,7 @@
    color: #330000;
 }
 
-.c3-bg, .button, .hero-slider .owl-dots .owl-dot.active, .single-service-2:hover .inner, .single-faq h2 span, .footer_widget .nw_form button, .tabs-area .tabs-nav li a.active, .single-team .inner .team-img::after, .single-pricing.active .inner, .active.single-pricing-2 .inner, .single-pricing-2.active .inner .title .price {
+.c3-bg, .button, .hero-slider .owl-dots .owl-dot.active, .single-faq h2 span, .footer_widget .nw_form button, .tabs-area .tabs-nav li a.active, .single-team .inner .team-img::after, .single-pricing.active .inner, .active.single-pricing-2 .inner, .single-pricing-2.active .inner .title .price {
   background-color: #fee97c;
 }
 
@@ -506,9 +506,10 @@ iframe {
 
 @media screen and (max-width: 768px) {
     .outer{
-        margin: 225px auto;
-        height: 300px;
-        display: flex;
+        position: relative;
+        margin: 0px auto;
+        height: 465px;
+        /*display: flex;*/
         justify-content: center;
         align-items: center;
     }
@@ -518,7 +519,7 @@ iframe {
         top: 0px;
         left: 0px;
         width: 100%;
-        padding: 30px 30px 30px 30px;
+        padding: 100px 30px 30px 30px;
         text-align:center;
         color: #fff;
     }
@@ -830,13 +831,13 @@ iframe {
 /*图片鼠标悬浮动画end*/
 
 /*鼠标移动上图片只放大，没有模糊图层效果*/
-.inner img, .outter img{
+.inner-hover img, .outter-hover img{
     transition: all .5s;
 }
-.inner img:hover{
+.inner-hover img:hover{
     transform: scale(1.1);
 }
-.outter img:hover{
+.outter-hover img:hover{
     transform: scale(.98);
 }
 
@@ -859,6 +860,11 @@ header {
     vertical-align: middle;
     justify-items: center;
     align-items: center;
+}
+@media only screen and (max-width: 767px){
+    .logo-column{
+        margin: 25px auto;
+    }
 }
 
 .logo-column a.logo {
@@ -1068,7 +1074,8 @@ form.search-form button {
     .hero-slider .single-slide {
       font-size: 18px;
       line-height: 24px;
-      text-align: center; } }
+      text-align: center; }
+  }
   .hero-slider .single-slide h2 {
     font-size: 50px;
     line-height: 67px;
@@ -1131,7 +1138,10 @@ form.search-form button {
 /*****************************
  *   04. service-area
  ***************************** */
-.single-service, .single-service-2, .single-service-3 {
+/*.single-service {
+  padding: 0 10px;
+}*/
+.single-service-2, .single-service-3 {
   padding: 50px 0;
 }
 
@@ -1185,7 +1195,7 @@ form.search-form button {
 .single-service-2 {
   text-align: center; }
   .single-service-2 .inner {
-    border: 1px solid #9ddc5f;
+    /*border: 1px solid #9ddc5f;*/
     border-radius: 5px;
     padding: 85px 40px; }
     .single-service-2 .inner .content {
@@ -1201,8 +1211,8 @@ form.search-form button {
         margin-bottom: 30px; }
       .single-service-2 .inner .title h4 {
         padding-left: 0; }
-  .single-service-2:hover .inner {
-    color: #fff; }
+  /*.single-service-2:hover .inner {
+    color: #fff; }*/
     .single-service-2:hover .inner .content,
     .single-service-2:hover .inner .title h4 {
       color: #fff; }
@@ -1560,8 +1570,12 @@ form.search-form button {
     padding-top: 5px;
     padding-bottom: 5px;
     }
-    .faq-sidebar-li-hover, .faq-sidebar li:hover {
+    .faq-sidebar-li-hover{
       background-color: #fbdf50;
+        border-radius: 30px;
+    }
+    .faq-sidebar li:hover {
+      background-color: #99cc67;
         border-radius: 30px;
     }
     .faq-sidebar li a:hover {

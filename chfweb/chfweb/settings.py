@@ -45,7 +45,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     # 'jet.dashboard',
     # 'jet',
-    'simpleui',
+    # 'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -111,7 +111,7 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
-        # 'PASSWORD': '123456',
+        'PASSWORD': '123456',
     }
 }
 
@@ -189,7 +189,6 @@ LOCALE_PATHS = [
 # TEMPLATE_CONTEXT_PROCESSORS = (
 #     'django.core.context_processors.i18n',
 # )
-
 
 
 # 自定义用户model 否则会报：HINT: Add or change a related_name argument to the definition
@@ -459,8 +458,9 @@ SIMPLEUI_CONFIG = {
                     'icon': 'fa fa-broom',
                 },
                 {
-                    'name': '登录日志',
+                    'name': '系统日志',
                     'icon': 'fa fa-cat',
+                    'url': 'admin/logentry/',
                 },
                 {
                     'name': '数据库备份',
@@ -479,6 +479,11 @@ SIMPLEUI_CONFIG = {
                     'name': '导航菜单',
                     'icon': 'fa fa-book-open',
                     'url': 'home/sysnav/'
+                },
+                {
+                    'name': '问题列表',
+                    'icon': 'fa fa-book-open',
+                    'url': 'home/chfquestion/'
                 }
             ]
         },
@@ -526,16 +531,6 @@ SIMPLEUI_CONFIG = {
                     'icon': 'fa fa-glass-cheers',
                     'url': 'home/chfcooperation/'
                 },
-                # {
-                #     'name': '项目优势',
-                #     'icon': 'fa fa-glass-cheers',
-                #     'url': 'home/chfcooperationsuperiority/'
-                # },
-                # {
-                #     'name': '经销商问答',
-                #     'icon': 'fa fa-glass-cheers',
-                #     'url': 'home/chfcooperationquestion/'
-                # },
                 {
                     'name': '申请表管理',
                     'icon': 'fa fa-allergies',

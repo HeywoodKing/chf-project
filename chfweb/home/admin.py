@@ -7,7 +7,7 @@ from django.contrib.admin.models import LogEntry
 
 # Register your models here.
 admin.site.index_title = '欢迎使用春和方后台管理系统'
-admin.site.site_title = '后台管理系统'
+admin.site.site_title = '春和方后台管理系统'
 admin.site.site_header = '春和方后台管理系统'
 
 
@@ -230,7 +230,7 @@ class ChfPartnerAdmin(admin.ModelAdmin):
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
 
-# 合作共赢 品牌合作-0:合作政策 1:项目优势 2:经销商问答
+# 合作共赢 品牌合作-0:合作政策 1:项目优势 2:经销商问答 3:支持与服务
 @admin.register(models.ChfCooperation)
 class ChfCooperationAdmin(admin.ModelAdmin):
     list_display = ('title', 'profile', 'type', 'sort', 'is_enable')
@@ -492,3 +492,21 @@ class ChfTableTemplateAdmin(admin.ModelAdmin):
     search_fields = ('name', 'is_enable',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
+
+# 问题列表
+@admin.register(models.ChfQuestion)
+class ChfQuestionAdmin(admin.ModelAdmin):
+    list_display = ('name', 'profile', 'type', 'state', 'operate_time')
+    list_display_links = ('name', 'profile', )
+    list_editable = ('type', 'state', )
+    list_filter = ('type', 'state', )
+    list_per_page = 30
+    search_fields = ('name', 'type', 'state')
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
+
+    class Media:
+        js = (
+            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
+        )

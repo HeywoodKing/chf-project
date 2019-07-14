@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load i18n %}
 
+
 {% block header %}
     {% include "header.html" with title="公司介绍" %}
     {% block style_tag %}
@@ -12,7 +13,7 @@
     {% endblock %}
 {% endblock %}
 
-{% block banner %}
+{% comment %}{% block banner %}
 <!--滚动切换图片-->
 <div class="hero-slider">
     {% for item in banner_list %}
@@ -32,14 +33,14 @@
     {% endfor %}
 </div>
 <div class="slider-counter"></div>
-{% endblock %}
+{% endblock %}{% endcomment %}
 
 {% block content %}
 <div class="service-area bg6 sp">
     <div class="container">
         <div class="row">
             <div class="single-service-row">
-                <div class="col-sm-12 col-sm-12 col-md-6 col-lg-4 single-service" style="border-right: 1px solid #666666;">
+                <div class="col-sm-12 col-sm-12 col-md-6 col-lg-4 single-service-2" style="border-right: 1px solid #666666;">
                     <div class="text-center">
                         <div class="title">
                             <h2><b>2015{% trans "年" %}</b></h2>
@@ -49,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-sm-12 col-md-6 col-lg-4 single-service" style="border-right: 1px solid #666666;">
+                <div class="col-sm-12 col-sm-12 col-md-6 col-lg-4 single-service-2" style="border-right: 1px solid #666666;">
                     <div class="text-center">
                         <div class="title">
                             <h2><b>FDA</b></h2>
@@ -59,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-sm-12 col-md-6 col-lg-4 single-service">
+                <div class="col-sm-12 col-sm-12 col-md-6 col-lg-4 single-service-2">
                     <div class="text-center">
                         <div class="title">
                             <h2><b>3{% trans "个" %}</b></h2>
@@ -84,8 +85,8 @@
                 <hr class="hr-2">
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-5 col-md-6 col-sm-6 single-service">
+        <div class="row" style="position: relative">
+            <div class="col-lg-5 col-md-6 col-sm-6 single-service-2" style="z-index: 100;">
                 <div class="animated-box-img">
                     {% if comp_about_model %}
                     <img src="/uploads/{{ comp_about_model.comp_image }}" alt="portfolio-image">
@@ -104,8 +105,8 @@
                     </div>{% endcomment %}
                 </div>
             </div>
-            <div class="col-lg-7 col-md-6 col-sm-6 single-service">
-                <div class="inner" style="padding: 0;">
+            <div class="col-lg-7 col-md-6 col-sm-6 single-service-2" style="z-index: 100;">
+                <div class="inner inner-hover" style="padding: 0;">
                     <div>
                         <h2><i>{% trans comp_about_model.title %}</i></h2>
                         <p style="text-indent:2em; font-size:16px; letter-spacing:1px;">
@@ -114,9 +115,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="inner" style="width: 100%; height: 370px; background-color: #a6e67d; margin-top: -415px;"></div>
+            <div class="inner" style="position: absolute; bottom: 0; width: 100%; min-height: 370px; background-color: #a6e67d;"></div>
         </div>
     </div>
 </div>
@@ -131,15 +130,15 @@
             </div>
             <div class="sub-title">
                 <hr class="hr-2">
-                <span>我们的理念：绿色、健康、安全</span>
+                <span>{% trans "我们的理念：绿色、健康、安全" %}</span>
                 <hr class="hr-2">
             </div>
         </div>
         <div class="row">
             {% for item in culture %}
             <div class="col-md-12 single-gallery">
-                <div class="outter">
-                    <img src="/uploads/{{item.image_url}}" alt="企业文化">
+                <div class="outter-hover">
+                    <img src="/uploads/{{item.image_url}}" alt="{% trans '企业文化' %}">
                 </div>
             </div>
             {% endfor %}
@@ -167,7 +166,7 @@
                 <div class="row">
                     {% for item in honor %}
                     <div class="col-sm-4 single-gallery">
-                        <div class="inner animated-box-img">
+                        <div class="inner inner-hover animated-box-img">
                             <img src="/uploads/{{item.image_url}}" alt="{{item.type_name}}" style="height: 220px;">
                         </div>
                     </div>
@@ -197,7 +196,7 @@
             <div class="grid">
             {% for item in aptitude %}
             <div class="col-sm-4 single-gallery grid-item">
-                <div class="inner">
+                <div class="inner inner-hover">
                     <img src="/uploads/{{item.image_url}}" alt="{{item.type_name}}">
                 </div>
             </div>
@@ -236,7 +235,7 @@
                             <div class="arrow"></div>
                         </div>
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content outter">
+                        <div class="timeline-content outter-hover">
                             <!--<h3 class="timeline-title">Event Title</h3>
                             <p>Nullam vel sem. Nullam vel sem. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Donec vitae sapien ut libero venenatis faucibus. ullam dictum felis
                                 eu pede mollis pretium. Pellentesque ut neque.</p>-->

@@ -279,9 +279,14 @@ def add_watering_qty(req):
 # 品牌产品 => 在线商城
 def product_list(req):
     index = 2
+
     # 获取产品类型
     product_type_list = models.ChfProductType.objects.filter(is_enable=True)
-    product_lists = models.ChfProduct.objects.filter(is_enable=True)
+    product_type_id = req.GET.get('product_type', None)
+    if product_type_id == '1' or product_type_id is None:
+        product_lists = models.ChfProduct.objects.filter(is_enable=True)
+    else:
+        product_lists = models.ChfProduct.objects.filter(is_enable=True, product_type=product_type_id)
 
     paginator = Paginator(product_lists, 6)  # 每页显示6条，第三个参数2: 少于2条则合并到上一页
     page = req.GET.get('page')
@@ -328,10 +333,18 @@ def partner(req):
         policy_list = cooperation_list.filter(type=0)
         superiority_list = cooperation_list.filter(type=1)
         question_list = cooperation_list.filter(type=2)
+        support_list = cooperation_list.filter(type=3)
+
+        apply_table_list = models.ChinTableTemplate.objects.filter(is_enable=True)
+        if apply_table_list:
+            apply_table = apply_table_list[0]
+        else:
+            apply_table = models.ChinTableTemplate()
     except Exception as e:
         policy_list = []
         superiority_list = []
         question_list = []
+        support_list = []
         logger.error(e)
 
     return render(req, 'partner.html', locals())

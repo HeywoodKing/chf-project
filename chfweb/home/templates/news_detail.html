@@ -11,7 +11,7 @@
     {% endblock %}
 {% endblock %}
 
-{% block banner %}
+{% comment %}{% block banner %}
 <!--滚动切换图片-->
 <div class="hero-slider">
     {% for item in banner_list %}
@@ -29,48 +29,8 @@
         </div>
     </div>
     {% endfor %}
-    {% comment %}<div class="single-slide" style="background-image: url({% static 'images/banner_6.jpg' %})">
-        <div class="inner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="slide-content">
-                            <h2 class="banner-h2">
-                                NEWS
-                            </h2>
-                            <h4 class="banner-h4">
-                                <hr class="hr-1">
-                                <span>新闻资讯</span>
-                                <hr class="hr-1">
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="single-slide" style="background-image: url({% static 'images/banner_7.jpg' %})">
-        <div class="inner">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-12 text-center">
-                        <div class="slide-content">
-                            <h2 class="banner-h2">
-                                NEWS
-                            </h2>
-                            <h4 class="banner-h4">
-                                <hr class="hr-1">
-                                <span>新闻资讯</span>
-                                <hr class="hr-1">
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>{% endcomment %}
 </div>
-{% endblock %}
+{% endblock %}{% endcomment %}
 
 {% block content %}
 <div class="faq-area-2 sp bg6">
@@ -99,7 +59,7 @@
                     <h3>{% trans "最新资讯" %}</h3>
                     {% for item in news_lasted %}
                     <div class="product-commend about-img">
-                        <a href="/chf/news_detail/{{item.id}}">
+                        <a href="/chf/news_detail/{{item.id}}?banner={{ banner }}">
                             <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
                         </a>
                         <div class="product-commend-title">{{item.title|truncate_point:'14'}}</div>
