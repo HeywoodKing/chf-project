@@ -45,7 +45,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     # 'jet.dashboard',
     # 'jet',
-    # 'simpleui',
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -157,6 +157,22 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = (
+    ('zh-hans', _('中文简体')),
+    ('en', _('English')),
+    # ('zh-Hant', _('中文繁體')),
+)
+
+LANGUAGES_SUPPORTED = ('en', 'zh-hans', )
+
+# 翻译文件所在目录，需要手工创建
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     'django.core.context_processors.i18n',
+# )
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -171,24 +187,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 #     # os.path.join(BASE_DIR, 'chinslicking', 'static'),
 # )
 
-
-LANGUAGES = (
-    ('zh-hans', _('中文简体')),
-    ('en', _('English')),
-    # ('zh-Hant', _('中文繁體')),
-)
-
-LANGUAGES_SUPPORTED = ('en', 'zh-hans', )
-
-
-# 翻译文件所在目录，需要手工创建
-LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'locale'),
-]
-
-# TEMPLATE_CONTEXT_PROCESSORS = (
-#     'django.core.context_processors.i18n',
-# )
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_AGE = 60*30  # 30分钟
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # 会话cookie可以在用户浏览器中保持有效期。True：关闭浏览器，则Cookie失效
 
 
 # 自定义用户model 否则会报：HINT: Add or change a related_name argument to the definition
@@ -429,7 +430,7 @@ SIMPLEUI_INDEX = 'http://47.99.121.101:8000/chf/index'
 SIMPLEUI_LOGO = STATIC_URL + 'images/apple.png'
 
 # 服务器信息
-SIMPLEUI_HOME_INFO = True
+SIMPLEUI_HOME_INFO = False
 # 快速操作
 # SIMPLEUI_HOME_QUICK = True
 # 最近动作

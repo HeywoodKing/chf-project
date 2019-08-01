@@ -120,7 +120,7 @@
     </div>
 </div>
 
-{% if culture %}
+{% if cultures %}
 <div class="gallery-area bg5 sp">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
@@ -135,7 +135,7 @@
             </div>
         </div>
         <div class="row">
-            {% for item in culture %}
+            {% for item in cultures %}
             <div class="col-md-12 single-gallery">
                 <div class="outter-hover">
                     <img src="/uploads/{{item.image_url}}" alt="{% trans '企业文化' %}">
@@ -147,8 +147,91 @@
 </div>
 {% endif %}
 
-{% if honor %}
+{% if orgs %}
 <div class="gallery-area bg6 sp">
+    <div class="container">
+        <div class="section-title" data-margin="0 0 40px">
+            <h2>{% trans "组织架构" %}</h2>
+            <div class="section-title-bg">
+                <div class="section-title-bg-box" style=""></div>
+            </div>
+            <div class="sub-title">
+                <hr class="hr-2">
+                <span>ORGANIZATIONAL STRUCTURE</span>
+                <hr class="hr-2">
+            </div>
+        </div>
+        <div class="row">
+            {% for item in orgs %}
+                <div class="col-md-12 single-gallery text-center">
+                    <div class="outter-hover">
+                        <img src="/uploads/{{item.image_url}}" alt="{% trans '组织架构' %}">
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if teams %}
+<div class="gallery-area bg5 sp">
+    <div class="container">
+        <div class="section-title" data-margin="0 0 40px">
+            <h2>{% trans "团队风采" %}</h2>
+            <div class="section-title-bg">
+                <div class="section-title-bg-box" style=""></div>
+            </div>
+            <div class="sub-title">
+                <hr class="hr-2">
+                <span>TEAM'S MIEN</span>
+                <hr class="hr-2">
+            </div>
+        </div>
+        <div class="row">
+            {% for item in teams %}
+            <div class="col-md-12 single-gallery">
+                <div class="outter-hover">
+                    <img src="/uploads/{{item.image_url}}" alt="{% trans '团队风采' %}">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if brands %}
+<div class="gallery-area bg6 sp">
+    <div class="container">
+        <div class="section-title" data-margin="0 0 40px">
+            <h2>{% trans "品牌故事" %}</h2>
+            <div class="section-title-bg">
+                <div class="section-title-bg-box" style=""></div>
+            </div>
+            <div class="sub-title">
+                <hr class="hr-2">
+                <span>TEAM'S MIEN</span>
+                <hr class="hr-2">
+            </div>
+        </div>
+        <div class="row">
+            {% for item in brands %}
+            <div class="col-md-12 single-gallery">
+                <div class="outter-hover">
+                    <a href="{% url 'king' %}" target="_blank">
+                        <img src="/uploads/{{item.image_url}}" alt="{% trans '品牌故事' %}">
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if honors %}
+<div class="gallery-area bg5 sp">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
             <h2>{% trans "品牌荣誉" %}</h2>
@@ -164,7 +247,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    {% for item in honor %}
+                    {% for item in honors %}
                     <div class="col-sm-4 single-gallery">
                         <div class="inner inner-hover animated-box-img">
                             <img src="/uploads/{{item.image_url}}" alt="{{item.type_name}}" style="height: 220px;">
@@ -178,8 +261,8 @@
 </div>
 {% endif %}
 
-{% if aptitude %}
-<div class="gallery-area bg5 sp">
+{% if aptitudes %}
+<div class="gallery-area bg6 sp">
     <div class="container">
         <div class="section-title" data-margin="0 0 40px">
             <h2>{% trans "企业资质" %}</h2>
@@ -194,7 +277,7 @@
         </div>
         <div class="row">
             <div class="grid">
-            {% for item in aptitude %}
+            {% for item in aptitudes %}
             <div class="col-sm-4 single-gallery grid-item">
                 <div class="inner inner-hover">
                     <img src="/uploads/{{item.image_url}}" alt="{{item.type_name}}">
@@ -209,7 +292,7 @@
 {% endif %}
 
 {% if comp_history_list %}
-<div class="faq-area bg6 sp">
+<div class="faq-area bg5 sp">
     <div class="container">
         <div class="section-title">
             <h2>{% trans "发展历程" %}</h2>

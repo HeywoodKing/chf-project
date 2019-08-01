@@ -151,6 +151,18 @@ class SysNavAdmin(admin.ModelAdmin):
 class LogEntryAdmin(admin.ModelAdmin):
     list_display = ('object_id', 'object_repr', 'action_flag', 'user', 'change_message', )
 
+    # 屏蔽增加功能按钮
+    def has_add_permission(self, request):
+        return False
+
+    # 屏蔽删除功能按钮
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    # 屏蔽修改功能按钮
+    def has_change_permission(self, request, obj=None):
+        return False
+
 
 # Banner管理
 @admin.register(models.ChfBanner)
@@ -201,7 +213,8 @@ class ChfProductAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
@@ -242,7 +255,8 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
@@ -261,6 +275,7 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 #     class Media:
 #         js = (
 #             '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+#             '/static/plugins/kindeditor-4.1.10/kindeditor.js',
 #             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
 #             '/static/plugins/kindeditor-4.1.10/config.js',
 #         )
@@ -279,6 +294,7 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 #     class Media:
 #         js = (
 #             '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+#             '/static/plugins/kindeditor-4.1.10/kindeditor.js',
 #             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
 #             '/static/plugins/kindeditor-4.1.10/config.js',
 #         )
@@ -297,6 +313,7 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 #     class Media:
 #         js = (
 #             '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+#             '/static/plugins/kindeditor-4.1.10/kindeditor.js',
 #             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
 #             '/static/plugins/kindeditor-4.1.10/config.js',
 #         )
@@ -314,7 +331,8 @@ class ChfAboutAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
@@ -323,12 +341,12 @@ class ChfAboutAdmin(admin.ModelAdmin):
 # 品牌介绍图片资源
 @admin.register(models.ChfAboutResource)
 class ChfAboutResourceAdmin(admin.ModelAdmin):
-    list_display = ('type_code', 'type_name', 'image_url', 'sort', 'is_enable')
-    list_display_links = ('type_name',)
+    list_display = ('id', 'type_code', 'image_url', 'sort', 'is_enable')
+    list_display_links = ('id',)
     list_editable = ('type_code', 'sort', 'is_enable')
-    list_filter = ('type_name', IsEnableFilter, 'create_time',)
+    list_filter = ('type_code', IsEnableFilter, 'create_time',)
     list_per_page = 30
-    search_fields = ('type_code', 'type_name')
+    search_fields = ('type_code', )
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
 
@@ -351,8 +369,8 @@ class ChfIndexPlateAdmin(admin.ModelAdmin):
     #                 'is_redirect_sub_page', 'sub_page_url', 'video_source', 'sort', 'is_enable', )
     list_display = ('id', 'title', 'profile', 'animate_type',
                     'is_redirect_sub_page', 'sub_page_url', 'video_source', 'sort', 'is_enable',)
-    list_display_links = ('id', 'profile')
-    list_editable = ('title', 'animate_type', 'is_redirect_sub_page', 'is_enable', 'sort', )
+    list_display_links = ('id', 'title', 'profile')
+    list_editable = ('animate_type', 'is_redirect_sub_page', 'is_enable', 'sort', )
     list_filter = (IsEnableFilter, 'create_time',)
     search_fields = ('title', 'desc', 'animate_type')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
@@ -372,7 +390,8 @@ class ChfCompanyHistoryAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
@@ -392,7 +411,8 @@ class ChfJobRecruitAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
@@ -403,9 +423,9 @@ class ChfJobRecruitAdmin(admin.ModelAdmin):
 @admin.register(models.ChfNews)
 class ChfNewsAdmin(admin.ModelAdmin):
     # exclude = ('content', )
-    list_display = ('title', 'brief', 'profile', 'read_count', 'cover_image_url', 'type', 'sort', 'is_enable', )
+    list_display = ('title', 'brief', 'type', 'profile', 'read_count', 'cover_image_url', 'sort', 'is_enable', )
     list_display_links = ('title', 'profile')
-    list_editable = ('brief', 'sort', 'read_count', 'type', 'is_enable', )
+    list_editable = ('brief', 'type', 'sort', 'read_count', 'is_enable', )
     list_filter = ('type', IsEnableFilter, )
     list_per_page = 30
     search_fields = ('title', 'brief',)
@@ -413,7 +433,8 @@ class ChfNewsAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
@@ -496,8 +517,8 @@ class ChfTableTemplateAdmin(admin.ModelAdmin):
 # 问题列表
 @admin.register(models.ChfQuestion)
 class ChfQuestionAdmin(admin.ModelAdmin):
-    list_display = ('name', 'profile', 'type', 'state', 'operate_time')
-    list_display_links = ('name', 'profile', )
+    list_display = ('id', 'name', 'profile', 'type', 'state', 'profile_remark', 'operate_time')
+    list_display_links = ('id', 'name', 'profile', 'profile_remark',)
     list_editable = ('type', 'state', )
     list_filter = ('type', 'state', )
     list_per_page = 30
@@ -506,7 +527,8 @@ class ChfQuestionAdmin(admin.ModelAdmin):
 
     class Media:
         js = (
-            '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
             '/static/plugins/kindeditor-4.1.10/config.js',
         )

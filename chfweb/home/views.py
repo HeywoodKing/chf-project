@@ -102,19 +102,31 @@ def about(req):
             comp_about_model = comp_about_models[0]
 
             # 反向查找
-            culture = comp_about_model.about_resource.filter(type_code=1)
-            honor = comp_about_model.about_resource.filter(type_code=2)
-            aptitude = comp_about_model.about_resource.filter(type_code=3)
+            # type_code: 1 企业文化 2 品牌荣誉 3 企业资质 4 团队风采 5 品牌故事 6 组织架构
+            cultures = comp_about_model.about_resource.filter(type_code=1)
+            honors = comp_about_model.about_resource.filter(type_code=2)
+            aptitudes = comp_about_model.about_resource.filter(type_code=3)
+            teams = comp_about_model.about_resource.filter(type_code=4)
+            brands = comp_about_model.about_resource.filter(type_code=5)
+            orgs = comp_about_model.about_resource.filter(type_code=6)
     except Exception as e:
         comp_about_model = models.ChfAbout()
-        culture = []
-        honor = []
-        aptitude = []
+        cultures = []
+        honors = []
+        aptitudes = []
+        teams = []
+        brands = []
+        orgs = []
         logger.error(e)
 
     comp_history_list = models.ChfCompanyHistory.objects.filter(is_enable=True)
 
     return render(req, 'about.html', locals())
+
+
+# 秦始皇介绍页面
+def king(req):
+    return render(req, 'king.html', locals())
 
 
 # 联系我们 为您服务
@@ -335,11 +347,11 @@ def partner(req):
         question_list = cooperation_list.filter(type=2)
         support_list = cooperation_list.filter(type=3)
 
-        apply_table_list = models.ChinTableTemplate.objects.filter(is_enable=True)
+        apply_table_list = models.ChfTableTemplate.objects.filter(is_enable=True)
         if apply_table_list:
             apply_table = apply_table_list[0]
         else:
-            apply_table = models.ChinTableTemplate()
+            apply_table = models.ChfTableTemplate()
     except Exception as e:
         policy_list = []
         superiority_list = []
