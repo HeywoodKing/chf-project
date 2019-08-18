@@ -197,361 +197,369 @@
 {% block footer %}
     {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
-    <script>
-        $(function(){
-            <!--alert("我是index.html的js");-->
-            var rainNumber = {{ water_qty.amount }};
-            var rainMsg = "";
-            var myVideo = document.getElementById('video');
-            myVideo.volume = 0.3;
+        <script>
+            $(function(){
+                <!--alert("我是index.html的js");-->
+                var rainNumber = {{ water_qty.amount }};
+                var rainMsg = "";
+                var myVideo = document.getElementById('video');
+                myVideo.volume = 0.3;
 
-            $('.video-box').height(window.innerHeight);
-            $('#video').height(window.innerHeight);
-            $(window).resize(function(){
                 $('.video-box').height(window.innerHeight);
-                $('#video').attr('height', window.innerHeight);
-                $('#video').attr('width', window.innerWidth);
-            });
+                $('#video').height(window.innerHeight);
+                $(window).resize(function(){
+                    $('.video-box').height(window.innerHeight);
+                    $('#video').attr('height', window.innerHeight);
+                    $('#video').attr('width', window.innerWidth);
+                });
 
-            {#$('[data-toggle="tooltip"]').tooltip();#}
+                {#$('[data-toggle="tooltip"]').tooltip();#}
 
-            initTreeBox();
+                initTreeBox();
 
 
-            //进入全屏播放器
-            $(".video-play").on('click', function(){
-                // alert($(this).attr('data-source'));
-                // alert($(this).attr('data-image'));
-                myVideo.poster = $(this).attr('data-image');
-                myVideo.src = $(this).attr('data-source');
-                myVideo.load();
-                myVideo.oncanplay = function(){
-                    if(myVideo.paused){
-                        myVideo.currentTime = 0;
-                        myVideo.play();
+                //进入全屏播放器
+                $(".video-play").on('click', function(){
+                    // alert($(this).attr('data-source'));
+                    // alert($(this).attr('data-image'));
+                    myVideo.poster = $(this).attr('data-image');
+                    myVideo.src = $(this).attr('data-source');
+                    myVideo.load();
+                    myVideo.oncanplay = function(){
+                        if(myVideo.paused){
+                            myVideo.currentTime = 0;
+                            myVideo.play();
+                        }
+                    };
+
+                    $('.video-box').removeClass('hidden zoomOut').addClass('zoomIn');
+                    // $('.container').addClass('hidden');
+                    // $('.container-fluid').addClass('hidden');
+                    // fullScreen();
+                });
+
+                //退出全屏播放器
+                $('.full-video-close').on('click', function(){
+                    if(!myVideo.paused){
+                        myVideo.pause();
                     }
-                };
 
-                $('.video-box').removeClass('hidden zoomOut').addClass('zoomIn');
-                // $('.container').addClass('hidden');
-                // $('.container-fluid').addClass('hidden');
-                // fullScreen();
-            });
+                    $('.video-box').addClass('hidden zoomOut').removeClass('zoomIn');
+                    // $('.container').removeClass('hidden');
+                    // $('.container-fluid').removeClass('hidden');
+                    // exitFullScreen();
+                });
 
-            //退出全屏播放器
-            $('.full-video-close').on('click', function(){
-                if(!myVideo.paused){
-                    myVideo.pause();
+
+
+                function initTreeBox(){
+                    if(rainNumber <= 200){
+                        $('.watering-box-01').show();
+                        $('.watering-box-02').hide();
+                        $('.watering-box-03').hide();
+                        $('.watering-box-04').hide();
+                        $('.soil').show();
+                    }else if(rainNumber > 200 && rainNumber <= 400){
+                        $('.watering-box-01').hide();
+                        $('.watering-box-02').show();
+                        $('.watering-box-03').hide();
+                        $('.watering-box-04').hide();
+                        $('.soil').show();
+                    }else if(rainNumber > 400 && rainNumber < 888){
+                        $('.watering-box-01').hide();
+                        $('.watering-box-02').hide();
+                        $('.watering-box-03').show();
+                        $('.watering-box-04').hide();
+                        $('.soil').hide();
+                    }else if(rainNumber >= 888){
+                        $('.watering-box-01').hide();
+                        $('.watering-box-02').hide();
+                        $('.watering-box-03').hide();
+                        $('.watering-box-04').show();
+                        $('.soil').hide();
+                        $('.tree-04').click();
+                    }
+
+
+                    if(rainMsg != "") {
+                        top.layer.msg(rainMsg, {
+                            icon: 1,
+                            zIndex: layer.zIndex + 200,
+                            time: 2000,
+                        }, function () {
+                            rainMsg = "";
+                        });
+                    }
                 }
 
-                $('.video-box').addClass('hidden zoomOut').removeClass('zoomIn');
-                // $('.container').removeClass('hidden');
-                // $('.container-fluid').removeClass('hidden');
-                // exitFullScreen();
-            });
+                // 浇水动作
+                $('.water-btn').on('click', function(){
+                    /*var rain = Math.floor(Math.random()*10 + 1);
+                    rainNumber += rain;*/
 
+                    //提交浇水水量到后台保存
+                    $.ajax({
+                        type: 'POST',
+                        url: '{% url "add_watering_qty" %}',
+                        data: {
+                            amount: 0,
+                            csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
+                        },
+                        dataType: 'json',
+                        timeout: 3000,
+                        success: function(data, textStatus){
+                            if(data.code == 0) {
+                                if(rainNumber <= 200) {
+                                    //01
+                                    $('.bottle-01').removeClass('hidden').addClass('bottle-fadeIn');
+                                    var rainTimeout = setTimeout(function(){
+                                        $('.rain-01').removeClass('hidden').addClass('rain-fadeIn');
+                                        clearTimeout(rainTimeout);
+                                    }, 500);
+                                    $('.tree-01').removeClass('tada');
+                                    $(".waternumber-01").html('+' + data.data.amount);
+                                    $(".waternumber-01").addClass('hidden').removeClass("waternumber-01-fadeIn")
+                                }else if(rainNumber > 200 && rainNumber <= 400) {
+                                    //02
+                                    $('.bottle-02').removeClass('hidden').addClass('bottle-fadeIn');
+                                    var rainTimeout = setTimeout(function(){
+                                        $('.rain-02').removeClass('hidden').addClass('rain-fadeIn');
+                                        clearTimeout(rainTimeout);
+                                    }, 500);
+                                    $('.tree-02').removeClass('tada');
+                                    $(".waternumber-02").html('+' + data.data.amount);
+                                    $(".waternumber-02").addClass('hidden').removeClass("waternumber-02-fadeIn")
+                                }else if(rainNumber > 400 && rainNumber < 888) {
+                                    //03
+                                    $('.bottle-03').removeClass('hidden').addClass('bottle-fadeIn');
+                                    var rainTimeout = setTimeout(function(){
+                                        $('.rain-03').removeClass('hidden').addClass('rain-fadeIn');
+                                        clearTimeout(rainTimeout);
+                                    }, 500);
+                                    $('.tree-03').removeClass('tada');
+                                    $(".waternumber-03").html('+' + data.data.amount);
+                                    $(".waternumber-03").addClass('hidden').removeClass("waternumber-03-fadeIn")
+                                }else if(rainNumber >= 888) {
+                                    //04
+                                    $('.bottle-04').removeClass('hidden').addClass('bottle-fadeIn');
+                                    var rainTimeout = setTimeout(function(){
+                                        $('.rain-04').removeClass('hidden').addClass('rain-fadeIn');
+                                        clearTimeout(rainTimeout);
+                                    }, 500);
+                                    $('.tree-04').removeClass('tada');
+                                    $(".waternumber-04").html('+' + data.data.amount);
+                                    $(".waternumber-04").addClass('hidden').removeClass("waternumber-04-fadeIn")
+                                }
 
+                                rainNumber = data.data.end_amount;
 
-            function initTreeBox(){
-                if(rainNumber <= 200){
-                    $('.watering-box-01').show();
-                    $('.watering-box-02').hide();
-                    $('.watering-box-03').hide();
-                    $('.watering-box-04').hide();
-                    $('.soil').show();
-                }else if(rainNumber > 200 && rainNumber <= 400){
-                    $('.watering-box-01').hide();
-                    $('.watering-box-02').show();
-                    $('.watering-box-03').hide();
-                    $('.watering-box-04').hide();
-                    $('.soil').show();
-                }else if(rainNumber > 400 && rainNumber < 888){
-                    $('.watering-box-01').hide();
-                    $('.watering-box-02').hide();
-                    $('.watering-box-03').show();
-                    $('.watering-box-04').hide();
-                    $('.soil').hide();
-                }else if(rainNumber >= 888){
-                    $('.watering-box-01').hide();
-                    $('.watering-box-02').hide();
-                    $('.watering-box-03').hide();
-                    $('.watering-box-04').show();
-                    $('.soil').hide();
-                    $('.tree-04').click();
-                }
+                                rainMsg = data.msg;
 
-
-                if(rainMsg != "") {
-                    top.layer.msg(rainMsg, {
-                        icon: 1,
-                        zIndex: layer.zIndex + 200,
-                        time: 2000,
-                    }, function () {
-                        rainMsg = "";
-                    });
-                }
-            }
-
-            // 浇水动作
-            $('.water-btn').on('click', function(){
-                /*var rain = Math.floor(Math.random()*10 + 1);
-                rainNumber += rain;*/
-
-                //提交浇水水量到后台保存
-                $.ajax({
-                    type: 'POST',
-                    url: '{% url "add_watering_qty" %}',
-                    data: {
-                        amount: 0,
-                        csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
-                    },
-                    dataType: 'json',
-                    timeout: 3000,
-                    success: function(data, textStatus){
-                        if(data.code == 0) {
-                            if(rainNumber <= 200) {
-                                //01
-                                $('.bottle-01').removeClass('hidden').addClass('bottle-fadeIn');
-                                var rainTimeout = setTimeout(function(){
-                                    $('.rain-01').removeClass('hidden').addClass('rain-fadeIn');
-                                    clearTimeout(rainTimeout);
-                                }, 500);
-                                $('.tree-01').removeClass('tada');
-                                $(".waternumber-01").html('+' + data.data.amount);
-                                $(".waternumber-01").addClass('hidden').removeClass("waternumber-01-fadeIn")
-                            }else if(rainNumber > 200 && rainNumber <= 400) {
-                                //02
-                                $('.bottle-02').removeClass('hidden').addClass('bottle-fadeIn');
-                                var rainTimeout = setTimeout(function(){
-                                    $('.rain-02').removeClass('hidden').addClass('rain-fadeIn');
-                                    clearTimeout(rainTimeout);
-                                }, 500);
-                                $('.tree-02').removeClass('tada');
-                                $(".waternumber-02").html('+' + data.data.amount);
-                                $(".waternumber-02").addClass('hidden').removeClass("waternumber-02-fadeIn")
-                            }else if(rainNumber > 400 && rainNumber < 888) {
-                                //03
-                                $('.bottle-03').removeClass('hidden').addClass('bottle-fadeIn');
-                                var rainTimeout = setTimeout(function(){
-                                    $('.rain-03').removeClass('hidden').addClass('rain-fadeIn');
-                                    clearTimeout(rainTimeout);
-                                }, 500);
-                                $('.tree-03').removeClass('tada');
-                                $(".waternumber-03").html('+' + data.data.amount);
-                                $(".waternumber-03").addClass('hidden').removeClass("waternumber-03-fadeIn")
-                            }else if(rainNumber >= 888) {
-                                //04
-                                $('.bottle-04').removeClass('hidden').addClass('bottle-fadeIn');
-                                var rainTimeout = setTimeout(function(){
-                                    $('.rain-04').removeClass('hidden').addClass('rain-fadeIn');
-                                    clearTimeout(rainTimeout);
-                                }, 500);
-                                $('.tree-04').removeClass('tada');
-                                $(".waternumber-04").html('+' + data.data.amount);
-                                $(".waternumber-04").addClass('hidden').removeClass("waternumber-04-fadeIn")
+                                /*layer.msg(data.msg, {
+                                    icon: 1,
+                                    zIndex: layer.zIndex + 10,
+                                    time: 2000,
+                                }, function(){
+                                    //
+                                });*/
+                            }else{
+                                layer.msg(data.msg, {
+                                    icon: 2,
+                                    zIndex: layer.zIndex + 10,
+                                    time: 3000,
+                                }, function(){
+                                    //
+                                });
                             }
-
-                            rainNumber = data.data.end_amount;
-
-                            rainMsg = data.msg;
-
-                            /*layer.msg(data.msg, {
-                                icon: 1,
-                                zIndex: layer.zIndex + 10,
-                                time: 2000,
-                            }, function(){
-                                //
-                            });*/
-                        }else{
-                            layer.msg(data.msg, {
+                        },
+                        error: function(xhr, textStatus, errorThrown){
+                            console.log(textStatus + ">>" + errorThrown);
+                            layer.msg(errorThrown, {
                                 icon: 2,
                                 zIndex: layer.zIndex + 10,
                                 time: 3000,
                             }, function(){
                                 //
                             });
+                        },
+                        complete: function(xhr, textStatus){
                         }
-                    },
-                    error: function(xhr, textStatus, errorThrown){
-                        console.log(textStatus + ">>" + errorThrown);
-                        layer.msg(errorThrown, {
-                            icon: 2,
-                            zIndex: layer.zIndex + 10,
-                            time: 3000,
-                        }, function(){
-                            //
-                        });
-                    },
-                    complete: function(xhr, textStatus){
+                    });
+                });
+
+                //水壶动画结束触发
+                //01
+                $('.bottle-01').on('webkitAnimationEnd',function(){
+                    $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
+                    var rainTimeout = setTimeout(function(){
+                        $('.rain-01').removeClass('rain-fadeIn').addClass('hidden');
+
+                        $('.tree-01').addClass('tada');
+                        $('.waternumber-01').removeClass('hidden').addClass('waternumber-01-fadeIn');
+                        clearTimeout(rainTimeout);
+                    }, 500);
+
+                });
+
+                //02
+                $('.bottle-02').on('webkitAnimationEnd',function(){
+                    $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
+                    var rainTimeout = setTimeout(function(){
+                        $('.rain-02').removeClass('rain-fadeIn').addClass('zoomOut hidden');
+
+                        $('.tree-02').addClass('tada');
+                        $('.waternumber-02').removeClass('hidden').addClass('waternumber-02-fadeIn');
+                        clearTimeout(rainTimeout);
+                    }, 500);
+                });
+
+                //03
+                $('.bottle-03').on('webkitAnimationEnd',function(){
+                    $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
+                    var rainTimeout = setTimeout(function(){
+                        $('.rain-03').removeClass('rain-fadeIn').addClass('hidden');
+
+                        $('.tree-03').addClass('tada');
+                        $('.waternumber-03').removeClass('hidden').addClass('waternumber-03-fadeIn');
+                        clearTimeout(rainTimeout);
+                    }, 500);
+                });
+
+                //04
+                $('.bottle-04').on('webkitAnimationEnd',function(){
+                    $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
+                    var rainTimeout = setTimeout(function(){
+                        $('.rain-04').removeClass('rain-fadeIn').addClass('hidden');
+
+                        $('.tree-04').addClass('tada');
+                        $('.waternumber-04').removeClass('hidden').addClass('waternumber-04-fadeIn');
+                        clearTimeout(rainTimeout);
+                    }, 500);
+                });
+
+                //水滴数量增加效果结束触发
+                $(".waternumber-01").on("webkitAnimationEnd", function(){
+                    // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
+                    initTreeBox();
+                });
+                $(".waternumber-02").on("webkitAnimationEnd", function(){
+                    // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
+                    initTreeBox();
+                });
+                $(".waternumber-03").on("webkitAnimationEnd", function(){
+                    // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
+                    initTreeBox();
+                });
+                $(".waternumber-04").on("webkitAnimationEnd", function(){
+                    // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
+                    initTreeBox();
+                });
+
+                //苹果长成触发方法
+                $('.tree-04').on('click', function(){
+                    var width = '500px'
+                    if (document.body.clientWidth < 500){
+                        width = (document.body.clientWidth - 35) + 'px'
                     }
+
+                    top.layer.open({
+                        type: 2,
+                        title: "{% trans '优惠券抢购' %}",
+                        {#area: ['500px', '330px'],#}
+                        area: [width, '52%'],
+                        content: "/chf/layer_coupon_form",
+                        zIndex: layer.zIndex,
+                        closeBtn: 1,
+                        shadeClose: false,
+                        shade: 0.75,
+                        /*success: function(o, index){
+                            // layer.close(index);
+                            console.log('layer.open success');
+                            return false;
+                        },*/
+                        /*btn: ['提交', '取消'],
+                        yes: function (index, o){
+                            var body = layer.getChildFrame('body', index);
+                            console.log(body);
+                            var iframeWin = window[o.find('iframe')[0]['name']];
+                            console.log(iframeWin);
+                            return;
+                            console.log($('#myform').serialize());
+                            $.ajax({
+                                type: 'POST',
+                                url: '/chf/add_coupon',
+                                data: $('#myform').serialize(),
+                                dataType: 'json',
+                                timeout: 3000,
+                                success: function(data, textStatus){
+                                    /!*if(data.code == 0) {
+                                        layer.msg('信息已提交', {
+                                            icon: 1,
+                                            zIndex: layer.zIndex + 10,
+                                            time: 2000,
+                                        }, function(){
+                                            closeLayer();
+                                        });
+                                    }else{
+                                        layer.msg(data.msg, {
+                                            icon: 2,
+                                            zIndex: layer.zIndex + 10,
+                                            time: 3000,
+                                        }, function(){
+                                            //
+                                        });
+                                    }*!/
+                                },
+                                error: function(xhr, textStatus, errorThrown){
+                                    console.log(textStatus + ">>" + errorThrown);
+                                },
+                                complete: function(xhr, textStatus){
+                                }
+                            });
+
+                            layer.msg('您的信息已提交，工作人员正在处理中，请稍后...');
+                        },
+                        btn2: function (index, o){
+                            layer.close(0);
+                        },
+                        cancel: function (index, o) {
+                            layer.close();
+                        }*/
+                    });
                 });
-            });
 
-            //水壶动画结束触发
-            //01
-            $('.bottle-01').on('webkitAnimationEnd',function(){
-                $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
-                var rainTimeout = setTimeout(function(){
-                    $('.rain-01').removeClass('rain-fadeIn').addClass('hidden');
-
-                    $('.tree-01').addClass('tada');
+                //树动画结束触发
+                /*$('.tree-01').on('webkitAnimationEnd',function(){
                     $('.waternumber-01').removeClass('hidden').addClass('waternumber-01-fadeIn');
-                    clearTimeout(rainTimeout);
-                }, 500);
+                });*/
 
             });
 
-            //02
-            $('.bottle-02').on('webkitAnimationEnd',function(){
-                $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
-                var rainTimeout = setTimeout(function(){
-                    $('.rain-02').removeClass('rain-fadeIn').addClass('zoomOut hidden');
 
-                    $('.tree-02').addClass('tada');
-                    $('.waternumber-02').removeClass('hidden').addClass('waternumber-02-fadeIn');
-                    clearTimeout(rainTimeout);
-                }, 500);
-            });
-
-            //03
-            $('.bottle-03').on('webkitAnimationEnd',function(){
-                $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
-                var rainTimeout = setTimeout(function(){
-                    $('.rain-03').removeClass('rain-fadeIn').addClass('hidden');
-
-                    $('.tree-03').addClass('tada');
-                    $('.waternumber-03').removeClass('hidden').addClass('waternumber-03-fadeIn');
-                    clearTimeout(rainTimeout);
-                }, 500);
-            });
-
-            //04
-            $('.bottle-04').on('webkitAnimationEnd',function(){
-                $(this).removeClass('bottle-fadeIn').addClass('zoomOut');
-                var rainTimeout = setTimeout(function(){
-                    $('.rain-04').removeClass('rain-fadeIn').addClass('hidden');
-
-                    $('.tree-04').addClass('tada');
-                    $('.waternumber-04').removeClass('hidden').addClass('waternumber-04-fadeIn');
-                    clearTimeout(rainTimeout);
-                }, 500);
-            });
-
-            //水滴数量增加效果结束触发
-            $(".waternumber-01").on("webkitAnimationEnd", function(){
-                // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
-                initTreeBox();
-            });
-            $(".waternumber-02").on("webkitAnimationEnd", function(){
-                // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
-                initTreeBox();
-            });
-            $(".waternumber-03").on("webkitAnimationEnd", function(){
-                // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
-                initTreeBox();
-            });
-            $(".waternumber-04").on("webkitAnimationEnd", function(){
-                // $(".waternumber-01").removeClass("waternumber-01-fadeIn").addClass('zoomOut');
-                initTreeBox();
-            });
-
-            //苹果长成触发方法
-            $('.tree-04').on('click', function(){
-                top.layer.open({
-                    type: 2,
-                    title: "{% trans '优惠券抢购' %}",
-                    area: ['500px', '330px'],
-                    // area: ['25%', '35%'],
-                    content: "/chf/layer_coupon_form",
-                    zIndex: layer.zIndex,
-                    closeBtn: 1,
-                    shadeClose: false,
-			        shade: 0.75,
-                    /*success: function(o, index){
-                        // layer.close(index);
-                        console.log('layer.open success');
-                        return false;
-                    },*/
-                    /*btn: ['提交', '取消'],
-                    yes: function (index, o){
-                        var body = layer.getChildFrame('body', index);
-                        console.log(body);
-                        var iframeWin = window[o.find('iframe')[0]['name']];
-                        console.log(iframeWin);
-                        return;
-                        console.log($('#myform').serialize());
-                        $.ajax({
-                            type: 'POST',
-                            url: '/chf/add_coupon',
-                            data: $('#myform').serialize(),
-                            dataType: 'json',
-                            timeout: 3000,
-                            success: function(data, textStatus){
-                                /!*if(data.code == 0) {
-                                    layer.msg('信息已提交', {
-                                        icon: 1,
-                                        zIndex: layer.zIndex + 10,
-                                        time: 2000,
-                                    }, function(){
-                                        closeLayer();
-                                    });
-                                }else{
-                                    layer.msg(data.msg, {
-                                        icon: 2,
-                                        zIndex: layer.zIndex + 10,
-                                        time: 3000,
-                                    }, function(){
-                                        //
-                                    });
-                                }*!/
-                            },
-                            error: function(xhr, textStatus, errorThrown){
-                                console.log(textStatus + ">>" + errorThrown);
-                            },
-                            complete: function(xhr, textStatus){
-                            }
-                        });
-
-                        layer.msg('您的信息已提交，工作人员正在处理中，请稍后...');
-                    },
-                    btn2: function (index, o){
-                        layer.close(0);
-                    },
-                    cancel: function (index, o) {
-                        layer.close();
-                    }*/
-                });
-            });
-
-            //树动画结束触发
-            /*$('.tree-01').on('webkitAnimationEnd',function(){
-                $('.waternumber-01').removeClass('hidden').addClass('waternumber-01-fadeIn');
-            });*/
-        });
-
-        //进入全屏
-        function fullScreen(){
-            var ele = document.documentElement;
-            if(ele.requestFullscreen){
-                ele.requestFullscreen();
-            }else if(ele.mozRequestFullScreen){
-                ele.mozRequestFullScreen();
-            }else if(ele.webkitRequestFullScreen){
-                ele.webkitRequestFullScreen();
+            //进入全屏
+            function fullScreen(){
+                var ele = document.documentElement;
+                if(ele.requestFullscreen){
+                    ele.requestFullscreen();
+                }else if(ele.mozRequestFullScreen){
+                    ele.mozRequestFullScreen();
+                }else if(ele.webkitRequestFullScreen){
+                    ele.webkitRequestFullScreen();
+                }
             }
-        }
 
-        //退出全屏
-        function exitFullScreen(){
-            var de = document;
-            if (de.exitFullscreen) {
-                de.exitFullscreen();
-            } else if (de.mozCancelFullScreen) {
-                de.mozCancelFullScreen();
-            } else if (de.webkitCancelFullScreen) {
-                de.webkitCancelFullScreen();
+            //退出全屏
+            function exitFullScreen(){
+                var de = document;
+                if (de.exitFullscreen) {
+                    de.exitFullscreen();
+                } else if (de.mozCancelFullScreen) {
+                    de.mozCancelFullScreen();
+                } else if (de.webkitCancelFullScreen) {
+                    de.webkitCancelFullScreen();
+                }
             }
-        }
-    </script>
+        </script>
+        <script src="{% static 'js/tips.js' %}"></script>
     {% endblock %}
 {% endblock %}

@@ -50,6 +50,9 @@ def global_setting(req):
         # banner_list = models.ChfBanner.objects.filter(nav=nav)
 
     # 网站底部公共信息
+    sysconfig_list = models.SysConfig.objects.filter(is_enable=True)
+    if sysconfig_list:
+        sysconfig = sysconfig_list[0]
 
     return locals()
 
@@ -124,8 +127,12 @@ def about(req):
     return render(req, 'about.html', locals())
 
 
-# 秦始皇介绍页面
+# 秦始皇故事介绍页面
 def king(req):
+    # 从数据库获取数据
+    story_list = models.ChfStory.objects.filter(is_enable=True)
+    if story_list:
+        story = story_list[0]
     return render(req, 'king.html', locals())
 
 
@@ -148,28 +155,45 @@ def add_coupon(req):
         'data': None
     }
 
-    if req.method == 'POST':
-        # 接收参数
-        # csrf_token=afdasfasf&username=aaa&phone=13256235689&email=aaa@123.com&sex=adfsfd
-        # json_params = req.body.replace('=', '":"').replace('&', '","')
-        # print(json_params)
-        username = req.POST.get('username', None)
-        phone = req.POST.get('phone', None)
-        email = req.POST.get('email', None)
-        sex = req.POST.get('sex', None)
-        birthday = req.POST.get('birthday', datetime.now().replace(tzinfo=pytz.utc).strftime("%Y-%m-%d"))
+    try:
+        if req.method == 'POST':
+            # 接收参数
+            # csrf_token=afdasfasf&username=aaa&phone=13256235689&email=aaa@123.com&sex=adfsfd
+            # json_params = req.body.replace('=', '":"').replace('&', '","')
+            # print(json_params)
 
-        # 保存记录
-        model = models.ChfApplyRecord(name=username, phone=phone, email=email, sex=sex, birthday=birthday)
-        model.save()
+            # username = req.POST.get('username', None)
+            # phone = req.POST.get('phone', None)
+            # email = req.POST.get('email', None)
+            # sex = req.POST.get('sex', None)
+            # birthday = req.POST.get('birthday', datetime.now().replace(tzinfo=pytz.utc).strftime("%Y-%m-%d"))
 
-        # models.ChfApplyRecord.objects.create(name=username, phone=phone, email=email, sex=sex)
+            username = ' '
+            phone = req.POST.get('phone', None)
+            email = ' '
+            sex = 0
+            birthday = datetime.now().replace(tzinfo=pytz.utc).strftime("%Y-%m-%d")
 
-        # 返回结果
-        res['code'] = 0
-        res['flag'] = 'success'
-        res['msg'] = '保存成功'
-        res['data'] = None
+            # 保存记录
+            model = models.ChfApplyRecord(name=username, phone=phone, email=email, sex=sex, birthday=birthday)
+            # model = models.ChfApplyRecord(phone=phone)
+            model.save()
+
+            # models.ChfApplyRecord.objects.create(name=username, phone=phone, email=email, sex=sex)
+
+            # 返回结果
+            res['code'] = 0
+            res['flag'] = 'success'
+            res['msg'] = '保存成功'
+            res['data'] = None
+    except Exception as ex:
+        print(ex)
+        res = {
+            'code': -1,
+            'flag': 'fail',
+            'msg': ex,
+            'data': None
+        }
 
     return HttpResponse(json.dumps(res), content_type='application/json')
 
