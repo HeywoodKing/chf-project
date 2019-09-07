@@ -19,7 +19,6 @@ import logging.handlers
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -39,7 +38,6 @@ ALLOWED_HOSTS = [
     'www.chf.com',
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,6 +55,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',  # 添加此行
@@ -87,6 +86,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # 添加这一行，可以理解为中间件的意思
                 # 'django.template.context_processors.uploads',
+                # "django.template.context_processors.media",
+                # "django.template.context_processors.static",
+                # "django.template.context_processors.tz",
                 'home.views.global_setting',
             ],
         },
@@ -94,7 +96,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'chfweb.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -111,7 +112,8 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': '@chinslicking2019',
+        # 'PASSWORD': '123456',
     }
 }
 
@@ -141,7 +143,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -163,7 +164,13 @@ LANGUAGES = (
     # ('zh-Hant', _('中文繁體')),
 )
 
-LANGUAGES_SUPPORTED = ('en', 'zh-hans', )
+LANGUAGES_SUPPORTED = ('zh-hans', 'en',)
+# 是否自动判断Accept-Language头转换语言
+# LOCALEURL_USE_ACCEPT_LANGUAGE = False
+# 是否显示语言前缀
+# PREFIX_DEFAULT_LOCALE = True
+# 是否在session中保存用户指定的语言
+# LOCALEURL_USE_SESSION=True
 
 # 翻译文件所在目录，需要手工创建
 LOCALE_PATHS = [
@@ -188,9 +195,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # )
 
 SESSION_SAVE_EVERY_REQUEST = True
-SESSION_COOKIE_AGE = 60*30  # 30分钟
+SESSION_COOKIE_AGE = 60 * 30  # 30分钟
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # 会话cookie可以在用户浏览器中保持有效期。True：关闭浏览器，则Cookie失效
-
 
 # 自定义用户model 否则会报：HINT: Add or change a related_name argument to the definition
 # for ‘User.user_permissions’ or ‘User.user_permissions’.
@@ -199,7 +205,6 @@ AUTH_USER_MODEL = 'home.ChfUserProfile'
 SITE_NAME = '春和方'
 SITE_DESC = '春和方官网'
 SITE_AUTHOR = 'flack'
-
 
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静态文件路径为主目录下的uploads文件夹
@@ -769,4 +774,3 @@ LOGGING = {
         },
     },
 }
-
