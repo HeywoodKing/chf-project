@@ -112,7 +112,6 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
-        'PASSWORD': '@chinslicking2019',
         # 'PASSWORD': '123456',
     }
 }

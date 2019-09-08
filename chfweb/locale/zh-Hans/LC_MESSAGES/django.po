@@ -301,17 +301,13 @@ msgstr ""
 
 #: .\chinslicking\templates\chinslicking\product_detail.html:42
 #: .\chinslicking\templates\chinslicking\product_list.html:43
-#, fuzzy
-#| msgid "秦食皇"
 msgid "秦韵"
-msgstr "秦食皇"
+msgstr ""
 
 #: .\chinslicking\templates\chinslicking\product_detail.html:42
 #: .\chinslicking\templates\chinslicking\product_list.html:43
-#, fuzzy
-#| msgid "秦食皇"
 msgid "秦风"
-msgstr "秦食皇"
+msgstr ""
 
 #: .\chinslicking\templates\chinslicking\product_detail.html:42
 #: .\chinslicking\templates\chinslicking\product_list.html:43
@@ -320,10 +316,8 @@ msgstr ""
 
 #: .\chinslicking\templates\chinslicking\product_detail.html:42
 #: .\chinslicking\templates\chinslicking\product_list.html:43
-#, fuzzy
-#| msgid "秦食皇"
 msgid "秦饮食"
-msgstr "秦食皇"
+msgstr ""
 
 #: .\chinslicking\templates\chinslicking\product_detail.html:77
 msgid "推荐产品"
