@@ -1,7 +1,11 @@
 {
     "_meta": {
         "hash": {
+<<<<<<< HEAD
             "sha256": "ac1fb9bb96ad4c4f0331d28375c5183e2fb96c1d85bdc57dbf6f6ed0c01716d6"
+=======
+            "sha256": "a7bbdf718c863b9517de6c59e9a91f2696ddf6cb71f79f23bd06b0f1c804aa3e"
+>>>>>>> 22a24f38c8ef60451dca0cb624d921420994b484
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,6 +22,7 @@
     "default": {
         "django": {
             "hashes": [
+<<<<<<< HEAD
                 "sha256:753d30d3eb078064d2ddadfea65083c9848074a7f93d7b4dc7fa6b1380d278f5",
                 "sha256:7cb67e8b934fab23b6daed7144da52e8a25a47eba7f360ca43d2b448506b01ad"
             ],
@@ -30,6 +35,13 @@
             ],
             "index": "pypi",
             "version": "==2.1.3"
+=======
+                "sha256:6fcc3cbd55b16f9a01f37de8bcbe286e0ea22e87096557f1511051780338eaea",
+                "sha256:bb407d0bb46395ca1241f829f5bd03f7e482f97f7d1936e26e98dacb201ed4ec"
+            ],
+            "index": "pypi",
+            "version": "==2.2.1"
+>>>>>>> 22a24f38c8ef60451dca0cb624d921420994b484
         },
         "mysqlclient": {
             "hashes": [
@@ -77,7 +89,10 @@
                 "sha256:303879e36b721603cc54604edcac9d20401bdbe31e1e4fdee5b9f98d5d31dfda",
                 "sha256:d747dd3d23d77ef44c6a3526e274af6efeb0a6f1afd5a69ba4d5be4098c8e141"
             ],
+<<<<<<< HEAD
             "index": "pypi",
+=======
+>>>>>>> 22a24f38c8ef60451dca0cb624d921420994b484
             "version": "==2019.1"
         },
         "sqlparse": {
@@ -85,6 +100,7 @@
                 "sha256:40afe6b8d4b1117e7dff5504d7a8ce07d9a1b15aeeade8a2d10f130a834f8177",
                 "sha256:7c3dca29c022744e95b547e867cee89f4fce4373f3549ccd8797d8eb52cdb873"
             ],
+<<<<<<< HEAD
             "index": "pypi",
             "version": "==0.3.0"
         },
@@ -179,4 +195,10 @@
             "version": "==0.33.4"
         }
     }
+=======
+            "version": "==0.3.0"
+        }
+    },
+    "develop": {}
+>>>>>>> 22a24f38c8ef60451dca0cb624d921420994b484
 }

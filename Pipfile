@@ -1,5 +1,6 @@
 [[source]]
 name = "pypi"
+<<<<<<< HEAD
 url = "https://pypi.org/simple"
 verify_ssl = true
 
@@ -24,6 +25,18 @@ setuptools = "*"
 sqlparse = "*"
 pip = "*"
 wheel = "*"
+=======
+#url = "https://pypi.org/simple"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+mysqlclient = "*"
+pillow = "*"
+>>>>>>> 22a24f38c8ef60451dca0cb624d921420994b484
 
 [requires]
 python_version = "3.7"
