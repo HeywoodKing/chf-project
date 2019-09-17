@@ -12,7 +12,7 @@ from django.conf.urls.static import static
 from home import views
 
 urlpatterns = [
-    # path('', views.index, name='index'),
+    path('', views.index, name='index'),
     path('index/', views.index, name='index'),
     path('home/', views.index, name='index'),
     path('about/', views.about, name='about'),
@@ -21,6 +21,7 @@ urlpatterns = [
     path('partner/', views.partner, name='partner'),
     path('job_list/', views.job_list, name='job_list'),
     path('layer_coupon_form/', views.layer_coupon_form, name='layer_coupon_form'),
+
 
     url('add_coupon/', views.add_coupon, name='add_coupon'),
     url('add_watering_qty/', views.add_watering_qty, name='add_watering_qty'),

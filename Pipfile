@@ -1,11 +1,10 @@
 [[source]]
-name = "pypi"
-url = "https://pypi.org/simple"
+name = "tsinghua"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
 verify_ssl = true
 
 [dev-packages]
 django = "*"
-django-simpleui = "*"
 pillow = "*"
 mysqlclient = "*"
 pytz = "*"
@@ -16,7 +15,6 @@ wheel = "*"
 
 [packages]
 django = "*"
-django-simpleui = "*"
 pillow = "*"
 mysqlclient = "*"
 pytz = "*"
@@ -24,6 +22,7 @@ setuptools = "*"
 sqlparse = "*"
 pip = "*"
 wheel = "*"
+django-simpleui = "*"
 
 [requires]
 python_version = "3.7"

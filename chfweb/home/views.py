@@ -57,6 +57,21 @@ def global_setting(req):
     return locals()
 
 
+def set_lang(req):
+    language = req.data.get("language", "zh-Hans")
+    if language == "zh-Hans":
+        # req.session['_language'] = "zh-hans"
+        settings.LANGUAGE_CODE = 'zh-Hans'
+    else:
+        # req.session['_language'] = "en"
+        settings.LANGUAGE_CODE = 'en-us'
+    res = {
+        'code': 0,
+        'flag': 'success',
+        'msg': '切换成功',
+    }
+    return HttpResponse(json.dumps(res), content_type='application/json')
+
 # def set_language(req):
 #     from django.utils.translation import check_for_language
 #     next = req.REQUEST.get('next', None)
@@ -84,13 +99,18 @@ def global_setting(req):
 # 首页
 def index(req):
     index = 0
-    water_qty_model = models.ChfWateringQty.objects.all()
-    if water_qty_model:
-        water_qty = water_qty_model[0]
-    else:
-        water_qty = models.ChfWateringQty()
+    try:
+        water_qty_model = models.ChfWateringQty.objects.all()
+        if water_qty_model:
+            water_qty = water_qty_model[0]
+        else:
+            water_qty = models.ChfWateringQty()
 
-    index_plate_list = models.ChfIndexPlate.objects.filter(is_enable=True)
+        index_plate_list = models.ChfIndexPlate.objects.filter(is_enable=True)
+    except Exception as ex:
+        # print(ex)
+        water_qty = 0
+        index_plate_list = []
 
     return render(req, 'index.html', locals())
 
@@ -222,91 +242,98 @@ def add_watering_qty(req):
         'data': None
     }
 
-    if req.method == 'POST':
-        # 接收参数
-        # 获取客户端IP地址，判断同一个IP一天不能浇水超过3次
-        client_ip = req.META['REMOTE_ADDR'].split(':')[0]
-        # remote_host = req.META['REMOTE_HOST']
+    try:
+        if req.method == 'POST':
+            # 接收参数
+            # 获取客户端IP地址，判断同一个IP一天不能浇水超过3次
+            client_ip = req.META['REMOTE_ADDR'].split(':')[0]
+            # remote_host = req.META['REMOTE_HOST']
 
-        client_host = client_ip if client_ip else req.META['USERDOMAIN']
-        client_port = req.META['REMOTE_PORT']
-        client_user_agent = req.META['HTTP_USER_AGENT']
-        server_ip = get_host_ip()
-        server_host = req.META['SERVER_NAME']
-        server_port = req.META['SERVER_PORT']
-        # print(req.META)
-        # 获取当天的日期,日期格式为yyyy-MM-dd
-        # curr_date = now().date() + timedelta(days=0)
-        # 获取当前时间
-        curr_now = datetime.now()  # .replace(pytz.utc)
-        print(curr_now)
-        # 获取今天零点
-        start_date = curr_now - timedelta(hours=curr_now.hour,
-                                          minutes=curr_now.minute,
-                                          seconds=curr_now.second,
-                                          microseconds=curr_now.microsecond)
-        # 获取今天23:59:59
-        end_date = start_date + timedelta(hours=23, minutes=59, seconds=59)
-        # 获取昨天的当前时间
-        # yesterday_now = curr_now - timedelta(hours=23, minutes=59, seconds=59)
-        # 获取明天的当前时间
-        # tomorrow_now = curr_now + timedelta(hours=23, minutes=59, seconds=59)
+            client_host = client_ip if client_ip else req.META['USERDOMAIN']
+            client_port = req.META['REMOTE_PORT'] if 'REMOTE_PORT' in req.META else 0
+            client_user_agent = req.META['HTTP_USER_AGENT']
+            server_ip = get_host_ip()
+            server_host = req.META['SERVER_NAME']
+            server_port = req.META['SERVER_PORT']
+            # print(req.META)
+            # 获取当天的日期,日期格式为yyyy-MM-dd
+            # curr_date = now().date() + timedelta(days=0)
+            # 获取当前时间
+            curr_now = datetime.now()  # .replace(pytz.utc)
+            # curr_now = now()
 
-        # start_date = datetime.date(2019, 5, 1)
-        # end_date = datetime.date(2019, 6, 1)
+            # 获取今天零点
+            start_date = curr_now - timedelta(hours=curr_now.hour,
+                                              minutes=curr_now.minute,
+                                              seconds=curr_now.second,
+                                              microseconds=curr_now.microsecond)
+            # 获取今天23:59:59
+            end_date = start_date + timedelta(hours=23, minutes=59, seconds=59)
+            # 获取昨天的当前时间
+            # yesterday_now = curr_now - timedelta(hours=23, minutes=59, seconds=59)
+            # 获取明天的当前时间
+            # tomorrow_now = curr_now + timedelta(hours=23, minutes=59, seconds=59)
 
-        ip_count = models.ChfUserWateringRecord.objects\
-            .filter(client_ip=client_ip, create_time__range=(start_date, curr_now))\
-            .count()
-        if ip_count > 3:
+            # start_date = datetime.date(2019, 5, 1)
+            # end_date = datetime.date(2019, 6, 1)
+
+            ip_count = models.ChfUserWateringRecord.objects\
+                .filter(client_ip=client_ip, create_time__range=(start_date, curr_now))\
+                .count()
+            if ip_count > 3:
+                # 返回结果
+                res['code'] = 1
+                res['flag'] = 'fail'
+                res['msg'] = '您今天浇水次数太多了，<br>明天再继续吧！'
+                res['data'] = None
+                return HttpResponse(json.dumps(res), content_type='application/json')
+
+            # amount_str = req.POST.get('amount', 0)
+            # amount = int(amount_str)
+
+            amount = random.randint(1, 10)
+
+            # 保存本次浇水水量到余额表
+            water_qty = models.ChfWateringQty.objects.all()[0]
+
+            # 保存本次用户浇水记录
+            end_amount = water_qty.amount + amount
+            user_watering_record = models.ChfUserWateringRecord(
+                client_ip=client_ip,
+                client_host=client_host,
+                client_port=client_port,
+                client_user_agent=client_user_agent,
+                server_ip=server_ip,
+                server_host=server_host,
+                server_port=server_port,
+                init_amount=water_qty.amount,
+                amount=amount,
+                final_amount=end_amount)
+            user_watering_record.save()
+
+            water_qty.amount = end_amount
+            water_qty.total_amount = water_qty.total_amount + amount
+            water_qty.save()
+
+            qty = {
+                'amount': amount,
+                'end_amount': end_amount
+            }
+
             # 返回结果
-            res['code'] = 1
+            res['code'] = 0
+            res['flag'] = 'success'
+            res['msg'] = '浇水成功'
+            res['data'] = qty
+        else:
+            res['code'] = 2
             res['flag'] = 'fail'
-            res['msg'] = '您今天浇水次数太多了，<br>明天再继续吧！'
+            res['msg'] = '非法请求'
             res['data'] = None
-            return HttpResponse(json.dumps(res), content_type='application/json')
-
-        # amount_str = req.POST.get('amount', 0)
-        # amount = int(amount_str)
-
-        amount = random.randint(1, 20)
-
-        # 保存本次浇水水量到余额表
-        water_qty = models.ChfWateringQty.objects.all()[0]
-
-        # 保存本次用户浇水记录
-        end_amount = water_qty.amount + amount
-        user_watering_record = models.ChfUserWateringRecord(
-            client_ip=client_ip,
-            client_host=client_host,
-            client_port=client_port,
-            client_user_agent=client_user_agent,
-            server_ip=server_ip,
-            server_host=server_host,
-            server_port=server_port,
-            init_amount=water_qty.amount,
-            amount=amount,
-            final_amount=end_amount)
-        user_watering_record.save()
-
-        water_qty.amount = end_amount
-        water_qty.total_amount = water_qty.total_amount + amount
-        water_qty.save()
-
-        qty = {
-            'amount': amount,
-            'end_amount': end_amount
-        }
-
-        # 返回结果
-        res['code'] = 0
-        res['flag'] = 'success'
-        res['msg'] = '浇水成功'
-        res['data'] = qty
-    else:
-        res['code'] = 2
+    except Exception as ex:
+        res['code'] = 3
         res['flag'] = 'fail'
-        res['msg'] = '非法请求'
+        res['msg'] = ex
         res['data'] = None
 
     return HttpResponse(json.dumps(res), content_type='application/json')

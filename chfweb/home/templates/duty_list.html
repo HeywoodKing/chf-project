@@ -6,8 +6,8 @@
 {% block header %}
     {% include "header.html" with title="社会责任" %}
     {% block style_tag %}
-    <style>
-    </style>
+        <style>
+        </style>
     {% endblock %}
 {% endblock %}
 
@@ -33,59 +33,96 @@
 {% endblock %}{% endcomment %}
 
 {% block content %}
-<div class="faq-area-2 sp bg2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                {% for item in resp_list %}
-                <div class="row" style="padding: 25px 10px;background-color: #99cc67; margin-bottom: 10px;">
-                    <div class="col-md-4">
-                        <div class="about-img">
-                            <a href="/chf/resp_detail/{{item.id}}"><img src="/uploads/{{item.cover_image_url}}" alt="{{item.title}}"></a>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="about-content" style="margin-top:0;">
-                            <h3 style="margin: 5px 0;"><a href="/chf/resp_detail/{{item.id}}">{{item.title|truncate_point:'12'}}</a></h3>
-                            <div>{{item.brief|truncate_point:'180'}}</div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-
-                {% include "pager.html" with page_list=resp_list %}
-            </div>
-            <div class="col-md-3">
-                <div class="faq-sidebar-wrap">
-                    <h3>{% trans "最新动态" %}</h3>
-                    <!--<ul class="faq-sidebar">
-                        {% for item in resp_lasted %}
-                        <li><a href="/chf/resp_detail/{{item.id}}"><span>{{ forloop.counter }}.</span>&nbsp;{{item.title}}</a></li>
+    <div class="faq-area-2 sp bg2">
+        <div class="container">
+            <div class="row">
+                {% if LANGUAGE_CODE == 'en' %}
+                    <div class="col-md-9">
+                        {% for item in resp_list %}
+                            <div class="row" style="padding: 25px 10px;background-color: #99cc67; margin-bottom: 10px;">
+                                <div class="col-md-4">
+                                    <div class="about-img">
+                                        <a href="/resp_detail/{{ item.id }}"><img
+                                                src="/uploads/{{ item.cover_image_url }}" alt="{{ item.en_title }}"></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="about-content" style="margin-top:0;">
+                                        <h3 style="margin: 5px 0;"><a
+                                                href="/resp_detail/{{ item.id }}">{{ item.en_title|truncate_point:'12' }}</a>
+                                        </h3>
+                                        <div>{{ item.en_brief|truncate_point:'180' }}</div>
+                                    </div>
+                                </div>
+                            </div>
                         {% endfor %}
-                    </ul>-->
 
-                    {% for item in resp_lasted %}
-                    <div class="product-commend">
-                        <a href="/chf/resp_detail/{{item.id}}">
-                            <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
-                        </a>
-                        <div class="product-commend-title">{{item.title|truncate_point:'12'}}</div>
+                        {% include "pager.html" with page_list=resp_list %}
                     </div>
-                    {% endfor %}
-                </div>
+                    <div class="col-md-3">
+                        <div class="faq-sidebar-wrap">
+                            <h3>{% trans "最新动态" %}</h3>
+                            {% for item in resp_lasted %}
+                                <div class="product-commend">
+                                    <a href="/resp_detail/{{ item.id }}">
+                                        <img src="/uploads/{{ item.cover_image_url }}" alt="{{ item.en_title }}"
+                                             title="{{ item.en_title }}">
+                                    </a>
+                                    <div class="product-commend-title">{{ item.en_title|truncate_point:'12' }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-md-9">
+                        {% for item in resp_list %}
+                            <div class="row" style="padding: 25px 10px;background-color: #99cc67; margin-bottom: 10px;">
+                                <div class="col-md-4">
+                                    <div class="about-img">
+                                        <a href="/resp_detail/{{ item.id }}"><img
+                                                src="/uploads/{{ item.cover_image_url }}" alt="{{ item.title }}"></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="about-content" style="margin-top:0;">
+                                        <h3 style="margin: 5px 0;"><a
+                                                href="/resp_detail/{{ item.id }}">{{ item.title|truncate_point:'12' }}</a>
+                                        </h3>
+                                        <div>{{ item.brief|truncate_point:'180' }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        {% include "pager.html" with page_list=resp_list %}
+                    </div>
+                    <div class="col-md-3">
+                        <div class="faq-sidebar-wrap">
+                            <h3>{% trans "最新动态" %}</h3>
+                            {% for item in resp_lasted %}
+                                <div class="product-commend">
+                                    <a href="/resp_detail/{{ item.id }}">
+                                        <img src="/uploads/{{ item.cover_image_url }}" alt="{{ item.title }}"
+                                             title="{{ item.title }}">
+                                    </a>
+                                    <div class="product-commend-title">{{ item.title|truncate_point:'12' }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 
 {% block footer %}
     {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
-    <script>
-        $(function(){
-        });
-    </script>
+        <script>
+            $(function () {
+            });
+        </script>
     {% endblock %}
 {% endblock %}
