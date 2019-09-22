@@ -6,7 +6,6 @@ verify_ssl = true
 [dev-packages]
 django = "*"
 pillow = "*"
-mysqlclient = "*"
 pytz = "*"
 setuptools = "*"
 sqlparse = "*"
@@ -16,13 +15,14 @@ wheel = "*"
 [packages]
 django = "*"
 pillow = "*"
-mysqlclient = "*"
 pytz = "*"
 setuptools = "*"
 sqlparse = "*"
 pip = "*"
 wheel = "*"
 django-simpleui = "*"
+pymysql = "*"
+mysqlclient = "*"
 
 [requires]
 python_version = "3.7"

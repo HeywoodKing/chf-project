@@ -112,7 +112,6 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
-        # 'PASSWORD': '@chinslicking2019',
         'PASSWORD': '123456',
         'OPTIONS': {
             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
@@ -160,6 +159,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+# DATE_FORMAT = 'Y-m-d'
+# DATETIME_FORMAT = 'Y-m-d H:i:s'
 
 LANGUAGES = (
     ('zh-hans', _('中文简体')),

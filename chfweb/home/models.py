@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin, BaseUserM
 from django.template.defaultfilters import slugify
 # from datetime import datetime
 from django.db.models import BooleanField as _BooleanField
-# import pytz
+import pytz
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -134,7 +134,7 @@ class ChfUserProfile(AbstractUser):
 
 class BaseModel(models.Model):
     # default=datetime.now().replace(tzinfo=pytz.utc)
-    create_time = models.DateTimeField(_('创建时间'), default=timezone.now)
+    create_time = models.DateTimeField(_('创建时间'), auto_now_add=True)
     create_uid = models.IntegerField(_('创建人ID'), default=123456789, auto_created=True)
     create_username = models.CharField(_('创建人名称'), max_length=30, default='admin', auto_created=True)
     operate_time = models.DateTimeField(_('操作时间'), auto_now=True)
@@ -156,17 +156,17 @@ class BaseModel(models.Model):
 
 # 系统|站点配置
 class SysConfig(BaseModel):
-    site_name = models.CharField(_('站点名称'), max_length=50, default='', blank=True)
-    site_desc = models.CharField(_('站点描述'), max_length=150, default='', blank=True)
-    site_author = models.CharField(_('作者'), max_length=100, default='', blank=True)
+    site_name = models.CharField(_('站点名称'), max_length=50, null=True, blank=True)
+    site_desc = models.CharField(_('站点描述'), max_length=150, null=True, blank=True)
+    site_author = models.CharField(_('作者'), max_length=100, null=True, blank=True)
     site_company = models.CharField(_('公司'), max_length=100)
     address = models.CharField(_('底部显示地址'), max_length=150)
     telephone = models.CharField(_('底部显示电话'), max_length=15)
-    email = models.EmailField(_('邮箱'), max_length=50, default='', blank=True)
-    icp = models.CharField(_('备案号'), max_length=15, default='', blank=True)
-    remark = models.CharField(_('备注'), max_length=200, default='', blank=True)
-    logo_bottom = models.ImageField(_('底部logo'), default='', null=True, blank=True, upload_to='sys/%Y/%m')
-    qrcode = models.ImageField(_('二维码'), default='', null=True, blank=True, upload_to='sys/%Y/%m')
+    email = models.EmailField(_('邮箱'), max_length=50, null=True, blank=True)
+    icp = models.CharField(_('备案号'), max_length=15, null=True, blank=True)
+    remark = models.CharField(_('备注'), max_length=200, null=True, blank=True)
+    logo_bottom = models.ImageField(_('底部logo'), null=True, blank=True, upload_to='sys/%Y/%m')
+    qrcode = models.ImageField(_('二维码'), null=True, blank=True, upload_to='sys/%Y/%m')
     is_enable = models.BooleanField(_('是否启用'), default=True)
 
     class Meta:
@@ -180,9 +180,9 @@ class SysConfig(BaseModel):
 
 # 导航菜单管理
 class SysNav(BaseModel):
-    code = models.CharField(_('标识'), max_length=20, default='')
-    name = models.CharField(_('名称(中文)'), max_length=50, default='', blank=True, null=True,)
-    en_name = models.CharField(_('名称(英文)'), max_length=100, default='', blank=True, null=True,)
+    code = models.CharField(_('标识'), max_length=20)
+    name = models.CharField(_('名称(中文)'), max_length=50, blank=True, null=True,)
+    en_name = models.CharField(_('名称(英文)'), max_length=100, blank=True, null=True,)
     url = models.CharField(_('链接'), max_length=200)
     remark = models.CharField(_('描述'), max_length=300, blank=True)
     parent = models.ForeignKey(to='self', default=0, null=True, blank=True, related_name='children',
@@ -248,11 +248,11 @@ class ChfBanner(BaseModel):
     """
     nav:
     """
-    nav = models.ForeignKey(to='SysNav', default='', null=True, blank=True, related_name='navs',
+    nav = models.ForeignKey(to='SysNav', null=True, blank=True, related_name='navs',
                             related_query_name='nav_query', on_delete=models.CASCADE, verbose_name=_('Banner页面'))
-    image_url = models.ImageField(_('图片'), default='', null=True, blank=True, upload_to='banner/%Y/%m')
-    text = models.CharField(_('Banner上文本描述(中文)'), max_length=150, default='')
-    en_text = models.CharField(_('Banner上文本描述(英文)'), max_length=300, default='')
+    image_url = models.ImageField(_('图片'), null=True, blank=True, upload_to='banner/%Y/%m')
+    text = models.CharField(_('Banner上文本描述(中文)'), max_length=150)
+    en_text = models.CharField(_('Banner上文本描述(英文)'), max_length=300)
     sort = models.IntegerField(_('排序'), default=0)
     is_enable = models.BooleanField(_('是否启用'), default=True)
 
@@ -271,19 +271,20 @@ class ChfAboutResource(BaseModel):
     """
     type_code: 1 企业文化 2 品牌荣誉 3 企业资质 4 团队风采 5 品牌故事 6 组织架构
     """
-    type_code = models.PositiveSmallIntegerField(_('图片业务类型'), default=0,
-                                                 choices=(
-                                                     (1, _('企业文化')),
-                                                     (2, _('品牌荣誉')),
-                                                     (3, _('企业资质')),
-                                                     (4, _('团队风采')),
-                                                     (5, _('品牌故事')),
-                                                     (6, _('组织架构'))
-                                                 )
-                                                 )
-    # type_name = models.CharField('图片业务类型名称', max_length=15, default='')
-    image_url = models.ImageField(_('图片'), default='', null=True, blank=True, upload_to='company/%Y/%m')
-    about = models.ForeignKey(to='ChfAbout', default='', null=True, blank=True, related_name='about_resource',
+    type_code = models.PositiveSmallIntegerField(
+        _('图片业务类型'), default=0,
+        choices=(
+            (1, _('企业文化')),
+            (2, _('品牌荣誉')),
+            (3, _('企业资质')),
+            (4, _('团队风采')),
+            (5, _('品牌故事')),
+            (6, _('组织架构'))
+        )
+    )
+    # type_name = models.CharField('图片业务类型名称', max_length=15)
+    image_url = models.ImageField(_('图片'), null=True, blank=True, upload_to='company/%Y/%m')
+    about = models.ForeignKey(to='ChfAbout', null=True, blank=True, related_name='about_resource',
                               related_query_name='about', on_delete=models.CASCADE, verbose_name=_('品牌介绍'))
     sort = models.IntegerField(_('排序'), default=0)
     is_enable = models.BooleanField(_('是否启用'), default=True)
@@ -301,14 +302,14 @@ class ChfAboutResource(BaseModel):
 # 关于我们
 # 品牌介绍
 class ChfAbout(BaseModel):
-    comp_name = models.CharField(_('公司名称(中文)'), max_length=100, default='', blank=True, null=True,)
-    en_comp_name = models.CharField(_('公司名称(英文)'), max_length=200, default='', blank=True, null=True,)
+    comp_name = models.CharField(_('公司名称(中文)'), max_length=100, blank=True, null=True,)
+    en_comp_name = models.CharField(_('公司名称(英文)'), max_length=200, blank=True, null=True,)
     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
                             help_text=_('根据name生成的，用于生成页面URL，必须唯一'))
-    title = models.CharField(_('公司简介标题(中文)'), max_length=100, default='', blank=True, null=True,)
-    en_title = models.CharField(_('公司简介标题(英文)'), max_length=200, default='', blank=True, null=True,)
-    content = models.TextField(_('公司简介(中文)'), default='', null=True, blank=True)
-    en_content = models.TextField(_('公司简介(英文)'), default='', null=True, blank=True)
+    title = models.CharField(_('公司简介标题(中文)'), max_length=100, blank=True, null=True,)
+    en_title = models.CharField(_('公司简介标题(英文)'), max_length=200, blank=True, null=True,)
+    content = models.TextField(_('公司简介(中文)'), null=True, blank=True)
+    en_content = models.TextField(_('公司简介(英文)'), null=True, blank=True)
     comp_image = models.ImageField(_('公司简介图片'), max_length=255, null=True, blank=True, upload_to='company/%Y/%m')
     is_enable = models.BooleanField(_('是否启用'), default=True)
 
@@ -344,14 +345,14 @@ class ChfAbout(BaseModel):
 
 # 秦始皇故事
 class ChfStory(BaseModel):
-    short_title = models.CharField(_('短板故事标题(中文)'), max_length=80, default='', blank=True, null=True,)
-    en_short_title = models.CharField(_('短板故事标题(英文)'), max_length=160, default='', blank=True, null=True,)
-    short_content = models.TextField(_('短板故事(中文)'), max_length=1000, default='', blank=True, null=True,)
-    en_short_content = models.TextField(_('短板故事(英文)'), max_length=2000, default='', blank=True, null=True,)
-    long_title = models.CharField(_('长板故事标题(中文)'), max_length=80, default='', blank=True, null=True,)
-    en_long_title = models.CharField(_('长板故事标题(英文)'), max_length=160, default='', blank=True, null=True,)
-    long_content = models.TextField(_('长板故事(中文)'), max_length=4000, default='', blank=True, null=True,)
-    en_long_content = models.TextField(_('长板故事(英文)'), max_length=8000, default='', blank=True, null=True,)
+    short_title = models.CharField(_('短板故事标题(中文)'), max_length=80, blank=True, null=True,)
+    en_short_title = models.CharField(_('短板故事标题(英文)'), max_length=160, blank=True, null=True,)
+    short_content = models.TextField(_('短板故事(中文)'), max_length=1000, blank=True, null=True,)
+    en_short_content = models.TextField(_('短板故事(英文)'), max_length=2000, blank=True, null=True,)
+    long_title = models.CharField(_('长板故事标题(中文)'), max_length=80, blank=True, null=True,)
+    en_long_title = models.CharField(_('长板故事标题(英文)'), max_length=160, blank=True, null=True,)
+    long_content = models.TextField(_('长板故事(中文)'), max_length=4000, blank=True, null=True,)
+    en_long_content = models.TextField(_('长板故事(英文)'), max_length=8000, blank=True, null=True,)
     is_enable = models.BooleanField(_('是否启用'), default=True)
 
     class Meta:
@@ -402,9 +403,9 @@ class ChfStory(BaseModel):
 
 # 动画类型
 class ChfAnimateType(BaseModel):
-    name = models.CharField(_('动画名称'), max_length=30, default='')
+    name = models.CharField(_('动画名称'), max_length=30)
     class_name = models.CharField(_('class样式名'), max_length=50, default='flip')
-    descr = models.CharField(_('动画描述'), max_length=100, default='', null=True, blank=True)
+    descr = models.CharField(_('动画描述'), max_length=100, null=True, blank=True)
     is_enable = models.BooleanField(_('是否启用'), default=True)
 
     class Meta:
@@ -428,16 +429,16 @@ class ChfAnimateType(BaseModel):
 
 # 首页板块管理
 class ChfIndexPlate(BaseModel):
-    title = models.CharField(_('板块标题(中文)'), max_length=8, default='', blank=True, null=True,)
-    en_title = models.CharField(_('板块标题(英文)'), max_length=16, default='', blank=True, null=True,)
+    title = models.CharField(_('板块标题(中文)'), max_length=8, blank=True, null=True)
+    en_title = models.CharField(_('板块标题(英文)'), max_length=16, blank=True, null=True)
     plate_image_url = models.ImageField(_('图标'), max_length=255, null=True, blank=True, upload_to='index_plate/%Y/%m')
     front_image = models.ImageField(_('正面图'), max_length=255, null=True, blank=True, upload_to='index_plate/%Y/%m')
     back_image = models.ImageField(_('背面图'), max_length=255, null=True, blank=True, upload_to='index_plate/%Y/%m')
-    descr = models.CharField(_('简介(中文)'), max_length=100, default='', null=True, blank=True)
-    en_descr = models.CharField(_('简介(英文)'), max_length=100, default='', null=True, blank=True)
+    descr = models.CharField(_('简介(中文)'), max_length=100, null=True, blank=True)
+    en_descr = models.CharField(_('简介(英文)'), max_length=100, null=True, blank=True)
     is_redirect_sub_page = models.BooleanField(_('是否跳转到子页面'), default=True)
-    sub_page_url = models.CharField(_('子页面地址'), max_length=150, default='', null=True, blank=True)
-    video_source = models.FileField(_('视频文件地址'), max_length=200, default='', null=True, blank=True,
+    sub_page_url = models.CharField(_('子页面地址'), max_length=150, null=True, blank=True)
+    video_source = models.FileField(_('视频文件地址'), max_length=200, null=True, blank=True,
                                     upload_to='media/%Y/%m')
     animate_type = models.ForeignKey(to='ChfAnimateType', null=True, blank=True, on_delete=models.CASCADE,
                                      verbose_name=_('动画类型'))
@@ -474,14 +475,14 @@ class ChfIndexPlate(BaseModel):
 
 # 公司发展历程
 class ChfCompanyHistory(BaseModel):
-    timeline_title = models.CharField(_('时间标题(中文)'), max_length=20, default='', unique=True, null=True, blank=True)
-    en_timeline_title = models.CharField(_('时间标题(英文)'), max_length=40, default='', unique=True, null=True, blank=True)
-    title = models.CharField(_('标题(中文)'), max_length=100, default='', blank=True, null=True,)
-    en_title = models.CharField(_('标题(英文)'), max_length=200, default='', blank=True, null=True,)
-    breif = models.CharField(_('摘要(中文)'), max_length=50, default='', null=True, blank=True)
-    en_breif = models.CharField(_('摘要(英文)'), max_length=100, default='', null=True, blank=True)
-    content = models.TextField(_('描述(中文)'), default='', null=True, blank=True)
-    en_content = models.TextField(_('描述(英文)'), default='', null=True, blank=True)
+    timeline_title = models.CharField(_('时间标题(中文)'), max_length=20, unique=True, null=True, blank=True)
+    en_timeline_title = models.CharField(_('时间标题(英文)'), max_length=40, unique=True, null=True, blank=True)
+    title = models.CharField(_('标题(中文)'), max_length=100, blank=True, null=True,)
+    en_title = models.CharField(_('标题(英文)'), max_length=200, blank=True, null=True,)
+    breif = models.CharField(_('摘要(中文)'), max_length=50, null=True, blank=True)
+    en_breif = models.CharField(_('摘要(英文)'), max_length=100, null=True, blank=True)
+    content = models.TextField(_('描述(中文)'), null=True, blank=True)
+    en_content = models.TextField(_('描述(英文)'), null=True, blank=True)
     cover_image_url = models.ImageField(_('图片'), max_length=255, null=True, blank=True, upload_to='company/%Y/%m')
     sort = models.IntegerField(_('排序'), default=0)
     is_enable = models.BooleanField(_('是否启用'), default=True)
@@ -517,8 +518,8 @@ class ChfCompanyHistory(BaseModel):
 
 # 产品类型
 class ChfProductType(BaseModel):
-    name = models.CharField(_('类型名称(中文)'), max_length=30, default='', blank=True, null=True,)
-    en_name = models.CharField(_('类型名称(英文)'), max_length=30, default='', blank=True, null=True,)
+    name = models.CharField(_('类型名称(中文)'), max_length=30, blank=True, null=True,)
+    en_name = models.CharField(_('类型名称(英文)'), max_length=30, blank=True, null=True,)
     sort = models.IntegerField(_('排序'), default=0)
     is_enable = models.BooleanField(_('是否启用'), default=True)
     data_filter_name = models.CharField(_('数据类型标识'), max_length=20, default='*')
@@ -536,15 +537,15 @@ class ChfProductType(BaseModel):
 
 # 品牌产品
 class ChfProduct(BaseModel):
-    name = models.CharField(_('产品名称(中文)'), max_length=100, default='', blank=True, null=True,)
-    en_name = models.CharField(_('产品名称(英文)'), max_length=200, default='', blank=True, null=True,)
+    name = models.CharField(_('产品名称(中文)'), max_length=100, blank=True, null=True,)
+    en_name = models.CharField(_('产品名称(英文)'), max_length=200, blank=True, null=True,)
     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
                             help_text=_('根据name生成的，用于生成页面URL，必须唯一'))
-    brief = models.CharField(_('产品摘要(中文)'), max_length=40, default='', blank=True, null=True,)
-    en_brief = models.CharField(_('产品摘要(英文)'), max_length=80, default='', blank=True, null=True,)
-    content = models.TextField(_('产品描述(中文)'), default='', null=True, blank=True)
-    en_content = models.TextField(_('产品描述(英文)'), default='', null=True, blank=True)
-    mall_url = models.URLField(_('在线商城地址'), default='', null=True, blank=True)
+    brief = models.CharField(_('产品摘要(中文)'), max_length=40, blank=True, null=True,)
+    en_brief = models.CharField(_('产品摘要(英文)'), max_length=80, blank=True, null=True,)
+    content = models.TextField(_('产品描述(中文)'), null=True, blank=True)
+    en_content = models.TextField(_('产品描述(英文)'), null=True, blank=True)
+    mall_url = models.URLField(_('在线商城地址'), null=True, blank=True)
     cover_image_url = models.ImageField(_('图片'), max_length=255, null=True, blank=True, upload_to='product/%Y/%m')
     read_count = models.IntegerField(_('浏览量'), default=0)
     product_type = models.ForeignKey(to='ChfProductType', null=True, blank=True, on_delete=models.CASCADE,
@@ -607,11 +608,11 @@ class ChfProduct(BaseModel):
 
 # 合作伙伴
 class ChfPartner(BaseModel):
-    name = models.CharField(_('名称(中文)'), max_length=100, default='', blank=True, null=True,)
-    en_name = models.CharField(_('名称(英文)'), max_length=200, default='', blank=True, null=True,)
+    name = models.CharField(_('名称(中文)'), max_length=100, blank=True, null=True,)
+    en_name = models.CharField(_('名称(英文)'), max_length=200, blank=True, null=True,)
     logo = models.ImageField(_('Logo'), max_length=255, null=True, blank=True, upload_to='partner/%Y/%m')
-    brief = models.CharField(_('简介(中文)'), max_length=100, default='', blank=True, null=True,)
-    en_brief = models.CharField(_('简介(英文)'), max_length=200, default='', blank=True, null=True,)
+    brief = models.CharField(_('简介(中文)'), max_length=100, blank=True, null=True,)
+    en_brief = models.CharField(_('简介(英文)'), max_length=200, blank=True, null=True,)
     url = models.URLField(_('链接'), max_length=255, null=True, blank=True)
     address = models.CharField(_('地址'), max_length=100)
     sort = models.IntegerField(_('排序'), default=0)
@@ -648,10 +649,10 @@ class ChfPartner(BaseModel):
 
 # 合作共赢 品牌合作
 class ChfCooperation(BaseModel):
-    title = models.CharField(_('名称(中文)'), max_length=100, default='', blank=True, null=True,)
-    en_title = models.CharField(_('名称(英文)'), max_length=200, default='', blank=True, null=True,)
-    content = models.TextField(_('内容(中文)'), default='', null=True, blank=True)
-    en_content = models.TextField(_('内容(英文)'), default='', null=True, blank=True)
+    title = models.CharField(_('名称(中文)'), max_length=100, blank=True, null=True,)
+    en_title = models.CharField(_('名称(英文)'), max_length=200, blank=True, null=True,)
+    content = models.TextField(_('内容(中文)'), null=True, blank=True)
+    en_content = models.TextField(_('内容(英文)'), null=True, blank=True)
     type = models.CharField(
         _('类型'),
         max_length=10,
@@ -697,14 +698,14 @@ class ChfCooperation(BaseModel):
 # 社会责任
 # 新闻资讯
 class ChfNews(BaseModel):
-    title = models.CharField(_('标题(中文)'), max_length=64, default='', blank=True, null=True,)
-    en_title = models.CharField(_('标题(英文)'), max_length=128, default='', blank=True, null=True,)
+    title = models.CharField(_('标题(中文)'), max_length=64, blank=True, null=True,)
+    en_title = models.CharField(_('标题(英文)'), max_length=128, blank=True, null=True,)
     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
                             help_text=_('根据title生成的，用于生成页面URL，必须唯一'))
-    brief = models.CharField(_('摘要(中文)'), max_length=120, default='', blank=True, null=True,)
-    en_brief = models.CharField(_('摘要(英文)'), max_length=240, default='', blank=True, null=True,)
-    content = models.TextField(_('内容(中文)'), default='', null=True, blank=True)
-    en_content = models.TextField(_('内容(英文)'), default='', null=True, blank=True)
+    brief = models.CharField(_('摘要(中文)'), max_length=120, blank=True, null=True,)
+    en_brief = models.CharField(_('摘要(英文)'), max_length=240, blank=True, null=True,)
+    content = models.TextField(_('内容(中文)'), null=True, blank=True)
+    en_content = models.TextField(_('内容(英文)'), null=True, blank=True)
     read_count = models.IntegerField(_('浏览量'), default=0)
     cover_image_url = models.ImageField(_('图片'), max_length=255, null=True, blank=True, upload_to='news/%Y/%m')
     sort = models.IntegerField(_('排序'), default=0)
@@ -757,11 +758,11 @@ class ChfNews(BaseModel):
 
 # 工作机会
 class ChfJobRecruit(BaseModel):
-    job_name = models.CharField(_('职位名称(中文)'), max_length=50, default='', blank=True, null=True,)
-    en_job_name = models.CharField(_('职位名称(英文)'), max_length=100, default='', blank=True, null=True,)
+    job_name = models.CharField(_('职位名称(中文)'), max_length=50, blank=True, null=True,)
+    en_job_name = models.CharField(_('职位名称(英文)'), max_length=100, blank=True, null=True,)
     slug = models.SlugField('Slug', max_length=255, unique=True, null=True, blank=True,
                             help_text=_('根据job_name生成的，用于生成页面URL，必须唯一'))
-    work_year = models.CharField(_('工作经验'), max_length=20, default='', null=True, blank=True)
+    work_year = models.CharField(_('工作经验'), max_length=20, null=True, blank=True)
     education = models.CharField(
         _('学历'),
         max_length=10,
@@ -792,10 +793,10 @@ class ChfJobRecruit(BaseModel):
         ),
         default=0
     )
-    # job_require = models.TextField('岗位要求', default='', null=True, blank=True)
-    # skill_require = models.TextField('技能要求', default='', null=True, blank=True)
-    content = models.TextField(_('招聘要求(中文)'), default='', null=True, blank=True)
-    en_content = models.TextField(_('招聘要求(英文)'), default='', null=True, blank=True)
+    # job_require = models.TextField('岗位要求', null=True, blank=True)
+    # skill_require = models.TextField('技能要求', null=True, blank=True)
+    content = models.TextField(_('招聘要求(中文)'), null=True, blank=True)
+    en_content = models.TextField(_('招聘要求(英文)'), null=True, blank=True)
     sort = models.IntegerField(_('排序'), default=0)
     is_enable = models.BooleanField(_('是否启用'), default=True)
 
@@ -839,7 +840,7 @@ class ChfJobRecruit(BaseModel):
 
 # 用户抢购优惠券表
 class ChfApplyRecord(BaseModel):
-    name = models.CharField(_('姓名'), max_length=100, default='', null=True, blank=True)
+    name = models.CharField(_('姓名'), max_length=100, null=True, blank=True)
     sex = models.CharField(
         _('性别'),
         max_length=5,
@@ -851,9 +852,9 @@ class ChfApplyRecord(BaseModel):
         ),
         default=0
     )
-    birthday = models.DateField(_('生日'), default='', null=True, blank=True)
+    birthday = models.DateField(_('生日'), null=True, blank=True)
     phone = models.CharField(_('电话'), max_length=11)
-    email = models.EmailField(_('邮箱'), max_length=50, default='', null=True, blank=True)
+    email = models.EmailField(_('邮箱'), max_length=50, null=True, blank=True)
     is_get = models.BooleanField(_('是否已领取'), default=False)
     is_inform = models.BooleanField(_('是否已通知'), default=False)
     state = models.SmallIntegerField(
@@ -878,11 +879,11 @@ class ChfApplyRecord(BaseModel):
 # 用户浇水记录
 class ChfUserWateringRecord(BaseModel):
     client_ip = models.GenericIPAddressField(_('客户端IP'), default='127.0.0.1', protocol='both')
-    client_host = models.CharField(_('客户端主机名'), default='', max_length=100)
+    client_host = models.CharField(_('客户端主机名'), max_length=100)
     client_port = models.IntegerField(_('客户端端口'), default=0)
-    client_user_agent = models.CharField(_('客户端浏览器'), default='', max_length=255)
+    client_user_agent = models.CharField(_('客户端浏览器'), max_length=255)
     server_ip = models.GenericIPAddressField(_('服务器IP'), default='127.0.0.1', protocol='both')
-    server_host = models.CharField(_('服务器主机名'), default='', max_length=100)
+    server_host = models.CharField(_('服务器主机名'), max_length=100)
     server_port = models.IntegerField(_('服务器端口'), default=0)
     init_amount = models.IntegerField(_('期初水量'), default=0)
     amount = models.IntegerField(_('本次水量'), default=0)
@@ -924,7 +925,7 @@ class ChfWateringQty(BaseModel):
 
 # 申请模板表
 class ChfTableTemplate(BaseModel):
-    name = models.CharField(_('名称'), max_length=30, default='')
+    name = models.CharField(_('名称'), max_length=30, )
     file = models.FileField(_('文件'), max_length=255, upload_to='file/%Y/%m')
     is_enable = models.BooleanField(_('是否启用'), default=True)
 
@@ -950,7 +951,7 @@ class ChfTableTemplate(BaseModel):
 # 问题汇总列表
 class ChfQuestion(BaseModel):
     name = models.CharField(_('问题标题'), max_length=200)
-    content = models.TextField(_('问题描述'), default='', null=True, blank=True)
+    content = models.TextField(_('问题描述'), null=True, blank=True)
     type = models.SmallIntegerField(
         _('问题类型'),
         default=-1,
@@ -976,7 +977,7 @@ class ChfQuestion(BaseModel):
             (4, _('需第三方处理')),
         )
     )
-    remark = models.CharField(_('备注'), max_length=200, default='', null=True, blank=True)
+    remark = models.CharField(_('备注'), max_length=200, null=True, blank=True)
 
     class Meta:
         db_table = "chf_question"

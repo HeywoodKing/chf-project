@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="{% static 'plugins/layui/css/layui.css' %}">
     <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-	<!--<link rel="stylesheet" href="{% static 'css/base.css' %}">-->
     <link rel="stylesheet" href="{% static 'css/box-dialog.css' %}">
 
     {% block style_tag %}
@@ -992,14 +991,14 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                <div id="ArrowLeft" class="box-container animated hidden" style="position: absolute; top:60%; left: 28%;">
+                <div id="ArrowLeft" class="box-container box-container-arrow-left animated hidden">
                     <div class="box-dialog">
                         <div class="box-body">给我浇水我就能长大哦</div>
                         <div class="arrow-left"></div>
                     </div>
                 </div>
 
-                <div id="ArrowRight" class="box-container animated hidden" style="position: absolute; top:60%; right: 23%;">
+                <div id="ArrowRight" class="box-container box-container-arrow-right animated hidden">
                     <div class="box-dialog">
                         <div class="box-body">我渴了，快来给我浇水吧！</div>
                         <div class="arrow-right">
@@ -1015,7 +1014,7 @@
                     </div>
                 </div>{% endcomment %}
 
-                <div id="ArrowDownRight" class="box-container animated hidden" style="position: absolute; top:40%; left: 35%;">
+                <div id="ArrowDownRight" class="box-container box-container-arrow-down-right animated hidden">
                     <div class="box-dialog">
                         <div class="box-body">结果实抢优惠券哦</div>
                         <div class="arrow-down-right">
@@ -1023,7 +1022,7 @@
                     </div>
                 </div>
 
-                <div id="ArrowDownLeft" class="box-container animated hidden" style="position: absolute; top:42%; right: 30%;">
+                <div id="ArrowDownLeft" class="box-container box-container-arrow-down-left animated hidden">
                     <div class="box-dialog">
                         <div class="box-body">天大地大，我要快快长大！</div>
                         <div class="arrow-down-left">

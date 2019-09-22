@@ -84,6 +84,7 @@
         return result;
     }
 
-    // run();
+    //运行气泡提示
+    run();
 
 })(jQuery);
