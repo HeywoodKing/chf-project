@@ -487,7 +487,7 @@ iframe {
 @media screen and (min-width: 991px) {
     .outer{
         margin: 40px auto;
-        height: 340px;
+        height: 310px;
         /*display: flex;*/
         justify-content: center;
         align-items: center;
@@ -495,8 +495,8 @@ iframe {
 
     .outer .front .front-content{
         position:absolute;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         width: 100%;
         padding: 100px 30px 30px 30px;
         text-align:center;
@@ -504,8 +504,8 @@ iframe {
     }
 
     .outer .back{
-        width: 254px;
-        height: 331px;
+        width: 240px;
+        height: 310px;
         background-color: #99cc67;
     }
 }
@@ -513,8 +513,8 @@ iframe {
 @media screen and (max-width: 768px) {
     .outer{
         position: relative;
-        margin: 0px auto;
-        height: 530px;
+        margin: 30px auto;
+        height: 430px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -522,8 +522,8 @@ iframe {
 
     .outer .front .front-content{
         position:absolute;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         width: 100%;
         padding: 100px 30px 30px 30px;
         text-align:center;
@@ -532,7 +532,7 @@ iframe {
 
     .outer .back{
         width: 100%;
-        height: 520px;
+        height: 430px;
         background-color: #99cc67;
     }
 }
@@ -568,8 +568,8 @@ iframe {
 }
 .outer .back .back-content{
     position:absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     padding: 50px 10px;
     text-align:center;
@@ -599,11 +599,12 @@ iframe {
     transform:rotateY(0deg);
 }
 
-
 .outer .front .front-content img, .outer .back .back-content img{
     width: 50px;
     height: 50px;
 }
+
+
 
 /*翻牌效果 end*/
 

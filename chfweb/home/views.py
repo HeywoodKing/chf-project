@@ -14,7 +14,31 @@ from home import models
 
 
 # Create your views here.
-logger = logging.getLogger("me")
+
+# logging.basicConfig(level = logging.INFO,format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger("chf")
+logger.setLevel(level=logging.INFO)
+
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# file
+# fileHandler = logging.FileHandler('chin.log')
+# fileHandler.setLevel(logging.INFO)
+# fileHandler.setFormatter(formatter)
+
+# 定义一个RotatingFileHandler，最多备份3个日志文件，每个日志文件最大1K
+rotatHandler = RotatingFileHandler('chf.log', maxBytes=300 * 1024, backupCount=3)
+rotatHandler.setLevel(logging.INFO)
+rotatHandler.setFormatter(formatter)
+
+# console
+console = logging.StreamHandler()
+console.setLevel(logging.INFO)
+console.setFormatter(formatter)
+
+# logger.addHandler(fileHandler)
+logger.addHandler(rotatHandler)
+logger.addHandler(console)
 
 
 def global_setting(req):
@@ -201,6 +225,16 @@ def add_coupon(req):
 
             # models.ChfApplyRecord.objects.create(name=username, phone=phone, email=email, sex=sex)
 
+            # update wate_qty
+            water_qty_list = models.ChfWateringQty.objects.all()
+            if water_qty_list:
+                water_qty = water_qty_list[0]
+            else:
+                water_qty = models.ChfWateringQty
+
+            water_qty.amount = 0
+            water_qty.save()
+
             # 返回结果
             res['code'] = 0
             res['flag'] = 'success'
@@ -246,9 +280,14 @@ def add_watering_qty(req):
         if req.method == 'POST':
             # 接收参数
             # 获取客户端IP地址，判断同一个IP一天不能浇水超过3次
-            client_ip = req.META['REMOTE_ADDR'].split(':')[0]
-            # remote_host = req.META['REMOTE_HOST']
+            if 'HTTP_X_FORWARDED_FOR' in req.META:
+                # client_ip = req.META['HTTP_X_FORWARDED_FOR'].split(',')[0]
+                client_ip = req.META.get('HTTP_X_FORWARDED_FOR', None)
+            else:
+                # client_ip = req.META['REMOTE_ADDR'].split(':')[0]
+                client_ip = req.META.get('REMOTE_ADDR', None)
 
+            # remote_host = req.META['REMOTE_HOST']
             client_host = client_ip if client_ip else req.META['USERDOMAIN']
             client_port = req.META['REMOTE_PORT'] if 'REMOTE_PORT' in req.META else 0
             client_user_agent = req.META['HTTP_USER_AGENT']
@@ -294,7 +333,11 @@ def add_watering_qty(req):
             amount = 1
 
             # 保存本次浇水水量到余额表
-            water_qty = models.ChfWateringQty.objects.all()[0]
+            water_qty_list = models.ChfWateringQty.objects.all()
+            if water_qty_list:
+                water_qty = water_qty_list[0]
+            else:
+                water_qty = models.ChfWateringQty
 
             # 保存本次用户浇水记录
             end_amount = water_qty.amount + amount
