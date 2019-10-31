@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.views.static import serve
 from home import upload
+from home import views
 from django.views.generic.base import RedirectView
 # from jet.dashboard.dashboard_modules import google_analytics_views
 # from jet.dashboard.dashboard_modules import yandex_metrika_views
@@ -27,16 +28,20 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin/lang/', views.set_lang, name='set_lang'),
     # path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     # path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
 
+    # url(r'', include('home.urls')),
     url(r'^uploads/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),  # 单独上传图片后显示图片的url地址路径
     url(r'^admin/upload/(?P<dir_name>[^/]+)$', upload.upload_image, name='upload_image'),  # 富文本编辑器上传图片路径
     url(r'^i18n/', include('django.conf.urls.i18n')),
     # url(r'^i18n/setlang', 'home.views.set_language'),
+    # url(r'^setlang/$', 'django.views.i18n.set_language', name = 'setlang'),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico')),
 ]
 
 urlpatterns += i18n_patterns(
-    url(r'^chf/', include('home.urls')),
+    url(r'', include('home.urls')),
+    # url(r'^chf/', include('home.urls')),
 )

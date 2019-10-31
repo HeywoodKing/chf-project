@@ -10,7 +10,7 @@ for lang_code in settings.LANGUAGES_SUPPORTED:
 register = template.Library()
 
 
-@register.inclusion_tag('app/parts/languages_select_part.html')
+@register.inclusion_tag('home/templates/languages_select_part.html')
 def language_select(default):
     return {'languages': LANGUAGES, 'default': default}
 

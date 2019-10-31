@@ -6,8 +6,8 @@
 {% block header %}
     {% include "header.html" with title="社会责任详情" %}
     {% block style_tag %}
-    <style>
-    </style>
+        <style>
+        </style>
     {% endblock %}
 {% endblock %}
 
@@ -33,58 +33,86 @@
 {% endblock %}{% endcomment %}
 
 {% block content %}
-<div class="faq-area-2 sp bg2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="single-faq">
-                    <h2><span>1</span>{{ resp.title|truncate_point:'30' }}</h2>
-                    <div>
-                        <span class="icon">
-                            <i class="glyphicon glyphicon-time"></i>
-                        </span>
-                        <span>{% trans "时间" %}：{{ resp.create_time }}</span>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span class="icon">
-                            <i class="glyphicon glyphicon-eye-open"></i>
-                        </span>
-                        <span>{% trans "浏览" %}：{{ resp.read_count }}</span>
+    <div class="faq-area-2 sp bg2">
+        <div class="container">
+            <div class="row">
+                {% if LANGUAGE_CODE == 'en' %}
+                    <div class="col-md-8">
+                        <div class="single-faq">
+                            <h2><span>1</span>{{ resp.en_title|truncate_point:'30' }}</h2>
+                            <div>
+                            <span class="icon">
+                                <i class="glyphicon glyphicon-time"></i>
+                            </span>
+                                <span>{% trans "时间" %}：{{ resp.create_time }}</span>
+                                <span class="icon">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </span>
+                                <span>{% trans "浏览" %}：{{ resp.read_count }}</span>
+                            </div>
+                            <hr>
+                            <div>{{ resp.en_content|safe }}</div>
+                        </div>
                     </div>
-                    <hr>
-                    <div>{{ resp.content|safe }}</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="faq-sidebar-wrap">
-                    <h3>{% trans "最新动态" %}</h3>
-                    <!--<ul class="faq-sidebar">
-                        {% for item in resp_lasted %}
-                        <li><a href="/chf/resp_detail/{{item.id}}"><span>{{ forloop.counter }}.</span>&nbsp;{{item.title}}</a></li>
-                        {% endfor %}
-                    </ul>-->
-
-                    {% for item in resp_lasted %}
-                    <div class="product-commend">
-                        <a href="/chf/resp_detail/{{item.id}}">
-                            <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
-                        </a>
-                        <div class="product-commend-title">{{item.title|truncate_point:'12'}}</div>
+                    <div class="col-md-4">
+                        <div class="faq-sidebar-wrap">
+                            <h3>{% trans "最新动态" %}</h3>
+                            {% for item in resp_lasted %}
+                                <div class="product-commend">
+                                    <a href="/resp_detail/{{ item.id }}">
+                                        <img src="/uploads/{{ item.cover_image_url }}" alt="{{ item.en_title }}"
+                                             title="{{ item.en_title }}">
+                                    </a>
+                                    <div class="product-commend-title">{{ item.en_title|truncate_point:'12' }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                    {% endfor %}
-                </div>
+                {% else %}
+                    <div class="col-md-8">
+                        <div class="single-faq">
+                            <h2><span>1</span>{{ resp.title|truncate_point:'30' }}</h2>
+                            <div>
+                            <span class="icon">
+                                <i class="glyphicon glyphicon-time"></i>
+                            </span>
+                                <span>{% trans "时间" %}：{{ resp.create_time }}</span>
+                                <span class="icon">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </span>
+                                <span>{% trans "浏览" %}：{{ resp.read_count }}</span>
+                            </div>
+                            <hr>
+                            <div>{{ resp.content|safe }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="faq-sidebar-wrap">
+                            <h3>{% trans "最新动态" %}</h3>
+                            {% for item in resp_lasted %}
+                                <div class="product-commend">
+                                    <a href="/resp_detail/{{ item.id }}">
+                                        <img src="/uploads/{{ item.cover_image_url }}" alt="{{ item.title }}"
+                                             title="{{ item.title }}">
+                                    </a>
+                                    <div class="product-commend-title">{{ item.title|truncate_point:'12' }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 
 {% block footer %}
     {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
-    <script>
-        $(function(){
-        });
-    </script>
+        <script>
+            $(function () {
+            });
+        </script>
     {% endblock %}
 {% endblock %}

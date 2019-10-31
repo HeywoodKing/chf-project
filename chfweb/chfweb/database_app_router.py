@@ -7,6 +7,7 @@
 
 from django.conf import settings
 
+
 class DatabaseAppsRouter(object):
     def db_for_read(self, model, **hints):
         app_label = model._mata.app_label

@@ -26,16 +26,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rnx96978^u&3g*e12j7rt-b@-95rj+=(bl791)(^gllw$j(-nl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
     '192.168.0.100',
     '192.168.0.122',
-    '47.99.121.101',
     '172.16.40.247',
-    'www.chf.local',
-    'www.chf.com',
+    '47.99.121.101',
+    'www.xaqsh.cn',
+    'www.xaqsh.com',
+    'www.xianqinshihuang.com',
 ]
 
 # Application definition
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'chfweb.home.http.SetRemoteAddrFromForwardedFor',
 ]
 
 ROOT_URLCONF = 'chfweb.urls'
@@ -112,7 +114,11 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
-        # 'PASSWORD': '123456',
+        # 'PASSWORD': '@chinslicking2019',
+        'PASSWORD': '123456',
+        'OPTIONS': {
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }
 
@@ -146,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 # LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'zh-Hans'
+LANGUAGE_CODE = 'zh-hans'
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Shanghai'
@@ -156,6 +162,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+# DATE_FORMAT = 'Y-m-d'
+# DATETIME_FORMAT = 'Y-m-d H:i:s'
 
 LANGUAGES = (
     ('zh-hans', _('中文简体')),
@@ -201,8 +209,8 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # 会话cookie可以在用户浏览器�
 # for ‘User.user_permissions’ or ‘User.user_permissions’.
 AUTH_USER_MODEL = 'home.ChfUserProfile'
 
-SITE_NAME = '春和方'
-SITE_DESC = '春和方官网'
+SITE_NAME = _('春和方')
+SITE_DESC = _('春和方官网')
 SITE_AUTHOR = 'flack'
 
 MEDIA_URL = '/uploads/'
@@ -429,7 +437,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静�
 # 首页图标
 # SIMPLEUI_HOME_ICON = 'fa fa-user'
 # 设置simpleui 点击首页图标跳转的地址
-SIMPLEUI_INDEX = 'http://47.99.121.101:8000/chf/index'
+SIMPLEUI_INDEX = 'http://www.xaqsh.cn/index'
 # 自定义SIMPLEUI的Logo 修改LOGO
 SIMPLEUI_LOGO = STATIC_URL + 'images/apple.png'
 
@@ -452,188 +460,198 @@ SIMPLEUI_ANALYSIS = False
 SIMPLEUI_CONFIG = {
     'system_keep': False,
     # 开启排序和过滤功能, 不填此字段为默认排序和全部显示, 空列表[] 为全部不显示.
-    'menu_display': ['系统', '信息管理', '产品管理', '简介管理', '留言管理', '招聘管理', '管理员管理', '中英文版管理', '权限认证'],
+    'menu_display': [
+        _('系统'),
+        _('信息管理'),
+        _('产品管理'),
+        _('简介管理'),
+        _('留言管理'),
+        _('招聘管理'),
+        _('管理员管理'),
+        # _('中英文版管理'),
+        # _('权限认证')
+    ],
     'menus': [
         {
-            'name': '系统',
+            'name': _('系统'),
             'icon': 'fas fa-cog',
             'models': [
                 {
-                    'name': '导航菜单',
+                    'name': _('导航菜单'),
                     'icon': 'fa fa-book-open',
                     'url': 'home/sysnav/'
                 },
                 {
-                    'name': '网站配置',
+                    'name': _('网站配置'),
                     'icon': 'fa fa-book-open',
                     'url': 'home/sysconfig/'
                 },
                 {
-                    'name': '动画类型',
+                    'name': _('动画类型'),
                     'icon': 'fa fa-allergies',
                     'url': 'home/chfanimatetype/'
                 },
                 {
-                    'name': '问题列表',
+                    'name': _('问题列表'),
                     'icon': 'fa fa-book-open',
                     'url': 'home/chfquestion/'
                 },
                 {
-                    'name': '清除系统缓存',
+                    'name': _('清除系统缓存'),
                     'icon': 'fa fa-broom',
                 },
                 {
-                    'name': '系统日志',
+                    'name': _('系统日志'),
                     'icon': 'fa fa-cat',
                     'url': 'admin/logentry/',
                 },
                 {
-                    'name': '数据库备份',
+                    'name': _('数据库备份'),
                     'icon': 'fa fa-coins',
                 },
                 {
-                    'name': '关键词管理',
+                    'name': _('关键词管理'),
                     'icon': 'fa fa-book-open',
                 }
             ]
         },
         {
-            'name': '信息管理',
+            'name': _('信息管理'),
             'icon': 'fas fa-sitemap',
             'models': [
                 {
-                    'name': '首页模块',
+                    'name': _('首页模块'),
                     'icon': 'fa fa-info',
                     'url': 'home/chfindexplate/'
                 },
                 {
-                    'name': 'Banner图',
+                    'name': _('Banner图'),
                     'icon': 'fa fa-book-open',
                     'url': 'home/chfbanner/'
                 },
                 {
-                    'name': '用户浇水记录',
+                    'name': _('用户浇水记录'),
                     'icon': 'fa fa-tint',
                     'url': 'home/chfuserwateringrecord/'
                 },
                 {
-                    'name': '用户抢券记录',
+                    'name': _('用户抢券记录'),
                     'icon': 'fa fa-certificate',
                     'url': 'home/chfapplyrecord/'
                 },
                 {
-                    'name': '浇水水量余额',
+                    'name': _('浇水水量余额'),
                     'icon': 'fa fa-water',
                     'url': 'home/chfwateringqty/'
                 },
                 {
-                    'name': '新闻资讯',
+                    'name': _('新闻资讯'),
                     'icon': 'fa fa-newspaper',
                     'url': 'home/chfnews/'
                 },
                 # {
-                #     'name': '合作伙伴',
+                #     'name': _('合作伙伴'),
                 #     'icon': 'fa fa-glass-cheers',
                 #     'url': 'home/chfpartner/'
                 # },
                 {
-                    'name': '合作共赢',
+                    'name': _('合作共赢'),
                     'icon': 'fa fa-glass-cheers',
                     'url': 'home/chfcooperation/'
                 },
                 {
-                    'name': '申请表管理',
+                    'name': _('申请表管理'),
                     'icon': 'fa fa-allergies',
                     'url': 'home/chftabletemplate/'
                 }
             ]
         },
         {
-            'name': '产品管理',
+            'name': _('产品管理'),
             'icon': 'fas fa-pepper-hot',
             'models': [
                 {
-                    'name': '产品列表',
+                    'name': _('产品列表'),
                     'icon': 'fa fa-project-diagram',
                     'url': 'home/chfproduct/'
                 },
                 {
-                    'name': '产品类型',
+                    'name': _('产品类型'),
                     'icon': 'fa fa-tape',
                     'url': 'home/chfproducttype/'
                 }
             ]
         },
         {
-            'name': '简介管理',
+            'name': _('简介管理'),
             'icon': 'fas fa-pencil-alt',
             'models': [
                 {
-                    'name': '品牌介绍',
+                    'name': _('品牌介绍'),
                     'icon': 'fa fa-beer',
                     'url': 'home/chfabout/'
                 },
                 {
-                    'name': '品牌图片资源',
+                    'name': _('品牌图片资源'),
                     'icon': 'fa fa-images',
                     'url': 'home/chfaboutresource/'
                 },
                 {
-                    'name': '发展历程',
+                    'name': _('发展历程'),
                     'icon': 'fa fa-dharmachakra',
                     'url': 'home/chfcompanyhistory/'
                 },
                 {
-                    'name': '秦始皇故事',
+                    'name': _('秦始皇故事'),
                     'icon': 'fa fa-dharmachakra',
                     'url': 'home/chfstory/'
                 }
             ]
         },
         {
-            'name': '留言管理',
+            'name': _('留言管理'),
             'icon': 'fas fa-comments',
             'models': [
                 {
-                    'name': '留言列表',
+                    'name': _('留言列表'),
                     'icon': 'fa fa-comment-dots',
                     'url': ''
                 }
             ]
         },
         {
-            'name': '招聘管理',
+            'name': _('招聘管理'),
             'icon': 'fas fa-users',
             'models': [
                 {
-                    'name': '招聘列表',
+                    'name': _('招聘列表'),
                     'icon': 'fa fa-user-friends',
                     'url': 'home/chfjobrecruit/'
                 }
             ]
         },
         {
-            'name': '管理员管理',
+            'name': _('管理员管理'),
             'icon': 'fas fa-users-cog',
             'models': [
                 {
-                    'name': '用户',
+                    'name': _('用户'),
                     'icon': 'fas fa-user',
                     'url': 'home/chfuserprofile/'
                 },
                 {
                     'app': 'auth',
-                    'name': '用户组',
+                    'name': _('用户组'),
                     'icon': 'fa fa-user-tag',
                     'url': 'auth/group/'
                 }
             ]
         },
-        {
-            'name': '中英文版管理',
-            'icon': 'fas fa-compact-disc',
-            'models': []
-        },
+        # {
+        #     'name': '中英文版管理',
+        #     'icon': 'fas fa-compact-disc',
+        #     'models': []
+        # },
         # {
         #     'app': 'auth',
         #     'name': '权限认证',

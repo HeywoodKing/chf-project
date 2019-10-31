@@ -4,11 +4,12 @@ from home import models
 from django.contrib.admin import SimpleListFilter
 # from jet.filters import DateRangeFilter
 from django.contrib.admin.models import LogEntry
+from django.utils.translation import ugettext_lazy as _
 
 # Register your models here.
-admin.site.index_title = '欢迎使用春和方后台管理系统'
-admin.site.site_title = '春和方后台管理系统'
-admin.site.site_header = '春和方后台管理系统'
+admin.site.index_title = _('欢迎使用春和方后台管理系统')
+admin.site.site_title = _('春和方后台管理系统')
+admin.site.site_header = _('春和方后台管理系统')
 
 
 # 是否启用过滤
@@ -123,15 +124,32 @@ class IsActiveFilter(SimpleListFilter):
 # 系统配置
 @admin.register(models.SysConfig)
 class SysConfigAdmin(admin.ModelAdmin):
-    list_display = ('id', 'site_name', 'site_company', 'address', 'telephone', 'email',
-                    'icp', 'is_enable', 'logo_bottom', 'qrcode')
+    # def get_queryset(self, request):
+    #     """使当前登录的用户只能看到自己负责的记录"""
+    #     qs = super(SysConfigAdmin, self).get_queryset(request)
+    #     if request.user.is_superuser:
+    #         return qs
+    #
+    #     return qs.filter(user=models.ChfUserProfile.objects.filter(username=request.user))
+
+    # def get_readonly_fields(self, request, obj=None):
+    #     """  重新定义此函数，限制普通用户所能修改的字段  """
+    #     if request.user.is_superuser:
+    #         self.readonly_fields = []
+    #
+    #     return self.readonly_fields
+    #
+    # readonly_fields = ('id', 'code', 'name', 'url', 'parent', 'sort', 'is_root', 'is_enable', 'is_delete')
+
+    list_display = ('id', 'site_name', 'site_company', 'en_site_company', 'address', 'en_address', 'telephone', 'email',
+                    'icp', 'en_icp', 'is_enable', 'logo_bottom', 'qrcode')
     list_display_links = ('id', 'site_name', )
     # list_editable = ('telephone', 'is_enable', 'icp')
     list_filter = (IsEnableFilter, )
     list_per_page = 10
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-    search_fields = ('site_name', 'site_author', 'site_company', 'address', 'telephone',
-                     'email', 'icp', )
+    search_fields = ('site_name', 'site_author', 'site_company', 'en_site_company', 'address', 'en_address', 'telephone',
+                     'email', 'icp', 'en_icp', )
 
 
 # 管理员
@@ -152,13 +170,13 @@ class ChfUserProfileAdmin(UserAdmin):
 # 导航菜单管理
 @admin.register(models.SysNav)
 class SysNavAdmin(admin.ModelAdmin):
-    list_display = ('id', 'code', 'name', 'url', 'parent', 'sort', 'is_root', 'is_enable', 'is_delete')
-    list_display_links = ('id', 'name', 'url', )
+    list_display = ('id', 'code', 'name', 'en_name', 'url', 'parent', 'sort', 'is_root', 'is_enable', 'is_delete')
+    list_display_links = ('id', 'name', 'en_name', 'url', )
     list_editable = ('code', 'sort', 'is_enable', )
     list_filter = (IsEnableFilter, )
     list_per_page = 30
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-    search_fields = ('name', 'url', )
+    search_fields = ('name', 'en_name', 'url', )
 
 
 # 用户日志
@@ -196,9 +214,10 @@ class ChfBannerAdmin(admin.ModelAdmin):
 class ChfProductAdmin(admin.ModelAdmin):
     # fields = ()
     # inlines = ()
-    list_display = ('name', 'brief_profile', 'profile', 'cover_image_url', 'read_count',
+    list_display = ('name', 'en_name', 'brief_profile', 'en_brief_profile', 'profile',
+                    'en_profile', 'cover_image_url', 'read_count',
                     'product_type', 'sort', 'is_recommand', 'is_enable', 'create_time')
-    list_display_links = ('name', 'brief_profile', 'profile',)
+    list_display_links = ('name', 'en_name', 'brief_profile', 'en_brief_profile', 'profile', 'en_profile',)
     list_editable = ('sort', 'is_recommand', 'is_enable', 'product_type')
     list_filter = ('product_type', IsRecommandFilter, IsEnableFilter, )
     list_per_page = 30
@@ -212,7 +231,7 @@ class ChfProductAdmin(admin.ModelAdmin):
     #         'fields': ('read_count', 'content', 'cover_image_url', 'sort', 'is_recommand')
     #     }),
     # )
-    search_fields = ('name', 'product_type', )
+    search_fields = ('name', 'en_name' 'product_type', )
     # list_max_show_all =
     # list_per_page =
     # list_select_related =
@@ -238,34 +257,35 @@ class ChfProductAdmin(admin.ModelAdmin):
 # 产品类型
 @admin.register(models.ChfProductType)
 class ChfProductTypeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'sort', 'is_enable', 'data_filter_name')
-    list_display_links = ('name', )
+    list_display = ('id', 'name', 'en_name', 'sort', 'is_enable', 'data_filter_name')
+    list_display_links = ('name', 'en_name',)
     list_editable = ('is_enable', 'sort', 'data_filter_name', )
     list_filter = (IsEnableFilter, )
     list_per_page = 30
-    search_fields = ('name', )
+    search_fields = ('name', 'en_name',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
 
 # 合作伙伴
 @admin.register(models.ChfPartner)
 class ChfPartnerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'logo', 'brief', 'profile', 'url', 'address', 'sort', 'is_enable', )
-    list_display_links = ('name', 'profile',)
+    list_display = ('name', 'en_name', 'logo', 'brief', 'en_brief', 'profile', 'en_profile',
+                    'url', 'address', 'sort', 'is_enable', )
+    list_display_links = ('name', 'en_name', 'profile', 'en_profile')
     list_editable = ('sort', 'is_enable', 'url', )
     list_filter = (IsEnableFilter, 'create_time',)
-    search_fields = ('name', 'brief',)
+    search_fields = ('name', 'en_name', 'brief', 'en_brief')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
 
 # 合作共赢 品牌合作-0:合作政策 1:项目优势 2:经销商问答 3:支持与服务
 @admin.register(models.ChfCooperation)
 class ChfCooperationAdmin(admin.ModelAdmin):
-    list_display = ('title', 'profile', 'type', 'sort', 'is_enable')
-    list_display_links = ('title', 'profile')
+    list_display = ('title', 'en_title', 'profile', 'en_profile', 'type', 'sort', 'is_enable')
+    list_display_links = ('title', 'en_title', 'profile', 'en_profile')
     list_editable = ('type', 'sort', 'is_enable', )
     list_filter = (IsEnableFilter, 'type', )
-    search_fields = ('title', 'profile', )
+    search_fields = ('title', 'en_title', 'profile', 'en_profile')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
     class Media:
@@ -277,71 +297,14 @@ class ChfCooperationAdmin(admin.ModelAdmin):
         )
 
 
-# # 合作共赢 品牌合作-合作政策
-# @admin.register(models.ChfCooperationPolicy)
-# class ChfCooperationPolicyAdmin(admin.ModelAdmin):
-#     list_display = ('title', 'profile', 'is_enable')
-#     list_display_links = ('title', 'profile')
-#     list_editable = ('is_enable', )
-#     list_filter = (IsEnableFilter, )
-#     search_fields = ('title', )
-#     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-#
-#     class Media:
-#         js = (
-#             '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-#             '/static/plugins/kindeditor-4.1.10/kindeditor.js',
-#             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-#             '/static/plugins/kindeditor-4.1.10/config.js',
-#         )
-#
-#
-# # 合作共赢 品牌合作-项目优势
-# @admin.register(models.ChfCooperationSuperiority)
-# class ChfCooperationSuperiorityAdmin(admin.ModelAdmin):
-#     list_display = ('title', 'profile', 'is_enable')
-#     list_display_links = ('title', 'profile')
-#     list_editable = ('is_enable', )
-#     list_filter = (IsEnableFilter, )
-#     search_fields = ('title', )
-#     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-#
-#     class Media:
-#         js = (
-#             '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-#             '/static/plugins/kindeditor-4.1.10/kindeditor.js',
-#             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-#             '/static/plugins/kindeditor-4.1.10/config.js',
-#         )
-#
-#
-# # 合作共赢 品牌合作-项目优势
-# @admin.register(models.ChfCooperationQuestion)
-# class ChfCooperationQuestionAdmin(admin.ModelAdmin):
-#     list_display = ('title', 'profile', 'is_enable')
-#     list_display_links = ('title', 'profile')
-#     list_editable = ('is_enable', )
-#     list_filter = (IsEnableFilter, )
-#     search_fields = ('title', )
-#     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-#
-#     class Media:
-#         js = (
-#             '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
-#             '/static/plugins/kindeditor-4.1.10/kindeditor.js',
-#             '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
-#             '/static/plugins/kindeditor-4.1.10/config.js',
-#         )
-
-
 # 关于我们 品牌介绍
 @admin.register(models.ChfAbout)
 class ChfAboutAdmin(admin.ModelAdmin):
-    list_display = ('comp_name', 'title', 'profile', 'comp_image', 'is_enable')
-    list_display_links = ('comp_name', 'profile', )
-    list_editable = ('title', 'is_enable')
+    list_display = ('comp_name', 'en_comp_name', 'title', 'en_title', 'profile', 'en_profile', 'comp_image', 'is_enable')
+    list_display_links = ('comp_name', 'en_comp_name', 'profile', 'en_profile')
+    list_editable = ('title', 'en_title', 'is_enable')
     list_filter = (IsEnableFilter, 'create_time',)
-    search_fields = ('comp_name', 'title',)
+    search_fields = ('comp_name', 'en_comp_name', 'title', 'en_title')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
     class Media:
@@ -368,12 +331,15 @@ class ChfAboutResourceAdmin(admin.ModelAdmin):
 # 秦始皇故事
 @admin.register(models.ChfStory)
 class ChfStoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'short_title', 'short_profile', 'long_title', 'long_profile', 'is_enable')
-    list_display_links = ('id', 'short_title', 'short_profile', 'long_title', 'long_profile',)
+    list_display = ('id', 'short_title', 'short_profile', 'long_title', 'long_profile',
+                    'en_short_title', 'en_short_profile', 'en_long_title', 'en_long_profile', 'is_enable')
+    list_display_links = ('id', 'short_title', 'short_profile', 'long_title', 'long_profile',
+                          'en_short_title', 'en_short_profile', 'en_long_title', 'en_long_profile',)
     list_editable = ('is_enable',)
     list_filter = (IsEnableFilter, )
     list_per_page = 10
-    search_fields = ('short_title', 'long_title', 'short_profile', 'long_profile', )
+    search_fields = ('short_title', 'long_title', 'short_profile', 'long_profile',
+                     'en_short_title', 'en_short_profile', 'en_long_title', 'en_long_profile',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
     class Media:
@@ -402,12 +368,12 @@ class ChfAnimateTypeAdmin(admin.ModelAdmin):
 class ChfIndexPlateAdmin(admin.ModelAdmin):
     # list_display = ('id', 'title', 'plate_image_url', 'front_image', 'back_image', 'descr', 'animate_type',
     #                 'is_redirect_sub_page', 'sub_page_url', 'video_source', 'sort', 'is_enable', )
-    list_display = ('id', 'title', 'profile', 'animate_type',
+    list_display = ('id', 'title', 'en_title', 'profile', 'en_profile', 'animate_type',
                     'is_redirect_sub_page', 'sub_page_url', 'video_source', 'sort', 'is_enable',)
-    list_display_links = ('id', 'title', 'profile')
+    list_display_links = ('id', 'title', 'en_title', 'profile', 'en_profile')
     list_editable = ('animate_type', 'is_redirect_sub_page', 'is_enable', 'sort', )
     list_filter = (IsEnableFilter, 'create_time',)
-    search_fields = ('title', 'desc', 'animate_type')
+    search_fields = ('title', 'en_title', 'descr', 'en_descr', 'animate_type')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
 
@@ -415,12 +381,13 @@ class ChfIndexPlateAdmin(admin.ModelAdmin):
 @admin.register(models.ChfCompanyHistory)
 class ChfCompanyHistoryAdmin(admin.ModelAdmin):
     # exclude = ('breif', 'content', )
-    list_display = ('timeline_title', 'title', 'breif', 'cover_image_url', 'sort', 'is_enable', )
-    list_display_links = ('timeline_title', )
-    list_editable = ('title', 'is_enable', 'sort', )
+    list_display = ('timeline_title', 'title', 'breif', 'en_timeline_title', 'en_title', 'en_breif',
+                    'cover_image_url', 'sort', 'is_enable', )
+    list_display_links = ('timeline_title', 'en_timeline_title')
+    list_editable = ('title', 'en_title', 'is_enable', 'sort', )
     list_filter = (IsEnableFilter, 'create_time',)
     list_per_page = 30
-    search_fields = ('title', 'breif', 'timeline_title')
+    search_fields = ('title', 'en_title', 'breif', 'en_brief', 'timeline_title', 'en_timeline_title')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
     class Media:
@@ -436,12 +403,13 @@ class ChfCompanyHistoryAdmin(admin.ModelAdmin):
 @admin.register(models.ChfJobRecruit)
 class ChfJobRecruitAdmin(admin.ModelAdmin):
     # exclude = ('job_require', 'skill_require', )
-    list_display = ('job_name', 'work_year', 'education', 'work_prop', 'profile', 'sort', 'is_enable')
-    list_display_links = ('job_name', 'profile', )
+    list_display = ('job_name', 'en_job_name', 'work_year', 'education', 'work_prop',
+                    'profile', 'en_profile', 'sort', 'is_enable')
+    list_display_links = ('job_name', 'en_job_name', 'profile', 'en_profile')
     list_editable = ('education', 'work_prop', 'sort', 'is_enable')
     list_filter = ('education', 'work_prop', IsEnableFilter, 'create_time',)
     list_per_page = 30
-    search_fields = ('job_name', 'work_year', )
+    search_fields = ('job_name', 'en_job_name', 'work_year', )
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
 
     class Media:
@@ -458,13 +426,14 @@ class ChfJobRecruitAdmin(admin.ModelAdmin):
 @admin.register(models.ChfNews)
 class ChfNewsAdmin(admin.ModelAdmin):
     # exclude = ('content', )
-    list_display = ('title', 'brief', 'type', 'profile', 'read_count', 'cover_image_url', 'sort', 'is_enable', )
-    list_display_links = ('title', 'profile')
-    list_editable = ('brief', 'type', 'sort', 'read_count', 'is_enable', )
+    list_display = ('title', 'en_title', 'brief', 'en_brief', 'type', 'profile', 'en_profile',
+                    'read_count', 'cover_image_url', 'sort', 'is_enable', 'create_time')
+    list_display_links = ('title', 'en_title', 'profile', 'en_profile')
+    list_editable = ('brief', 'en_brief', 'type', 'sort', 'read_count', 'is_enable', )
     list_filter = ('type', IsEnableFilter, )
     list_per_page = 30
-    search_fields = ('title', 'brief',)
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    search_fields = ('title', 'en_title', 'brief', 'en_brief')
+    exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
 
     class Media:
         js = (

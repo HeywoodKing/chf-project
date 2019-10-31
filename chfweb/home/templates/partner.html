@@ -5,8 +5,8 @@
 {% block header %}
     {% include "header.html" with title="品牌合作" %}
     {% block style_tag %}
-    <style>
-    </style>
+        <style>
+        </style>
     {% endblock %}
 {% endblock %}
 
@@ -32,86 +32,125 @@
 {% endblock %}{% endcomment %}
 
 {% block content %}
-<div class="faq-area-2 sp bg5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="faq-sidebar-wrap">
-                    <h3>{% trans "品牌合作" %}</h3>
-                    <div>COOPERATION</div>
-                    <ul class="faq-sidebar">
-                        <li class="faq-sidebar-li-hover" data-id="hzzc"><a href="javascript:void(0);">{% trans "合作政策" %}</a></li>
-                        <li data-id="xmys"><a href="javascript:void(0);">{% trans "项目优势" %}</a></li>
-                        <li data-id="zcyfw"><a href="javascript:void(0);">{% trans "支持与服务" %}</a></li>
-                        <li data-id="jxswd"><a href="javascript:void(0);">{% trans "经销商问答" %}</a></li>
-                        <li data-id="sqbxz"><a href="javascript:void(0);">{% trans "申请表下载" %}</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-9 bg6">
-                <div id="hzzc" style="padding-top: 0;">
-                    {% for item in policy_list %}
-                    <div class="single-faq">
-                        <h2><span>{{ forloop.counter }}</span>{{item.title}}</h2>
-                        {{item.content|safe}}
+    <div class="faq-area-2 sp bg5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="faq-sidebar-wrap">
+                        <h3>{% trans "品牌合作" %}</h3>
+                        <div>COOPERATION</div>
+                        <ul class="faq-sidebar">
+                            <li class="faq-sidebar-li-hover" data-id="hzzc"><a
+                                    href="javascript:void(0);">{% trans "合作政策" %}</a></li>
+                            <li data-id="xmys"><a href="javascript:void(0);">{% trans "项目优势" %}</a></li>
+                            <li data-id="zcyfw"><a href="javascript:void(0);">{% trans "支持与服务" %}</a></li>
+                            <li data-id="jxswd"><a href="javascript:void(0);">{% trans "经销商问答" %}</a></li>
+                            <li data-id="sqbxz"><a href="javascript:void(0);">{% trans "申请表下载" %}</a></li>
+                        </ul>
                     </div>
-                    {% endfor %}
                 </div>
+                <div class="col-md-9 bg6">
+                    {% if LANGUAGE_CODE == 'en' %}
+                        <div id="hzzc" style="padding-top: 0;">
+                            {% for item in policy_list %}
+                                <div class="single-faq">
+                                    <h2><span>{{ forloop.counter }}</span>{{ item.en_title }}</h2>
+                                    {{ item.en_content|safe }}
+                                </div>
+                            {% endfor %}
+                        </div>
 
-                <div id="xmys" style="display:none;padding-top: 0;">
-                    {% for item in superiority_list %}
-                    <div class="single-faq">
-                        <h2><span>{{ forloop.counter }}</span>{{item.title}}</h2>
-                        {{item.content|safe}}
-                    </div>
-                    {% endfor %}
-                </div>
+                        <div id="xmys" style="display:none;padding-top: 0;">
+                            {% for item in superiority_list %}
+                                <div class="single-faq">
+                                    <h2><span>{{ forloop.counter }}</span>{{ item.en_title }}</h2>
+                                    {{ item.en_content|safe }}
+                                </div>
+                            {% endfor %}
+                        </div>
 
-                <div id="zcyfw" style="display:none;padding-top: 0;">
-                    {% for item in support_list %}
-                    <div class="single-faq">
-                        <h2><span>{{ forloop.counter }}</span>{{item.title}}</h2>
-                        {{item.content|safe}}
-                    </div>
-                    {% endfor %}
-                </div>
+                        <div id="zcyfw" style="display:none;padding-top: 0;">
+                            {% for item in support_list %}
+                                <div class="single-faq">
+                                    <h2><span>{{ forloop.counter }}</span>{{ item.en_title }}</h2>
+                                    {{ item.en_content|safe }}
+                                </div>
+                            {% endfor %}
+                        </div>
 
-                <div id="jxswd" style="display:none;padding-top: 0;">
-                    {% for item in question_list %}
-                    <div class="single-faq">
-                        <h2><span>{{ forloop.counter }}</span>{{item.title}}</h2>
-                        {{item.content|safe}}
-                    </div>
-                    {% endfor %}
+                        <div id="jxswd" style="display:none;padding-top: 0;">
+                            {% for item in question_list %}
+                                <div class="single-faq">
+                                    <h2><span>{{ forloop.counter }}</span>{{ item.en_title }}</h2>
+                                    {{ item.en_content|safe }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div id="hzzc" style="padding-top: 0;">
+                            {% for item in policy_list %}
+                                <div class="single-faq">
+                                    <h2><span>{{ forloop.counter }}</span>{{ item.title }}</h2>
+                                    {{ item.content|safe }}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div id="xmys" style="display:none;padding-top: 0;">
+                            {% for item in superiority_list %}
+                                <div class="single-faq">
+                                    <h2><span>{{ forloop.counter }}</span>{{ item.title }}</h2>
+                                    {{ item.content|safe }}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div id="zcyfw" style="display:none;padding-top: 0;">
+                            {% for item in support_list %}
+                                <div class="single-faq">
+                                    <h2><span>{{ forloop.counter }}</span>{{ item.title }}</h2>
+                                    {{ item.content|safe }}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div id="jxswd" style="display:none;padding-top: 0;">
+                            {% for item in question_list %}
+                                <div class="single-faq">
+                                    <h2><span>{{ forloop.counter }}</span>{{ item.title }}</h2>
+                                    {{ item.content|safe }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 
 {% block footer %}
     {% include "footer.html" with footer="footer" %}
     {% block script_tag %}
-    <script>
-        $(function(){
-            $('.faq-sidebar').on('click', 'li', function(){
-                if($(this).attr('data-id') != "sqbxz"){
-                    $('.faq-sidebar').find('li').each(function(){
-                        $('#' + $(this).attr('data-id')).css('display', 'none');
-                        $(this).removeClass('faq-sidebar-li-hover');
-                    });
+        <script>
+            $(function () {
+                $('.faq-sidebar').on('click', 'li', function () {
+                    if ($(this).attr('data-id') != "sqbxz") {
+                        $('.faq-sidebar').find('li').each(function () {
+                            $('#' + $(this).attr('data-id')).css('display', 'none');
+                            $(this).removeClass('faq-sidebar-li-hover');
+                        });
 
-                    $('#' + $(this).attr('data-id')).css('display', 'block');
-                    $(this).addClass('faq-sidebar-li-hover');
-                }else{
-                    {#window.open("{% static 'apply_table.xls' %}");#}
+                        $('#' + $(this).attr('data-id')).css('display', 'block');
+                        $(this).addClass('faq-sidebar-li-hover');
+                    } else {
+                        {#window.open("{% static 'apply_table.xls' %}");#}
 
-                    window.open("/uploads/{{ apply_table.file }}");
-                }
+                        window.open("/uploads/{{ apply_table.file }}");
+                    }
+                });
             });
-        });
-    </script>
+        </script>
     {% endblock %}
 {% endblock %}

@@ -36,37 +36,71 @@
 <div class="faq-area-2 sp bg6">
     <div class="container">
         <div class="row bg5">
-            <div class="col-md-9">
-                <div class="single-faq">
-                    <h2><span>1</span>{{ news.title|truncate_point:'30' }}</h2>
-                    <div>
-                        <span class="icon">
-                            <i class="glyphicon glyphicon-time"></i>
-                        </span>
-                        <span>{% trans "时间" %}：{{ news.create_time }}</span>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span class="icon">
-                            <i class="glyphicon glyphicon-eye-open"></i>
-                        </span>
-                        <span>{% trans "浏览" %}：{{ news.read_count }}</span>
+            {% if LANGUAGE_CODE == 'en' %}
+                <div class="col-md-9">
+                    <div class="single-faq">
+                        <h2><span>1</span>{{ news.en_title|truncate_point:'30' }}</h2>
+                        <div>
+                            <span class="icon">
+                                <i class="glyphicon glyphicon-time"></i>
+                            </span>
+                            <span>{% trans "时间" %}：{{ news.create_time }}</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="icon">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </span>
+                            <span>{% trans "浏览" %}：{{ news.read_count }}</span>
+                        </div>
+                        <hr style="border-top: 1px solid #fbdf50;">
+                        <div>{{ news.en_content|safe }}</div>
                     </div>
-                    <hr style="border-top: 1px solid #fbdf50;">
-                    <div>{{ news.content|safe }}</div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="faq-sidebar-wrap" style="margin-top: 30px;">
-                    <h3>{% trans "最新资讯" %}</h3>
-                    {% for item in news_lasted %}
-                    <div class="product-commend about-img">
-                        <a href="/chf/news_detail/{{item.id}}?banner={{ banner }}">
-                            <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
-                        </a>
-                        <div class="product-commend-title">{{item.title|truncate_point:'14'}}</div>
+                <div class="col-md-3">
+                    <div class="faq-sidebar-wrap" style="margin-top: 30px;">
+                        <h3>{% trans "最新资讯" %}</h3>
+                        {% for item in news_lasted %}
+                        <div class="product-commend about-img">
+                            <a href="/news_detail/{{item.id}}/banner/{{ banner }}">
+                                <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.en_title}}" title="{{item.en_title}}">
+                            </a>
+                            <div class="product-commend-title">{{item.en_title|truncate_point:'14'}}</div>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
-            </div>
+            {% else %}
+                <div class="col-md-9">
+                    <div class="single-faq">
+                        <h2><span>1</span>{{ news.title|truncate_point:'30' }}</h2>
+                        <div>
+                            <span class="icon">
+                                <i class="glyphicon glyphicon-time"></i>
+                            </span>
+                            <span>{% trans "时间" %}：{{ news.create_time }}</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="icon">
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                            </span>
+                            <span>{% trans "浏览" %}：{{ news.read_count }}</span>
+                        </div>
+                        <hr style="border-top: 1px solid #fbdf50;">
+                        <div>{{ news.content|safe }}</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="faq-sidebar-wrap" style="margin-top: 30px;">
+                        <h3>{% trans "最新资讯" %}</h3>
+                        {% for item in news_lasted %}
+                        <div class="product-commend about-img">
+                            <a href="/news_detail/{{item.id}}/banner/{{ banner }}">
+                                <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
+                            </a>
+                            <div class="product-commend-title">{{item.title|truncate_point:'14'}}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
