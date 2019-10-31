@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rnx96978^u&3g*e12j7rt-b@-95rj+=(bl791)(^gllw$j(-nl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -34,8 +34,9 @@ ALLOWED_HOSTS = [
     '192.168.0.122',
     '172.16.40.247',
     '47.99.121.101',
-    'www.chf.local',
-    'www.chf.com',
+    'www.xaqsh.cn',
+    'www.xaqsh.com',
+    'www.xianqinshihuang.com',
 ]
 
 # Application definition
@@ -113,6 +114,7 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
+        # 'PASSWORD': '@chinslicking2019',
         'PASSWORD': '123456',
         'OPTIONS': {
             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
@@ -435,7 +437,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静�
 # 首页图标
 # SIMPLEUI_HOME_ICON = 'fa fa-user'
 # 设置simpleui 点击首页图标跳转的地址
-SIMPLEUI_INDEX = 'http://47.99.121.101:8000/chf/index'
+SIMPLEUI_INDEX = 'http://www.xaqsh.cn/index'
 # 自定义SIMPLEUI的Logo 修改LOGO
 SIMPLEUI_LOGO = STATIC_URL + 'images/apple.png'
 

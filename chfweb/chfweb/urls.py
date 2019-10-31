@@ -32,6 +32,7 @@ urlpatterns = [
     # path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     # path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
 
+    # url(r'', include('home.urls')),
     url(r'^uploads/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),  # 单独上传图片后显示图片的url地址路径
     url(r'^admin/upload/(?P<dir_name>[^/]+)$', upload.upload_image, name='upload_image'),  # 富文本编辑器上传图片路径
     url(r'^i18n/', include('django.conf.urls.i18n')),

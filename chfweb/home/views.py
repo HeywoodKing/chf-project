@@ -54,6 +54,7 @@ def global_setting(req):
 
     # 查询banner
     banner = req.GET.get('banner', None)
+
     if banner:
         nav = models.SysNav.objects.get(code=banner)
 
@@ -124,6 +125,7 @@ def set_lang(req):
 # 首页
 def index(req):
     index = 0
+    logger.info('111111')
     try:
         water_qty_model = models.ChfWateringQty.objects.all()
         if water_qty_model:
@@ -143,7 +145,7 @@ def index(req):
 # 关于我们 => 品牌介绍
 def about(req):
     index = 1
-
+    logger.info('fsdafsdfsda')
     try:
         comp_about_models = models.ChfAbout.objects.filter(is_enable=True)
         if comp_about_models:
@@ -505,6 +507,7 @@ def news_list(req):
         resp_list = paginator.page(page)
     except PageNotAnInteger:
         resp_list = paginator.page(1)
+        logger.error('resp_list 传入的页码错误')
     except EmptyPage:
         resp_list = paginator.page(paginator.num_pages)
 
@@ -518,7 +521,7 @@ def news_list(req):
         news_list = paginator.page(page)
     except PageNotAnInteger:
         news_list = paginator.page(1)
-        logger.error('传入的页码错误')
+        logger.error('news_list 传入的页码错误')
     except EmptyPage:
         news_list = paginator.page(paginator.num_pages)
         logger.error('空页')

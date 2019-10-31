@@ -110,12 +110,12 @@
                     <div>
                         {% if LANGUAGE_CODE == 'en' %}
                             <h2><i>{{ comp_about_model.en_title }}</i></h2>
-                            <p style="text-indent:2em; font-size:16px; letter-spacing:1px;">
+                            <p style="text-indent:2em; text-align: left; font-size:16px; letter-spacing:1px;">
                                 {{ comp_about_model.en_content|safe }}
                             </p>
                         {% else %}
                             <h2><i>{{ comp_about_model.title }}</i></h2>
-                            <p style="text-indent:2em; font-size:16px; letter-spacing:1px;">
+                            <p style="text-indent:2em; text-align: left; font-size:16px; letter-spacing:1px;">
                                 {{ comp_about_model.content|safe }}
                             </p>
                         {% endif %}

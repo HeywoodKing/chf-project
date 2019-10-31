@@ -60,7 +60,7 @@
                         <h3>{% trans "最新资讯" %}</h3>
                         {% for item in news_lasted %}
                         <div class="product-commend about-img">
-                            <a href="/news_detail/{{item.id}}?banner={{ banner }}">
+                            <a href="/news_detail/{{item.id}}/banner/{{ banner }}">
                                 <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.en_title}}" title="{{item.en_title}}">
                             </a>
                             <div class="product-commend-title">{{item.en_title|truncate_point:'14'}}</div>
@@ -92,7 +92,7 @@
                         <h3>{% trans "最新资讯" %}</h3>
                         {% for item in news_lasted %}
                         <div class="product-commend about-img">
-                            <a href="/news_detail/{{item.id}}?banner={{ banner }}">
+                            <a href="/news_detail/{{item.id}}/banner/{{ banner }}">
                                 <img src="/uploads/{{ item.cover_image_url }}" alt="{{item.title}}" title="{{item.title}}">
                             </a>
                             <div class="product-commend-title">{{item.title|truncate_point:'14'}}</div>

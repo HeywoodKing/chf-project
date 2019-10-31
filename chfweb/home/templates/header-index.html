@@ -1662,24 +1662,24 @@
 
                 <div style="margin-right: -15px; margin-left: -15px;">
                     {% csrf_token %}
-                    <img id="bg_top" src="{% static 'images/index_top_bg2.jpg' %}">
+                    <img id="bg_top" src="{% static 'images/index_top_bg2.jpg' %}" alt="">
                     <div class="sun">
-                        <img src="{% static 'images/sun.png' %}">
+                        <img src="{% static 'images/sun.png' %}" alt="">
                     </div>
                     <!--小树苗-->
                     <div class="watering-box-01" data-toggle="tooltip" data-placement="top"
                          title="{% trans '给我浇水，我就会快快长大哦！' %}">
                         <div class="waternumber-01 animated hidden">+20</div>
                         <div class="bottle-01 animated hidden">
-                            <img src="{% static 'images/bottle.png' %}">
+                            <img src="{% static 'images/bottle.png' %}" alt="">
                         </div>
                         <div class="rain-01 animated hidden">
-                            <img src="{% static 'images/rain_02.png' %}">
+                            <img src="{% static 'images/rain_02.png' %}" alt="">
                         </div>
                         <div class="tree-01 animated">
-                            <img src="{% static 'images/tree_01.png' %}">
+                            <img src="{% static 'images/tree_01.png' %}" alt="">
                             <div class="soil-01">
-                                <img src="{% static 'images/soil.png' %}">
+                                <img src="{% static 'images/soil.png' %}" alt="">
                             </div>
                         </div>
                     </div>
@@ -1706,13 +1706,13 @@
                          title="{% trans '给我浇水，我就会结果实哦！' %}">
                         <div class="waternumber-03 animated hidden">+20</div>
                         <div class="bottle-03 animated hidden">
-                            <img src="{% static 'images/bottle.png' %}">
+                            <img src="{% static 'images/bottle.png' %}" alt="">
                         </div>
                         <div class="rain-03 animated hidden">
-                            <img src="{% static 'images/rain_02.png' %}">
+                            <img src="{% static 'images/rain_02.png' %}" alt="">
                         </div>
                         <div class="tree-03 animated">
-                            <img src="{% static 'images/tree_03.png' %}">
+                            <img src="{% static 'images/tree_03.png' %}" alt="">
                         </div>
                     </div>
                     <!--长果实的树-->
@@ -1720,13 +1720,13 @@
                          title="{% trans '给我浇水，我就会结很多果实哦！' %}">
                         <div class="waternumber-04 animated hidden">+20</div>
                         <div class="bottle-04 animated hidden">
-                            <img src="{% static 'images/bottle.png' %}">
+                            <img src="{% static 'images/bottle.png' %}" alt="">
                         </div>
                         <div class="rain-04 animated hidden">
-                            <img src="{% static 'images/rain_02.png' %}">
+                            <img src="{% static 'images/rain_02.png' %}" alt="">
                         </div>
                         <div class="tree-04 animated">
-                            <img src="{% static 'images/tree_04.png' %}">
+                            <img src="{% static 'images/tree_04.png' %}" alt="">
                         </div>
                     </div>
                     <div class="bird"></div>
@@ -1763,11 +1763,11 @@
                                 {% for item in nav_list %}
                                     {% if item.children.all %}
                                         <li class="has-child">
-                                            <a href="{{ item.url }}?banner={{ item.code }}">{{ item.en_name }}</a>
+                                            <a href="{{ item.url }}/banner/{{ item.code }}">{{ item.en_name }}</a>
                                             <ul class="sub-menu">
                                                 {% for child in item.children.all %}
                                                     <li>
-                                                        <a href="{{ child.url }}?banner={{ item.code }}">{{ child.en_name }}</a>
+                                                        <a href="{{ child.url }}/banner/{{ item.code }}">{{ child.en_name }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
@@ -1775,7 +1775,7 @@
                                     {% else %}
                                         {% if item.is_root %}
                                             <li>
-                                                <a href="{{ item.url }}?banner={{ item.code }}">
+                                                <a href="{{ item.url }}/banner/{{ item.code }}">
                                                     {{ item.en_name }}
                                                 </a>
                                             </li>
@@ -1786,11 +1786,11 @@
                                 {% for item in nav_list %}
                                     {% if item.children.all %}
                                         <li class="has-child">
-                                            <a href="{{ item.url }}?banner={{ item.code }}">{{ item.name }}</a>
+                                            <a href="{{ item.url }}/banner/{{ item.code }}">{{ item.name }}</a>
                                             <ul class="sub-menu">
                                                 {% for child in item.children.all %}
                                                     <li>
-                                                        <a href="{{ child.url }}?banner={{ item.code }}">{{ child.name }}</a>
+                                                        <a href="{{ child.url }}/banner/{{ item.code }}">{{ child.name }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
@@ -1798,7 +1798,7 @@
                                     {% else %}
                                         {% if item.is_root %}
                                             <li>
-                                                <a href="{{ item.url }}?banner={{ item.code }}">
+                                                <a href="{{ item.url }}/banner/{{ item.code }}">
                                                     {{ item.name }}
                                                 </a>
                                             </li>

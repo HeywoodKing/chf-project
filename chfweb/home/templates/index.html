@@ -73,7 +73,7 @@
                                         <img src="/uploads/{{ item.front_image }}"
                                          alt="{{ item.en_title }}">
                                         <div class="front-content">
-                                            <img src="/uploads/{{ item.plate_image_url }}">
+                                            <img src="/uploads/{{ item.plate_image_url }}" alt="{{ item.en_title }}">
                                             <hr>
                                             <h2>{{ item.en_title }}</h2>
                                         </div>
@@ -106,7 +106,7 @@
                                     </div>{% endcomment %}
                                     <div class="back">
                                         <div class="back-content">
-                                            <img src="/uploads/{{ item.plate_image_url }}">
+                                            <img src="/uploads/{{ item.plate_image_url }}" alt="">
                                             <hr>
                                             {% if item.is_redirect_sub_page %}
                                                 <h2><a href="{{ item.sub_page_url }}">{{ item.en_title }}</a></h2>
@@ -138,7 +138,7 @@
                                         <img src="/uploads/{{ item.front_image }}"
                                          alt="{{ item.title }}">
                                         <div class="front-content">
-                                            <img src="/uploads/{{ item.plate_image_url }}">
+                                            <img src="/uploads/{{ item.plate_image_url }}" alt="">
                                             <hr>
                                             <h2>{{ item.title }}</h2>
                                         </div>
@@ -171,7 +171,7 @@
                                     </div>{% endcomment %}
                                     <div class="back">
                                         <div class="back-content">
-                                            <img src="/uploads/{{ item.plate_image_url }}">
+                                            <img src="/uploads/{{ item.plate_image_url }}" alt="">
                                             <hr>
                                             {% if item.is_redirect_sub_page %}
                                                 <h2><a href="{{ item.sub_page_url }}">{{ item.title }}</a></h2>

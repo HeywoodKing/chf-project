@@ -7,8 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title class="i18n" name="title">{{ SITE_NAME }} - {{ title }}</title>
-    <meta id="i18n_pagename" content="index-common">
+    <title class="i18n">{{ SITE_NAME }} - {{ title }}</title>
     <meta name="keywords" content="{{ SITE_DESC }}">
     <meta name="author" content="{{ SITE_AUTHOR }}">
     <meta name="descriptions" content="{{ SITE_DESC }}">
@@ -49,11 +48,11 @@
                                 {% for item in nav_list %}
                                     {% if item.children.all %}
                                         <li class="has-child">
-                                            <a href="{{ item.url }}?banner={{ item.code }}">{{ item.en_name }}</a>
+                                            <a href="{{ item.url }}/banner/{{ item.code }}">{{ item.en_name }}</a>
                                             <ul class="sub-menu">
                                                 {% for child in item.children.all %}
                                                     <li>
-                                                        <a href="{{ child.url }}?banner={{ item.code }}">{{ child.en_name }}</a>
+                                                        <a href="{{ child.url }}/banner/{{ item.code }}">{{ child.en_name }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
@@ -61,7 +60,7 @@
                                     {% else %}
                                         {% if item.is_root %}
                                             <li>
-                                                <a href="{{ item.url }}?banner={{ item.code }}">
+                                                <a href="{{ item.url }}/banner/{{ item.code }}">
                                                     {{ item.en_name }}
                                                 </a>
                                             </li>
@@ -72,11 +71,11 @@
                                 {% for item in nav_list %}
                                     {% if item.children.all %}
                                         <li class="has-child">
-                                            <a href="{{ item.url }}?banner={{ item.code }}">{{ item.name }}</a>
+                                            <a href="{{ item.url }}/banner/{{ item.code }}">{{ item.name }}</a>
                                             <ul class="sub-menu">
                                                 {% for child in item.children.all %}
                                                     <li>
-                                                        <a href="{{ child.url }}?banner={{ item.code }}">{{ child.name }}</a>
+                                                        <a href="{{ child.url }}/banner/{{ item.code }}">{{ child.name }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
@@ -84,7 +83,7 @@
                                     {% else %}
                                         {% if item.is_root %}
                                             <li>
-                                                <a href="{{ item.url }}?banner={{ item.code }}">
+                                                <a href="{{ item.url }}/banner/{{ item.code }}">
                                                     {{ item.name }}
                                                 </a>
                                             </li>
