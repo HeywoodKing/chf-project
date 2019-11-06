@@ -19,7 +19,6 @@ urlpatterns = [
     url(r'^job_list/', views.job_list, name='job_list'),
     url(r'^layer_coupon_form/', views.layer_coupon_form, name='layer_coupon_form'),
 
-
     url(r'^add_coupon/', views.add_coupon, name='add_coupon'),
     url(r'^add_watering_qty/', views.add_watering_qty, name='add_watering_qty'),
 
