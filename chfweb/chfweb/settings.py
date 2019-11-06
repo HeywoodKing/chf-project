@@ -114,7 +114,6 @@ DATABASES = {
         'PORT': '3306',
         'NAME': 'chf',
         'USER': 'root',
-        # 'PASSWORD': '@chinslicking2019',
         'PASSWORD': '123456',
         'OPTIONS': {
             "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
