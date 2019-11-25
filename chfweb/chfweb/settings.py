@@ -164,6 +164,8 @@ USE_TZ = True
 # DATE_FORMAT = 'Y-m-d'
 # DATETIME_FORMAT = 'Y-m-d H:i:s'
 
+APPEND_SLASH = True
+
 LANGUAGES = (
     ('zh-hans', _('中文简体')),
     ('en', _('English')),

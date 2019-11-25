@@ -24,6 +24,7 @@ from home import views
 from django.views.generic.base import RedirectView
 # from jet.dashboard.dashboard_modules import google_analytics_views
 # from jet.dashboard.dashboard_modules import yandex_metrika_views
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -42,6 +43,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    url(r'', include('home.urls')),
+    path('', include('home.urls')),
     # url(r'^chf/', include('home.urls')),
 )
+

@@ -23,7 +23,7 @@ logger.setLevel(level=logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 # file
-# fileHandler = logging.FileHandler('chin.log')
+# fileHandler = logging.FileHandler('chf.log')
 # fileHandler.setLevel(logging.INFO)
 # fileHandler.setFormatter(formatter)
 
@@ -52,28 +52,31 @@ def global_setting(req):
     # 菜单
     nav_list = models.SysNav.objects.filter(is_enable=True)
 
+    banner_list = []
     # 查询banner
     banner = req.GET.get('banner', None)
-
     if banner:
         nav = models.SysNav.objects.get(code=banner)
+        if nav:
+            # 方式一:主表.子表_set()
+            # Django默认每个主表对象都有一个外键的属性
+            # 可以通过它来查询所有属于主表的子表信息
+            # 返回值为一个queryset对象
+            # banner_list = nav.ChfBanner_set.all()
 
-        # 方式一:主表.子表_set()
-        # Django默认每个主表对象都有一个外键的属性
-        # 可以通过它来查询所有属于主表的子表信息
-        # 返回值为一个queryset对象
-        # banner_list = nav.ChfBanner_set.all()
+            # 方式二：
+            # 通过在外键中设置related_name属性值既可
+            banner_list = nav.navs.all()
+            
+            # for ba in banner_list:
+            #     print(ba.text, ba.en_text, ba.nav, ba.image_url, ba.is_enable, ba.sort)
 
-        # 方式二：
-        # 通过在外键中设置related_name属性值既可
-        banner_list = nav.navs.all()
+            # 方式三：
+            # 通过@property装饰器在model中预定义方法实现
+            # banner_list = nav.all_navs
 
-        # 方式三：
-        # 通过@property装饰器在model中预定义方法实现
-        # banner_list = nav.all_navs
-
-        # 方式四：
-        # banner_list = models.ChfBanner.objects.filter(nav=nav)
+            # 方式四：
+            # banner_list = models.ChfBanner.objects.filter(nav=nav)
 
     # 网站底部公共信息
     sysconfig_list = models.SysConfig.objects.filter(is_enable=True)
@@ -97,6 +100,32 @@ def set_lang(req):
         'msg': '切换成功',
     }
     return HttpResponse(json.dumps(res), content_type='application/json')
+
+
+# 搜索
+def search(request):
+    # 全局搜索
+    # search_keywords = request.GET.get('keywords', '')  # 取出搜索关键词
+    # if search_keywords:
+    #     # 根据关键词搜索数据库记,icontains是不区分大小写
+    #     all_course = all_course.filter(
+    #         Q(name__icontains=search_keywords) |
+    #         Q(desc__icontains=search_keywords) |
+    #         Q(work_position__icontains=search_keywords)
+    #     )
+
+    # if "q" in request.GET:
+    #     querystring = request.GET.get("q")
+    #     print(querystring)
+    #     if len(querystring) == 0:
+    #         return redirect("/search/")
+    #     posts = Blog.objects.filter(title__icontains=querystring | tagline__icontains=querystring | contents__icontains=querystring)
+    #     context= {"posts": posts}
+    #     return render(request, "kernel/search.html", context)
+    # else:
+    #     return render(request, "kernel/search.html")
+
+    pass
 
 # def set_language(req):
 #     from django.utils.translation import check_for_language
@@ -125,7 +154,6 @@ def set_lang(req):
 # 首页
 def index(req):
     index = 0
-    logger.info('111111')
     try:
         water_qty_model = models.ChfWateringQty.objects.all()
         if water_qty_model:
@@ -145,7 +173,6 @@ def index(req):
 # 关于我们 => 品牌介绍
 def about(req):
     index = 1
-    logger.info('fsdafsdfsda')
     try:
         comp_about_models = models.ChfAbout.objects.filter(is_enable=True)
         if comp_about_models:
@@ -507,7 +534,7 @@ def news_list(req):
         resp_list = paginator.page(page)
     except PageNotAnInteger:
         resp_list = paginator.page(1)
-        logger.error('resp_list 传入的页码错误')
+        # logger.error('resp_list 传入的页码错误')
     except EmptyPage:
         resp_list = paginator.page(paginator.num_pages)
 
@@ -521,10 +548,10 @@ def news_list(req):
         news_list = paginator.page(page)
     except PageNotAnInteger:
         news_list = paginator.page(1)
-        logger.error('news_list 传入的页码错误')
+        # logger.error('news_list 传入的页码错误')
     except EmptyPage:
         news_list = paginator.page(paginator.num_pages)
-        logger.error('空页')
+        # logger.error('空页')
 
     # news_lasted = models.ChfNews.objects.filter(type=0)[:10]
 

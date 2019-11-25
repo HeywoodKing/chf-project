@@ -731,14 +731,17 @@ class ChfNews(BaseModel):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.title
+        if self.title:
+            return self.title
+        else:
+            return '-'
 
     # def get_absolute_url(self):
     #     return reverse('news', args=(self.slug, ))
 
-    def get_absolute_url(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(ChfNews, self).get_absolute_url(*args, **kwargs)
+    # def get_absolute_url(self, *args, **kwargs):
+    #     self.slug = slugify(self.title)
+    #     super(ChfNews, self).get_absolute_url(*args, **kwargs)
 
     def profile(self):
         if len(str(self.content)) > 20:
