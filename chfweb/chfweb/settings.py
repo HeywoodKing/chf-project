@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rnx96978^u&3g*e12j7rt-b@-95rj+=(bl791)(^gllw$j(-nl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
     'www.xaqsh.cn',
     'www.xaqsh.com',
     'www.xianqinshihuang.com',
+    'www.xachf.com',
 ]
 
 # Application definition
@@ -440,7 +441,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静�
 # 设置simpleui 点击首页图标跳转的地址
 SIMPLEUI_INDEX = 'http://www.xaqsh.cn/index'
 # 自定义SIMPLEUI的Logo 修改LOGO
-SIMPLEUI_LOGO = STATIC_URL + 'images/apple.png'
+SIMPLEUI_LOGO = STATIC_URL + 'images/logo_nav.png'
 
 # 服务器信息
 SIMPLEUI_HOME_INFO = False
@@ -513,6 +514,7 @@ SIMPLEUI_CONFIG = {
                 {
                     'name': _('关键词管理'),
                     'icon': 'fa fa-book-open',
+                    'url': 'home/chfkeywords/',
                 }
             ]
         },

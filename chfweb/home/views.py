@@ -49,39 +49,44 @@ def global_setting(req):
     SITE_AUTHOR = settings.SITE_AUTHOR
     MEDIA_URL = settings.MEDIA_URL
 
-    # 菜单
-    nav_list = models.SysNav.objects.filter(is_enable=True)
+    try:
+        # 菜单
+        nav_list = models.SysNav.objects.filter(is_enable=True)
 
-    banner_list = []
-    # 查询banner
-    banner = req.GET.get('banner', None)
-    if banner:
-        nav = models.SysNav.objects.get(code=banner)
-        if nav:
-            # 方式一:主表.子表_set()
-            # Django默认每个主表对象都有一个外键的属性
-            # 可以通过它来查询所有属于主表的子表信息
-            # 返回值为一个queryset对象
-            # banner_list = nav.ChfBanner_set.all()
+        banner_list = []
+        # 查询banner
+        banner = req.GET.get('banner', None)
+        if banner:
+            nav = models.SysNav.objects.get(code=banner)
+            if nav:
+                # 方式一:主表.子表_set()
+                # Django默认每个主表对象都有一个外键的属性
+                # 可以通过它来查询所有属于主表的子表信息
+                # 返回值为一个queryset对象
+                # banner_list = nav.ChfBanner_set.all()
 
-            # 方式二：
-            # 通过在外键中设置related_name属性值既可
-            banner_list = nav.navs.all()
-            
-            # for ba in banner_list:
-            #     print(ba.text, ba.en_text, ba.nav, ba.image_url, ba.is_enable, ba.sort)
+                # 方式二：
+                # 通过在外键中设置related_name属性值既可
+                banner_list = nav.navs.all()
 
-            # 方式三：
-            # 通过@property装饰器在model中预定义方法实现
-            # banner_list = nav.all_navs
+                # for ba in banner_list:
+                #     print(ba.text, ba.en_text, ba.nav, ba.image_url, ba.is_enable, ba.sort)
 
-            # 方式四：
-            # banner_list = models.ChfBanner.objects.filter(nav=nav)
+                # 方式三：
+                # 通过@property装饰器在model中预定义方法实现
+                # banner_list = nav.all_navs
 
-    # 网站底部公共信息
-    sysconfig_list = models.SysConfig.objects.filter(is_enable=True)
-    if sysconfig_list:
-        sysconfig = sysconfig_list[0]
+                # 方式四：
+                # banner_list = models.ChfBanner.objects.filter(nav=nav)
+
+        # 网站底部公共信息
+        sysconfig_list = models.SysConfig.objects.filter(is_enable=True)
+        if sysconfig_list:
+            sysconfig = sysconfig_list[0]
+
+        keyword_list = models.ChfKeywords.objects.filter(is_enable=True)
+    except Exception as ex:
+        print(ex)
 
     return locals()
 
