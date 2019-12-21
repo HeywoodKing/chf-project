@@ -168,7 +168,7 @@ USE_TZ = True
 APPEND_SLASH = True
 
 LANGUAGES = (
-    ('zh-hans', _('中文简体')),
+    ('zh-hans', _('中文')),
     ('en', _('English')),
     # ('zh-Hant', _('中文繁體')),
 )
@@ -439,9 +439,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静�
 # 首页图标
 # SIMPLEUI_HOME_ICON = 'fa fa-user'
 # 设置simpleui 点击首页图标跳转的地址
-SIMPLEUI_INDEX = 'http://www.xaqsh.cn/index'
+SIMPLEUI_INDEX = 'http://www.xachf.com'
 # 自定义SIMPLEUI的Logo 修改LOGO
-SIMPLEUI_LOGO = STATIC_URL + 'images/logo_nav.png'
+SIMPLEUI_LOGO = STATIC_URL + 'images/logo.png'
 
 # 服务器信息
 SIMPLEUI_HOME_INFO = False
