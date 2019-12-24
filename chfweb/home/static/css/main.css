@@ -731,7 +731,7 @@ iframe {
 
 .faq-area-2 .list-last-box {
     padding: 25px;
-    border-bottom: 1px solid #fee97c;
+    border-bottom: 10px solid #fee97c;
 }
 .faq-area-2 .list-last-box:last-child {
     padding: 25px;
