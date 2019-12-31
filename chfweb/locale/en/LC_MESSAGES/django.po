@@ -18,12 +18,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: .\chfweb\settings.py:165
-msgid "中文简体"
-msgstr "zh-Hans"
+msgid "中文"
+msgstr "cn"
 
 #: .\chfweb\settings.py:166
-msgid "English"
-msgstr "English"
+msgid "英文"
+msgstr "en"
 
 #: .\chfweb\settings.py:208 .\home\apps.py:7
 msgid "春和方"

@@ -169,7 +169,7 @@ APPEND_SLASH = True
 
 LANGUAGES = (
     ('zh-hans', _('中文')),
-    ('en', _('English')),
+    ('en', _('英文')),
     # ('zh-Hant', _('中文繁體')),
 )
 

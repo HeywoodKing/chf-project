@@ -16,12 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\chfweb\settings.py:149
-msgid "English"
+#: .\chfweb\settings.py:150
+msgid "中文"
 msgstr ""
 
-#: .\chfweb\settings.py:150
-msgid "中文简体"
+#: .\chfweb\settings.py:149
+msgid "英文"
 msgstr ""
 
 #: .\chfweb\settings.py:151
