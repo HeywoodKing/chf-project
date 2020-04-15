@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -19,7 +18,7 @@ msgstr ""
 
 #: .\chfweb\settings.py:165
 msgid "中文"
-msgstr "cn"
+msgstr "中文"
 
 #: .\chfweb\settings.py:166
 msgid "英文"
@@ -30,257 +29,221 @@ msgid "春和方"
 msgstr "Spring and party"
 
 #: .\chfweb\settings.py:209
-#, fuzzy
-#| msgid "春和方"
 msgid "春和方官网"
 msgstr "Spring and party"
 
 #: .\chfweb\settings.py:460 .\chfweb\settings.py:472
-msgid "系统"
-msgstr "System"
+# msgid "系统"
+# msgstr "System"
 
 #: .\chfweb\settings.py:461 .\chfweb\settings.py:515
-msgid "信息管理"
-msgstr "Info Manage"
+# msgid "信息管理"
+# msgstr "Info Manage"
 
 #: .\chfweb\settings.py:462 .\chfweb\settings.py:566
-msgid "产品管理"
-msgstr "Product Manage"
+# msgid "产品管理"
+# msgstr "Product Manage"
 
 #: .\chfweb\settings.py:463 .\chfweb\settings.py:582
-msgid "简介管理"
-msgstr "Introduce Manage"
+# msgid "简介管理"
+# msgstr "Introduce Manage"
 
 #: .\chfweb\settings.py:464 .\chfweb\settings.py:608
-msgid "留言管理"
-msgstr "Message Manage"
+# msgid "留言管理"
+# msgstr "Message Manage"
 
 #: .\chfweb\settings.py:465 .\chfweb\settings.py:619
-msgid "招聘管理"
-msgstr "Job Manage"
+# msgid "招聘管理"
+# msgstr "Job Manage"
 
 #: .\chfweb\settings.py:466 .\chfweb\settings.py:630
-msgid "管理员管理"
-msgstr "Administrator Manage"
+# msgid "管理员管理"
+# msgstr "Administrator Manage"
 
 #: .\chfweb\settings.py:467
-msgid "中英文版管理"
-msgstr ""
+# msgid "中英文版管理"
+# msgstr ""
 
 #: .\chfweb\settings.py:468
-msgid "权限认证"
-msgstr ""
+# msgid "权限认证"
+# msgstr ""
 
 #: .\chfweb\settings.py:476
-#, fuzzy
-#| msgid "导航菜单管理"
-msgid "导航菜单"
-msgstr "Navigation menu management"
+# msgid "导航菜单管理"
+# msgstr "Navigation menu management"
 
 #: .\chfweb\settings.py:481
-#, fuzzy
-#| msgid "站点配置"
-msgid "网站配置"
-msgstr "Site Config"
+# msgid "站点配置"
+# msgstr "Site Config"
 
 #: .\chfweb\settings.py:486 .\home\models.py:413 .\home\models.py:443
-msgid "动画类型"
-msgstr "Animation types"
+# msgid "动画类型"
+# msgstr "Animation types"
 
 #: .\chfweb\settings.py:491
-#, fuzzy
-#| msgid "问题汇总列表"
-msgid "问题列表"
-msgstr "Problem summary list"
+# msgid "问题列表"
+# msgstr "Problem summary list"
 
 #: .\chfweb\settings.py:496
-msgid "清除系统缓存"
-msgstr "Clear System Cache"
+# msgid "清除系统缓存"
+# msgstr "Clear System Cache"
 
 #: .\chfweb\settings.py:500
-msgid "系统日志"
-msgstr "System Log"
+# msgid "系统日志"
+# msgstr "System Log"
 
 #: .\chfweb\settings.py:505
-msgid "数据库备份"
-msgstr "Database Backup"
+# msgid "数据库备份"
+# msgstr "Database Backup"
 
 #: .\chfweb\settings.py:509
-msgid "关键词管理"
-msgstr "Keyword Manage"
+# msgid "关键词管理"
+# msgstr "Keyword Manage"
 
 #: .\chfweb\settings.py:519
-msgid "首页模块"
-msgstr "Home"
+# msgid "首页模块"
+# msgstr "Home"
 
 #: .\chfweb\settings.py:524
-msgid "Banner图"
-msgstr "Banner Image"
+# msgid "Banner图"
+# msgstr "Banner Image"
 
 #: .\chfweb\settings.py:529 .\home\models.py:894
-msgid "用户浇水记录"
-msgstr "User watering record"
+# msgid "用户浇水记录"
+# msgstr "User watering record"
 
 #: .\chfweb\settings.py:534 .\home\models.py:871
-msgid "用户抢券记录"
-msgstr "Record of user's ticket grabbing"
+# msgid "用户抢券记录"
+# msgstr "Record of user's ticket grabbing"
 
 #: .\chfweb\settings.py:539
-#, fuzzy
-#| msgid "浇水量余额表"
-msgid "浇水水量余额"
-msgstr "Water quantity balance sheet"
-
-#: .\chfweb\settings.py:544 .\home\models.py:715
-#: .\home\templates\news_list.html:102
-msgid "新闻资讯"
-msgstr "News"
+# msgid "浇水水量余额"
+# msgstr "Water quantity balance sheet"
 
 #: .\chfweb\settings.py:554 .\home\models.py:672
-msgid "合作共赢"
-msgstr "Partner"
+# msgid "合作共赢"
+# msgstr "Partner"
 
 #: .\chfweb\settings.py:559
-#, fuzzy
-#| msgid "申请表下载"
-msgid "申请表管理"
-msgstr "Application form download"
+# msgid "申请表管理"
+# msgstr "Application form download"
 
 #: .\chfweb\settings.py:570
-msgid "产品列表"
-msgstr "Product List"
+# msgid "产品列表"
+# msgstr "Product List"
 
 #: .\chfweb\settings.py:575 .\home\models.py:529 .\home\models.py:551
-msgid "产品类型"
-msgstr "Product Type"
+# msgid "产品类型"
+# msgstr "Product Type"
 
 #: .\chfweb\settings.py:586 .\home\models.py:287 .\home\models.py:317
-msgid "品牌介绍"
-msgstr "About"
+# msgid "品牌介绍"
+# msgstr "About"
 
 #: .\chfweb\settings.py:591
-#, fuzzy
-#| msgid "品牌介绍"
-msgid "品牌图片资源"
-msgstr "About Image Resource"
+# msgid "品牌图片资源"
+# msgstr "About Image Resource"
 
 #: .\chfweb\settings.py:596 .\home\models.py:492
 #: .\home\templates\about.html:307
-msgid "发展历程"
-msgstr "The development course"
+# msgid "发展历程"
+# msgstr "The development course"
 
 #: .\chfweb\settings.py:601 .\home\models.py:360
-msgid "秦始皇故事"
-msgstr "Qin shihuang story"
+# msgid "秦始皇故事"
+# msgstr "Qin shihuang story"
 
 #: .\chfweb\settings.py:612
-msgid "留言列表"
-msgstr "Message List"
+# msgid "留言列表"
+# msgstr "Message List"
 
 #: .\chfweb\settings.py:623
-#, fuzzy
-#| msgid "支持列表"
-msgid "招聘列表"
-msgstr "support list"
+# msgid "招聘列表"
+# msgstr "support list"
 
 #: .\chfweb\settings.py:634 .\home\models.py:97
-msgid "用户"
-msgstr "application"
+# msgid "用户"
+# msgstr "application"
 
 #: .\chfweb\settings.py:640
-#, fuzzy
-#| msgid "用户"
-msgid "用户组"
-msgstr "application"
+# msgid "用户组"
+# msgstr "application"
 
 #: .\home\models.py:86
-#, fuzzy
-#| msgid "用户"
-msgid "用户头像"
-msgstr "application"
+# msgid "用户头像"
+# msgstr "application"
 
 #: .\home\models.py:88
-#, fuzzy
-#| msgid "手机号"
-msgid "手机号"
-msgstr "Phone"
+# msgid "手机号"
+# msgstr "Phone"
 
 #: .\home\models.py:89
-msgid "昵称"
-msgstr "nickname"
+# msgid "昵称"
+# msgstr "nickname"
 
 #: .\home\models.py:137
-#, fuzzy
-#| msgid "时间"
-msgid "创建时间"
-msgstr "Create Time"
+# msgid "创建时间"
+# msgstr "Create Time"
 
 #: .\home\models.py:138
-msgid "创建人ID"
-msgstr "Create UID"
+# msgid "创建人ID"
+# msgstr "Create UID"
 
 #: .\home\models.py:139
-msgid "创建人名称"
-msgstr "Create UserName"
+# msgid "创建人名称"
+# msgstr "Create UserName"
 
 #: .\home\models.py:140
-#, fuzzy
-#| msgid "时间"
-msgid "操作时间"
-msgstr "Operate Time"
+# msgid "操作时间"
+# msgstr "Operate Time"
 
 #: .\home\models.py:141
-msgid "操作人ID"
-msgstr "Operate UID"
+# msgid "操作人ID"
+# msgstr "Operate UID"
 
 #: .\home\models.py:142
-msgid "操作人名称"
-msgstr "Operate UserName"
+# msgid "操作人名称"
+# msgstr "Operate UserName"
 
 #: .\home\models.py:159
-msgid "站点名称"
-msgstr "Site Name"
+# msgid "站点名称"
+# msgstr "Site Name"
 
 #: .\home\models.py:160
-msgid "站点描述"
-msgstr "Site Description"
+# msgid "站点描述"
+# msgstr "Site Description"
 
 #: .\home\models.py:161
-msgid "作者"
-msgstr "Author"
+# msgid "作者"
+# msgstr "Author"
 
 #: .\home\models.py:162
-msgid "公司"
-msgstr "Company"
+# msgid "公司"
+# msgstr "Company"
 
 #: .\home\models.py:163
-msgid "底部显示地址"
-msgstr "Bottom display address"
+# msgid "底部显示地址"
+# msgstr "Bottom display address"
 
 #: .\home\models.py:164
-msgid "底部显示电话"
-msgstr "Bottom display phone"
-
-#: .\home\models.py:165 .\home\models.py:856 .\home\templates\contact.html:141
-#: .\home\templates\footer.html:24
-msgid "邮箱"
-msgstr "Email"
+# msgid "底部显示电话"
+# msgstr "Bottom display phone"
 
 #: .\home\models.py:166
-msgid "备案号"
-msgstr "Internet Content Provider"
+# msgid "备案号"
+# msgstr "Internet Content Provider"
 
 #: .\home\models.py:167 .\home\models.py:979 .\home\models.py:1006
-msgid "备注"
-msgstr "Remark"
+# msgid "备注"
+# msgstr "Remark"
 
 #: .\home\models.py:168
-msgid "底部logo"
-msgstr "Bottom Logo"
+# msgid "底部logo"
+# msgstr "Bottom Logo"
 
 #: .\home\models.py:169
-msgid "二维码"
-msgstr "QR Code"
+# msgid "二维码"
+# msgstr "QR Code"
 
 #: .\home\models.py:170 .\home\models.py:194 .\home\models.py:257
 #: .\home\models.py:289 .\home\models.py:313 .\home\models.py:355
@@ -288,90 +251,631 @@ msgstr "QR Code"
 #: .\home\models.py:523 .\home\models.py:554 .\home\models.py:618
 #: .\home\models.py:667 .\home\models.py:720 .\home\models.py:800
 #: .\home\models.py:929
-msgid "是否启用"
-msgstr "Is Enable"
+# msgid "是否启用"
+# msgstr "Is Enable"
 
 #: .\home\models.py:174
-msgid "站点配置"
-msgstr "Site Config"
+# msgid "站点配置"
+# msgstr "Site Config"
 
 #: .\home\models.py:183
-msgid "标识"
-msgstr "Flag"
+# msgid "标识"
+# msgstr "Flag"
 
 #: .\home\models.py:184 .\home\models.py:610 .\home\models.py:651
-#, fuzzy
-#| msgid "站点名称"
-msgid "名称(中文)"
-msgstr "Site Name(zh)"
+# msgid "名称(中文)"
+# msgstr "Site Name(zh)"
 
 #: .\home\models.py:185 .\home\models.py:611 .\home\models.py:652
-#, fuzzy
-#| msgid "站点名称"
-msgid "名称(英文)"
-msgstr "Site Name(en)"
+# msgid "名称(英文)"
+# msgstr "Site Name(en)"
 
 #: .\home\models.py:186 .\home\models.py:615
-msgid "链接"
-msgstr "Link"
+# msgid "链接"
+# msgstr "Link"
 
 #: .\home\models.py:187 .\home\models.py:506 .\home\models.py:515
-#, fuzzy
-#| msgid "站点描述"
-msgid "描述"
-msgstr "Site Description"
+# msgid "描述"
+# msgstr "Site Description"
 
 #: .\home\models.py:189
-msgid "父级"
-msgstr "Parent"
+# msgid "父级"
+# msgstr "Parent"
 
 #: .\home\models.py:191
-msgid "是否一级菜单"
-msgstr "Is Top Level"
+# msgid "是否一级菜单"
+# msgstr "Is Top Level"
 
 #: .\home\models.py:192
-msgid "是否删除"
-msgstr "Is Delete"
+# msgid "是否删除"
+# msgstr "Is Delete"
 
 #: .\home\models.py:193 .\home\models.py:256 .\home\models.py:288
 #: .\home\models.py:444 .\home\models.py:486 .\home\models.py:522
 #: .\home\models.py:552 .\home\models.py:617 .\home\models.py:666
 #: .\home\models.py:710 .\home\models.py:799 .\home\models.py:866
-msgid "排序"
-msgstr "Sort"
+# msgid "排序"
+# msgstr "Sort"
 
 #: .\home\models.py:199
-msgid "导航菜单管理"
-msgstr "Navigation menu management"
+# msgid "导航菜单管理"
+# msgstr "Navigation menu management"
 
 #: .\home\models.py:252
-msgid "Banner页面"
-msgstr "Banner Page"
+# msgid "Banner页面"
+# msgstr "Banner Page"
 
 #: .\home\models.py:253 .\home\models.py:285 .\home\models.py:485
 #: .\home\models.py:548 .\home\models.py:709
-msgid "图片"
-msgstr "Image"
+# msgid "图片"
+# msgstr "Image"
 
 #: .\home\models.py:254
-#, fuzzy
-#| msgid "Banner上文本描述"
-msgid "Banner上文本描述(中文)"
-msgstr "Text description on Banner(zh)"
+# msgid "Banner上文本描述(中文)"
+# msgstr "Text description on Banner(zh)"
 
 #: .\home\models.py:255
-#, fuzzy
-#| msgid "Banner上文本描述"
-msgid "Banner上文本描述(英文)"
-msgstr "Text description on Banner(en)"
+# msgid "Banner上文本描述(英文)"
+# msgstr "Text description on Banner(en)"
 
 #: .\home\models.py:262
-msgid "Banner管理"
-msgstr "Banner management"
+# msgid "Banner管理"
+# msgstr "Banner management"
 
 #: .\home\models.py:274
-msgid "图片业务类型"
-msgstr "Picture business type"
+# msgid "图片业务类型"
+# msgstr "Picture business type"
+
+#: .\home\models.py:294
+# msgid "品牌介绍图片资源"
+# msgstr "About Image Resource"
+
+#: .\home\models.py:304
+# msgid "公司名称(中文)"
+# msgstr "Company(zh)"
+
+#: .\home\models.py:305
+# msgid "公司名称(英文)"
+# msgstr "Company(en)"
+
+#: .\home\models.py:307 .\home\models.py:542
+# msgid "根据name生成的，用于生成页面URL，必须唯一"
+# msgstr "Generated based on name, used to generate page URL, must be unique"
+
+#: .\home\models.py:308
+# msgid "公司简介标题(中文)"
+# msgstr "Company Introduce Title(zh)"
+
+#: .\home\models.py:309
+# msgid "公司简介标题(英文)"
+# msgstr "Company Introduce Title(en)"
+
+#: .\home\models.py:310 .\home\models.py:333
+# msgid "公司简介(中文)"
+# msgstr "Company Introduce(zh)"
+
+#: .\home\models.py:311 .\home\models.py:342
+# msgid "公司简介(英文)"
+# msgstr "Company Introduce(en)"
+
+#: .\home\models.py:312
+# msgid "公司简介图片"
+# msgstr "Company Introduce Image"
+
+#: .\home\models.py:347
+# msgid "短板故事标题(中文)"
+# msgstr "Short story title(zh)"
+
+#: .\home\models.py:348
+# msgid "短板故事标题(英文)"
+# msgstr "Short story title(en)"
+
+#: .\home\models.py:349
+# msgid "短板故事(中文)"
+# msgstr "Short story(zh)"
+
+#: .\home\models.py:350
+# msgid "短板故事(英文)"
+# msgstr "Short story(en)"
+
+#: .\home\models.py:351
+# msgid "长板故事标题(中文)"
+# msgstr "Long board story title(zh)"
+
+#: .\home\models.py:352
+# msgid "长板故事标题(英文)"
+# msgstr "Long board story title(en)"
+
+#: .\home\models.py:353
+# msgid "长板故事(中文)"
+# msgstr "Long story board(zh)"
+
+#: .\home\models.py:354
+# msgid "长板故事(英文)"
+# msgstr "Long story board(en)"
+
+#: .\home\models.py:373
+# msgid "短板描述(中文)"
+# msgstr "Short description(zh)"
+
+#: .\home\models.py:382
+# msgid "短板描述(英文)"
+# msgstr "Short description(en)"
+
+#: .\home\models.py:391
+# msgid "长板描述(中文)"
+# msgstr "Long board described(zh)"
+
+#: .\home\models.py:400
+# msgid "长板描述(英文)"
+# msgstr "Long board described(en)"
+
+#: .\home\models.py:405
+# msgid "动画名称"
+# msgstr "Animate Name"
+
+#: .\home\models.py:406
+# msgid "class样式名"
+# msgstr "Style Name"
+
+#: .\home\models.py:407 .\home\models.py:426
+# msgid "动画描述"
+# msgstr "Animate Description"
+
+#: .\home\models.py:431
+# msgid "板块标题(中文)"
+# msgstr "Plate title(zh)"
+
+#: .\home\models.py:432
+# msgid "板块标题(英文)"
+# msgstr "Plate title(en)"
+
+#: .\home\models.py:433
+# msgid "图标"
+# msgstr "Icon"
+
+#: .\home\models.py:434
+# msgid "正面图"
+# msgstr "Positive figure"
+
+#: .\home\models.py:435
+# msgid "背面图"
+# msgstr "The reverse figure"
+
+#: .\home\models.py:436 .\home\models.py:463 .\home\models.py:613
+#: .\home\models.py:637
+# msgid "简介(中文)"
+# msgstr "Company Introduce(zh)"
+
+#: .\home\models.py:437 .\home\models.py:472 .\home\models.py:614
+#: .\home\models.py:646
+# msgid "简介(英文)"
+# msgstr "Company Introduce(en)"
+
+#: .\home\models.py:438
+# msgid "是否跳转到子页面"
+# msgstr "Whether to jump to a subpage"
+
+#: .\home\models.py:439
+# msgid "子页面地址"
+# msgstr "Subpage address"
+
+#: .\home\models.py:440
+# msgid "视频文件地址"
+# msgstr "Video file address"
+
+#: .\home\models.py:450
+# msgid "首页板块"
+# msgstr "Home"
+
+#: .\home\models.py:477
+# msgid "时间标题(中文)"
+# msgstr "Datetime(zh)"
+
+#: .\home\models.py:478
+# msgid "时间标题(英文)"
+# msgstr "Datetime(en)"
+
+#: .\home\models.py:479 .\home\models.py:700
+# msgid "标题(中文)"
+# msgstr "Title(zh)"
+
+#: .\home\models.py:480 .\home\models.py:701
+# msgid "标题(英文)"
+# msgstr "Title(en)"
+
+#: .\home\models.py:481 .\home\models.py:704
+# msgid "摘要(中文)"
+# msgstr "Brief(zh)"
+
+#: .\home\models.py:482 .\home\models.py:705
+# msgid "摘要(英文)"
+# msgstr "Brief(en)"
+
+#: .\home\models.py:483
+# msgid "描述(中文)"
+# msgstr "Site Description(zh)"
+
+#: .\home\models.py:484
+# msgid "描述(英文)"
+# msgstr "Site Description(en)"
+
+#: .\home\models.py:520
+# msgid "类型名称(中文)"
+# msgstr "Type the name(zh)"
+
+#: .\home\models.py:521
+# msgid "类型名称(英文)"
+# msgstr "Type the name(en)"
+
+#: .\home\models.py:524
+# msgid "数据类型标识"
+# msgstr "Data type identification"
+
+#: .\home\models.py:539
+# msgid "产品名称(中文)"
+# msgstr "Product Name(zh)"
+
+#: .\home\models.py:540
+# msgid "产品名称(英文)"
+# msgstr "Product Name(en)"
+
+#: .\home\models.py:543
+# msgid "产品摘要(中文)"
+# msgstr "Product Brief(zh)"
+
+#: .\home\models.py:544
+# msgid "产品摘要(英文)"
+# msgstr "Product Brief(en)"
+
+#: .\home\models.py:545 .\home\models.py:596
+# msgid "产品描述(中文)"
+# msgstr "Product Description(zh)"
+
+#: .\home\models.py:546 .\home\models.py:605
+# msgid "产品描述(英文)"
+# msgstr "Product Description(en)"
+
+#: .\home\models.py:547
+# msgid "在线商城地址"
+# msgstr "Product"
+
+#: .\home\models.py:549 .\home\models.py:708
+# msgid "浏览量"
+# msgstr "Views"
+
+#: .\home\models.py:553
+# msgid "是否推荐"
+# msgstr "Is Recommend"
+
+#: .\home\models.py:559
+# msgid "品牌产品"
+# msgstr "Story"
+
+#: .\home\models.py:578
+# msgid "产品简介(中文)"
+# msgstr "Product Introduce(zh)"
+
+#: .\home\models.py:587
+# msgid "产品简介(英文)"
+# msgstr "Product Introduce(en)"
+
+#: .\home\models.py:612
+# msgid "Logo"
+# msgstr "Logo"
+
+#: .\home\models.py:623
+# msgid "合作伙伴"
+# msgstr "Partners"
+
+#: .\home\models.py:653 .\home\models.py:685 .\home\models.py:706
+#: .\home\models.py:746
+# msgid "内容(中文)"
+# msgstr "Content(zh)"
+
+#: .\home\models.py:654 .\home\models.py:694 .\home\models.py:707
+#: .\home\models.py:755
+# msgid "内容(英文)"
+# msgstr "Content(en)"
+
+#: .\home\models.py:656 .\home\models.py:712
+# msgid "类型"
+# msgstr "Type"
+
+
+#: .\home\models.py:703
+# msgid "根据title生成的，用于生成页面URL，必须唯一"
+# msgstr "Generated based on title, used to generate page URL, must be unique"
+
+#: .\home\models.py:716 .\home\templates\news_list.html:40
+# msgid "社会责任"
+# msgstr "Resposibility"
+
+#: .\home\models.py:725
+# msgid "新闻资讯|社会责任"
+# msgstr "Resposibility"
+
+#: .\home\models.py:760
+# msgid "职位名称(中文)"
+# msgstr "Job title(zh)"
+
+#: .\home\models.py:761
+# msgid "职位名称(英文)"
+# msgstr "Job title(en)"
+
+#: .\home\models.py:763
+# msgid "根据job_name生成的，用于生成页面URL，必须唯一"
+# msgstr "Generated from job_name to generate the page URL, which must be unique"
+
+#: .\home\models.py:764
+# msgid "工作经验"
+# msgstr "Experience"
+
+#: .\home\models.py:766
+# msgid "学历"
+# msgstr "Record of formal schooling"
+
+#: .\home\models.py:769
+# msgid "请选择"
+# msgstr "Please select a"
+
+#: .\home\models.py:770
+# msgid "博士导师"
+# msgstr "Doctoral tutor"
+
+#: .\home\models.py:771
+# msgid "博士后"
+# msgstr "Postdoctoral"
+
+#: .\home\models.py:772
+# msgid "博士"
+# msgstr "Dr"
+
+#: .\home\models.py:773
+# msgid "硕士"
+# msgstr "A master's degree"
+
+#: .\home\models.py:774
+# msgid "研究生"
+# msgstr "A graduate student"
+
+#: .\home\models.py:775
+# msgid "本科"
+# msgstr "Undergraduate course"
+
+#: .\home\models.py:776
+# msgid "大专"
+# msgstr "college"
+
+#: .\home\models.py:777
+# msgid "高中"
+# msgstr "High school"
+
+#: .\home\models.py:778
+# msgid "初中"
+# msgstr "Junior high school"
+
+#: .\home\models.py:779
+# msgid "小学"
+# msgstr "Primary school"
+
+#: .\home\models.py:780 .\home\models.py:791
+# msgid "其他"
+# msgstr "other"
+
+#: .\home\models.py:785
+# msgid "工作性质"
+# msgstr "Nature of work"
+
+#: .\home\models.py:788
+# msgid "全职"
+# msgstr "full-time"
+
+#: .\home\models.py:789
+# msgid "兼职"
+# msgstr "part-time"
+
+#: .\home\models.py:790
+# msgid "自由职业"
+# msgstr "freelance"
+
+#: .\home\models.py:797 .\home\models.py:827
+# msgid "招聘要求(中文)"
+# msgstr "Job requirement(zh)"
+
+#: .\home\models.py:798 .\home\models.py:837
+# msgid "招聘要求(英文)"
+# msgstr "Job requirement(en)"
+
+#: .\home\models.py:805
+# msgid "工作机会"
+# msgstr "Job opportunities"
+
+#: .\home\models.py:842
+# msgid "姓名"
+# msgstr "Name"
+
+#: .\home\models.py:844
+# msgid "性别"
+# msgstr "Gender"
+
+#: .\home\models.py:847
+# msgid "男"
+# msgstr "Male"
+
+#: .\home\models.py:848
+# msgid "女"
+# msgstr "Female"
+
+#: .\home\models.py:849
+# msgid "保密"
+# msgstr "Secret"
+
+#: .\home\models.py:850
+# msgid "未知"
+# msgstr "Unknown"
+
+#: .\home\models.py:854
+# msgid "生日"
+# msgstr "Birthday"
+
+#: .\home\models.py:857
+# msgid "是否已领取"
+# msgstr "Received or not"
+
+#: .\home\models.py:858
+# msgid "是否已通知"
+# msgstr "Is Notified"
+
+#: .\home\models.py:860
+# msgid "是否中奖"
+# msgstr "Is Winning"
+
+#: .\home\models.py:862
+# msgid "未中奖"
+# msgstr "Not winning"
+
+#: .\home\models.py:863
+# msgid "未中奖"
+# msgstr "Not winning"
+
+#: .\home\models.py:880
+# msgid "客户端IP"
+# msgstr "Client IP"
+
+#: .\home\models.py:881
+# msgid "客户端主机名"
+# msgstr "Client name"
+
+#: .\home\models.py:882
+# msgid "客户端端口"
+# msgstr "Client port"
+
+#: .\home\models.py:883 .\home\models.py:907
+# msgid "客户端浏览器"
+# msgstr "Client browser"
+
+#: .\home\models.py:884
+# msgid "服务器IP"
+# msgstr "Server IP"
+
+#: .\home\models.py:885
+# msgid "服务器主机名"
+# msgstr "Server Name"
+
+#: .\home\models.py:886
+# msgid "服务器端口"
+# msgstr "Server Prot"
+
+#: .\home\models.py:887
+# msgid "期初水量"
+# msgstr "beginning of water"
+
+#: .\home\models.py:888
+# msgid "本次水量"
+# msgstr "The water"
+
+#: .\home\models.py:889
+# msgid "期末水量"
+# msgstr "The final water"
+
+#: .\home\models.py:912
+# msgid "水量余额"
+# msgstr "The water balance"
+
+#: .\home\models.py:913
+# msgid "浇水总量"
+# msgstr "The total water"
+
+#: .\home\models.py:918
+# msgid "浇水量余额表"
+# msgstr "Water quantity balance sheet"
+
+#: .\home\models.py:927
+# msgid "站点名称"
+# msgstr "Site Name"
+
+#: .\home\models.py:928 .\home\models.py:947
+# msgid "文件"
+# msgstr "File"
+
+#: .\home\models.py:934
+# msgid "申请表下载"
+# msgstr "Application form download"
+
+#: .\home\models.py:952
+# msgid "问题标题"
+# msgstr "Question Title"
+
+#: .\home\models.py:953 .\home\models.py:997
+# msgid "问题描述"
+# msgstr "Question Description"
+
+#: .\home\models.py:955
+# msgid "问题类型"
+# msgstr "Question Type"
+
+#: .\home\models.py:958
+# msgid "不是问题"
+# msgstr "No Problem"
+
+#: .\home\models.py:959
+# msgid "浏览器问题"
+# msgstr "Browser Problem"
+
+#: .\home\models.py:960
+# msgid "操作系统问题"
+# msgstr "OS Problem"
+
+#: .\home\models.py:961
+# msgid "bug"
+# msgstr "Bug"
+
+#: .\home\models.py:962
+# msgid "其他问题"
+# msgstr "Other Problem"
+
+#: .\home\models.py:963
+# msgid "重复问题"
+# msgstr "Repeat Problem"
+
+#: .\home\models.py:964
+# msgid "第三方问题"
+# msgstr "Third party problem"
+
+#: .\home\models.py:968
+# msgid "问题状态"
+# msgstr "Question Status"
+
+#: .\home\models.py:971
+# msgid "待解决"
+# msgstr "To be solved"
+
+#: .\home\models.py:972
+# msgid "未解决"
+# msgstr "Not solved"
+
+#: .\home\models.py:973
+# msgid "已解决"
+# msgstr "resolved"
+
+#: .\home\models.py:974
+# msgid "延期处理"
+# msgstr "Deferred processing"
+
+#: .\home\models.py:975
+# msgid "不予处理"
+# msgstr "Not to deal with"
+
+#: .\home\models.py:976
+# msgid "需第三方处理"
+# msgstr "Third party processing required"
+
+#: .\home\models.py:984
+# msgid "问题汇总列表"
+# msgstr "Problem summary list"
+
+
 
 #: .\home\models.py:276 .\home\templates\about.html:136
 msgid "企业文化"
@@ -398,306 +902,14 @@ msgstr "Story"
 msgid "组织架构"
 msgstr "Organizational"
 
-#: .\home\models.py:294
-#, fuzzy
-#| msgid "品牌介绍"
-msgid "品牌介绍图片资源"
-msgstr "About Image Resource"
-
-#: .\home\models.py:304
-msgid "公司名称(中文)"
-msgstr "Company(zh)"
-
-#: .\home\models.py:305
-msgid "公司名称(英文)"
-msgstr "Company(en)"
-
-#: .\home\models.py:307 .\home\models.py:542
-msgid "根据name生成的，用于生成页面URL，必须唯一"
-msgstr "Generated based on name, used to generate page URL, must be unique"
-
-#: .\home\models.py:308
-msgid "公司简介标题(中文)"
-msgstr "Company Introduce Title(zh)"
-
-#: .\home\models.py:309
-msgid "公司简介标题(英文)"
-msgstr "Company Introduce Title(en)"
-
-#: .\home\models.py:310 .\home\models.py:333
-msgid "公司简介(中文)"
-msgstr "Company Introduce(zh)"
-
-#: .\home\models.py:311 .\home\models.py:342
-msgid "公司简介(英文)"
-msgstr "Company Introduce(en)"
-
-#: .\home\models.py:312
-msgid "公司简介图片"
-msgstr "Company Introduce Image"
-
-#: .\home\models.py:347
-msgid "短板故事标题(中文)"
-msgstr "Short story title(zh)"
-
-#: .\home\models.py:348
-msgid "短板故事标题(英文)"
-msgstr "Short story title(en)"
-
-#: .\home\models.py:349
-msgid "短板故事(中文)"
-msgstr "Short story(zh)"
-
-#: .\home\models.py:350
-msgid "短板故事(英文)"
-msgstr "Short story(en)"
-
-#: .\home\models.py:351
-msgid "长板故事标题(中文)"
-msgstr "Long board story title(zh)"
-
-#: .\home\models.py:352
-msgid "长板故事标题(英文)"
-msgstr "Long board story title(en)"
-
-#: .\home\models.py:353
-msgid "长板故事(中文)"
-msgstr "Long story board(zh)"
-
-#: .\home\models.py:354
-msgid "长板故事(英文)"
-msgstr "Long story board(en)"
-
-#: .\home\models.py:373
-msgid "短板描述(中文)"
-msgstr "Short description(zh)"
-
-#: .\home\models.py:382
-msgid "短板描述(英文)"
-msgstr "Short description(en)"
-
-#: .\home\models.py:391
-msgid "长板描述(中文)"
-msgstr "Long board described(zh)"
-
-#: .\home\models.py:400
-msgid "长板描述(英文)"
-msgstr "Long board described(en)"
-
-#: .\home\models.py:405
-msgid "动画名称"
-msgstr "Animate Name"
-
-#: .\home\models.py:406
-msgid "class样式名"
-msgstr "Style Name"
-
-#: .\home\models.py:407 .\home\models.py:426
-msgid "动画描述"
-msgstr "Animate Description"
-
-#: .\home\models.py:431
-msgid "板块标题(中文)"
-msgstr "Plate title(zh)"
-
-#: .\home\models.py:432
-msgid "板块标题(英文)"
-msgstr "Plate title(en)"
-
-#: .\home\models.py:433
-msgid "图标"
-msgstr "Icon"
-
-#: .\home\models.py:434
-msgid "正面图"
-msgstr "Positive figure"
-
-#: .\home\models.py:435
-msgid "背面图"
-msgstr "The reverse figure"
-
-#: .\home\models.py:436 .\home\models.py:463 .\home\models.py:613
-#: .\home\models.py:637
-msgid "简介(中文)"
-msgstr "Company Introduce(zh)"
-
-#: .\home\models.py:437 .\home\models.py:472 .\home\models.py:614
-#: .\home\models.py:646
-msgid "简介(英文)"
-msgstr "Company Introduce(en)"
-
-#: .\home\models.py:438
-msgid "是否跳转到子页面"
-msgstr "Whether to jump to a subpage"
-
-#: .\home\models.py:439
-msgid "子页面地址"
-msgstr "Subpage address"
-
-#: .\home\models.py:440
-msgid "视频文件地址"
-msgstr "Video file address"
-
-#: .\home\models.py:450
-msgid "首页板块"
-msgstr "Home"
-
-#: .\home\models.py:477
-msgid "时间标题(中文)"
-msgstr "Datetime(zh)"
-
-#: .\home\models.py:478
-msgid "时间标题(英文)"
-msgstr "Datetime(en)"
-
-#: .\home\models.py:479 .\home\models.py:700
-msgid "标题(中文)"
-msgstr "Title(zh)"
-
-#: .\home\models.py:480 .\home\models.py:701
-msgid "标题(英文)"
-msgstr "Title(en)"
-
-#: .\home\models.py:481 .\home\models.py:704
-msgid "摘要(中文)"
-msgstr "Brief(zh)"
-
-#: .\home\models.py:482 .\home\models.py:705
-msgid "摘要(英文)"
-msgstr "Brief(en)"
-
-#: .\home\models.py:483
-#, fuzzy
-#| msgid "站点描述"
-msgid "描述(中文)"
-msgstr "Site Description(zh)"
-
-#: .\home\models.py:484
-#, fuzzy
-#| msgid "站点描述"
-msgid "描述(英文)"
-msgstr "Site Description(en)"
-
-#: .\home\models.py:520
-#, fuzzy
-#| msgid "类型名称"
-msgid "类型名称(中文)"
-msgstr "Type the name(zh)"
-
-#: .\home\models.py:521
-#, fuzzy
-#| msgid "类型名称"
-msgid "类型名称(英文)"
-msgstr "Type the name(en)"
-
-#: .\home\models.py:524
-msgid "数据类型标识"
-msgstr "Data type identification"
-
-#: .\home\models.py:539
-#, fuzzy
-#| msgid "产品名称"
-msgid "产品名称(中文)"
-msgstr "Product Name(zh)"
-
-#: .\home\models.py:540
-#, fuzzy
-#| msgid "产品名称"
-msgid "产品名称(英文)"
-msgstr "Product Name(en)"
-
-#: .\home\models.py:543
-#, fuzzy
-#| msgid "产品摘要"
-msgid "产品摘要(中文)"
-msgstr "Product Brief(zh)"
-
-#: .\home\models.py:544
-#, fuzzy
-#| msgid "产品摘要"
-msgid "产品摘要(英文)"
-msgstr "Product Brief(en)"
-
-#: .\home\models.py:545 .\home\models.py:596
-#, fuzzy
-#| msgid "产品描述"
-msgid "产品描述(中文)"
-msgstr "Product Description(zh)"
-
-#: .\home\models.py:546 .\home\models.py:605
-#, fuzzy
-#| msgid "产品描述"
-msgid "产品描述(英文)"
-msgstr "Product Description(en)"
-
-#: .\home\models.py:547
-#, fuzzy
-#| msgid "在线商城"
-msgid "在线商城地址"
-msgstr "Product"
-
-#: .\home\models.py:549 .\home\models.py:708
-#, fuzzy
-#| msgid "浏览"
-msgid "浏览量"
-msgstr "Views"
-
-#: .\home\models.py:553
-msgid "是否推荐"
-msgstr "Is Recommend"
-
-#: .\home\models.py:559
-#, fuzzy
-#| msgid "品牌故事"
-msgid "品牌产品"
-msgstr "Story"
-
-#: .\home\models.py:578
-#, fuzzy
-#| msgid "产品简介"
-msgid "产品简介(中文)"
-msgstr "Product Introduce(zh)"
-
-#: .\home\models.py:587
-#, fuzzy
-#| msgid "产品简介"
-msgid "产品简介(英文)"
-msgstr "Product Introduce(en)"
-
-#: .\home\models.py:612
-msgid "Logo"
-msgstr "Logo"
-
-#: .\home\models.py:616 .\home\templates\contact.html:154
-#: .\home\templates\footer.html:30
-msgid "地址"
-msgstr "Address"
-
-#: .\home\models.py:623
-msgid "合作伙伴"
-msgstr "Partners"
-
-#: .\home\models.py:653 .\home\models.py:685 .\home\models.py:706
-#: .\home\models.py:746
-#, fuzzy
-#| msgid "内容"
-msgid "内容(中文)"
-msgstr "Content(zh)"
-
-#: .\home\models.py:654 .\home\models.py:694 .\home\models.py:707
-#: .\home\models.py:755
-#, fuzzy
-#| msgid "内容"
-msgid "内容(英文)"
-msgstr "Content(en)"
-
-#: .\home\models.py:656 .\home\models.py:712
-msgid "类型"
-msgstr "Type"
-
 #: .\home\models.py:659 .\home\templates\partner.html:45
 msgid "合作政策"
 msgstr "The cooperation policy"
+
+#: .\chfweb\settings.py:544 .\home\models.py:715
+#: .\home\templates\news_list.html:102
+msgid "新闻资讯"
+msgstr "News"
 
 #: .\home\models.py:660 .\home\templates\partner.html:46
 msgid "项目优势"
@@ -711,319 +923,19 @@ msgstr "Dealer questions"
 msgid "支持与服务"
 msgstr "Support and services"
 
-#: .\home\models.py:703
-msgid "根据title生成的，用于生成页面URL，必须唯一"
-msgstr "Generated based on title, used to generate page URL, must be unique"
-
-#: .\home\models.py:716 .\home\templates\news_list.html:40
-msgid "社会责任"
-msgstr "Resposibility"
-
-#: .\home\models.py:725
-#, fuzzy
-#| msgid "社会责任"
-msgid "新闻资讯|社会责任"
-msgstr "Resposibility"
-
-#: .\home\models.py:760
-#, fuzzy
-#| msgid "职位名称"
-msgid "职位名称(中文)"
-msgstr "Job title(zh)"
-
-#: .\home\models.py:761
-#, fuzzy
-#| msgid "职位名称"
-msgid "职位名称(英文)"
-msgstr "Job title(en)"
-
-#: .\home\models.py:763
-msgid "根据job_name生成的，用于生成页面URL，必须唯一"
-msgstr "Generated from job_name to generate the page URL, which must be unique"
-
-#: .\home\models.py:764
-#, fuzzy
-#| msgid "经验"
-msgid "工作经验"
-msgstr "Experience"
-
-#: .\home\models.py:766
-msgid "学历"
-msgstr "Record of formal schooling"
-
-#: .\home\models.py:769
-msgid "请选择"
-msgstr "Please select a"
-
-#: .\home\models.py:770
-msgid "博士导师"
-msgstr "Doctoral tutor"
-
-#: .\home\models.py:771
-msgid "博士后"
-msgstr "Postdoctoral"
-
-#: .\home\models.py:772
-msgid "博士"
-msgstr "Dr"
-
-#: .\home\models.py:773
-msgid "硕士"
-msgstr "A master's degree"
-
-#: .\home\models.py:774
-msgid "研究生"
-msgstr "A graduate student"
-
-#: .\home\models.py:775
-msgid "本科"
-msgstr "Undergraduate course"
-
-#: .\home\models.py:776
-msgid "大专"
-msgstr "college"
-
-#: .\home\models.py:777
-msgid "高中"
-msgstr "High school"
-
-#: .\home\models.py:778
-msgid "初中"
-msgstr "Junior high school"
-
-#: .\home\models.py:779
-msgid "小学"
-msgstr "Primary school"
-
-#: .\home\models.py:780 .\home\models.py:791
-msgid "其他"
-msgstr "other"
-
-#: .\home\models.py:785
-msgid "工作性质"
-msgstr "Nature of work"
-
-#: .\home\models.py:788
-msgid "全职"
-msgstr "full-time"
-
-#: .\home\models.py:789
-msgid "兼职"
-msgstr "part-time"
-
-#: .\home\models.py:790
-msgid "自由职业"
-msgstr "freelance"
-
-#: .\home\models.py:797 .\home\models.py:827
-#, fuzzy
-#| msgid "招聘要求"
-msgid "招聘要求(中文)"
-msgstr "Job requirement(zh)"
-
-#: .\home\models.py:798 .\home\models.py:837
-#, fuzzy
-#| msgid "招聘要求"
-msgid "招聘要求(英文)"
-msgstr "Job requirement(en)"
-
-#: .\home\models.py:805
-msgid "工作机会"
-msgstr "Job opportunities"
-
-#: .\home\models.py:842
-msgid "姓名"
-msgstr "Name"
-
-#: .\home\models.py:844
-msgid "性别"
-msgstr "Gender"
-
-#: .\home\models.py:847
-msgid "男"
-msgstr "Male"
-
-#: .\home\models.py:848
-msgid "女"
-msgstr "Female"
-
-#: .\home\models.py:849
-msgid "保密"
-msgstr "Secret"
-
-#: .\home\models.py:850
-msgid "未知"
-msgstr "Unknown"
-
-#: .\home\models.py:854
-msgid "生日"
-msgstr "Birthday"
-
 #: .\home\models.py:855 .\home\templates\contact.html:128
 msgid "电话"
 msgstr "Telephone"
 
-#: .\home\models.py:857
-msgid "是否已领取"
-msgstr "Received or not"
+#: .\home\models.py:165 .\home\models.py:856 .\home\templates\contact.html:141
+#: .\home\templates\footer.html:24
+msgid "邮箱"
+msgstr "Email"
 
-#: .\home\models.py:858
-msgid "是否已通知"
-msgstr "Is Notified"
-
-#: .\home\models.py:860
-msgid "是否中奖"
-msgstr "Is Winning"
-
-#: .\home\models.py:862
-msgid "未中奖"
-msgstr "Not winning"
-
-#: .\home\models.py:863
-#, fuzzy
-#| msgid "未中奖"
-msgid "中奖"
-msgstr "Not winning"
-
-#: .\home\models.py:880
-msgid "客户端IP"
-msgstr "Client IP"
-
-#: .\home\models.py:881
-msgid "客户端主机名"
-msgstr "Client name"
-
-#: .\home\models.py:882
-msgid "客户端端口"
-msgstr "Client port"
-
-#: .\home\models.py:883 .\home\models.py:907
-msgid "客户端浏览器"
-msgstr "Client browser"
-
-#: .\home\models.py:884
-msgid "服务器IP"
-msgstr "Server IP"
-
-#: .\home\models.py:885
-msgid "服务器主机名"
-msgstr "Server Name"
-
-#: .\home\models.py:886
-msgid "服务器端口"
-msgstr "Server Prot"
-
-#: .\home\models.py:887
-msgid "期初水量"
-msgstr "beginning of water"
-
-#: .\home\models.py:888
-msgid "本次水量"
-msgstr "The water"
-
-#: .\home\models.py:889
-msgid "期末水量"
-msgstr "The final water"
-
-#: .\home\models.py:912
-msgid "水量余额"
-msgstr "The water balance"
-
-#: .\home\models.py:913
-msgid "浇水总量"
-msgstr "The total water"
-
-#: .\home\models.py:918
-msgid "浇水量余额表"
-msgstr "Water quantity balance sheet"
-
-#: .\home\models.py:927
-#, fuzzy
-#| msgid "站点名称"
-msgid "名称"
-msgstr "Site Name"
-
-#: .\home\models.py:928 .\home\models.py:947
-msgid "文件"
-msgstr "File"
-
-#: .\home\models.py:934
-#, fuzzy
-#| msgid "申请表下载"
-msgid "申请表格"
-msgstr "Application form download"
-
-#: .\home\models.py:952
-msgid "问题标题"
-msgstr "Question Title"
-
-#: .\home\models.py:953 .\home\models.py:997
-msgid "问题描述"
-msgstr "Question Description"
-
-#: .\home\models.py:955
-msgid "问题类型"
-msgstr "Question Type"
-
-#: .\home\models.py:958
-msgid "不是问题"
-msgstr "No Problem"
-
-#: .\home\models.py:959
-msgid "浏览器问题"
-msgstr "Browser Problem"
-
-#: .\home\models.py:960
-msgid "操作系统问题"
-msgstr "OS Problem"
-
-#: .\home\models.py:961
-msgid "bug"
-msgstr "Bug"
-
-#: .\home\models.py:962
-msgid "其他问题"
-msgstr "Other Problem"
-
-#: .\home\models.py:963
-msgid "重复问题"
-msgstr "Repeat Problem"
-
-#: .\home\models.py:964
-msgid "第三方问题"
-msgstr "Third party problem"
-
-#: .\home\models.py:968
-msgid "问题状态"
-msgstr "Question Status"
-
-#: .\home\models.py:971
-msgid "待解决"
-msgstr "To be solved"
-
-#: .\home\models.py:972
-msgid "未解决"
-msgstr "Not solved"
-
-#: .\home\models.py:973
-msgid "已解决"
-msgstr "resolved"
-
-#: .\home\models.py:974
-msgid "延期处理"
-msgstr "Deferred processing"
-
-#: .\home\models.py:975
-msgid "不予处理"
-msgstr "Not to deal with"
-
-#: .\home\models.py:976
-msgid "需第三方处理"
-msgstr "Third party processing required"
-
-#: .\home\models.py:984
-msgid "问题汇总列表"
-msgstr "Problem summary list"
+#: .\home\models.py:616 .\home\templates\contact.html:154
+#: .\home\templates\footer.html:30
+msgid "地址"
+msgstr "Address"
 
 #: .\home\templates\about.html:47
 msgid "年"
@@ -1202,8 +1114,6 @@ msgid "经验"
 msgstr "Experience"
 
 #: .\home\templates\layer_coupon_form.html:27
-#, fuzzy
-#| msgid "手机号"
 msgid "手机号："
 msgstr "Phone"
 

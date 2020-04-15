@@ -143,46 +143,47 @@ class SysConfigAdmin(admin.ModelAdmin):
 
     list_display = ('id', 'site_name', 'site_company', 'en_site_company', 'address', 'en_address', 'telephone', 'email',
                     'icp', 'en_icp', 'is_enable', 'logo_bottom', 'qrcode')
-    list_display_links = ('id', 'site_name', )
+    list_display_links = ('id', 'site_name',)
     # list_editable = ('telephone', 'is_enable', 'icp')
-    list_filter = (IsEnableFilter, )
+    list_filter = (IsEnableFilter,)
     list_per_page = 10
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-    search_fields = ('site_name', 'site_author', 'site_company', 'en_site_company', 'address', 'en_address', 'telephone',
-                     'email', 'icp', 'en_icp', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
+    search_fields = (
+    'site_name', 'site_author', 'site_company', 'en_site_company', 'address', 'en_address', 'telephone',
+    'email', 'icp', 'en_icp',)
 
 
 # 管理员
 @admin.register(models.ChfUserProfile)
 class ChfUserProfileAdmin(UserAdmin):
     list_display = ('username', 'email', 'nick_name', 'first_name', 'last_name', 'qq', 'phone',
-                    'is_superuser', 'is_active', )
-    list_display_links = ('username', )
-    list_editable = ('nick_name', 'qq', 'phone', 'is_superuser', 'is_active', )
+                    'is_superuser', 'is_active',)
+    list_display_links = ('username',)
+    list_editable = ('nick_name', 'qq', 'phone', 'is_superuser', 'is_active',)
     list_per_page = 30
     list_filter = (IsSuperUserFilter, IsActiveFilter, 'groups')
     search_fields = ('username', 'nick_name', 'first_name', 'last_name', 'email')
     ordering = ('username',)
     filter_horizontal = ('groups', 'user_permissions',)
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
 
 # 导航菜单管理
 @admin.register(models.SysNav)
 class SysNavAdmin(admin.ModelAdmin):
     list_display = ('id', 'code', 'name', 'en_name', 'url', 'parent', 'sort', 'is_root', 'is_enable', 'is_delete')
-    list_display_links = ('id', 'name', 'en_name', 'url', )
-    list_editable = ('code', 'sort', 'is_enable', )
-    list_filter = (IsEnableFilter, )
+    list_display_links = ('id', 'name', 'en_name', 'url',)
+    list_editable = ('code', 'sort', 'is_enable',)
+    list_filter = (IsEnableFilter,)
     list_per_page = 30
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-    search_fields = ('name', 'en_name', 'url', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
+    search_fields = ('name', 'en_name', 'url',)
 
 
 # 用户日志
 @admin.register(LogEntry)
 class LogEntryAdmin(admin.ModelAdmin):
-    list_display = ('object_id', 'object_repr', 'action_flag', 'user', 'change_message', )
+    list_display = ('object_id', 'object_repr', 'action_flag', 'user', 'change_message',)
 
     # 屏蔽增加功能按钮
     def has_add_permission(self, request):
@@ -201,12 +202,12 @@ class LogEntryAdmin(admin.ModelAdmin):
 @admin.register(models.ChfBanner)
 class ChfBannerAdmin(admin.ModelAdmin):
     list_display = ('id', 'nav', 'image_url', 'sort', 'is_enable')
-    list_display_links = ('id', )
-    list_editable = ('nav', 'sort', 'is_enable', )
-    list_filter = (IsEnableFilter, )
+    list_display_links = ('id',)
+    list_editable = ('nav', 'sort', 'is_enable',)
+    list_filter = (IsEnableFilter,)
     list_per_page = 30
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
-    search_fields = ('nav', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
+    search_fields = ('nav',)
 
 
 # 产品列表
@@ -219,9 +220,9 @@ class ChfProductAdmin(admin.ModelAdmin):
                     'product_type', 'sort', 'is_recommand', 'is_enable', 'create_time')
     list_display_links = ('name', 'en_name', 'brief_profile', 'en_brief_profile', 'profile', 'en_profile',)
     list_editable = ('sort', 'is_recommand', 'is_enable', 'product_type')
-    list_filter = ('product_type', IsRecommandFilter, IsEnableFilter, )
+    list_filter = ('product_type', IsRecommandFilter, IsEnableFilter,)
     list_per_page = 30
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
     # fieldsets = (
     #     ('基本设置', {
     #         'fields': ('name', 'brief', 'product_type', )
@@ -231,7 +232,8 @@ class ChfProductAdmin(admin.ModelAdmin):
     #         'fields': ('read_count', 'content', 'cover_image_url', 'sort', 'is_recommand')
     #     }),
     # )
-    search_fields = ('name', 'en_name' 'product_type', )
+    search_fields = ('name', 'en_name' 'product_type',)
+
     # list_max_show_all =
     # list_per_page =
     # list_select_related =
@@ -259,23 +261,23 @@ class ChfProductAdmin(admin.ModelAdmin):
 class ChfProductTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'en_name', 'sort', 'is_enable', 'data_filter_name')
     list_display_links = ('name', 'en_name',)
-    list_editable = ('is_enable', 'sort', 'data_filter_name', )
-    list_filter = (IsEnableFilter, )
+    list_editable = ('is_enable', 'sort', 'data_filter_name',)
+    list_filter = (IsEnableFilter,)
     list_per_page = 30
     search_fields = ('name', 'en_name',)
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
 
 # 合作伙伴
 @admin.register(models.ChfPartner)
 class ChfPartnerAdmin(admin.ModelAdmin):
     list_display = ('name', 'en_name', 'logo', 'brief', 'en_brief', 'profile', 'en_profile',
-                    'url', 'address', 'sort', 'is_enable', )
+                    'url', 'address', 'sort', 'is_enable',)
     list_display_links = ('name', 'en_name', 'profile', 'en_profile')
-    list_editable = ('sort', 'is_enable', 'url', )
+    list_editable = ('sort', 'is_enable', 'url',)
     list_filter = (IsEnableFilter, 'create_time',)
     search_fields = ('name', 'en_name', 'brief', 'en_brief')
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
 
 # 合作共赢 品牌合作-0:合作政策 1:项目优势 2:经销商问答 3:支持与服务
@@ -283,10 +285,10 @@ class ChfPartnerAdmin(admin.ModelAdmin):
 class ChfCooperationAdmin(admin.ModelAdmin):
     list_display = ('title', 'en_title', 'profile', 'en_profile', 'type', 'sort', 'is_enable')
     list_display_links = ('title', 'en_title', 'profile', 'en_profile')
-    list_editable = ('type', 'sort', 'is_enable', )
-    list_filter = (IsEnableFilter, 'type', )
+    list_editable = ('type', 'sort', 'is_enable',)
+    list_filter = (IsEnableFilter, 'type',)
     search_fields = ('title', 'en_title', 'profile', 'en_profile')
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
     class Media:
         js = (
@@ -300,12 +302,13 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 # 关于我们 品牌介绍
 @admin.register(models.ChfAbout)
 class ChfAboutAdmin(admin.ModelAdmin):
-    list_display = ('comp_name', 'en_comp_name', 'title', 'en_title', 'profile', 'en_profile', 'comp_image', 'is_enable')
+    list_display = (
+    'comp_name', 'en_comp_name', 'title', 'en_title', 'profile', 'en_profile', 'comp_image', 'is_enable')
     list_display_links = ('comp_name', 'en_comp_name', 'profile', 'en_profile')
     list_editable = ('title', 'en_title', 'is_enable')
     list_filter = (IsEnableFilter, 'create_time',)
     search_fields = ('comp_name', 'en_comp_name', 'title', 'en_title')
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
     class Media:
         js = (
@@ -324,7 +327,7 @@ class ChfAboutResourceAdmin(admin.ModelAdmin):
     list_editable = ('type_code', 'sort', 'is_enable')
     list_filter = ('type_code', IsEnableFilter, 'create_time',)
     list_per_page = 30
-    search_fields = ('type_code', )
+    search_fields = ('type_code',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
 
@@ -336,7 +339,7 @@ class ChfStoryAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'short_title', 'short_profile', 'long_title', 'long_profile',
                           'en_short_title', 'en_short_profile', 'en_long_title', 'en_long_profile',)
     list_editable = ('is_enable',)
-    list_filter = (IsEnableFilter, )
+    list_filter = (IsEnableFilter,)
     list_per_page = 10
     search_fields = ('short_title', 'long_title', 'short_profile', 'long_profile',
                      'en_short_title', 'en_short_profile', 'en_long_title', 'en_long_profile',)
@@ -355,12 +358,12 @@ class ChfStoryAdmin(admin.ModelAdmin):
 @admin.register(models.ChfAnimateType)
 class ChfAnimateTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'class_name', 'profile', 'is_enable')
-    list_display_links = ('id', )
-    list_editable = ('name', 'class_name', 'is_enable', )
-    list_filter = (IsEnableFilter, )
+    list_display_links = ('id',)
+    list_editable = ('name', 'class_name', 'is_enable',)
+    list_filter = (IsEnableFilter,)
     list_per_page = 30
-    search_fields = ('name', 'class_name', )
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    search_fields = ('name', 'class_name',)
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
 
 # 首页模块
@@ -371,10 +374,10 @@ class ChfIndexPlateAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'en_title', 'profile', 'en_profile', 'animate_type',
                     'is_redirect_sub_page', 'sub_page_url', 'video_source', 'sort', 'is_enable',)
     list_display_links = ('id', 'title', 'en_title', 'profile', 'en_profile')
-    list_editable = ('animate_type', 'is_redirect_sub_page', 'is_enable', 'sort', )
+    list_editable = ('animate_type', 'is_redirect_sub_page', 'is_enable', 'sort',)
     list_filter = (IsEnableFilter, 'create_time',)
     search_fields = ('title', 'en_title', 'descr', 'en_descr', 'animate_type')
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
 
 # 发展历程
@@ -382,13 +385,13 @@ class ChfIndexPlateAdmin(admin.ModelAdmin):
 class ChfCompanyHistoryAdmin(admin.ModelAdmin):
     # exclude = ('breif', 'content', )
     list_display = ('timeline_title', 'title', 'breif', 'en_timeline_title', 'en_title', 'en_breif',
-                    'cover_image_url', 'sort', 'is_enable', )
+                    'cover_image_url', 'sort', 'is_enable',)
     list_display_links = ('timeline_title', 'en_timeline_title')
-    list_editable = ('title', 'en_title', 'is_enable', 'sort', )
+    list_editable = ('title', 'en_title', 'is_enable', 'sort',)
     list_filter = (IsEnableFilter, 'create_time',)
     list_per_page = 30
     search_fields = ('title', 'en_title', 'breif', 'en_brief', 'timeline_title', 'en_timeline_title')
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
     class Media:
         js = (
@@ -409,8 +412,8 @@ class ChfJobRecruitAdmin(admin.ModelAdmin):
     list_editable = ('education', 'work_prop', 'sort', 'is_enable')
     list_filter = ('education', 'work_prop', IsEnableFilter, 'create_time',)
     list_per_page = 30
-    search_fields = ('job_name', 'en_job_name', 'work_year', )
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    search_fields = ('job_name', 'en_job_name', 'work_year',)
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
     class Media:
         js = (
@@ -429,11 +432,11 @@ class ChfNewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'en_title', 'brief', 'en_brief', 'type', 'profile', 'en_profile',
                     'read_count', 'cover_image_url', 'sort', 'is_enable', 'create_time')
     list_display_links = ('title', 'en_title', 'profile', 'en_profile')
-    list_editable = ('brief', 'en_brief', 'type', 'sort', 'read_count', 'is_enable', )
-    list_filter = ('type', IsEnableFilter, )
+    list_editable = ('brief', 'en_brief', 'type', 'sort', 'read_count', 'is_enable',)
+    list_filter = ('type', IsEnableFilter,)
     list_per_page = 30
     search_fields = ('title', 'en_title', 'brief', 'en_brief')
-    exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username', )
+    exclude = ('create_uid', 'create_username', 'operate_uid', 'operate_username',)
 
     class Media:
         js = (
@@ -448,12 +451,12 @@ class ChfNewsAdmin(admin.ModelAdmin):
 @admin.register(models.ChfApplyRecord)
 class ChfApplyRecordAdmin(admin.ModelAdmin):
     list_display = ('name', 'sex', 'birthday', 'phone', 'email', 'is_get', 'is_inform', 'state', 'sort', 'create_time')
-    list_display_links = ('name', )
-    list_editable = ('is_get', 'is_inform', 'state', 'sort', )
+    list_display_links = ('name',)
+    list_editable = ('is_get', 'is_inform', 'state', 'sort',)
     list_filter = (IsGetFilter, IsInformFilter, 'state')
     list_per_page = 30
-    search_fields = ('name', 'sex', 'phone', 'email', )
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    search_fields = ('name', 'sex', 'phone', 'email',)
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
     # 屏蔽增加功能按钮
     def has_add_permission(self, request):
@@ -474,8 +477,9 @@ class ChfUserWateringRecordAdmin(admin.ModelAdmin):
                     'init_amount', 'amount', 'final_amount', 'create_time')
     list_filter = ('client_ip', 'create_time')
     list_per_page = 30
-    search_fields = ('client_ip', 'client_host', 'client_port', 'client_user_agent', 'server_ip', 'server_host', 'server_port', )
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    search_fields = (
+    'client_ip', 'client_host', 'client_port', 'client_user_agent', 'server_ip', 'server_host', 'server_port',)
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
     # 屏蔽增加功能按钮
     def has_add_permission(self, request):
@@ -494,8 +498,8 @@ class ChfUserWateringRecordAdmin(admin.ModelAdmin):
 @admin.register(models.ChfWateringQty)
 class ChfWateringQtyAdmin(admin.ModelAdmin):
     list_display = ('amount', 'total_amount', 'operate_time')
-    list_display_links = ('amount', 'total_amount', )
-    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username', )
+    list_display_links = ('amount', 'total_amount',)
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
     # 屏蔽增加功能按钮
     def has_add_permission(self, request):
@@ -510,9 +514,9 @@ class ChfWateringQtyAdmin(admin.ModelAdmin):
 @admin.register(models.ChfTableTemplate)
 class ChfTableTemplateAdmin(admin.ModelAdmin):
     list_display = ('name', 'profile', 'is_enable', 'operate_time')
-    list_display_links = ('name', 'profile', )
-    list_editable = ('is_enable', )
-    list_filter = (IsEnableFilter, )
+    list_display_links = ('name', 'profile',)
+    list_editable = ('is_enable',)
+    list_filter = (IsEnableFilter,)
     list_per_page = 30
     search_fields = ('name', 'is_enable',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
@@ -523,8 +527,8 @@ class ChfTableTemplateAdmin(admin.ModelAdmin):
 class ChfQuestionAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'profile', 'type', 'state', 'profile_remark', 'operate_time')
     list_display_links = ('id', 'name', 'profile', 'profile_remark',)
-    list_editable = ('type', 'state', )
-    list_filter = ('type', 'state', )
+    list_editable = ('type', 'state',)
+    list_filter = ('type', 'state',)
     list_per_page = 30
     search_fields = ('name', 'type', 'state')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
@@ -537,12 +541,13 @@ class ChfQuestionAdmin(admin.ModelAdmin):
             '/static/plugins/kindeditor-4.1.10/config.js',
         )
 
+
 @admin.register(models.ChfKeywords)
 class ChfKeywordsAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'profile_keyword', 'profile_descr', 'is_enable', 'sort', 'operate_time')
     list_display_links = ('id', 'title', 'profile_keyword', 'profile_descr',)
     # list_editable = ('type', 'state',)
-    list_filter = (IsEnableFilter, )
+    list_filter = (IsEnableFilter,)
     list_per_page = 30
     search_fields = ('title', 'keyword', 'descr')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)

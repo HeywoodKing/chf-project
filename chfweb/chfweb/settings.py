@@ -26,17 +26,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rnx96978^u&3g*e12j7rt-b@-95rj+=(bl791)(^gllw$j(-nl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    '192.168.0.100',
-    '192.168.0.122',
-    '172.16.40.247',
-    '47.99.121.101',
-    'www.xaqsh.cn',
-    'www.xaqsh.com',
-    'www.xianqinshihuang.com',
+    # '47.99.121.101',
+    'xachf.com',
     'www.xachf.com',
 ]
 
@@ -169,7 +164,7 @@ APPEND_SLASH = True
 
 LANGUAGES = (
     ('zh-hans', _('中文')),
-    ('en', _('英文')),
+    ('en', _('en')),
     # ('zh-Hant', _('中文繁體')),
 )
 
