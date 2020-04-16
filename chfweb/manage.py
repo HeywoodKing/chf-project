@@ -5,8 +5,16 @@ import sys
 
 
 def main():
+<<<<<<< HEAD
+    # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chfweb.settings')
+    env = os.environ.get('DJANGO_SETTINGS_PROFILE', 'dev')
+    # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chfweb.settings.%s' % env)
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'chfweb.settings.%s' % env
+
+=======
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chfweb.settings')
     # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'chfweb.settings.local')
+>>>>>>> 12d4e38c285f084c80306a400786e3e701b9a075
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

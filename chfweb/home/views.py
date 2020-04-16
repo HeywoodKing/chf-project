@@ -491,45 +491,55 @@ def partner(req):
     return render(req, 'partner.html', locals())
 
 
-# 社会责任 和 新闻资讯合并为一个菜单了
-def resp_list(req):
-    index = 4
+# # 社会责任 和 新闻资讯合并为一个菜单了 暫時不用了
+# def resp_list(req):
+#     index = 4
+#
+#     resp_lists = models.ChfNews.objects.filter(type=1, is_enable=True)
+#     paginator = Paginator(resp_lists, 10, 2)
+#     page = req.GET.get('page')
+#     try:
+#         resp_list = paginator.page(page)
+#     except PageNotAnInteger:
+#         resp_list = paginator.page(1)
+#     except EmptyPage:
+#         resp_list = paginator.page(paginator.num_pages)
+#
+#     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
+#
+#     return render(req, 'duty_list.html', locals())
 
-    resp_lists = models.ChfNews.objects.filter(type=1, is_enable=True)
-    paginator = Paginator(resp_lists, 10, 2)
-    page = req.GET.get('page')
-    try:
-        resp_list = paginator.page(page)
-    except PageNotAnInteger:
-        resp_list = paginator.page(1)
-    except EmptyPage:
-        resp_list = paginator.page(paginator.num_pages)
 
-    resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
-
-    return render(req, 'duty_list.html', locals())
-
-
-# 社会责任详情
-def resp_detail(req, id):
-    index = 4
-    try:
-        if id:
-            resp = models.ChfNews.objects.get(id=id)
-
-            resp.read_count += 1
-            resp.save()
-    except Exception as e:
-        logger.error(e)
-
-    resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
-
-    return render(req, 'duty_detail.html', locals())
+# # 社会责任详情 暫時不用了
+# def resp_detail(req, id):
+#     index = 4
+#     try:
+#         if id:
+#             resp = models.ChfNews.objects.get(id=id)
+#
+#             resp.read_count += 1
+#             resp.save()
+#     except Exception as e:
+#         logger.error(e)
+#
+#     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
+#
+#     return render(req, 'duty_detail.html', locals())
 
 
 # 新闻资讯
 def news_list(req):
     index = 4
+
+    # print('=' * 100)
+    # print(dir(req))
+    # print(req.get_full_path())
+    # print(req.get_host())
+    # print(req.get_port())
+    # print(req.get_raw_uri())
+    # print(req.path, )
+    # print(req.path_info)
+    # print('=' * 100)
 
     # 社会责任
     resp_lists = models.ChfNews.objects.filter(type=1, is_enable=True)
@@ -543,7 +553,10 @@ def news_list(req):
     except EmptyPage:
         resp_list = paginator.page(paginator.num_pages)
 
+
+    # 最近社會責任
     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
+    # resp_lasted = [item for item in resp_lasted if item.en_title]
 
     # 新闻资讯
     news_lists = models.ChfNews.objects.filter(type=0, is_enable=True)
@@ -558,6 +571,11 @@ def news_list(req):
         news_list = paginator.page(paginator.num_pages)
         # logger.error('空页')
 
+    if req.path.split('/')[1] == 'en':
+        resp_list = [item for item in resp_list if item.en_title]
+        news_list = [item for item in news_list if item.en_title]
+
+    # 最近新聞
     # news_lasted = models.ChfNews.objects.filter(type=0)[:10]
 
     return render(req, 'news_list.html', locals())
@@ -570,12 +588,19 @@ def news_detail(req, id):
         if id:
             news = models.ChfNews.objects.get(id=id)
 
-            news.read_count += 1
-            news.save()
+            if req.path.split('/')[1] == 'en':
+                if news.en_title is not None:
+                    news.read_count += 1
+                    news.save()
+            else:
+                news.read_count += 1
+                news.save()
     except Exception as e:
         logger.error(e)
 
     news_lasted = models.ChfNews.objects.all()[:10]
+    if req.path.split('/')[1] == 'en':
+        news_lasted = [item for item in news_lasted if item.en_title]
 
     return render(req, 'news_detail.html', locals())
 
@@ -585,6 +610,8 @@ def job_list(req):
     index = 5
 
     job_list = models.ChfJobRecruit.objects.filter(is_enable=True)
+    if req.path.split('/')[1] == 'en':
+        job_list = [item for item in job_list if item.en_job_name]
 
     return render(req, 'job_list.html', locals())
 

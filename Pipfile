@@ -1,6 +1,6 @@
 [[source]]
-name = "douban"
-url = "https://pypi.douban.com/simple"
+name = "tsinghua"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
 verify_ssl = true
 
 [dev-packages]

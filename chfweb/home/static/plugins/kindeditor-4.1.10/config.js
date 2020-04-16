@@ -1,11 +1,11 @@
 
 var editor = new Array();
 var options = {
-    filterMode : true,
+    filterMode : false,
     allowImageUpload : false,
     allowFlashUpload : false,
     allowMediaUpload : false,
-    allowFileManager : false,
+    allowFileManager : true,
     items : ['fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
     'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
     'insertunorderedlist', '|', 'emoticons', 'image', 'flash', 'media','|', 'link','unlink','fullscreen'],
@@ -16,8 +16,10 @@ var options1 = {
     width:'800px',
     height:'600px',
     resizeType:1,
+    filterMode : false,
     allowPreviewEmoticons: false,
     allowImageRemote: false,
+    allowFileManager : true,
     uploadJson: '/admin/upload/kindeditor',
 };
 
