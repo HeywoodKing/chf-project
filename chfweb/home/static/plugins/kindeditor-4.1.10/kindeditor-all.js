@@ -906,7 +906,7 @@ function _mediaType(src) {
 	if (/\.(rm|rmvb)(\?|$)/i.test(src)) {
 		return 'audio/x-pn-realaudio-plugin';
 	}
-	if (/\.(swf|flv)(\?|$)/i.test(src)) {
+	if (/\.(swf|flv|mp4|MP4)(\?|$)/i.test(src)) {
 		return 'application/x-shockwave-flash';
 	}
 	return 'video/x-ms-asf-plugin';
@@ -947,11 +947,18 @@ function _mediaImg(blankPath, attrs) {
 	} else if (height > 0) {
 		style += 'height:' + height + 'px;';
 	}
-	var html = '<img class="' + _mediaClass(type) + '" src="' + blankPath + '" ';
-	if (style !== '') {
-		html += 'style="' + style + '" ';
+
+	if (attrs.src.indexOf('.mp4') != -1 || attrs.src.indexOf('.MP4') != -1){
+	    var html = '<video controls="" width="+width+" height="+height+" class="' + _mediaClass(type) + '" ';
+        html += '><source src="' + attrs.src + '" data-ke-src="'+attrs.src+'" >'
+        html += '</video>';
+	}else{
+        var html = '<img class="' + _mediaClass(type) + '" src="' + blankPath + '" ';
+        if (style !== '') {
+            html += 'style="' + style + '" ';
+        }
+        html += 'data-ke-tag="' + escape(srcTag) + '" alt="" />';
 	}
-	html += 'data-ke-tag="' + escape(srcTag) + '" alt="" />';
 	return html;
 }
 function _tmpl(str, data) {

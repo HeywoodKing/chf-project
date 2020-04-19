@@ -23,7 +23,7 @@ logger.setLevel(level=logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 # file
-# fileHandler = logging.FileHandler('chin.log')
+# fileHandler = logging.FileHandler('chf.log')
 # fileHandler.setLevel(logging.INFO)
 # fileHandler.setFormatter(formatter)
 
@@ -49,36 +49,44 @@ def global_setting(req):
     SITE_AUTHOR = settings.SITE_AUTHOR
     MEDIA_URL = settings.MEDIA_URL
 
-    # 菜单
-    nav_list = models.SysNav.objects.filter(is_enable=True)
+    try:
+        # 菜单
+        nav_list = models.SysNav.objects.filter(is_enable=True)
 
-    # 查询banner
-    banner = req.GET.get('banner', None)
+        banner_list = []
+        # 查询banner
+        banner = req.GET.get('banner', None)
+        if banner:
+            nav = models.SysNav.objects.get(code=banner)
+            if nav:
+                # 方式一:主表.子表_set()
+                # Django默认每个主表对象都有一个外键的属性
+                # 可以通过它来查询所有属于主表的子表信息
+                # 返回值为一个queryset对象
+                # banner_list = nav.ChfBanner_set.all()
 
-    if banner:
-        nav = models.SysNav.objects.get(code=banner)
+                # 方式二：
+                # 通过在外键中设置related_name属性值既可
+                banner_list = nav.navs.all()
 
-        # 方式一:主表.子表_set()
-        # Django默认每个主表对象都有一个外键的属性
-        # 可以通过它来查询所有属于主表的子表信息
-        # 返回值为一个queryset对象
-        # banner_list = nav.ChfBanner_set.all()
+                # for ba in banner_list:
+                #     print(ba.text, ba.en_text, ba.nav, ba.image_url, ba.is_enable, ba.sort)
 
-        # 方式二：
-        # 通过在外键中设置related_name属性值既可
-        banner_list = nav.navs.all()
+                # 方式三：
+                # 通过@property装饰器在model中预定义方法实现
+                # banner_list = nav.all_navs
 
-        # 方式三：
-        # 通过@property装饰器在model中预定义方法实现
-        # banner_list = nav.all_navs
+                # 方式四：
+                # banner_list = models.ChfBanner.objects.filter(nav=nav)
 
-        # 方式四：
-        # banner_list = models.ChfBanner.objects.filter(nav=nav)
+        # 网站底部公共信息
+        sysconfig_list = models.SysConfig.objects.filter(is_enable=True)
+        if sysconfig_list:
+            sysconfig = sysconfig_list[0]
 
-    # 网站底部公共信息
-    sysconfig_list = models.SysConfig.objects.filter(is_enable=True)
-    if sysconfig_list:
-        sysconfig = sysconfig_list[0]
+        keyword_list = models.ChfKeywords.objects.filter(is_enable=True)
+    except Exception as ex:
+        print(ex)
 
     return locals()
 
@@ -97,6 +105,32 @@ def set_lang(req):
         'msg': '切换成功',
     }
     return HttpResponse(json.dumps(res), content_type='application/json')
+
+
+# 搜索
+def search(request):
+    # 全局搜索
+    # search_keywords = request.GET.get('keywords', '')  # 取出搜索关键词
+    # if search_keywords:
+    #     # 根据关键词搜索数据库记,icontains是不区分大小写
+    #     all_course = all_course.filter(
+    #         Q(name__icontains=search_keywords) |
+    #         Q(desc__icontains=search_keywords) |
+    #         Q(work_position__icontains=search_keywords)
+    #     )
+
+    # if "q" in request.GET:
+    #     querystring = request.GET.get("q")
+    #     print(querystring)
+    #     if len(querystring) == 0:
+    #         return redirect("/search/")
+    #     posts = Blog.objects.filter(title__icontains=querystring | tagline__icontains=querystring | contents__icontains=querystring)
+    #     context= {"posts": posts}
+    #     return render(request, "kernel/search.html", context)
+    # else:
+    #     return render(request, "kernel/search.html")
+
+    pass
 
 # def set_language(req):
 #     from django.utils.translation import check_for_language
@@ -125,7 +159,6 @@ def set_lang(req):
 # 首页
 def index(req):
     index = 0
-    logger.info('111111')
     try:
         water_qty_model = models.ChfWateringQty.objects.all()
         if water_qty_model:
@@ -145,7 +178,6 @@ def index(req):
 # 关于我们 => 品牌介绍
 def about(req):
     index = 1
-    logger.info('fsdafsdfsda')
     try:
         comp_about_models = models.ChfAbout.objects.filter(is_enable=True)
         if comp_about_models:
@@ -459,45 +491,55 @@ def partner(req):
     return render(req, 'partner.html', locals())
 
 
-# 社会责任 和 新闻资讯合并为一个菜单了
-def resp_list(req):
-    index = 4
+# # 社会责任 和 新闻资讯合并为一个菜单了 暫時不用了
+# def resp_list(req):
+#     index = 4
+#
+#     resp_lists = models.ChfNews.objects.filter(type=1, is_enable=True)
+#     paginator = Paginator(resp_lists, 10, 2)
+#     page = req.GET.get('page')
+#     try:
+#         resp_list = paginator.page(page)
+#     except PageNotAnInteger:
+#         resp_list = paginator.page(1)
+#     except EmptyPage:
+#         resp_list = paginator.page(paginator.num_pages)
+#
+#     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
+#
+#     return render(req, 'duty_list.html', locals())
 
-    resp_lists = models.ChfNews.objects.filter(type=1, is_enable=True)
-    paginator = Paginator(resp_lists, 10, 2)
-    page = req.GET.get('page')
-    try:
-        resp_list = paginator.page(page)
-    except PageNotAnInteger:
-        resp_list = paginator.page(1)
-    except EmptyPage:
-        resp_list = paginator.page(paginator.num_pages)
 
-    resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
-
-    return render(req, 'duty_list.html', locals())
-
-
-# 社会责任详情
-def resp_detail(req, id):
-    index = 4
-    try:
-        if id:
-            resp = models.ChfNews.objects.get(id=id)
-
-            resp.read_count += 1
-            resp.save()
-    except Exception as e:
-        logger.error(e)
-
-    resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
-
-    return render(req, 'duty_detail.html', locals())
+# # 社会责任详情 暫時不用了
+# def resp_detail(req, id):
+#     index = 4
+#     try:
+#         if id:
+#             resp = models.ChfNews.objects.get(id=id)
+#
+#             resp.read_count += 1
+#             resp.save()
+#     except Exception as e:
+#         logger.error(e)
+#
+#     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
+#
+#     return render(req, 'duty_detail.html', locals())
 
 
 # 新闻资讯
 def news_list(req):
     index = 4
+
+    # print('=' * 100)
+    # print(dir(req))
+    # print(req.get_full_path())
+    # print(req.get_host())
+    # print(req.get_port())
+    # print(req.get_raw_uri())
+    # print(req.path, )
+    # print(req.path_info)
+    # print('=' * 100)
 
     # 社会责任
     resp_lists = models.ChfNews.objects.filter(type=1, is_enable=True)
@@ -507,11 +549,14 @@ def news_list(req):
         resp_list = paginator.page(page)
     except PageNotAnInteger:
         resp_list = paginator.page(1)
-        logger.error('resp_list 传入的页码错误')
+        # logger.error('resp_list 传入的页码错误')
     except EmptyPage:
         resp_list = paginator.page(paginator.num_pages)
 
+
+    # 最近社會責任
     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
+    # resp_lasted = [item for item in resp_lasted if item.en_title]
 
     # 新闻资讯
     news_lists = models.ChfNews.objects.filter(type=0, is_enable=True)
@@ -521,11 +566,16 @@ def news_list(req):
         news_list = paginator.page(page)
     except PageNotAnInteger:
         news_list = paginator.page(1)
-        logger.error('news_list 传入的页码错误')
+        # logger.error('news_list 传入的页码错误')
     except EmptyPage:
         news_list = paginator.page(paginator.num_pages)
-        logger.error('空页')
+        # logger.error('空页')
 
+    if req.path.split('/')[1] == 'en':
+        resp_list = [item for item in resp_list if item.en_title]
+        news_list = [item for item in news_list if item.en_title]
+
+    # 最近新聞
     # news_lasted = models.ChfNews.objects.filter(type=0)[:10]
 
     return render(req, 'news_list.html', locals())
@@ -538,12 +588,19 @@ def news_detail(req, id):
         if id:
             news = models.ChfNews.objects.get(id=id)
 
-            news.read_count += 1
-            news.save()
+            if req.path.split('/')[1] == 'en':
+                if news.en_title is not None:
+                    news.read_count += 1
+                    news.save()
+            else:
+                news.read_count += 1
+                news.save()
     except Exception as e:
         logger.error(e)
 
     news_lasted = models.ChfNews.objects.all()[:10]
+    if req.path.split('/')[1] == 'en':
+        news_lasted = [item for item in news_lasted if item.en_title]
 
     return render(req, 'news_detail.html', locals())
 
@@ -553,6 +610,8 @@ def job_list(req):
     index = 5
 
     job_list = models.ChfJobRecruit.objects.filter(is_enable=True)
+    if req.path.split('/')[1] == 'en':
+        job_list = [item for item in job_list if item.en_job_name]
 
     return render(req, 'job_list.html', locals())
 

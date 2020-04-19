@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% load staticfiles %}
+{% load static %}
 {% load i18n %}
 
 
@@ -43,7 +43,7 @@
                 <div class="col-sm-12 col-sm-12 col-md-6 col-lg-4 single-service-2" style="border-right: 1px solid #666666;">
                     <div class="text-center">
                         <div class="title">
-                            <h2><b>2015{% trans "年" %}</b></h2>
+                            <h2><b>2012{% trans "年" %}</b></h2>
                         </div>
                         <div class="content">
                             <p>{% trans "公司正式成立" %}</p>
@@ -63,7 +63,7 @@
                 <div class="col-sm-12 col-sm-12 col-md-6 col-lg-4 single-service-2">
                     <div class="text-center">
                         <div class="title">
-                            <h2><b>3{% trans "个" %}</b></h2>
+                            <h2><b>7{% trans "个" %}</b></h2>
                         </div>
                         <div class="content">
                             <p>{% trans "系列产品" %}</p>
@@ -105,16 +105,16 @@
                     </div>{% endcomment %}
                 </div>
             </div>
-            <div class="col-lg-7 col-md-6 col-sm-6 single-service-2" style="z-index: 100;">
-                <div class="inner inner-hover" style="padding: 0;">
+            <div class="col-lg-7 col-md-6 col-sm-6 single-service-2" style="z-index: 100; text-align:left;">
+                <div class="inner inner-hover" style="padding: 10px;">
                     <div>
                         {% if LANGUAGE_CODE == 'en' %}
-                            <h2><i>{{ comp_about_model.en_title }}</i></h2>
+                            <h4><i>{{ comp_about_model.en_title }}</i></h4>
                             <p style="text-indent:2em; text-align: left; font-size:16px; letter-spacing:1px;">
                                 {{ comp_about_model.en_content|safe }}
                             </p>
                         {% else %}
-                            <h2><i>{{ comp_about_model.title }}</i></h2>
+                            <h4><i>{{ comp_about_model.title }}</i></h4>
                             <p style="text-indent:2em; text-align: left; font-size:16px; letter-spacing:1px;">
                                 {{ comp_about_model.content|safe }}
                             </p>
@@ -320,8 +320,8 @@
                         {% if LANGUAGE_CODE == 'en' %}
                             <div class="timeline-info">
                                 <div class="timeline-info-bg">
-                                    <h3>{{ item.en_timeline_title }}</h3>
-                                    <p>{{ item.en_title }}</p>
+                                    <h3>{% if item.en_timeline_title  %}{{ item.en_timeline_title  }}{% endif %} </h3>
+                                    <p>{% if item.en_title %}{{ item.en_title }}{% endif %}</p>
                                 </div>
                                 <div class="arrow"></div>
                             </div>

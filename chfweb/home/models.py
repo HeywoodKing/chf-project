@@ -159,14 +159,14 @@ class SysConfig(BaseModel):
     site_name = models.CharField(_('站点名称'), max_length=50, null=True, blank=True)
     site_desc = models.CharField(_('站点描述'), max_length=150, null=True, blank=True)
     site_author = models.CharField(_('作者'), max_length=100, null=True, blank=True)
-    site_company = models.CharField(_('公司(中文)'), max_length=100, default=None, blank=True, null=True)
-    en_site_company = models.CharField(_('公司(英文)'), max_length=200, default=None, blank=True, null=True)
-    address = models.CharField(_('底部显示地址(中文)'), max_length=150, default=None, blank=True, null=True)
-    en_address = models.CharField(_('底部显示地址(英文)'), max_length=300, default=None, blank=True, null=True)
+    site_company = models.CharField(_('公司(中文)'), max_length=100, default='', blank=True, null=True)
+    en_site_company = models.CharField(_('公司(英文)'), max_length=200, default='', blank=True, null=True)
+    address = models.CharField(_('底部显示地址(中文)'), max_length=150, default='', blank=True, null=True)
+    en_address = models.CharField(_('底部显示地址(英文)'), max_length=300, default='', blank=True, null=True)
     telephone = models.CharField(_('底部显示电话'), max_length=15)
     email = models.EmailField(_('邮箱'), max_length=50, null=True, blank=True)
-    icp = models.CharField(_('备案号(中文)'), max_length=256, null=True, blank=True)
-    en_icp = models.CharField(_('备案号(英文)'), max_length=256, null=True, blank=True)
+    icp = models.CharField(_('备案号(中文)'), max_length=256, default='', null=True, blank=True)
+    en_icp = models.CharField(_('备案号(英文)'), max_length=256, default='', null=True, blank=True)
     remark = models.CharField(_('备注'), max_length=200, null=True, blank=True)
     logo_bottom = models.ImageField(_('底部logo'), null=True, blank=True, upload_to='sys/%Y/%m')
     qrcode = models.ImageField(_('二维码'), null=True, blank=True, upload_to='sys/%Y/%m')
@@ -731,14 +731,17 @@ class ChfNews(BaseModel):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.title
+        if self.title:
+            return self.title
+        else:
+            return '-'
 
     # def get_absolute_url(self):
     #     return reverse('news', args=(self.slug, ))
 
-    def get_absolute_url(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(ChfNews, self).get_absolute_url(*args, **kwargs)
+    # def get_absolute_url(self, *args, **kwargs):
+    #     self.slug = slugify(self.title)
+    #     super(ChfNews, self).get_absolute_url(*args, **kwargs)
 
     def profile(self):
         if len(str(self.content)) > 20:
@@ -1008,3 +1011,37 @@ class ChfQuestion(BaseModel):
 
     profile_remark.allow_tags = True
     profile_remark.short_description = _('备注')
+
+class ChfKeywords(BaseModel):
+    title = models.CharField(_('标题'), max_length=80, default='', null=True, blank=True)
+    keyword = models.TextField(_('关键字'), default='', null=True, blank=True)
+    descr = models.CharField(_('描述'), max_length=256, default='', null=True, blank=True)
+    is_enable = models.BooleanField(_('是否启用'), default=True)
+    sort = models.IntegerField(_('排序'), default=1)
+
+    class Meta:
+        db_table = "chf_keywords"
+        ordering = ['-create_time']
+        verbose_name = _('关键字管理')
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return str(self.title)
+
+    def profile_keyword(self):
+        if len(str(self.keyword)) > 30:
+            return '{}...'.format(str(self.keyword)[0:30])
+        else:
+            return str(self.keyword)
+
+    profile_keyword.allow_tags = True
+    profile_keyword.short_description = _('关键字')
+
+    def profile_descr(self):
+        if len(str(self.descr)) > 30:
+            return '{}...'.format(str(self.descr)[0:30])
+        else:
+            return str(self.descr)
+
+    profile_descr.allow_tags = True
+    profile_descr.short_description = _('描述')

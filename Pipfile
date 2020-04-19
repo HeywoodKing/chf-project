@@ -1,0 +1,25 @@
+[[source]]
+name = "tsinghua"
+url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
+verify_ssl = true
+
+[dev-packages]
+django = "*"
+pillow = "*"
+pytz = "*"
+sqlparse = "*"
+django-simpleui = "*"
+pymysql = "*"
+mysqlclient = "*"
+
+[packages]
+django = "*"
+pillow = "*"
+pytz = "*"
+sqlparse = "*"
+django-simpleui = "*"
+pymysql = "*"
+mysqlclient = "*"
+
+[requires]
+python_version = "3.7"

@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% load staticfiles %}
+{% load static %}
 {% load my_filter_tag %}
 {% load i18n %}
 
@@ -148,14 +148,14 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="about-img">
-                                        <a href="/news_detail/{{ item.id }}/banner/{{ banner }}"><img
+                                        <a href="/news_detail/{{ item.id }}?banner={{ banner }}"><img
                                                 src="/uploads/{{ item.cover_image_url }}" alt="{{ item.en_title }}"></a>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="about-content" style="margin-top:0;">
                                         <h3 style="margin: 5px 0;"><a
-                                                href="/news_detail/{{ item.id }}/banner/{{ banner }}">{{ item.en_title|truncate_point:'64' }}</a>
+                                                href="/news_detail/{{ item.id }}?banner={{ banner }}">{{ item.en_title|truncate_point:'64' }}</a>
                                         </h3>
                                         <div>{{ item.en_brief|truncate_point:'300' }}</div>
                                     </div>
@@ -169,7 +169,7 @@
                                     <div class="about-content" style="text-align: center;">
                                         <a class="btn btn-default"
                                            style="width: 120px; background-color: #fee97c; color: #fff;"
-                                           href="/news_detail/{{ item.id }}/banner/{{ banner }}">{% trans "更多" %}>></a>
+                                           href="/news_detail/{{ item.id }}?banner={{ banner }}">{% trans "更多" %}>></a>
                                     </div>
                                 </div>
                             </div>
@@ -181,14 +181,14 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="about-img">
-                                        <a href="/news_detail/{{ item.id }}/banner/{{ banner }}"><img
+                                        <a href="/news_detail/{{ item.id }}?banner={{ banner }}"><img
                                                 src="/uploads/{{ item.cover_image_url }}" alt="{{ item.title }}"></a>
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <div class="about-content" style="margin-top:0;">
                                         <h3 style="margin: 5px 0;"><a
-                                                href="/news_detail/{{ item.id }}/banner/{{ banner }}">{{ item.title|truncate_point:'64' }}</a>
+                                                href="/news_detail/{{ item.id }}?banner={{ banner }}">{{ item.title|truncate_point:'64' }}</a>
                                         </h3>
                                         <div>{{ item.brief|truncate_point:'300' }}</div>
                                     </div>
@@ -202,7 +202,7 @@
                                     <div class="about-content" style="text-align: center;">
                                         <a class="btn btn-default"
                                            style="width: 120px; background-color: #fee97c; color: #fff;"
-                                           href="/news_detail/{{ item.id }}/banner/{{ banner }}">{% trans "更多" %}>></a>
+                                           href="/news_detail/{{ item.id }}?banner={{ banner }}">{% trans "更多" %}>></a>
                                     </div>
                                 </div>
                             </div>
