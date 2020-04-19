@@ -12,16 +12,28 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from django.utils.translation import ugettext_lazy as _
-# import logging
-# import django.utils.log
-# import logging.handlers
+import logging
+import django.utils.log
+import logging.handlers
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'rnx96978^u&3g*e12j7rt-b@-95rj+=(bl791)(^gllw$j(-nl'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    # '47.99.121.101',
+    'xachf.com',
+    'www.xachf.com',
+]
 
 # Application definition
 
@@ -83,6 +95,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'chfweb.wsgi.application'
 
+# Database
+# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+
+DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
+
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'NAME': 'chf',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'OPTIONS': {
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
+    }
+}
 
 # DATABASES_APPS_MAPPING = {
 #     # 'app':'default',
@@ -131,7 +164,7 @@ APPEND_SLASH = True
 
 LANGUAGES = (
     ('zh-hans', _('中文')),
-    ('en', _('EN')),
+    ('en', _('en')),
     # ('zh-Hant', _('中文繁體')),
 )
 
@@ -372,7 +405,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads').replace('\\', '/')  # 设置静�
 # #     'width': '80%',
 # #     'height': '480',
 # #
-# #     # Use proper language settings automatically (default)
+# #     # Use proper language setting automatically (default)
 # #     'lang': 'zh-CN',
 # # }
 # ================================================================================================
@@ -756,4 +789,3 @@ LOGGING = {
         },
     },
 }
-
