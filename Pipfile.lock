@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "78b0da15cdbc512cdb232bace3df22d9d52c9ca9390d7a3b7446bcbe80c5357b"
+            "sha256": "7ecfe1943381987d9b8b41f4344e7e5b499467af1f8cb9464a61819ae44c2ad8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -25,11 +25,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:642d8eceab321ca743ae71e0f985ff8fdca59f07aab3a9fb362c617d23e33a76",
-                "sha256:d4666c2edefa38c5ede0ec1655424c56dc47ceb04b6d8d62a7eac09db89545c1"
+                "sha256:5052b34b34b3425233c682e0e11d658fd6efd587d11335a0203d827224ada8f2",
+                "sha256:e1630333248c9b3d4e38f02093a26f1e07b271ca896d73097457996e0fae12e8"
             ],
             "index": "tsinghua",
-            "version": "==3.0.5"
+            "version": "==3.0.7"
         },
         "django-simpleui": {
             "hashes": [
@@ -99,14 +99,6 @@
             ],
             "index": "tsinghua",
             "version": "==0.3.1"
-        },
-        "wheel": {
-            "hashes": [
-                "sha256:8788e9155fe14f54164c1b9eb0a319d98ef02c160725587ad60f14ddc57b6f96",
-                "sha256:df277cb51e61359aba502208d680f90c0493adec6f0e848af94948778aed386e"
-            ],
-            "index": "tsinghua",
-            "version": "==0.34.2"
         }
     },
     "develop": {
@@ -119,11 +111,28 @@
         },
         "django": {
             "hashes": [
-                "sha256:642d8eceab321ca743ae71e0f985ff8fdca59f07aab3a9fb362c617d23e33a76",
-                "sha256:d4666c2edefa38c5ede0ec1655424c56dc47ceb04b6d8d62a7eac09db89545c1"
+                "sha256:5052b34b34b3425233c682e0e11d658fd6efd587d11335a0203d827224ada8f2",
+                "sha256:e1630333248c9b3d4e38f02093a26f1e07b271ca896d73097457996e0fae12e8"
             ],
             "index": "tsinghua",
-            "version": "==3.0.5"
+            "version": "==3.0.7"
+        },
+        "django-simpleui": {
+            "hashes": [
+                "sha256:1c460f5a218817ad16c62d0d4cc9eb3e3cfab6b89af2d8dda8473cdbf65891d9"
+            ],
+            "index": "tsinghua",
+            "version": "==3.9.1"
+        },
+        "mysqlclient": {
+            "hashes": [
+                "sha256:4c82187dd6ab3607150fbb1fa5ef4643118f3da122b8ba31c3149ddd9cf0cb39",
+                "sha256:9e6080a7aee4cc6a06b58b59239f20f1d259c1d2fddf68ddeed242d2311c7087",
+                "sha256:f3fdaa9a38752a3b214a6fe79d7cae3653731a53e577821f9187e67cbecb2e16",
+                "sha256:f646f8d17d02be0872291f258cce3813497bc7888cd4712a577fd1e719b2f213"
+            ],
+            "index": "tsinghua",
+            "version": "==1.4.6"
         },
         "pillow": {
             "hashes": [
@@ -153,6 +162,14 @@
             "index": "tsinghua",
             "version": "==7.1.1"
         },
+        "pymysql": {
+            "hashes": [
+                "sha256:3943fbbbc1e902f41daf7f9165519f140c4451c179380677e6a848587042561a",
+                "sha256:d8c059dcd81dedb85a9f034d5e22dcb4442c0b201908bede99e306d65ea7c8e7"
+            ],
+            "index": "tsinghua",
+            "version": "==0.9.3"
+        },
         "pytz": {
             "hashes": [
                 "sha256:1c557d7d0e871de1f5ccd5833f60fb2550652da6be2693c1e02300743d21500d",
@@ -168,14 +185,6 @@
             ],
             "index": "tsinghua",
             "version": "==0.3.1"
-        },
-        "wheel": {
-            "hashes": [
-                "sha256:8788e9155fe14f54164c1b9eb0a319d98ef02c160725587ad60f14ddc57b6f96",
-                "sha256:df277cb51e61359aba502208d680f90c0493adec6f0e848af94948778aed386e"
-            ],
-            "index": "tsinghua",
-            "version": "==0.34.2"
         }
     }
 }
