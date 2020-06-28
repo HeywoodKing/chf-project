@@ -13,7 +13,6 @@ import pytz
 from home import models
 from logging.handlers import RotatingFileHandler
 
-
 # Create your views here.
 
 # logging.basicConfig(level = logging.INFO,format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -56,8 +55,10 @@ def global_setting(req):
         banner_list = []
         # 查询banner
         banner = req.GET.get('banner', None)
+        # print(banner)
         if banner:
             nav = models.SysNav.objects.get(code=banner)
+            # print(nav)
             if nav:
                 # 方式一:主表.子表_set()
                 # Django默认每个主表对象都有一个外键的属性
@@ -68,6 +69,7 @@ def global_setting(req):
                 # 方式二：
                 # 通过在外键中设置related_name属性值既可
                 banner_list = nav.navs.all()
+                # print(banner_list)
 
                 # for ba in banner_list:
                 #     print(ba.text, ba.en_text, ba.nav, ba.image_url, ba.is_enable, ba.sort)
@@ -131,6 +133,7 @@ def search(request):
     #     return render(request, "kernel/search.html")
 
     pass
+
 
 # def set_language(req):
 #     from django.utils.translation import check_for_language
@@ -351,8 +354,8 @@ def add_watering_qty(req):
             # start_date = datetime.date(2019, 5, 1)
             # end_date = datetime.date(2019, 6, 1)
 
-            ip_count = models.ChfUserWateringRecord.objects\
-                .filter(client_ip=client_ip, create_time__range=(start_date, curr_now))\
+            ip_count = models.ChfUserWateringRecord.objects \
+                .filter(client_ip=client_ip, create_time__range=(start_date, curr_now)) \
                 .count()
             if ip_count > 3:
                 # 返回结果
@@ -553,7 +556,6 @@ def news_list(req):
     except EmptyPage:
         resp_list = paginator.page(paginator.num_pages)
 
-
     # 最近社會責任
     resp_lasted = models.ChfNews.objects.filter(type=1)[:10]
     # resp_lasted = [item for item in resp_lasted if item.en_title]
@@ -614,4 +616,42 @@ def job_list(req):
         job_list = [item for item in job_list if item.en_job_name]
 
     return render(req, 'job_list.html', locals())
+
+
+# 大赛报名
+def compet_enroll(req):
+    index = 7
+    try:
+        compet = models.ChfEnrollCompet.objects.get(is_enable=True)
+        if compet:
+            if req.path.split('/')[1] == 'en':
+                if compet.en_title is None:
+                    compet = None
+    except Exception as e:
+        logger.error(e)
+
+    return render(req, 'compet_enroll.html', locals())
+
+
+# 公益大赛
+def compet_list(req, id):
+    index = 6
+    try:
+        if id:
+            compet = models.ChfCompet.objects.get(id=id)
+            if compet:
+                if req.path.split('/')[1] == 'en':
+                    if compet.en_title is None:
+                        compet = None
+        else:
+            compet = None
+
+        if compet:
+            # compet.data = models.ChfCompetVideo.objects.filter(compet__id=compet.id)
+            compet.data = models.ChfCompetVideo.objects.filter(compet=compet.id)
+
+    except Exception as e:
+        logger.error(e)
+
+    return render(req, 'compet.html', locals())
 

@@ -9,8 +9,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    '172.16.40.247',
-    '47.99.121.101',
 ]
 
 # Database

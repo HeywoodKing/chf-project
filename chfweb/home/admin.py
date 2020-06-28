@@ -149,8 +149,8 @@ class SysConfigAdmin(admin.ModelAdmin):
     list_per_page = 10
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
     search_fields = (
-    'site_name', 'site_author', 'site_company', 'en_site_company', 'address', 'en_address', 'telephone',
-    'email', 'icp', 'en_icp',)
+        'site_name', 'site_author', 'site_company', 'en_site_company', 'address', 'en_address', 'telephone',
+        'email', 'icp', 'en_icp',)
 
 
 # 管理员
@@ -303,7 +303,7 @@ class ChfCooperationAdmin(admin.ModelAdmin):
 @admin.register(models.ChfAbout)
 class ChfAboutAdmin(admin.ModelAdmin):
     list_display = (
-    'comp_name', 'en_comp_name', 'title', 'en_title', 'profile', 'en_profile', 'comp_image', 'is_enable')
+        'comp_name', 'en_comp_name', 'title', 'en_title', 'profile', 'en_profile', 'comp_image', 'is_enable')
     list_display_links = ('comp_name', 'en_comp_name', 'profile', 'en_profile')
     list_editable = ('title', 'en_title', 'is_enable')
     list_filter = (IsEnableFilter, 'create_time',)
@@ -478,7 +478,7 @@ class ChfUserWateringRecordAdmin(admin.ModelAdmin):
     list_filter = ('client_ip', 'create_time')
     list_per_page = 30
     search_fields = (
-    'client_ip', 'client_host', 'client_port', 'client_user_agent', 'server_ip', 'server_host', 'server_port',)
+        'client_ip', 'client_host', 'client_port', 'client_user_agent', 'server_ip', 'server_host', 'server_port',)
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
 
     # 屏蔽增加功能按钮
@@ -551,3 +551,58 @@ class ChfKeywordsAdmin(admin.ModelAdmin):
     list_per_page = 30
     search_fields = ('title', 'keyword', 'descr')
     exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
+
+
+@admin.register(models.ChfCompet)
+class ChfCompetAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'en_title', 'profile', 'en_profile', 'is_enable', 'sort', 'operate_time')
+    list_display_links = ('id', 'title', 'en_title', 'profile', 'en_profile', )
+    list_filter = (IsEnableFilter, )
+    list_per_page = 30
+    search_fields = ('title', 'en_title', 'profile', 'en_profile', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
+
+    class Media:
+        js = (
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
+        )
+
+
+@admin.register(models.ChfCompetVideo)
+class ChfCompetVideoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'compet', 'title', 'en_title', 'show_brief', 'en_show_brief', 'profile', 'en_profile',
+                    'cover_image_url', 'video_source', 'is_enable', 'sort', 'operate_time')
+    list_display_links = ('id', 'title', 'en_title', 'show_brief', 'en_show_brief', 'profile', 'en_profile', )
+    list_filter = (IsEnableFilter, )
+    list_per_page = 30
+    search_fields = ('title', 'en_title', 'show_brief', 'en_show_brief', 'profile', 'en_profile', )
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
+
+    class Media:
+        js = (
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
+        )
+
+
+@admin.register(models.ChfEnrollCompet)
+class ChfEnrollCompetAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'en_title', 'profile', 'en_profile', 'is_enable', 'operate_time')
+    list_display_links = ('id', 'title', 'en_title', 'profile', 'en_profile',)
+    list_filter = (IsEnableFilter,)
+    list_per_page = 30
+    search_fields = ('title', 'en_title', 'profile', 'en_profile',)
+    exclude = ('create_uid', 'create_username', 'create_time', 'operate_uid', 'operate_username',)
+
+    class Media:
+        js = (
+            # '/static/plugins/kindeditor-4.1.10/kindeditor-all-min.js',
+            '/static/plugins/kindeditor-4.1.10/kindeditor.js',
+            '/static/plugins/kindeditor-4.1.10/lang/zh_CN.js',
+            '/static/plugins/kindeditor-4.1.10/config.js',
+        )

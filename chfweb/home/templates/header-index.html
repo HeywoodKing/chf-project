@@ -1762,11 +1762,15 @@
                                 {% for item in nav_list %}
                                     {% if item.children.all %}
                                         <li class="has-child">
-                                            <a href="{{ item.url }}?banner={{ item.code }}">{{ item.en_name }}</a>
+                                            {% if item.url %}
+                                                <a href="{{ item.url }}?banner={{ item.code }}">{{ item.en_name }}</a>
+                                            {% else %}
+                                                {{ item.en_name }}
+                                            {% endif %}
                                             <ul class="sub-menu">
                                                 {% for child in item.children.all %}
                                                     <li>
-                                                        <a href="{{ child.url }}?banner={{ item.code }}">{{ child.en_name }}</a>
+                                                        <a href="{{ child.url }}/{{ child.id }}?banner={{ item.code }}">{{ child.en_name }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
@@ -1774,9 +1778,13 @@
                                     {% else %}
                                         {% if item.is_root %}
                                             <li>
-                                                <a href="{{ item.url }}?banner={{ item.code }}">
+                                                {% if item.url %}
+                                                    <a href="{{ item.url }}?banner={{ item.code }}">
+                                                        {{ item.en_name }}
+                                                    </a>
+                                                {% else %}
                                                     {{ item.en_name }}
-                                                </a>
+                                                {% endif %}
                                             </li>
                                         {% endif %}
                                     {% endif %}
@@ -1785,11 +1793,15 @@
                                 {% for item in nav_list %}
                                     {% if item.children.all %}
                                         <li class="has-child">
-                                            <a href="{{ item.url }}?banner={{ item.code }}">{{ item.name }}</a>
+                                            {% if item.url %}
+                                                <a href="{{ item.url }}?banner={{ item.code }}">{{ item.name }}</a>
+                                            {% else %}
+                                                {{ item.name }}
+                                            {% endif %}
                                             <ul class="sub-menu">
                                                 {% for child in item.children.all %}
                                                     <li>
-                                                        <a href="{{ child.url }}?banner={{ item.code }}">{{ child.name }}</a>
+                                                        <a href="{{ child.url }}/{{ child.id }}?banner={{ item.code }}">{{ child.name }}</a>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
@@ -1797,9 +1809,13 @@
                                     {% else %}
                                         {% if item.is_root %}
                                             <li>
-                                                <a href="{{ item.url }}?banner={{ item.code }}">
+                                                {% if item.url %}
+                                                    <a href="{{ item.url }}?banner={{ item.code }}">
+                                                        {{ item.name }}
+                                                    </a>
+                                                {% else %}
                                                     {{ item.name }}
-                                                </a>
+                                                {% endif %}
                                             </li>
                                         {% endif %}
                                     {% endif %}
@@ -1808,24 +1824,26 @@
                         </ul>
                     </nav>
                 </div>
-                {% comment %}<div class="col-6 col-sm-1 nav-column clearfix">
-                    <form action="/i18n/setlang/" method="post" id="change_language_form" class="language-form">
-                        {% csrf_token %}
-                        {% get_current_language as LANGUAGE_CODE %}
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_current_language_bidi as LANGUAGE_BIDI %}
-                        <select class="change_language selectpicker" name="language" id="language" title="选择语言">
-                            <!--<option value="{{LANGUAGE_CODE}}">{{LANGUAGE_CODE}}</option>-->
-                            {% for lang in LANGUAGES %}
-                                <!--{% ifequal lang.0 current_language %} selected {% endifequal %}-->
-                                <option value="{{ lang.0|lower }}" {% ifequal lang.0 LANGUAGE_CODE %}
-                                        selected {% endifequal %}>
-                                    {{ lang.1|lower }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </form>
-                </div>{% endcomment %}
+                {% comment %}
+                    <div class="col-6 col-sm-1 nav-column clearfix">
+                        <form action="/i18n/setlang/" method="post" id="change_language_form" class="language-form">
+                            {% csrf_token %}
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_current_language_bidi as LANGUAGE_BIDI %}
+                            <select class="change_language selectpicker" name="language" id="language" title="选择语言">
+                                <!--<option value="{{LANGUAGE_CODE}}">{{LANGUAGE_CODE}}</option>-->
+                                {% for lang in LANGUAGES %}
+                                    <!--{% ifequal lang.0 current_language %} selected {% endifequal %}-->
+                                    <option value="{{ lang.0|lower }}" {% ifequal lang.0 LANGUAGE_CODE %}
+                                            selected {% endifequal %}>
+                                        {{ lang.1|lower }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                {% endcomment %}
                 <form action="/i18n/setlang/" method="post" id="change_language_form" class="language-form">
                     {% csrf_token %}
                     {% get_current_language as LANGUAGE_CODE %}
