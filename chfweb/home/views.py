@@ -161,7 +161,7 @@ def search(request):
 
 # 首页
 def index(req):
-    index = 0
+    index = 'home'
     try:
         water_qty_model = models.ChfWateringQty.objects.all()
         if water_qty_model:
@@ -180,7 +180,7 @@ def index(req):
 
 # 关于我们 => 品牌介绍
 def about(req):
-    index = 1
+    index = 'about'
     try:
         comp_about_models = models.ChfAbout.objects.filter(is_enable=True)
         if comp_about_models:
@@ -416,7 +416,7 @@ def add_watering_qty(req):
 
 # 品牌产品 => 在线商城
 def product_list(req):
-    index = 2
+    index = 'product'
 
     # 获取产品类型
     product_type_list = models.ChfProductType.objects.filter(is_enable=True)
@@ -441,7 +441,7 @@ def product_list(req):
 
 # 品牌产品详情
 def product_detail(req, id):
-    index = 2
+    index = 'product'
     try:
         if id:
             # product = models.ChfProduct.objects.filter(id=id).update(read_count=read_count+1)
@@ -464,7 +464,7 @@ def product_detail(req, id):
 
 # 品牌合作 => 合作共赢
 def partner(req):
-    index = 3
+    index = 'partner'
 
     try:
         cooperation_list = models.ChfCooperation.objects.filter(is_enable=True)
@@ -526,7 +526,7 @@ def partner(req):
 
 # 新闻资讯
 def news_list(req):
-    index = 4
+    index = 'news'
 
     # print('=' * 100)
     # print(dir(req))
@@ -579,7 +579,7 @@ def news_list(req):
 
 # 新闻资讯
 def news_detail(req, id):
-    index = 4
+    index = 'news'
     try:
         if id:
             news = models.ChfNews.objects.get(id=id)
@@ -603,7 +603,7 @@ def news_detail(req, id):
 
 # 工作机会
 def job_list(req):
-    index = 5
+    index = 'job'
 
     job_list = models.ChfJobRecruit.objects.filter(is_enable=True)
     if req.path.split('/')[1] == 'en':
@@ -614,13 +614,13 @@ def job_list(req):
 
 # 联系我们 为您服务
 def contact(req):
-    index = 6
+    index = 'contact'
     return render(req, 'contact.html', locals())
 
 
 # 大赛报名
 def compet_enroll(req):
-    index = 7
+    index = 'compet'
     try:
         compet = models.ChfEnrollCompet.objects.get(is_enable=True)
         if compet:
@@ -635,7 +635,7 @@ def compet_enroll(req):
 
 # 公益大赛
 def compet_list(req, id):
-    index = 7
+    index = 'compet'
     try:
         if id:
             compet = models.ChfCompet.objects.get(id=id)
