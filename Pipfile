@@ -1,7 +1,8 @@
 [[source]]
-name = "tsinghua"
-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/"
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple/"
 verify_ssl = true
+trusted-host = "mirrors.aliyun.com"
 
 [dev-packages]
 django = "*"
@@ -10,7 +11,6 @@ pytz = "*"
 sqlparse = "*"
 django-simpleui = "*"
 pymysql = "*"
-mysqlclient = "*"
 
 [packages]
 django = "*"
@@ -19,7 +19,6 @@ pytz = "*"
 sqlparse = "*"
 django-simpleui = "*"
 pymysql = "*"
-mysqlclient = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
