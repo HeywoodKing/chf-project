@@ -8,8 +8,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '172.16.40.247',
-    '47.99.121.101',
+    '47.96.65.98',
     'www.xaqsh.cn',
     'www.xaqsh.com',
     'www.xianqinshihuang.com',
@@ -23,7 +22,7 @@ HOST = os.environ.get('MYSQL_HOST', '127.0.0.1')
 PORT = os.environ.get('MYSQL_PORT', '3306')
 USER = os.environ.get('MYSQL_USER', None)
 PASS = os.environ.get('MYSQL_PASS', None)
-NAME = os.environ.get('MYSQL_DB', 'chf')
+NAME = os.environ.get('MYSQL_DB_CHF', 'chf')
 
 DATABASES = {
     'default': {
